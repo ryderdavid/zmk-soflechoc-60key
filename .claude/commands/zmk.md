@@ -20,6 +20,7 @@ Display this menu:
   [7] Flash           - Step-by-step flash instructions
   [8] Bluetooth       - BT profile management bindings
   [9] Settings        - Toggle sofle.conf options
+  [10] Profiles       - Save, load, and diff named keymap setups
   [0] Exit
 
 Choose an option:
@@ -246,6 +247,118 @@ Tips:
 
 ---
 
+## Option [10]: Profiles
+
+Manage multiple named keymap configurations. Profiles are stored in the `profiles/` directory as complete keymap snapshots. Each profile is a copy of `sofle.keymap` plus a metadata header comment.
+
+### Profile file format
+
+Profiles are stored as `profiles/<name>.keymap` files. Each has a metadata comment block at the top:
+
+```c
+/*
+ * Profile: <name>
+ * Description: <user-provided description>
+ * Created: <ISO date>
+ * Based on: <parent profile or "scratch">
+ */
+```
+
+The rest of the file is a complete, valid `sofle.keymap` that can be copied directly into `config/`.
+
+### Sub-options
+
+Present these choices:
+
+```
+Profiles Manager
+================
+  [a] Save current    - Snapshot active keymap as a named profile
+  [b] Load profile    - Swap a saved profile into config/sofle.keymap
+  [c] List profiles   - Show all saved profiles with descriptions
+  [d] Diff profiles   - Compare two profiles side-by-side
+  [e] Rename profile  - Rename an existing profile
+  [f] Delete profile  - Remove a saved profile
+  [g] Back to menu
+```
+
+### [a] Save Current
+
+1. Ask for a profile name (lowercase, hyphens allowed, no spaces): e.g., `default`, `gaming`, `coding`, `colemak`
+2. Ask for a one-line description: e.g., "QWERTY with vim-style nav on raise layer"
+3. Read `config/sofle.keymap`
+4. Prepend the metadata comment block
+5. Write to `profiles/<name>.keymap`
+6. If a profile with that name already exists, show the existing description and ask to overwrite or pick a different name
+7. Confirm: "Saved profile 'coding' to profiles/coding.keymap"
+
+### [b] Load Profile
+
+1. List all profiles (from `profiles/*.keymap`) with names and descriptions
+2. Ask which profile to load
+3. Show a summary diff between the current `config/sofle.keymap` and the selected profile (layer-by-layer binding differences)
+4. Ask for confirmation
+5. Backup current keymap: `cp config/sofle.keymap config/sofle.keymap.bak`
+6. Also offer to save current keymap as a profile before overwriting (if it hasn't been saved)
+7. Copy the profile into `config/sofle.keymap` (strip the metadata comment block so it's a clean keymap)
+8. Confirm: "Loaded profile 'gaming' into config/sofle.keymap"
+
+### [c] List Profiles
+
+1. Glob `profiles/*.keymap`
+2. Parse the metadata comment from each file
+3. Display a table:
+
+```
+Saved Profiles:
+| Name     | Description                              | Created    | Layers |
+|----------|------------------------------------------|------------|--------|
+| default  | Stock QWERTY from KeyboardHoarders       | 2026-02-07 | 5      |
+| coding   | Mod-taps on home row, symbols on raise   | 2026-02-07 | 5      |
+| gaming   | WASD + space on left, no mod-taps        | 2026-02-08 | 6      |
+```
+
+Also indicate which profile matches the current `config/sofle.keymap` (if any), marked with `(active)`.
+
+### [d] Diff Profiles
+
+1. Ask which two profiles to compare (or "current" for the active keymap)
+2. For each layer present in either profile, show differences:
+
+```
+Diff: coding vs gaming
+======================
+
+Layer 0 (default):
+  Pos 24: &kp LEFT_SHIFT  vs  &kp LEFT_SHIFT  (same)
+  Pos 25: &mt LSHFT A     vs  &kp A            <-- different
+  Pos 26: &mt LALT S      vs  &kp S            <-- different
+  ...
+
+Layer 5 (gaming):
+  (only in 'gaming' profile - 60 bindings)
+```
+
+For layers that are identical, just say "Layer N: identical".
+
+### [e] Rename Profile
+
+1. List profiles
+2. Ask which to rename
+3. Ask for new name
+4. Rename the file and update the metadata comment
+5. Confirm
+
+### [f] Delete Profile
+
+1. List profiles
+2. Ask which to delete
+3. Confirm with the profile name (require typing the name to confirm)
+4. Delete `profiles/<name>.keymap`
+5. Confirm: "Deleted profile 'old-layout'"
+
+---
+
 ## Safety Rules
 
 **ALWAYS follow these rules when modifying files:**
@@ -266,4 +379,4 @@ Tips:
 ## After Each Action
 
 After completing any option, ask the user:
-"What would you like to do next? Type a number (1-9) or 0 to exit."
+"What would you like to do next? Type a number (1-10) or 0 to exit."

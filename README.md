@@ -36,6 +36,7 @@ The `/zmk` command launches an interactive menu:
 | **Flash** | Step-by-step flash instructions |
 | **Bluetooth** | Manage BT profile bindings |
 | **Settings** | Toggle `sofle.conf` options |
+| **Profiles** | Save, load, and diff named keymap setups |
 
 ### Example: Map Keys
 
@@ -76,6 +77,7 @@ zmk-soflechoc-60key/
 │   ├── behaviors.md           # ZMK behaviors reference
 │   ├── keycodes.md            # Complete keycode table
 │   └── layout.md              # Physical layout + position map
+├── profiles/                  # Named keymap profiles (gaming, coding, etc.)
 ├── config/
 │   ├── sofle.keymap           # YOUR KEYMAP (the main artifact)
 │   ├── sofle.conf             # Feature toggles
@@ -85,6 +87,20 @@ zmk-soflechoc-60key/
 ├── .github/workflows/         # CI workflow
 └── README.md
 ```
+
+### Example: Profiles
+
+```
+You: /zmk -> [10] Profiles -> Save current
+Claude: Name? "coding"
+        Description? "Home row mods, symbols on raise"
+        Saved to profiles/coding.keymap
+
+You: /zmk -> [10] Profiles -> Load profile -> "gaming"
+Claude: Shows diff, backs up current keymap, loads gaming profile.
+```
+
+Profiles are git-tracked, so every layout version is in your history.
 
 ---
 

@@ -34,6 +34,7 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 | `docs/behaviors.md` | ZMK behavior reference (kp, mt, lt, mo, bt, etc.) |
 | `docs/keycodes.md` | Complete keycode reference table |
 | `docs/layout.md` | Physical layout diagram with position numbers |
+| `profiles/*.keymap` | Named keymap profiles (snapshots of sofle.keymap) |
 
 ---
 
@@ -363,6 +364,42 @@ The `.uf2` file will be at `build/zephyr/zmk.uf2` after each build.
 6. **Repeat** for the other half
 
 Flash order does not matter. Both halves must be flashed with matching firmware for split communication to work.
+
+---
+
+## Profiles System
+
+The `profiles/` directory stores named keymap configurations as complete `.keymap` file snapshots. This lets you maintain multiple layouts (e.g., coding, gaming, Colemak) and switch between them.
+
+### Profile file format
+
+Each profile is saved as `profiles/<name>.keymap` with a metadata comment at the top:
+
+```c
+/*
+ * Profile: <name>
+ * Description: <one-line description>
+ * Created: <ISO date>
+ * Based on: <parent profile or "scratch">
+ */
+```
+
+The rest of the file is a complete, valid `sofle.keymap`.
+
+### Operations
+
+- **Save**: Snapshot `config/sofle.keymap` -> `profiles/<name>.keymap` (with metadata header)
+- **Load**: Copy `profiles/<name>.keymap` -> `config/sofle.keymap` (strip metadata, backup first)
+- **List**: Show all profiles with names, descriptions, dates, and which is currently active
+- **Diff**: Compare any two profiles (or current vs. a profile) layer-by-layer
+- **Rename/Delete**: Manage saved profiles
+
+### Rules
+
+- Always backup `config/sofle.keymap` before loading a profile
+- When loading, strip the metadata comment so `config/sofle.keymap` is a clean ZMK keymap
+- When listing, detect which profile matches current keymap by content comparison
+- Profile names: lowercase alphanumeric + hyphens, no spaces
 
 ---
 

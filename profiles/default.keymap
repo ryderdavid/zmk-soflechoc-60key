@@ -1,8 +1,9 @@
 /*
  * Profile: default
- * Description: Stock QWERTY layout from KeyboardHoarders
+ * Description: Stock QWERTY layout from KeyboardHoarders upstream
  * Created: 2026-02-07
- * Based on: scratch
+ * Updated: 2026-02-09
+ * Based on: upstream (KeyboardHoarders/zmk-soflechoc-60key)
  */
 
 /*

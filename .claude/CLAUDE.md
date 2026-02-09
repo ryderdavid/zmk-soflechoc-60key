@@ -10,7 +10,7 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 |----------|-------|
 | Board | `nice_nano@2.0.0` (nRF52840-based) |
 | Shield | `sofle_left` / `sofle_right` |
-| Display | nice!view (optional, via `nice_view_adapter nice_view`) |
+| Display | nice!view on LEFT half only (via `nice_view_adapter nice_view`); RIGHT half has no display |
 | Keys | 60 (30 per half) |
 | Encoders | 2 (one per half, EC11) |
 | Connectivity | Bluetooth 5.0 (split wireless) |
@@ -35,6 +35,10 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 | `docs/keycodes.md` | Complete keycode reference table |
 | `docs/layout.md` | Physical layout diagram with position numbers |
 | `profiles/*.keymap` | Named keymap profiles (snapshots of sofle.keymap) |
+| `config/sofle.json` | Physical layout (QMK info.json format) for keymap-drawer |
+| `keymap_drawer.config.yaml` | keymap-drawer config (labels, combos, display settings) |
+| `keymap-drawer/` | Auto-generated SVG, YAML, and PNG output from keymap-drawer |
+| `.github/workflows/draw.yml` | CI workflow that renders keymap SVGs on keymap changes |
 
 ---
 
@@ -365,6 +369,10 @@ The `.uf2` file will be at `build/zephyr/zmk.uf2` after each build.
 
 Flash order does not matter. Both halves must be flashed with matching firmware for split communication to work.
 
+**This build uses:**
+- **Left half**: `sofle_left nice_view_adapter nice_view` (has display)
+- **Right half**: `sofle_right` (no display)
+
 ---
 
 ## Profiles System
@@ -380,25 +388,42 @@ Each profile is saved as `profiles/<name>.keymap` with a metadata comment at the
  * Profile: <name>
  * Description: <one-line description>
  * Created: <ISO date>
- * Based on: <parent profile or "scratch">
+ * Updated: <ISO date>
+ * Based on: <parent profile or "scratch" or "upstream">
  */
 ```
 
 The rest of the file is a complete, valid `sofle.keymap`.
 
+### Current Profiles
+
+| Name | Description | Based on |
+|------|-------------|----------|
+| `default` | Stock QWERTY from KeyboardHoarders upstream | upstream |
+| `macos` | macOS-optimized with SCAG HRM, Hyper/Meh, combos, numpad | default |
+
 ### Operations
 
 - **Save**: Snapshot `config/sofle.keymap` -> `profiles/<name>.keymap` (with metadata header)
 - **Load**: Copy `profiles/<name>.keymap` -> `config/sofle.keymap` (strip metadata, backup first)
+- **New**: Create a new profile based on `default` or any existing profile
 - **List**: Show all profiles with names, descriptions, dates, and which is currently active
 - **Diff**: Compare any two profiles (or current vs. a profile) layer-by-layer
 - **Rename/Delete**: Manage saved profiles
+
+### Profile Context
+
+Before making keymap edits, always establish which profile is being edited:
+1. Compare `config/sofle.keymap` against all profiles to detect the active one
+2. Ask the user if they want to edit the current profile, create a new one, or switch
+3. After edits, sync changes back to the active profile file
 
 ### Rules
 
 - Always backup `config/sofle.keymap` before loading a profile
 - When loading, strip the metadata comment so `config/sofle.keymap` is a clean ZMK keymap
 - When listing, detect which profile matches current keymap by content comparison
+- After editing, sync `config/sofle.keymap` back to the active profile (with updated metadata)
 - Profile names: lowercase alphanumeric + hyphens, no spaces
 
 ---
@@ -439,6 +464,27 @@ When the user describes key changes in plain English, follow these rules:
 4. **Generate the binding**: Use the behavior and keycode tables above to produce valid ZMK syntax
 
 5. **Validate**: Ensure the layer still has exactly 60 bindings after the change
+
+6. **Render**: After every keymap edit, regenerate the SVG and PNG visualizations:
+   ```bash
+   # Re-parse and draw full SVG
+   keymap -c keymap_drawer.config.yaml parse -z config/sofle.keymap 2>/dev/null > keymap-drawer/sofle.yaml
+   keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -o keymap-drawer/sofle.svg
+
+   # Full keymap PNG
+   rsvg-convert keymap-drawer/sofle.svg -o keymap-drawer/sofle.png -w 1600
+
+   # Per-layer PNGs (for inline terminal preview)
+   for layer in default lower raise adjust numlk; do
+     keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -s "$layer" -o "/tmp/sofle-${layer}.svg"
+     rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
+   done
+   ```
+   Then open the affected layer PNG(s) in the system viewer:
+   ```bash
+   open keymap-drawer/sofle-default.png   # or whichever layer(s) changed
+   ```
+   For the full keymap: `open keymap-drawer/sofle.png`
 
 ---
 

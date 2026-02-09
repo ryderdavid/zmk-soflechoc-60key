@@ -1,0 +1,114 @@
+draw_config:
+  dark_mode: auto
+  shrink_wide_legends: 7
+  footer_text: "Sofle Choc 60-Key · github.com/ryderdavid/zmk-soflechoc-60key"
+  svg_extra_style: "rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }"
+  glyph_urls:
+    mdi: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/master/svg/{}.svg"
+    tabler: "https://unpkg.com/@tabler/icons/icons/outline/{}.svg"
+
+parse_config:
+  raw_binding_map:
+    "&td_numlk": "NumLk"
+    "&td_cmd":
+      t: "Cmd"
+      h: "Hyper+Spc"
+    "&caps": "CapsWd"
+    "&studio_unlock": "Studio"
+    "&hyper": "Hyper"
+    "&hyper_space": "Hyp+Spc"
+    "&caps_word": "CapsWd"
+    "&td_enc_l": {t: "", s: "Hyp+F"}
+    "&td_enc_r": {t: "", s: "Meh+F"}
+    "&hyper_f": "Hyp+F"
+    "&meh_f": "Meh+F"
+    "&td_caps": {t: "CapsWd", s: "CapsLk"}
+    "&hml LS(LC(LA(LGUI))) G":
+      t: "G"
+      h: "Hyper"
+    "&hmr RS(RC(RALT)) H":
+      t: "H"
+      h: "Meh"
+
+  modifier_fn_map:
+    left_ctrl: "Ctl"
+    right_ctrl: "Ctl"
+    left_shift: "Sft"
+    right_shift: "Sft"
+    left_alt: "Opt"
+    right_alt: "Opt"
+    left_gui: "Cmd"
+    right_gui: "Cmd"
+    keycode_combiner: "{mods}+{key}"
+    mod_combiner: "{mod_1}+{mod_2}"
+    special_combinations:
+      "left_ctrl+left_alt+left_gui+left_shift": "Hyper"
+      "right_ctrl+right_alt+right_shift": "Meh"
+
+  zmk_keycode_map:
+    LSHFT: "Sft"
+    RSHFT: "Sft"
+    LEFT_SHIFT: "Sft"
+    RIGHT_SHIFT: "Sft"
+    LCTRL: "Ctl"
+    RCTRL: "Ctl"
+    LALT: "Opt"
+    RALT: "Opt"
+    LGUI: "Cmd"
+    RGUI: "Cmd"
+    BSPC: "Bspc"
+    BACKSPACE: "Bspc"
+    SEMI: ";"
+    SEMICOLON: ";"
+    SQT: "'"
+    SINGLE_QUOTE: "'"
+    FSLH: "/"
+    FORWARD_SLASH: "/"
+    BSLH: "\\"
+    BACKSLASH: "\\"
+    CLCK: "Caps"
+    CAPSLOCK: "Caps"
+    PSCRN: "PrtSc"
+    PRINTSCREEN: "PrtSc"
+    K_CMENU: "Menu"
+    DEL: "Del"
+    DELETE: "Del"
+    ESC: "Esc"
+    ESCAPE: "Esc"
+    INS: "Ins"
+    INSERT: "Ins"
+
+  zmk_combos:
+    backspace:
+      align: top
+      offset: 0.1
+    delete:
+      align: bottom
+      offset: 0.1
+    esc:
+      align: top
+      offset: 0.1
+    esc2:
+      align: top
+      offset: 0.1
+    fwd_delete:
+      align: bottom
+      offset: 0.1
+    shift_caps:
+      align: bottom
+      offset: 0.1
+    numlk_combo:
+      align: left
+      offset: 0.1
+    nav_back:
+      align: top
+      offset: 0.1
+    nav_forward:
+      align: top
+      offset: 0.1
+    scroll_up:
+      align: right
+      offset: 0.1
+    scroll_down:
+      align: right
+      offset: 0.1

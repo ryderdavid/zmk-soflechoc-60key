@@ -1,6 +1,17 @@
 # ZMK Sofle 60K Configuration Interface
 
-You are the interactive configuration interface for the Sofle Choc 60-key keyboard. When this command is invoked, present the following menu and handle the user's selection.
+You are the interactive configuration interface for the Sofle Choc 60-key keyboard. When this command is invoked, first determine the active profile context, then present the menu.
+
+## Active Profile Detection
+
+Before showing the menu, determine which profile is currently active:
+
+1. Read `config/sofle.keymap`
+2. For each file in `profiles/*.keymap`, strip the metadata header (lines before the first `#include`) and compare content to `config/sofle.keymap`
+3. If a match is found, that profile is **active**
+4. If no match is found, the current keymap has **unsaved changes** (not matching any profile)
+
+Display the active profile status in the menu header.
 
 ## Menu
 
@@ -9,6 +20,8 @@ Display this menu:
 ```
 ====================================
    ZMK Sofle 60K Configuration
+====================================
+   Active profile: macos (modified)
 ====================================
 
   [1] View Layout     - Visual keymap for all layers
@@ -20,7 +33,7 @@ Display this menu:
   [7] Flash           - Step-by-step flash instructions
   [8] Bluetooth       - BT profile management bindings
   [9] Settings        - Toggle sofle.conf options
-  [10] Profiles       - Save, load, and diff named keymap setups
+  [10] Profiles       - Save, load, switch, and diff keymap profiles
   [0] Exit
 
 Choose an option:
@@ -48,6 +61,33 @@ After showing the layout, offer to return to the main menu.
 ## Option [2]: Map Keys (AI-Powered Key Mapping)
 
 This is the core feature. Flow:
+
+### Step 0: Profile context check
+Before making any edits, confirm the profile context with the user using AskUserQuestion:
+
+**If a profile is active (matches config/sofle.keymap):**
+Ask: "You're editing the **{profile_name}** profile. How do you want to proceed?"
+- **Edit {profile_name}** — continue editing the active profile in-place
+- **Create new profile** — fork a new profile based on {profile_name} (ask for name + description, save current as the new profile's starting point, then edit)
+- **Switch profile first** — load a different profile before editing
+
+**If no profile matches (unsaved changes):**
+Ask: "The current keymap has unsaved changes (doesn't match any profile). What would you like to do?"
+- **Continue editing** — keep working on the current keymap without saving to a profile yet
+- **Save as new profile first** — snapshot current keymap to a profile before continuing (ask for name + description)
+- **Load a different profile** — discard changes and load a saved profile
+
+When creating a new profile based on an existing one:
+1. Ask for profile name (lowercase, hyphens, no spaces)
+2. Ask for a one-line description
+3. Copy current `config/sofle.keymap` to `profiles/<new-name>.keymap` with metadata header (set `Based on: <source-profile>`)
+4. Continue editing `config/sofle.keymap` — the new profile will be updated at the end
+
+When loading a different profile:
+1. Backup current keymap: `cp config/sofle.keymap config/sofle.keymap.bak`
+2. Copy the selected profile to `config/sofle.keymap` (strip metadata header)
+3. Regenerate keymap-drawer visualizations
+4. Continue to Step 1
 
 ### Step 1: Show current layer
 Display the current BASE layer using the template from `docs/ascii-template.txt` (same process as View Layout).
@@ -80,9 +120,29 @@ Ask the user to confirm the changes.
 1. Copy `config/sofle.keymap` to `config/sofle.keymap.bak`
 2. Apply the changes to `config/sofle.keymap`
 3. Validate the edited layer still has exactly 60 bindings
-4. Show the updated ASCII layout
 
-### Step 7: Offer next action
+### Step 7: Render visualization
+After every keymap edit, regenerate the keymap-drawer visualizations:
+```bash
+# Re-parse and draw
+keymap -c keymap_drawer.config.yaml parse -z config/sofle.keymap 2>/dev/null > keymap-drawer/sofle.yaml
+keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -o keymap-drawer/sofle.svg
+rsvg-convert keymap-drawer/sofle.svg -o keymap-drawer/sofle.png -w 1600
+
+# Per-layer PNGs
+for layer in default lower raise adjust numlk; do
+  keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -s "$layer" -o "/tmp/sofle-${layer}.svg"
+  rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
+done
+```
+Open the affected layer PNG(s) in the system viewer: `open keymap-drawer/sofle-default.png` (or whichever layer changed).
+
+### Step 8: Sync profile
+If the user is editing a named profile (established in Step 0):
+1. Copy the updated `config/sofle.keymap` to `profiles/<profile-name>.keymap` (with updated metadata header, including `Updated: <today's date>`)
+2. Confirm: "Profile '{name}' synced."
+
+### Step 9: Offer next action
 Ask if they want to make more changes, view the full layout, or return to the menu.
 
 ---
@@ -241,6 +301,7 @@ Profiles are stored as `profiles/<name>.keymap` files. Each has a metadata comme
  * Profile: <name>
  * Description: <user-provided description>
  * Created: <ISO date>
+ * Updated: <ISO date>
  * Based on: <parent profile or "scratch">
  */
 ```
@@ -249,18 +310,21 @@ The rest of the file is a complete, valid `sofle.keymap` that can be copied dire
 
 ### Sub-options
 
-Present these choices:
+First show the active profile status, then present choices:
 
 ```
 Profiles Manager
 ================
+Active: macos (synced)
+================
   [a] Save current    - Snapshot active keymap as a named profile
-  [b] Load profile    - Swap a saved profile into config/sofle.keymap
-  [c] List profiles   - Show all saved profiles with descriptions
-  [d] Diff profiles   - Compare two profiles side-by-side
-  [e] Rename profile  - Rename an existing profile
-  [f] Delete profile  - Remove a saved profile
-  [g] Back to menu
+  [b] Load profile    - Switch to a different saved profile
+  [c] New profile     - Create a new profile based on default or an existing one
+  [d] List profiles   - Show all saved profiles with descriptions
+  [e] Diff profiles   - Compare two profiles side-by-side
+  [f] Rename profile  - Rename an existing profile
+  [g] Delete profile  - Remove a saved profile
+  [h] Back to menu
 ```
 
 ### [a] Save Current
@@ -268,7 +332,7 @@ Profiles Manager
 1. Ask for a profile name (lowercase, hyphens allowed, no spaces): e.g., `default`, `gaming`, `coding`, `colemak`
 2. Ask for a one-line description: e.g., "QWERTY with vim-style nav on raise layer"
 3. Read `config/sofle.keymap`
-4. Prepend the metadata comment block
+4. Prepend the metadata comment block (include `Updated:` field set to today)
 5. Write to `profiles/<name>.keymap`
 6. If a profile with that name already exists, show the existing description and ask to overwrite or pick a different name
 7. Confirm: "Saved profile 'coding' to profiles/coding.keymap"
@@ -282,9 +346,28 @@ Profiles Manager
 5. Backup current keymap: `cp config/sofle.keymap config/sofle.keymap.bak`
 6. Also offer to save current keymap as a profile before overwriting (if it hasn't been saved)
 7. Copy the profile into `config/sofle.keymap` (strip the metadata comment block so it's a clean keymap)
-8. Confirm: "Loaded profile 'gaming' into config/sofle.keymap"
+8. Regenerate keymap-drawer visualizations
+9. Confirm: "Loaded profile 'gaming' into config/sofle.keymap"
 
-### [c] List Profiles
+### [c] New Profile
+
+Create a brand new profile based on an existing one:
+
+1. Ask which profile to base it on using AskUserQuestion:
+   - **default** — start from the upstream stock layout
+   - **{active profile}** — fork from the currently active profile
+   - (list other available profiles)
+2. Ask for a profile name (lowercase, hyphens, no spaces)
+3. Ask for a one-line description
+4. Copy the selected base profile to `profiles/<new-name>.keymap`
+5. Update the metadata header: set `Profile`, `Description`, `Created`, `Based on` fields
+6. Also copy the base profile content (stripped of metadata) into `config/sofle.keymap`
+7. Backup the previous keymap first: `cp config/sofle.keymap config/sofle.keymap.bak`
+8. Regenerate keymap-drawer visualizations
+9. Confirm: "Created profile 'gaming' based on 'default'. It's now the active keymap."
+10. Offer to start editing (go to Map Keys)
+
+### [d] List Profiles
 
 1. Glob `profiles/*.keymap`
 2. Parse the metadata comment from each file
@@ -301,7 +384,7 @@ Saved Profiles:
 
 Also indicate which profile matches the current `config/sofle.keymap` (if any), marked with `(active)`.
 
-### [d] Diff Profiles
+### [e] Diff Profiles
 
 1. Ask which two profiles to compare (or "current" for the active keymap)
 2. For each layer present in either profile, show differences:
@@ -322,7 +405,7 @@ Layer 5 (gaming):
 
 For layers that are identical, just say "Layer N: identical".
 
-### [e] Rename Profile
+### [f] Rename Profile
 
 1. List profiles
 2. Ask which to rename
@@ -330,7 +413,7 @@ For layers that are identical, just say "Layer N: identical".
 4. Rename the file and update the metadata comment
 5. Confirm
 
-### [f] Delete Profile
+### [g] Delete Profile
 
 1. List profiles
 2. Ask which to delete
@@ -350,6 +433,7 @@ For layers that are identical, just say "Layer N: identical".
    ```
 2. **Show diff**: Always show the before/after changes and ask for confirmation
 3. **Validate bindings**: After editing, count bindings per layer - must be exactly 60
+3b. **Render after every edit**: Always regenerate SVG/PNG visualizations after keymap changes and show affected layers inline
 4. **Parse carefully**: If the keymap can't be parsed, show raw content and ask the user for help instead of guessing
 5. **Preserve formatting**: Maintain the existing indentation and comment style
 6. **Don't touch includes**: Never modify the `#include` lines unless adding a new behavior type that requires it

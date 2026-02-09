@@ -1,0 +1,352 @@
+layout: {zmk_keyboard: sofle}
+layers:
+  default:
+  - GRAVE
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - Bspc
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - MINUS
+  - raise
+  - {t: A, h: Sft}
+  - {t: S, h: Ctl}
+  - {t: D, h: Opt}
+  - {t: F, h: Cmd}
+  - {t: G, h: Hyper}
+  - {t: H, h: Meh}
+  - {t: J, h: Cmd}
+  - {t: K, h: Opt}
+  - {t: L, h: Ctl}
+  - {t: ;, h: Sft}
+  - {t: '''', h: lower}
+  - Sft
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - {s: Hyp+F}
+  - {s: Meh+F}
+  - N
+  - M
+  - COMMA
+  - DOT
+  - /
+  - {t: /, h: Sft}
+  - Ctl
+  - Opt
+  - Cmd
+  - {t: SPACE, h: lower}
+  - ENTER
+  - ENTER
+  - {t: SPACE, h: raise}
+  - {t: Cmd, h: Hyper+Spc}
+  - Opt
+  - Ctl
+  lower:
+  - {t: ▽, type: trans}
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
+  - F11
+  - {t: ▽, type: trans}
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - CARET
+  - AMPERSAND
+  - ASTRK
+  - LEFT PARENTHESIS
+  - RIGHT PARENTHESIS
+  - F12
+  - {t: ▽, type: trans}
+  - EXCL
+  - AT
+  - HASH
+  - DLLR
+  - PRCNT
+  - MINUS
+  - EQUAL
+  - GREATER THAN
+  - LEFT BRACKET
+  - RIGHT BRACKET
+  - {t: PIPE, type: held}
+  - {t: ▽, type: trans}
+  - EQUAL
+  - MINUS
+  - PLUS
+  - LBRC
+  - RBRC
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - UNDERSCORE
+  - PLUS
+  - LESS THAN
+  - LEFT BRACE
+  - RIGHT BRACE
+  - \
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  raise:
+  - {t: ▽, type: trans}
+  - Cmd+Sft+1
+  - Cmd+Sft+2
+  - Cmd+Sft+3
+  - Cmd+Sft+4
+  - Cmd+Sft+5
+  - Cmd+Sft+6
+  - Cmd+Sft+7
+  - Cmd+Sft+8
+  - Cmd+Sft+9
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - PG UP
+  - UP
+  - PG DN
+  - '0'
+  - {t: ▽, type: trans}
+  - {type: held}
+  - Opt
+  - Ctl
+  - Sft
+  - {t: ▽, type: trans}
+  - Caps
+  - HOME
+  - LEFT
+  - DOWN
+  - RIGHT
+  - Del
+  - Bspc
+  - {t: ▽, type: trans}
+  - Cmd+Z
+  - Cmd+X
+  - Cmd+C
+  - Cmd+V
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - END
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  adjust:
+  - BT CLR ALL
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '2'}
+  - {t: BT, h: '3'}
+  - {t: BT, h: '4'}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - EP TOG
+  - ''
+  - ''
+  - ''
+  - ''
+  - Studio
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - CapsWd
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  numlk:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - EQUAL
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Studio
+  - MINUS
+  - '7'
+  - '8'
+  - '9'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ASTRK
+  - '4'
+  - '5'
+  - '6'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - CapsWd
+  - ''
+  - ''
+  - /
+  - '1'
+  - '2'
+  - '3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: TAB, h: raise}
+  - '0'
+  - DOT
+  - ''
+combos:
+- p: [32, 31]
+  k: Bspc
+  a: top
+  o: 0.1
+- p: [27, 33]
+  k: Del
+  a: bottom
+  o: 0.1
+- p: [25, 41]
+  k: Esc
+  a: top
+  o: 0.1
+- p: [0, 12]
+  k: Esc
+  a: top
+  o: 0.1
+- p: [28, 27]
+  k: Del
+  a: bottom
+  o: 0.1
+- p: [36, 49]
+  k: {t: CapsWd, s: CapsLk}
+  a: bottom
+  o: 0.1
+- p: [36, 24]
+  k: NumLk
+  a: left
+  o: 0.1
+- p: [0, 1]
+  k: Cmd+LBKT
+  a: top
+  o: 0.1
+- p: [10, 11]
+  k: Cmd+RBKT
+  a: top
+  o: 0.1
+- p: [22, 23]
+  k: '&msc SCRL_UP'
+  a: right
+  o: 0.1
+- p: [34, 35]
+  k: '&msc SCRL_DOWN'
+  a: right
+  o: 0.1

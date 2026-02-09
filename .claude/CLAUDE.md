@@ -463,8 +463,11 @@ When the user describes key changes in plain English, follow these rules:
      rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
    done
    ```
-   Then show the affected layer(s) inline using `Read` on the per-layer PNG files in `keymap-drawer/`.
-   Open the full keymap PNG in Preview with `open keymap-drawer/sofle.png` if the user wants the complete view.
+   Then open the affected layer PNG(s) in the system viewer:
+   ```bash
+   open keymap-drawer/sofle-default.png   # or whichever layer(s) changed
+   ```
+   For the full keymap: `open keymap-drawer/sofle.png`
 
 ---
 

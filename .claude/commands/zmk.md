@@ -95,7 +95,7 @@ for layer in default lower raise adjust numlk; do
   rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
 done
 ```
-Show the affected layer(s) inline using `Read` on the per-layer PNGs in `keymap-drawer/`.
+Open the affected layer PNG(s) in the system viewer: `open keymap-drawer/sofle-default.png` (or whichever layer changed).
 
 ### Step 8: Offer next action
 Ask if they want to make more changes, view the full layout, or return to the menu.

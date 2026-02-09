@@ -18,6 +18,11 @@ parse_config:
     "&hyper": "Hyper"
     "&hyper_space": "Hyp+Spc"
     "&caps_word": "CapsWd"
+    "&td_enc_l": {t: "", s: "Hyp+F"}
+    "&td_enc_r": {t: "", s: "Meh+F"}
+    "&hyper_f": "Hyp+F"
+    "&meh_f": "Meh+F"
+    "&td_caps": {t: "CapsWd", s: "CapsLk"}
     "&hml LS(LC(LA(LGUI))) G":
       t: "G"
       h: "Hyper"
@@ -85,4 +90,13 @@ parse_config:
       offset: 0.1
     esc2:
       align: top
+      offset: 0.1
+    fwd_delete:
+      align: bottom
+      offset: 0.1
+    shift_caps:
+      align: bottom
+      offset: 0.1
+    numlk_combo:
+      align: left
       offset: 0.1

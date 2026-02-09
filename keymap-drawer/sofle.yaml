@@ -36,22 +36,22 @@ layers:
   - {t: K, h: Opt}
   - {t: L, h: Ctl}
   - {t: ;, h: Sft}
-  - ''''
+  - {t: '''', h: lower}
   - Sft
   - Z
   - X
   - C
   - V
   - B
-  - LEFT
-  - RIGHT
+  - {s: Hyp+F}
+  - {s: Meh+F}
   - N
   - M
   - COMMA
   - DOT
   - /
   - {t: /, h: Sft}
-  - NumLk
+  - Ctl
   - Opt
   - Cmd
   - {t: SPACE, h: lower}
@@ -97,7 +97,7 @@ layers:
   - GREATER THAN
   - LEFT BRACKET
   - RIGHT BRACKET
-  - PIPE
+  - {t: PIPE, type: held}
   - {t: ▽, type: trans}
   - EQUAL
   - MINUS
@@ -115,7 +115,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -124,6 +124,15 @@ layers:
   - {t: ▽, type: trans}
   raise:
   - {t: ▽, type: trans}
+  - Cmd+Sft+1
+  - Cmd+Sft+2
+  - Cmd+Sft+3
+  - Cmd+Sft+4
+  - Cmd+Sft+5
+  - Cmd+Sft+6
+  - Cmd+Sft+7
+  - Cmd+Sft+8
+  - Cmd+Sft+9
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -131,20 +140,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - Ins
-  - PrtSc
-  - Menu
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - PG UP
-  - {t: ▽, type: trans}
   - UP
-  - {t: ▽, type: trans}
+  - PG DN
   - '0'
   - {t: ▽, type: trans}
   - {type: held}
@@ -153,7 +153,7 @@ layers:
   - Sft
   - {t: ▽, type: trans}
   - Caps
-  - PG DN
+  - HOME
   - LEFT
   - DOWN
   - RIGHT
@@ -167,7 +167,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - END
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -219,7 +219,7 @@ layers:
   - ''
   - ''
   - ''
-  - ''
+  - {type: held}
   - ''
   - ''
   - ''
@@ -237,7 +237,7 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
+  - ''
   - ''
   - ''
   - ''
@@ -245,7 +245,7 @@ layers:
   - ''
   - ''
   numlk: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', Studio, '', '7', '8', '9', '', '', '', '', '', '', '', '', '', '4', '5', '6', '', '',
-    '', '', '', '', '', CapsWd, '', '', '', '1', '2', '3', '', '', NumLk, '', '', '', '', '', '', '0', '', '']
+    '', '', '', '', '', CapsWd, '', '', '', '1', '2', '3', '', '', '', '', '', '', '', '', '', '0', '', '']
 combos:
 - p: [32, 31]
   k: Bspc
@@ -262,4 +262,16 @@ combos:
 - p: [0, 12]
   k: Esc
   a: top
+  o: 0.1
+- p: [28, 27]
+  k: Del
+  a: bottom
+  o: 0.1
+- p: [36, 49]
+  k: {t: CapsWd, s: CapsLk}
+  a: bottom
+  o: 0.1
+- p: [36, 24]
+  k: NumLk
+  a: left
   o: 0.1

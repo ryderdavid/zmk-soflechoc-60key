@@ -2,6 +2,7 @@ draw_config:
   dark_mode: auto
   shrink_wide_legends: 7
   footer_text: "Sofle Choc 60-Key · github.com/ryderdavid/zmk-soflechoc-60key"
+  svg_extra_style: "rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }"
   glyph_urls:
     mdi: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/master/svg/{}.svg"
     tabler: "https://unpkg.com/@tabler/icons/icons/outline/{}.svg"

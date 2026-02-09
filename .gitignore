@@ -1,0 +1,4 @@
+.env
+
+# Per-layer PNGs are local preview artifacts (full sofle.png is tracked)
+keymap-drawer/sofle-*.png

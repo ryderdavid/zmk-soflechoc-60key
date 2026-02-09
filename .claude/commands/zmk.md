@@ -80,9 +80,24 @@ Ask the user to confirm the changes.
 1. Copy `config/sofle.keymap` to `config/sofle.keymap.bak`
 2. Apply the changes to `config/sofle.keymap`
 3. Validate the edited layer still has exactly 60 bindings
-4. Show the updated ASCII layout
 
-### Step 7: Offer next action
+### Step 7: Render visualization
+After every keymap edit, regenerate the keymap-drawer visualizations:
+```bash
+# Re-parse and draw
+keymap -c keymap_drawer.config.yaml parse -z config/sofle.keymap 2>/dev/null > keymap-drawer/sofle.yaml
+keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -o keymap-drawer/sofle.svg
+rsvg-convert keymap-drawer/sofle.svg -o keymap-drawer/sofle.png -w 1600
+
+# Per-layer PNGs
+for layer in default lower raise adjust numlk; do
+  keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -s "$layer" -o "/tmp/sofle-${layer}.svg"
+  rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
+done
+```
+Show the affected layer(s) inline using `Read` on the per-layer PNGs in `keymap-drawer/`.
+
+### Step 8: Offer next action
 Ask if they want to make more changes, view the full layout, or return to the menu.
 
 ---
@@ -350,6 +365,7 @@ For layers that are identical, just say "Layer N: identical".
    ```
 2. **Show diff**: Always show the before/after changes and ask for confirmation
 3. **Validate bindings**: After editing, count bindings per layer - must be exactly 60
+3b. **Render after every edit**: Always regenerate SVG/PNG visualizations after keymap changes and show affected layers inline
 4. **Parse carefully**: If the keymap can't be parsed, show raw content and ask the user for help instead of guessing
 5. **Preserve formatting**: Maintain the existing indentation and comment style
 6. **Don't touch includes**: Never modify the `#include` lines unless adding a new behavior type that requires it

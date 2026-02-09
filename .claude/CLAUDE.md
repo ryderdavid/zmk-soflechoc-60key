@@ -37,7 +37,7 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 | `profiles/*.keymap` | Named keymap profiles (snapshots of sofle.keymap) |
 | `config/sofle.json` | Physical layout (QMK info.json format) for keymap-drawer |
 | `keymap_drawer.config.yaml` | keymap-drawer config (labels, combos, display settings) |
-| `keymap-drawer/` | Auto-generated SVG + YAML output from keymap-drawer |
+| `keymap-drawer/` | Auto-generated SVG, YAML, and PNG output from keymap-drawer |
 | `.github/workflows/draw.yml` | CI workflow that renders keymap SVGs on keymap changes |
 
 ---
@@ -447,6 +447,24 @@ When the user describes key changes in plain English, follow these rules:
 4. **Generate the binding**: Use the behavior and keycode tables above to produce valid ZMK syntax
 
 5. **Validate**: Ensure the layer still has exactly 60 bindings after the change
+
+6. **Render**: After every keymap edit, regenerate the SVG and PNG visualizations:
+   ```bash
+   # Re-parse and draw full SVG
+   keymap -c keymap_drawer.config.yaml parse -z config/sofle.keymap 2>/dev/null > keymap-drawer/sofle.yaml
+   keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -o keymap-drawer/sofle.svg
+
+   # Full keymap PNG
+   rsvg-convert keymap-drawer/sofle.svg -o keymap-drawer/sofle.png -w 1600
+
+   # Per-layer PNGs (for inline terminal preview)
+   for layer in default lower raise adjust numlk; do
+     keymap -c keymap_drawer.config.yaml draw keymap-drawer/sofle.yaml -j config/sofle.json -s "$layer" -o "/tmp/sofle-${layer}.svg"
+     rsvg-convert "/tmp/sofle-${layer}.svg" -o "keymap-drawer/sofle-${layer}.png" -w 1200
+   done
+   ```
+   Then show the affected layer(s) inline using `Read` on the per-layer PNG files in `keymap-drawer/`.
+   Open the full keymap PNG in Preview with `open keymap-drawer/sofle.png` if the user wants the complete view.
 
 ---
 

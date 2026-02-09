@@ -65,6 +65,26 @@
             bindings = <&td_numlk>;
             key-positions = <36 24>;
         };
+
+        nav_back {
+            bindings = <&kp LG(LBKT)>;
+            key-positions = <0 1>;
+        };
+
+        nav_forward {
+            bindings = <&kp LG(RBKT)>;
+            key-positions = <10 11>;
+        };
+
+        scroll_up {
+            bindings = <&msc SCRL_UP>;
+            key-positions = <22 23>;
+        };
+
+        scroll_down {
+            bindings = <&msc SCRL_DOWN>;
+            key-positions = <34 35>;
+        };
     };
 
     macros {
@@ -287,17 +307,18 @@
             display-name = "numlk";
 
             // ----------------------------------------------------------------------------------------------------------------------------
-            // |        |         |         |         |         |         |                  |      |   7  |   8   |   9  |       |       |
-            // |        |         |         |         |         |         |                  |      |   4  |   5   |   6  |       |       |
-            // |        |         |         |         |         |         |        | |       |      |   1  |   2   |   3  |       |       |
-            //                    |         |         |         |         |        | |       |      |   0  |       |      |
+            // |        |         |         |         |         |         |   =    |      |       |      |       | BSPC  |
+            // |        |         |         |         |         | Studio  |   -    |   7  |   8   |   9  |       |       |
+            // |        |         |         |         |         |         |   *    |   4  |   5   |   6  |       |       |
+            // |        |         |         |         |         | CpsWd   |     |  |   /  |   1   |   2  |   3   |       |       |
+            //                    |         |         |         |         |     |  | RS/TB|   0   |   .  |       |
 
             bindings = <
-&none              &none         &none         &none         &none         &none           &none  &none    &none    &none    &none    &none
-&none              &none         &none         &none         &none         &studio_unlock  &none  &kp N7   &kp N8   &kp N9   &none    &none
-&none              &none         &none         &none         &none         &none           &none  &kp N4   &kp N5   &kp N6   &none    &none
-&none              &none         &none         &none         &none         &caps_word      &none  &none  &none    &kp N1   &kp N2   &kp N3   &none    &none
-                                 &none         &none         &none         &none           &none  &none  &none    &kp N0   &none    &none
+&none              &none         &none         &none         &none         &none           &kp EQUAL  &none    &none    &none    &none    &trans
+&none              &none         &none         &none         &none         &studio_unlock  &kp MINUS  &kp N7   &kp N8   &kp N9   &none    &none
+&none              &none         &none         &none         &none         &none           &kp ASTRK  &kp N4   &kp N5   &kp N6   &none    &none
+&none              &none         &none         &none         &none         &caps_word      &none  &none  &kp FSLH   &kp N1   &kp N2   &kp N3   &none    &none
+                                 &none         &none         &none         &none           &none  &none  &lts RAISE TAB  &kp N0   &kp DOT    &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

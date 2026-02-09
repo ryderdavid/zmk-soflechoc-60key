@@ -388,25 +388,42 @@ Each profile is saved as `profiles/<name>.keymap` with a metadata comment at the
  * Profile: <name>
  * Description: <one-line description>
  * Created: <ISO date>
- * Based on: <parent profile or "scratch">
+ * Updated: <ISO date>
+ * Based on: <parent profile or "scratch" or "upstream">
  */
 ```
 
 The rest of the file is a complete, valid `sofle.keymap`.
 
+### Current Profiles
+
+| Name | Description | Based on |
+|------|-------------|----------|
+| `default` | Stock QWERTY from KeyboardHoarders upstream | upstream |
+| `macos` | macOS-optimized with SCAG HRM, Hyper/Meh, combos, numpad | default |
+
 ### Operations
 
 - **Save**: Snapshot `config/sofle.keymap` -> `profiles/<name>.keymap` (with metadata header)
 - **Load**: Copy `profiles/<name>.keymap` -> `config/sofle.keymap` (strip metadata, backup first)
+- **New**: Create a new profile based on `default` or any existing profile
 - **List**: Show all profiles with names, descriptions, dates, and which is currently active
 - **Diff**: Compare any two profiles (or current vs. a profile) layer-by-layer
 - **Rename/Delete**: Manage saved profiles
+
+### Profile Context
+
+Before making keymap edits, always establish which profile is being edited:
+1. Compare `config/sofle.keymap` against all profiles to detect the active one
+2. Ask the user if they want to edit the current profile, create a new one, or switch
+3. After edits, sync changes back to the active profile file
 
 ### Rules
 
 - Always backup `config/sofle.keymap` before loading a profile
 - When loading, strip the metadata comment so `config/sofle.keymap` is a clean ZMK keymap
 - When listing, detect which profile matches current keymap by content comparison
+- After editing, sync `config/sofle.keymap` back to the active profile (with updated metadata)
 - Profile names: lowercase alphanumeric + hyphens, no spaces
 
 ---

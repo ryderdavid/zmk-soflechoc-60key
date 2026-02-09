@@ -100,3 +100,15 @@ parse_config:
     numlk_combo:
       align: left
       offset: 0.1
+    nav_back:
+      align: top
+      offset: 0.1
+    nav_forward:
+      align: top
+      offset: 0.1
+    scroll_up:
+      align: right
+      offset: 0.1
+    scroll_down:
+      align: right
+      offset: 0.1

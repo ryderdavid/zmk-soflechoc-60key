@@ -1,7 +1,7 @@
 draw_config:
   dark_mode: auto
   shrink_wide_legends: 7
-  footer_text: "Sofle Choc 60-Key &middot; github.com/ryderdavid/zmk-soflechoc-60key"
+  footer_text: "Sofle Choc 60-Key · github.com/ryderdavid/zmk-soflechoc-60key"
   glyph_urls:
     mdi: "https://raw.githubusercontent.com/Templarian/MaterialDesign-SVG/master/svg/{}.svg"
     tabler: "https://unpkg.com/@tabler/icons/icons/outline/{}.svg"

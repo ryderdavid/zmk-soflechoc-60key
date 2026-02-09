@@ -10,7 +10,7 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 |----------|-------|
 | Board | `nice_nano@2.0.0` (nRF52840-based) |
 | Shield | `sofle_left` / `sofle_right` |
-| Display | nice!view (optional, via `nice_view_adapter nice_view`) |
+| Display | nice!view on LEFT half only (via `nice_view_adapter nice_view`); RIGHT half has no display |
 | Keys | 60 (30 per half) |
 | Encoders | 2 (one per half, EC11) |
 | Connectivity | Bluetooth 5.0 (split wireless) |
@@ -35,6 +35,10 @@ You are inside a ZMK firmware configuration repo for the **Sofle Choc 60-key** s
 | `docs/keycodes.md` | Complete keycode reference table |
 | `docs/layout.md` | Physical layout diagram with position numbers |
 | `profiles/*.keymap` | Named keymap profiles (snapshots of sofle.keymap) |
+| `config/sofle.json` | Physical layout (QMK info.json format) for keymap-drawer |
+| `keymap_drawer.config.yaml` | keymap-drawer config (labels, combos, display settings) |
+| `keymap-drawer/` | Auto-generated SVG + YAML output from keymap-drawer |
+| `.github/workflows/draw.yml` | CI workflow that renders keymap SVGs on keymap changes |
 
 ---
 
@@ -364,6 +368,10 @@ The `.uf2` file will be at `build/zephyr/zmk.uf2` after each build.
 6. **Repeat** for the other half
 
 Flash order does not matter. Both halves must be flashed with matching firmware for split communication to work.
+
+**This build uses:**
+- **Left half**: `sofle_left nice_view_adapter nice_view` (has display)
+- **Right half**: `sofle_right` (no display)
 
 ---
 

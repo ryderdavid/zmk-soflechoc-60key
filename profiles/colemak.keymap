@@ -1,4 +1,12 @@
 /*
+ * Profile: colemak
+ * Description: macOS Colemak — SCAG home row mods, Hyper/Meh, combos, numpad; alpha-only change from macos QWERTY
+ * Created: 2026-02-10
+ * Updated: 2026-02-10
+ * Based on: macos
+ */
+
+/*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT

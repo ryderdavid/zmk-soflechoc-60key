@@ -26,6 +26,9 @@ parse_config:
     "&hml LS(LC(LA(LGUI))) G":
       t: "G"
       h: "Hyper"
+    "&hml LS(LC(LA(LGUI))) D":
+      t: "D"
+      h: "Hyper"
     "&hmr RS(RC(RALT)) H":
       t: "H"
       h: "Meh"

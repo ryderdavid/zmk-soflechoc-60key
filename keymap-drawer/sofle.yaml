@@ -16,26 +16,26 @@ layers:
   - TAB
   - Q
   - W
-  - E
-  - R
-  - T
-  - Y
-  - U
-  - I
-  - O
+  - F
   - P
+  - G
+  - J
+  - L
+  - U
+  - Y
+  - ;
   - MINUS
   - raise
   - {t: A, h: Sft}
-  - {t: S, h: Ctl}
-  - {t: D, h: Opt}
-  - {t: F, h: Cmd}
-  - {t: G, h: Hyper}
+  - {t: R, h: Ctl}
+  - {t: S, h: Opt}
+  - {t: T, h: Cmd}
+  - {t: D, h: Hyper}
   - {t: H, h: Meh}
-  - {t: J, h: Cmd}
-  - {t: K, h: Opt}
-  - {t: L, h: Ctl}
-  - {t: ;, h: Sft}
+  - {t: N, h: Cmd}
+  - {t: E, h: Opt}
+  - {t: I, h: Ctl}
+  - {t: O, h: Sft}
   - {t: '''', h: lower}
   - Sft
   - Z
@@ -45,7 +45,7 @@ layers:
   - {t: B, h: numlk}
   - Hyp+F
   - Meh+F
-  - N
+  - K
   - M
   - COMMA
   - DOT

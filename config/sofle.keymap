@@ -61,9 +61,9 @@
             key-positions = <36 49>;
         };
 
-        numlk_combo {
-            bindings = <&td_numlk>;
-            key-positions = <36 24>;
+        numlk_toggle {
+            bindings = <&tog extra_layer>;
+            key-positions = <40 41>;
         };
 
         nav_back {
@@ -160,13 +160,6 @@
             bindings = <&mo>, <&kp>;
         };
 
-        td_numlk: tap_dance_numlk {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo extra_layer>, <&tog extra_layer>;
-        };
-
         td_cmd: tap_dance_cmd {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -234,7 +227,7 @@
 &kp GRAVE         &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp BSPC
 &kp TAB           &kp Q   &kp W     &kp E     &kp R      &kp T                                      &kp Y      &kp U      &kp I      &kp O     &kp P     &kp MINUS
 &mo RAISE         &hml LSHFT A  &hml LCTRL S  &hml LALT D  &hml LGUI F  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) H      &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHFT SEMI  &lts LOWER SQT
-&kp LSHFT         &kp Z   &kp X     &kp C     &kp V      &kp B      &hyper_f    &meh_f              &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &mt RSHFT FSLH
+&kp LSHFT         &kp Z   &kp X     &kp C     &kp V      &lts extra_layer B      &hyper_f    &meh_f              &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &mt RSHFT FSLH
                           &kp LCTRL  &kp LALT  &htk LGUI LS(LC(LA(LG(Z))))   &lts LOWER SPACE  &kp ENTER     &kp ENTER         &lts RAISE SPACE  &td_cmd   &kp RALT   &kp RCTRL
             >;
 

@@ -42,7 +42,7 @@ layers:
   - X
   - C
   - V
-  - B
+  - {t: B, h: numlk}
   - Hyp+F
   - Meh+F
   - N
@@ -286,7 +286,7 @@ layers:
   - ''
   - ''
   - ''
-  - CapsWd
+  - {t: CapsWd, type: held}
   - ''
   - ''
   - /
@@ -330,10 +330,8 @@ combos:
   k: {t: CapsWd, s: CapsLk}
   a: bottom
   o: 0.1
-- p: [36, 24]
-  k: NumLk
-  a: left
-  o: 0.1
+- p: [40, 41]
+  k: {t: numlk, h: toggle}
 - p: [39, 40]
   k: Cmd+LBKT
   a: top

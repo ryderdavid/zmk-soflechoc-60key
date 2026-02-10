@@ -319,7 +319,9 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(308, 210)" class="key keypos-41">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">B</text>
-</g>
+<a href="#numlk">
+<text x="0" y="24" class="key hold layer-activator">numlk</text>
+</a></g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Hyp+F</text>
@@ -437,10 +439,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<path d="M-7,196 v22 a6.0,6.0 0 0 0 6.0,6.0 h10" class="combo"/>
-<path d="M-7,196 v-22 a6.0,6.0 0 0 1 6.0,-6.0 h10" class="combo"/>
-<rect rx="6" ry="6" x="-21" y="183" width="28" height="26" class="combo"/>
-<text x="-7" y="196" class="combo tap">NumLk</text>
+<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
+<a href="#numlk">
+<text x="280" y="206" class="combo tap layer-activator">numlk</text>
+</a><text x="280" y="218" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -773,10 +775,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<path d="M-7,196 v22 a6.0,6.0 0 0 0 6.0,6.0 h10" class="combo"/>
-<path d="M-7,196 v-22 a6.0,6.0 0 0 1 6.0,-6.0 h10" class="combo"/>
-<rect rx="6" ry="6" x="-21" y="183" width="28" height="26" class="combo"/>
-<text x="-7" y="196" class="combo tap">NumLk</text>
+<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
+<a href="#numlk">
+<text x="280" y="206" class="combo tap layer-activator">numlk</text>
+</a><text x="280" y="218" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1114,10 +1116,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<path d="M-7,196 v22 a6.0,6.0 0 0 0 6.0,6.0 h10" class="combo"/>
-<path d="M-7,196 v-22 a6.0,6.0 0 0 1 6.0,-6.0 h10" class="combo"/>
-<rect rx="6" ry="6" x="-21" y="183" width="28" height="26" class="combo"/>
-<text x="-7" y="196" class="combo tap">NumLk</text>
+<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
+<a href="#numlk">
+<text x="280" y="206" class="combo tap layer-activator">numlk</text>
+</a><text x="280" y="218" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1392,10 +1394,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<path d="M-7,196 v22 a6.0,6.0 0 0 0 6.0,6.0 h10" class="combo"/>
-<path d="M-7,196 v-22 a6.0,6.0 0 0 1 6.0,-6.0 h10" class="combo"/>
-<rect rx="6" ry="6" x="-21" y="183" width="28" height="26" class="combo"/>
-<text x="-7" y="196" class="combo tap">NumLk</text>
+<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
+<a href="#numlk">
+<text x="280" y="206" class="combo tap layer-activator">numlk</text>
+</a><text x="280" y="218" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1568,9 +1570,9 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(252, 203)" class="key keypos-40">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(308, 210)" class="key keypos-41">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">CapsWd</text>
+<g transform="translate(308, 210)" class="key held keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
+<text x="0" y="0" class="key held tap">CapsWd</text>
 </g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1673,10 +1675,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<path d="M-7,196 v22 a6.0,6.0 0 0 0 6.0,6.0 h10" class="combo"/>
-<path d="M-7,196 v-22 a6.0,6.0 0 0 1 6.0,-6.0 h10" class="combo"/>
-<rect rx="6" ry="6" x="-21" y="183" width="28" height="26" class="combo"/>
-<text x="-7" y="196" class="combo tap">NumLk</text>
+<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
+<a href="#numlk">
+<text x="280" y="206" class="combo tap layer-activator">numlk</text>
+</a><text x="280" y="218" class="combo hold">toggle</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>

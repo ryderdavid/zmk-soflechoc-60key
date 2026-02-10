@@ -43,8 +43,8 @@ layers:
   - C
   - V
   - B
-  - {s: Hyp+F}
-  - {s: Meh+F}
+  - Hyp+F
+  - Meh+F
   - N
   - M
   - COMMA
@@ -53,7 +53,7 @@ layers:
   - {t: /, h: Sft}
   - Ctl
   - Opt
-  - Cmd
+  - {t: Hyper+Z, h: Cmd}
   - {t: SPACE, h: lower}
   - ENTER
   - ENTER
@@ -334,11 +334,11 @@ combos:
   k: NumLk
   a: left
   o: 0.1
-- p: [0, 1]
+- p: [39, 40]
   k: Cmd+LBKT
   a: top
   o: 0.1
-- p: [10, 11]
+- p: [45, 46]
   k: Cmd+RBKT
   a: top
   o: 0.1

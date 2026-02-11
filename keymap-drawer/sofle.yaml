@@ -274,7 +274,7 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
+  - {t: numlk, h: toggle, type: held}
   - ASTRK
   - '4'
   - '5'

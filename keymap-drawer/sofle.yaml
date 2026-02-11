@@ -61,6 +61,67 @@ layers:
   - {t: Hyper+C, h: Cmd}
   - {t: Hyper+B, h: Opt}
   - {t: Hyper+A, h: Ctl}
+  qwerty:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: S, h: Ctl}
+  - {t: D, h: Opt}
+  - {t: F, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: H, h: Sft+Ctl+Opt}
+  - {t: J, h: Cmd}
+  - {t: K, h: Opt}
+  - {t: L, h: Ctl}
+  - {t: ;, h: Sft}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - V
+  - B
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - N
+  - M
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   lower:
   - {t: ▽, type: trans}
   - F1
@@ -213,7 +274,7 @@ layers:
   - ''
   - ''
   - ''
-  - ''
+  - {t: qwerty, h: toggle}
   - ''
   - ''
   - ''

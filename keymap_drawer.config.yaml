@@ -26,11 +26,21 @@ parse_config:
     "&hml LS(LC(LA(LGUI))) G":
       t: "G"
       h: "Hyper"
-    "&hml LS(LC(LA(LGUI))) D":
-      t: "D"
+    "&hml LS(LC(LA(LGUI))) Z":
+      t: "Z"
       h: "Hyper"
-    "&hmr RS(RC(RALT)) H":
-      t: "H"
+    "&ht_hyp LCTRL C": {t: "Hyp+C", h: "Ctl"}
+    "&ht_hyp LALT B": {t: "Hyp+B", h: "Opt"}
+    "&ht_hyp LGUI A": {t: "Hyp+A", h: "Cmd"}
+    "&ht_meh RGUI A": {t: "Meh+A", h: "Cmd"}
+    "&ht_meh RALT B": {t: "Meh+B", h: "Opt"}
+    "&ht_meh RCTRL C": {t: "Meh+C", h: "Ctl"}
+    "&td_lower": {t: "Spc", h: "Lower"}
+    "&td_raise": {t: "Spc", h: "Raise"}
+    "&hyper_tap": "Hyp+"
+    "&meh_tap": "Meh+"
+    "&hmr RS(RC(RALT)) M":
+      t: "M"
       h: "Meh"
 
   modifier_fn_map:
@@ -100,18 +110,12 @@ parse_config:
     shift_caps:
       align: bottom
       offset: 0.1
-    numlk_combo:
-      align: left
+    esc3:
+      align: top
       offset: 0.1
     nav_back:
       align: top
       offset: 0.1
     nav_forward:
       align: top
-      offset: 0.1
-    scroll_up:
-      align: right
-      offset: 0.1
-    scroll_down:
-      align: right
       offset: 0.1

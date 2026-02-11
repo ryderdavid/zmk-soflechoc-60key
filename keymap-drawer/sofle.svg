@@ -209,7 +209,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(308, 98)" class="key keypos-17">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">G</text>
+<text x="0" y="0" class="key tap">B</text>
 </g>
 <g transform="translate(616, 98)" class="key keypos-18">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -262,12 +262,13 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(308, 154)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">D</text>
-<text x="0" y="24" class="key hold">Hyper</text>
-</g>
+<text x="0" y="0" class="key tap">G</text>
+<a href="#numlk">
+<text x="0" y="24" class="key hold layer-activator">numlk</text>
+</a></g>
 <g transform="translate(616, 154)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">H</text>
+<text x="0" y="0" class="key tap">M</text>
 <text x="0" y="24" class="key hold">Meh</text>
 </g>
 <g transform="translate(672, 147)" class="key keypos-31">
@@ -303,6 +304,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(84, 217)" class="key keypos-37">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Z</text>
+<text x="0" y="24" class="key hold">Hyper</text>
 </g>
 <g transform="translate(140, 203)" class="key keypos-38">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -314,21 +316,19 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(252, 203)" class="key keypos-40">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">V</text>
+<text x="0" y="0" class="key tap">D</text>
 </g>
 <g transform="translate(308, 210)" class="key keypos-41">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">B</text>
-<a href="#numlk">
-<text x="0" y="24" class="key hold layer-activator">numlk</text>
-</a></g>
+<text x="0" y="0" class="key tap">V</text>
+</g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Hyp+F</text>
+<text x="0" y="0" class="key tap">LBKT</text>
 </g>
 <g transform="translate(560, 210)" class="key keypos-43">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Meh+F</text>
+<text x="0" y="0" class="key tap">RBKT</text>
 </g>
 <g transform="translate(616, 210)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -336,7 +336,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(672, 203)" class="key keypos-45">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">M</text>
+<text x="0" y="0" class="key tap">H</text>
 </g>
 <g transform="translate(728, 196)" class="key keypos-46">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -349,6 +349,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(840, 217)" class="key keypos-48">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">/</text>
+<text x="0" y="24" class="key hold">Sft</text>
 </g>
 <g transform="translate(896, 224)" class="key keypos-49">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -357,23 +358,24 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(140, 259)" class="key keypos-50">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctl</text>
+<text x="0" y="0" class="key tap">Hyp+C</text>
+<text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(196, 259)" class="key keypos-51">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Opt</text>
+<text x="0" y="0" class="key tap">Hyp+B</text>
+<text x="0" y="24" class="key hold">Opt</text>
 </g>
 <g transform="translate(252, 259)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Hyper+Z</text>
+<text x="0" y="0" class="key tap">Hyp+A</text>
 <text x="0" y="24" class="key hold">Cmd</text>
 </g>
 <g transform="translate(308, 266)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">SPACE</text>
-<a href="#lower">
-<text x="0" y="24" class="key hold layer-activator">lower</text>
-</a></g>
+<text x="0" y="0" class="key tap">Spc</text>
+<text x="0" y="24" class="key hold">Lower</text>
+</g>
 <g transform="translate(364, 280)" class="key keypos-54">
 <rect rx="6" ry="6" x="-26" y="-40" width="52" height="80" class="key"/>
 <text x="0" y="0" class="key tap">ENTER</text>
@@ -384,22 +386,23 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(616, 266)" class="key keypos-56">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">SPACE</text>
-<a href="#raise">
-<text x="0" y="24" class="key hold layer-activator">raise</text>
-</a></g>
+<text x="0" y="0" class="key tap">Spc</text>
+<text x="0" y="24" class="key hold">Raise</text>
+</g>
 <g transform="translate(672, 259)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Cmd</text>
-<text x="0" y="24" class="key hold"><tspan style="font-size: 78%">Hyper+Spc</tspan></text>
+<text x="0" y="0" class="key tap">Meh+A</text>
+<text x="0" y="24" class="key hold">Cmd</text>
 </g>
 <g transform="translate(728, 259)" class="key keypos-58">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Opt</text>
+<text x="0" y="0" class="key tap">Meh+B</text>
+<text x="0" y="24" class="key hold">Opt</text>
 </g>
 <g transform="translate(784, 259)" class="key keypos-59">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctl</text>
+<text x="0" y="0" class="key tap">Meh+C</text>
+<text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g class="combo combopos-0">
 <path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
@@ -439,10 +442,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
-<a href="#numlk">
-<text x="280" y="206" class="combo tap layer-activator">numlk</text>
-</a><text x="280" y="218" class="combo hold">toggle</text>
+<path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
+<path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
+<rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
+<text x="56" y="14" class="combo tap">Esc</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -458,22 +461,6 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="686" y="148" width="28" height="26" class="combo"/>
 <text x="700" y="161" class="combo tap">
 <tspan x="700" dy="-0.6em">Cmd+</tspan><tspan x="700" dy="1.2em">RBKT</tspan>
-</text>
-</g>
-<g class="combo combopos-9">
-<path d="M931,108 l-72,-3" class="combo"/>
-<path d="M931,108 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="96" width="28" height="26" class="combo"/>
-<text x="931" y="108" class="combo tap">
-<tspan x="931" dy="-0.6em">&amp;msc</tspan><tspan x="931" dy="1.2em">SCRL_UP</tspan>
-</text>
-</g>
-<g class="combo combopos-10">
-<path d="M931,164 l-72,-3" class="combo"/>
-<path d="M931,164 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="152" width="28" height="26" class="combo"/>
-<text x="931" y="164" class="combo tap">
-<tspan x="931" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="931" dy="1.2em" style="font-size: 78%">SCRL_DOWN</tspan>
 </text>
 </g>
 </g>
@@ -659,13 +646,13 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">RBRC</text>
 </g>
-<g transform="translate(364, 210)" class="key trans keypos-42">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(364, 210)" class="key keypos-42">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">LPAR</text>
 </g>
-<g transform="translate(560, 210)" class="key trans keypos-43">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(560, 210)" class="key keypos-43">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">RPAR</text>
 </g>
 <g transform="translate(616, 210)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -775,10 +762,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
-<a href="#numlk">
-<text x="280" y="206" class="combo tap layer-activator">numlk</text>
-</a><text x="280" y="218" class="combo hold">toggle</text>
+<path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
+<path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
+<rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
+<text x="56" y="14" class="combo tap">Esc</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -794,22 +781,6 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="686" y="148" width="28" height="26" class="combo"/>
 <text x="700" y="161" class="combo tap">
 <tspan x="700" dy="-0.6em">Cmd+</tspan><tspan x="700" dy="1.2em">RBKT</tspan>
-</text>
-</g>
-<g class="combo combopos-9">
-<path d="M931,108 l-72,-3" class="combo"/>
-<path d="M931,108 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="96" width="28" height="26" class="combo"/>
-<text x="931" y="108" class="combo tap">
-<tspan x="931" dy="-0.6em">&amp;msc</tspan><tspan x="931" dy="1.2em">SCRL_UP</tspan>
-</text>
-</g>
-<g class="combo combopos-10">
-<path d="M931,164 l-72,-3" class="combo"/>
-<path d="M931,164 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="152" width="28" height="26" class="combo"/>
-<text x="931" y="164" class="combo tap">
-<tspan x="931" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="931" dy="1.2em" style="font-size: 78%">SCRL_DOWN</tspan>
 </text>
 </g>
 </g>
@@ -883,13 +854,17 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
-<g transform="translate(28, 112)" class="key trans keypos-12">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(28, 112)" class="key keypos-12">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_DOWN</tspan>
+</text>
 </g>
-<g transform="translate(84, 105)" class="key trans keypos-13">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(84, 105)" class="key keypos-13">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">&amp;mmv</tspan><tspan x="0" dy="1.2em">MOVE_UP</tspan>
+</text>
 </g>
 <g transform="translate(140, 91)" class="key trans keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -956,7 +931,9 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(308, 154)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Caps</text>
+<a href="#numlk">
+<text x="0" y="0" class="key tap layer-activator">numlk</text>
+</a><text x="0" y="24" class="key hold">toggle</text>
 </g>
 <g transform="translate(616, 154)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -982,13 +959,17 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Bspc</text>
 </g>
-<g transform="translate(28, 224)" class="key trans keypos-36">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(28, 224)" class="key keypos-36">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em" style="font-size: 78%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 78%">MOVE_LEFT</tspan>
+</text>
 </g>
 <g transform="translate(84, 217)" class="key keypos-37">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Cmd+Z</text>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em" style="font-size: 70%">&amp;mmv</tspan><tspan x="0" dy="1.2em" style="font-size: 70%">MOVE_RIGHT</tspan>
+</text>
 </g>
 <g transform="translate(140, 203)" class="key keypos-38">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1038,17 +1019,23 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
-<g transform="translate(140, 259)" class="key trans keypos-50">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(140, 259)" class="key keypos-50">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">&amp;mkp</tspan><tspan x="0" dy="1.2em">LCLK</tspan>
+</text>
 </g>
-<g transform="translate(196, 259)" class="key trans keypos-51">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(196, 259)" class="key keypos-51">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">&amp;mkp</tspan><tspan x="0" dy="1.2em">RCLK</tspan>
+</text>
 </g>
-<g transform="translate(252, 259)" class="key trans keypos-52">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(252, 259)" class="key keypos-52">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">&amp;mkp</tspan><tspan x="0" dy="1.2em">MCLK</tspan>
+</text>
 </g>
 <g transform="translate(308, 266)" class="key trans keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -1116,10 +1103,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
-<a href="#numlk">
-<text x="280" y="206" class="combo tap layer-activator">numlk</text>
-</a><text x="280" y="218" class="combo hold">toggle</text>
+<path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
+<path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
+<rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
+<text x="56" y="14" class="combo tap">Esc</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1135,22 +1122,6 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="686" y="148" width="28" height="26" class="combo"/>
 <text x="700" y="161" class="combo tap">
 <tspan x="700" dy="-0.6em">Cmd+</tspan><tspan x="700" dy="1.2em">RBKT</tspan>
-</text>
-</g>
-<g class="combo combopos-9">
-<path d="M931,108 l-72,-3" class="combo"/>
-<path d="M931,108 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="96" width="28" height="26" class="combo"/>
-<text x="931" y="108" class="combo tap">
-<tspan x="931" dy="-0.6em">&amp;msc</tspan><tspan x="931" dy="1.2em">SCRL_UP</tspan>
-</text>
-</g>
-<g class="combo combopos-10">
-<path d="M931,164 l-72,-3" class="combo"/>
-<path d="M931,164 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="152" width="28" height="26" class="combo"/>
-<text x="931" y="164" class="combo tap">
-<tspan x="931" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="931" dy="1.2em" style="font-size: 78%">SCRL_DOWN</tspan>
 </text>
 </g>
 </g>
@@ -1394,10 +1365,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
-<a href="#numlk">
-<text x="280" y="206" class="combo tap layer-activator">numlk</text>
-</a><text x="280" y="218" class="combo hold">toggle</text>
+<path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
+<path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
+<rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
+<text x="56" y="14" class="combo tap">Esc</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1413,22 +1384,6 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="686" y="148" width="28" height="26" class="combo"/>
 <text x="700" y="161" class="combo tap">
 <tspan x="700" dy="-0.6em">Cmd+</tspan><tspan x="700" dy="1.2em">RBKT</tspan>
-</text>
-</g>
-<g class="combo combopos-9">
-<path d="M931,108 l-72,-3" class="combo"/>
-<path d="M931,108 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="96" width="28" height="26" class="combo"/>
-<text x="931" y="108" class="combo tap">
-<tspan x="931" dy="-0.6em">&amp;msc</tspan><tspan x="931" dy="1.2em">SCRL_UP</tspan>
-</text>
-</g>
-<g class="combo combopos-10">
-<path d="M931,164 l-72,-3" class="combo"/>
-<path d="M931,164 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="152" width="28" height="26" class="combo"/>
-<text x="931" y="164" class="combo tap">
-<tspan x="931" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="931" dy="1.2em" style="font-size: 78%">SCRL_DOWN</tspan>
 </text>
 </g>
 </g>
@@ -1530,8 +1485,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(252, 147)" class="key keypos-28">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(308, 154)" class="key keypos-29">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<g transform="translate(308, 154)" class="key held keypos-29">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 </g>
 <g transform="translate(616, 154)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1570,9 +1525,9 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(252, 203)" class="key keypos-40">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(308, 210)" class="key held keypos-41">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
-<text x="0" y="0" class="key held tap">CapsWd</text>
+<g transform="translate(308, 210)" class="key keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">CapsWd</text>
 </g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1675,10 +1630,10 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
 <g class="combo combopos-6">
-<rect rx="6" ry="6" x="266" y="194" width="28" height="26" class="combo"/>
-<a href="#numlk">
-<text x="280" y="206" class="combo tap layer-activator">numlk</text>
-</a><text x="280" y="218" class="combo hold">toggle</text>
+<path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
+<path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
+<rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
+<text x="56" y="14" class="combo tap">Esc</text>
 </g>
 <g class="combo combopos-7">
 <path d="M224,161 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
@@ -1694,22 +1649,6 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="686" y="148" width="28" height="26" class="combo"/>
 <text x="700" y="161" class="combo tap">
 <tspan x="700" dy="-0.6em">Cmd+</tspan><tspan x="700" dy="1.2em">RBKT</tspan>
-</text>
-</g>
-<g class="combo combopos-9">
-<path d="M931,108 l-72,-3" class="combo"/>
-<path d="M931,108 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="96" width="28" height="26" class="combo"/>
-<text x="931" y="108" class="combo tap">
-<tspan x="931" dy="-0.6em">&amp;msc</tspan><tspan x="931" dy="1.2em">SCRL_UP</tspan>
-</text>
-</g>
-<g class="combo combopos-10">
-<path d="M931,164 l-72,-3" class="combo"/>
-<path d="M931,164 l-16,2" class="combo"/>
-<rect rx="6" ry="6" x="917" y="152" width="28" height="26" class="combo"/>
-<text x="931" y="164" class="combo tap">
-<tspan x="931" dy="-0.6em" style="font-size: 78%">&amp;msc</tspan><tspan x="931" dy="1.2em" style="font-size: 78%">SCRL_DOWN</tspan>
 </text>
 </g>
 </g>

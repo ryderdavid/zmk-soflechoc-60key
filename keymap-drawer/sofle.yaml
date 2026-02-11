@@ -18,7 +18,7 @@ layers:
   - W
   - F
   - P
-  - G
+  - B
   - J
   - L
   - U
@@ -30,37 +30,37 @@ layers:
   - {t: R, h: Ctl}
   - {t: S, h: Opt}
   - {t: T, h: Cmd}
-  - {t: D, h: Hyper}
-  - {t: H, h: Meh}
+  - {t: G, h: numlk}
+  - {t: M, h: Meh}
   - {t: N, h: Cmd}
   - {t: E, h: Opt}
   - {t: I, h: Ctl}
   - {t: O, h: Sft}
   - {t: '''', h: lower}
   - Sft
-  - Z
+  - {t: Z, h: Hyper}
   - X
   - C
+  - D
   - V
-  - {t: B, h: numlk}
-  - Hyp+F
-  - Meh+F
+  - LBKT
+  - RBKT
   - K
-  - M
+  - H
   - COMMA
   - DOT
-  - /
   - {t: /, h: Sft}
-  - Ctl
-  - Opt
-  - {t: Hyper+Z, h: Cmd}
-  - {t: SPACE, h: lower}
+  - {t: /, h: Sft}
+  - {t: Hyp+C, h: Ctl}
+  - {t: Hyp+B, h: Opt}
+  - {t: Hyp+A, h: Cmd}
+  - {t: Spc, h: Lower}
   - ENTER
   - ENTER
-  - {t: SPACE, h: raise}
-  - {t: Cmd, h: Hyper+Spc}
-  - Opt
-  - Ctl
+  - {t: Spc, h: Raise}
+  - {t: Meh+A, h: Cmd}
+  - {t: Meh+B, h: Opt}
+  - {t: Meh+C, h: Ctl}
   lower:
   - {t: ▽, type: trans}
   - F1
@@ -104,8 +104,8 @@ layers:
   - PLUS
   - LBRC
   - RBRC
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - LPAR
+  - RPAR
   - UNDERSCORE
   - PLUS
   - LESS THAN
@@ -135,8 +135,8 @@ layers:
   - Cmd+Sft+9
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - '&mmv MOVE_DOWN'
+  - '&mmv MOVE_UP'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -152,15 +152,15 @@ layers:
   - Ctl
   - Sft
   - {t: ▽, type: trans}
-  - Caps
+  - {t: numlk, h: toggle}
   - HOME
   - LEFT
   - DOWN
   - RIGHT
   - Del
   - Bspc
-  - {t: ▽, type: trans}
-  - Cmd+Z
+  - '&mmv MOVE_LEFT'
+  - '&mmv MOVE_RIGHT'
   - Cmd+X
   - Cmd+C
   - Cmd+V
@@ -173,9 +173,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - '&mkp LCLK'
+  - '&mkp RCLK'
+  - '&mkp MCLK'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -274,7 +274,7 @@ layers:
   - ''
   - ''
   - ''
-  - ''
+  - {type: held}
   - ASTRK
   - '4'
   - '5'
@@ -286,7 +286,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: CapsWd, type: held}
+  - CapsWd
   - ''
   - ''
   - /
@@ -330,8 +330,10 @@ combos:
   k: {t: CapsWd, s: CapsLk}
   a: bottom
   o: 0.1
-- p: [40, 41]
-  k: {t: numlk, h: toggle}
+- p: [0, 1]
+  k: Esc
+  a: top
+  o: 0.1
 - p: [39, 40]
   k: Cmd+LBKT
   a: top
@@ -339,12 +341,4 @@ combos:
 - p: [45, 46]
   k: Cmd+RBKT
   a: top
-  o: 0.1
-- p: [22, 23]
-  k: '&msc SCRL_UP'
-  a: right
-  o: 0.1
-- p: [34, 35]
-  k: '&msc SCRL_DOWN'
-  a: right
   o: 0.1

@@ -30,7 +30,7 @@ layers:
   - {t: R, h: Ctl}
   - {t: S, h: Opt}
   - {t: T, h: Cmd}
-  - {t: G, h: numlk}
+  - {t: G, h: Hyper}
   - {t: M, h: Meh}
   - {t: N, h: Cmd}
   - {t: E, h: Opt}
@@ -43,24 +43,24 @@ layers:
   - C
   - D
   - V
-  - LBKT
-  - RBKT
+  - NumLk
+  - Meh+F
   - K
   - H
   - COMMA
   - DOT
+  - /
   - {t: /, h: Sft}
-  - {t: /, h: Sft}
-  - {t: Hyp+C, h: Ctl}
-  - {t: Hyp+B, h: Opt}
-  - {t: Hyp+A, h: Cmd}
-  - {t: Spc, h: Lower}
+  - {t: Hyper+X, h: Ctl}
+  - {t: Hyper+Y, h: Opt}
+  - {t: Hyper+Z, h: Cmd}
+  - {t: SPACE, h: lower}
   - ENTER
   - ENTER
-  - {t: Spc, h: Raise}
-  - {t: Meh+A, h: Cmd}
-  - {t: Meh+B, h: Opt}
-  - {t: Meh+C, h: Ctl}
+  - {t: SPACE, h: raise}
+  - {t: Hyper+C, h: Cmd}
+  - {t: Hyper+B, h: Opt}
+  - {t: Hyper+A, h: Ctl}
   lower:
   - {t: ▽, type: trans}
   - F1
@@ -104,8 +104,8 @@ layers:
   - PLUS
   - LBRC
   - RBRC
-  - LPAR
-  - RPAR
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - UNDERSCORE
   - PLUS
   - LESS THAN
@@ -135,8 +135,8 @@ layers:
   - Cmd+Sft+9
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&mmv MOVE_DOWN'
-  - '&mmv MOVE_UP'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -152,15 +152,15 @@ layers:
   - Ctl
   - Sft
   - {t: ▽, type: trans}
-  - {t: numlk, h: toggle}
+  - {t: ▽, type: trans}
   - HOME
   - LEFT
   - DOWN
   - RIGHT
   - Del
   - Bspc
-  - '&mmv MOVE_LEFT'
-  - '&mmv MOVE_RIGHT'
+  - {t: ▽, type: trans}
+  - Cmd+Z
   - Cmd+X
   - Cmd+C
   - Cmd+V
@@ -173,9 +173,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&mkp LCLK'
-  - '&mkp RCLK'
-  - '&mkp MCLK'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -274,7 +274,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: numlk, h: toggle, type: held}
+  - ''
   - ASTRK
   - '4'
   - '5'
@@ -287,7 +287,7 @@ layers:
   - ''
   - ''
   - CapsWd
-  - ''
+  - NumLk
   - ''
   - /
   - '1'

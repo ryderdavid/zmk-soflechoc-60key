@@ -7,7 +7,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: main
+      revision: ac7f75b  # pinned: last known-good before nice_view_spi breakage (2026-01-29)
       import: app/west.yml
   self:
     path: config

@@ -2,10 +2,9 @@
  * Profile: colemak
  * Description: Colemak DHm with QWERTY toggle, Hyper thumb chords, tap-dance numlk encoder
  * Created: 2026-02-10
- * Updated: 2026-02-11
+ * Updated: 2026-02-14
  * Based on: macos
  */
-
 /*
  * Copyright (c) 2020 The ZMK Contributors
  *
@@ -24,6 +23,7 @@
 #define RAISE 3
 #define ADJUST 4
 #define extra_layer 5
+#define FKEYS 6
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -83,6 +83,11 @@
         nav_forward {
             bindings = <&kp LG(RBKT)>;
             key-positions = <45 46>;
+        };
+
+        thumb_fatfinger {
+            bindings = <&kp SPACE>;
+            key-positions = <54 55>;
         };
 
     };
@@ -232,10 +237,10 @@
 
             bindings = <
 &kp GRAVE         &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp BSPC
-&kp TAB           &kp Q   &kp W     &kp F     &kp P      &kp B                                      &kp J      &kp L      &kp U      &kp Y     &kp SEMI  &kp MINUS
-&mo RAISE         &hml LSHFT A  &hml LCTRL R  &hml LALT S  &hml LGUI T  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) M      &hmr RGUI N  &hmr RALT E  &hmr RCTRL I  &hmr RSHFT O  &lts LOWER SQT
+&lts LOWER TAB    &kp Q   &kp W     &kp F     &kp P      &kp B                                      &kp J      &kp L      &kp U      &kp Y     &kp SEMI  &lts LOWER MINUS
+&mo RAISE         &hml LSHFT A  &hml LCTRL R  &hml LALT S  &hml LGUI T  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) M      &hmr RGUI N  &hmr RALT E  &hmr RCTRL I  &hmr RSHFT O  &lts RAISE SQT
 &kp LSHFT         &hml LS(LC(LA(LGUI))) Z   &kp X     &kp C     &kp D      &kp V      &td_numlk    &meh_f              &kp K      &kp H      &kp COMMA  &kp DOT   &kp FSLH  &mt RSHFT FSLH
-                          &htk LCTRL LS(LC(LA(LG(X))))  &htk LALT LS(LC(LA(LG(Y))))  &htk LGUI LS(LC(LA(LG(Z))))   &lts LOWER SPACE  &kp ENTER     &kp ENTER         &lts RAISE SPACE  &htk RGUI LS(LC(LA(LG(C))))   &htk RALT LS(LC(LA(LG(B))))   &htk RCTRL LS(LC(LA(LG(A))))
+                          &htk LCTRL LS(LC(LA(LG(X))))  &htk LALT LS(LC(LA(LG(Y))))  &htk LGUI LS(LC(LA(LG(Z))))   &lts RAISE SPACE  &lts LOWER ENTER     &lts LOWER ENTER         &lts RAISE SPACE  &htk RGUI LS(LC(LA(LG(C))))   &htk RALT LS(LC(LA(LG(B))))   &lts FKEYS LS(LC(LA(LG(A))))
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -270,11 +275,11 @@
             //               |     |      |      |      |        |  |       |      |       |       |      |
 
             bindings = <
-&trans  &kp F1     &kp F2     &kp F3    &kp F4    &kp F5                       &kp F6          &kp F7         &kp F8          &kp F9                &kp F10                &kp F11
-&trans  &kp N1     &kp N2     &kp N3    &kp N4    &kp N5                       &kp CARET       &kp AMPERSAND  &kp ASTRK       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp F12
-&trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT                    &kp MINUS       &kp EQUAL      &kp GREATER_THAN  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PIPE
-&trans  &kp EQUAL  &kp MINUS  &kp PLUS  &kp LBRC  &kp RBRC   &trans    &trans  &kp UNDERSCORE  &kp PLUS       &kp LESS_THAN   &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp BACKSLASH
-                   &trans     &trans    &trans    &trans     &trans    &trans  &trans          &trans         &trans          &trans
+&trans  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR   &kp RPAR                       &trans     &trans      &trans     &trans     &kp EQUAL  &trans
+&trans  &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                      &trans     &trans      &trans     &kp LBKT   &kp RBKT   &kp BSLH
+&trans  &kp N6     &kp N7     &kp N8     &kp N9     &kp N0                          &kp MINUS  &kp UNDER   &kp DOT    &kp LBRC   &kp RBRC   &kp PIPE
+&trans  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5     &trans    &trans     &kp PLUS   &kp TILDE   &kp SQT    &kp COLON  &kp DQT    &kp QMARK
+                   &trans     &trans     &trans     &trans     &trans    &trans     &trans     &trans      &trans     &trans
             >;
 
             sensor-bindings =
@@ -335,7 +340,7 @@
             // ----------------------------------------------------------------------------------------------------------------------------
             // |        |         |         |         |         |         |   =    |      |       |      |       | BSPC  |
             // |        |         |         |         |         | Studio  |   -    |   7  |   8   |   9  |       |       |
-            // |        |         |         |         |         | (G/tog) |   *    |   4  |   5   |   6  |       |       |
+            // |        |         |         |         |         |         |   *    |   4  |   5   |   6  |       |       |
             // |        |         |         |         |         | CpsWd   |     |  |   /  |   1   |   2  |   3   |       |       |
             //                    |         |         |         |         |     |  | RS/TB|   0   |   .  |       |
 
@@ -345,6 +350,20 @@
 &none              &none         &none         &none         &none         &none           &kp ASTRK  &kp N4   &kp N5   &kp N6   &none    &none
 &none              &none         &none         &none         &none         &caps_word      &td_numlk  &none  &kp FSLH   &kp N1   &kp N2   &kp N3   &none    &none
                                  &none         &none         &none         &none           &none  &none  &lts RAISE TAB  &kp N0   &kp DOT    &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        fkeys_layer {
+            display-name = "fkeys";
+
+            bindings = <
+&trans  &kp F1   &kp F2   &kp F3   &kp F4   &kp F5                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F6   &kp F7   &kp F8   &kp F9   &kp F10                     &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &kp F11  &kp F12  &trans   &trans   &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans   &trans   &trans   &trans   &trans   &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                 &trans   &trans   &trans   &trans   &trans    &trans    &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

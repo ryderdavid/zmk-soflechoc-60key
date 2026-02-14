@@ -51,16 +51,16 @@ layers:
   - DOT
   - /
   - {t: /, h: Sft}
-  - {t: Hyper+X, h: Ctl}
-  - {t: Hyper+Y, h: Opt}
-  - {t: Hyper+Z, h: Cmd}
+  - {t: Sft+Ctl+Opt+F3, h: Ctl}
+  - {t: Sft+Ctl+Opt+F2, h: Opt}
+  - {t: Sft+Ctl+Opt+F1, h: Cmd}
   - {t: SPACE, h: raise}
   - {t: ENTER, h: lower}
   - {t: ENTER, h: lower}
   - {t: SPACE, h: raise}
-  - {t: Hyper+C, h: Cmd}
-  - {t: Hyper+B, h: Opt}
-  - {t: Hyper+A, h: fkeys}
+  - {t: Sft+Ctl+Opt+F4, h: Cmd}
+  - {t: Sft+Ctl+Opt+F5, h: Opt}
+  - {t: Sft+Ctl+Opt+F6, h: fkeys}
   qwerty:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -124,11 +124,11 @@ layers:
   - {t: ▽, type: trans}
   lower:
   - {t: ▽, type: trans}
-  - CARET
-  - AMPS
-  - ASTRK
-  - LPAR
-  - RPAR
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -136,11 +136,11 @@ layers:
   - EQUAL
   - {t: ▽, type: trans}
   - {type: held}
-  - EXCL
-  - AT
-  - HASH
-  - DLLR
-  - PRCNT
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -148,11 +148,11 @@ layers:
   - RBKT
   - \
   - {t: ▽, type: trans}
-  - '6'
-  - '7'
-  - '8'
-  - '9'
-  - '0'
+  - EXCL
+  - AT
+  - HASH
+  - DLLR
+  - PRCNT
   - MINUS
   - UNDER
   - DOT
@@ -160,11 +160,11 @@ layers:
   - RBRC
   - PIPE
   - {t: ▽, type: trans}
-  - '1'
-  - '2'
-  - '3'
-  - '4'
-  - '5'
+  - CARET
+  - AMPS
+  - ASTRK
+  - LPAR
+  - RPAR
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - PLUS
@@ -465,4 +465,8 @@ combos:
   a: top
   o: 0.1
 - p: [54, 55]
+  k: SPACE
+- p: [52, 53]
+  k: SPACE
+- p: [56, 57]
   k: SPACE

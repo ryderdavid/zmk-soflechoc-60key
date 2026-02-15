@@ -206,8 +206,8 @@ layers:
   - PG UP
   - UP
   - PG DN
-  - '0'
-  - {t: ▽, type: trans}
+  - Cmd+LBKT
+  - Cmd+RBKT
   - {type: held}
   - Opt
   - Ctl

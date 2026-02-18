@@ -22,10 +22,11 @@
 #define PREC 9
 
 // Precision mouse movement (1/4 of default 600 speed)
-#define MOVE_UP_SLOW    MOVE_VERT(-150)
-#define MOVE_DOWN_SLOW  MOVE_VERT(150)
-#define MOVE_LEFT_SLOW  MOVE_HOR(-150)
-#define MOVE_RIGHT_SLOW MOVE_HOR(150)
+// Encoding: Y axis = lower 16 bits, X axis = upper 16 bits
+#define MOVE_UP_SLOW    ((-150) & 0xFFFF)
+#define MOVE_DOWN_SLOW  ((150) & 0xFFFF)
+#define MOVE_LEFT_SLOW  (((-150) & 0xFFFF) << 16)
+#define MOVE_RIGHT_SLOW (((150) & 0xFFFF) << 16)
 
 / {
     // Activate ADJUST layer by pressing raise and lower

@@ -22,8 +22,14 @@
 #define MOUSE 8
 #define PREC 9
 
-// Precision mouse movement (1/4 of default 600 speed)
+// Fast mouse movement (2x default 600 speed)
 // Encoding: Y axis = lower 16 bits, X axis = upper 16 bits
+#define MOVE_UP_FAST    ((-1200) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((1200) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-1200) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((1200) & 0xFFFF) << 16)
+
+// Precision mouse movement (1/4 of default 600 speed)
 #define MOVE_UP_SLOW    ((-150) & 0xFFFF)
 #define MOVE_DOWN_SLOW  ((150) & 0xFFFF)
 #define MOVE_LEFT_SLOW  (((-150) & 0xFFFF) << 16)
@@ -414,8 +420,8 @@
 
             bindings = <
 &none  &none  &none  &none  &none  &none                          &none  &none          &none           &none           &none  &none
-&none  &none  &none  &none  &none  &none                          &none  &msc SCRL_UP   &mmv MOVE_UP    &msc SCRL_DOWN  &none  &none
-&none  &none  &none  &none  &none  &none                          &none  &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT &none  &mo PREC
+&none  &none  &none  &none  &none  &none                          &none  &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none  &none
+&none  &none  &none  &none  &none  &none                          &none  &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none  &mo PREC
 &none  &none  &none  &none  &none  &none  &none    &tog MOUSE    &none  &none  &none  &none  &none  &none
               &none  &none  &none  &none  &none    &tog MOUSE  &mkp LCLK  &mkp RCLK  &mkp MCLK  &none
             >;

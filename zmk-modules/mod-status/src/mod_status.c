@@ -5,14 +5,15 @@
  * nice!view modifier-key indicator widget.
  *
  * Subscribes to zmk_keycode_state_changed events.  On every event it
- * reads zmk_hid_get_explicit_mods() and updates a small LVGL label
- * that sits over the middle section of the nice!view status screen.
+ * reads zmk_hid_get_explicit_mods() and draws Mac modifier symbols
+ * on a rotated canvas that overlays the BT-profile section of the
+ * nice!view status screen.
  *
- * Active modifiers are shown as single-letter abbreviations:
- *   S = Shift   C = Ctrl   A = Alt/Opt   G = GUI/Cmd
+ * Active modifiers are shown as Mac symbols (SCAG order):
+ *   ⇧ = Shift   ⌃ = Ctrl   ⌥ = Alt/Opt   ⌘ = GUI/Cmd
  *
- * The label is hidden (zero-sized, transparent) when no modifiers are
- * held, so the existing display content shows through untouched.
+ * The canvas is hidden when no modifiers are held, so the BT-profile
+ * circles show through untouched.
  *
  * Architecture note: this widget compiles ONLY on the central half
  * (left, the host-connected side).  The central is the only place where
@@ -38,6 +39,9 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "mod_status.h"
 
+/* Custom 1-bpp font containing only ⇧ ⌃ ⌥ ⌘ and space */
+LV_FONT_DECLARE(mac_symbols_14);
+
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 /* ------------------------------------------------------------------ */
@@ -54,20 +58,21 @@ struct mod_status_state {
 
 static void set_mod_status(struct zmk_widget_mod_status *widget,
                            struct mod_status_state state) {
-    char text[16] = {};
+    char text[32] = {};
 
-    /* Build indicator string — only active modifiers, SCAG order */
+    /* Build indicator string — only active modifiers, SCAG order,
+     * using Mac modifier symbols (UTF-8 encoded) */
     if (state.mods & (MOD_LSFT | MOD_RSFT)) {
-        strcat(text, "S ");
+        strcat(text, "\xe2\x87\xa7 ");  /* ⇧ U+21E7 */
     }
     if (state.mods & (MOD_LCTL | MOD_RCTL)) {
-        strcat(text, "C ");
+        strcat(text, "\xe2\x8c\x83 ");  /* ⌃ U+2303 */
     }
     if (state.mods & (MOD_LALT | MOD_RALT)) {
-        strcat(text, "A ");
+        strcat(text, "\xe2\x8c\xa5 ");  /* ⌥ U+2325 */
     }
     if (state.mods & (MOD_LGUI | MOD_RGUI)) {
-        strcat(text, "G ");
+        strcat(text, "\xe2\x8c\x98 ");  /* ⌘ U+2318 */
     }
 
     /* Trim trailing space */
@@ -76,12 +81,22 @@ static void set_mod_status(struct zmk_widget_mod_status *widget,
         text[len - 1] = '\0';
     }
 
-    lv_label_set_text(widget->label, text);
-
     if (state.mods) {
-        lv_obj_remove_flag(widget->label, LV_OBJ_FLAG_HIDDEN);
+        /* Clear canvas with background colour (opaque overlay) */
+        lv_canvas_fill_bg(widget->canvas, LVGL_BACKGROUND, LV_OPA_COVER);
+
+        /* Draw modifier symbols centered in the 68×68 pre-rotation canvas */
+        lv_draw_label_dsc_t label_dsc;
+        init_label_dsc(&label_dsc, LVGL_FOREGROUND, &mac_symbols_14,
+                       LV_TEXT_ALIGN_CENTER);
+        canvas_draw_text(widget->canvas, 0, 29, CANVAS_SIZE, &label_dsc, text);
+
+        /* Rotate 270° to match nice_view display orientation */
+        rotate_canvas(widget->canvas);
+
+        lv_obj_remove_flag(widget->canvas, LV_OBJ_FLAG_HIDDEN);
     } else {
-        lv_obj_add_flag(widget->label, LV_OBJ_FLAG_HIDDEN);
+        lv_obj_add_flag(widget->canvas, LV_OBJ_FLAG_HIDDEN);
     }
 }
 
@@ -112,29 +127,17 @@ ZMK_SUBSCRIPTION(widget_mod_status, zmk_keycode_state_changed);
 
 int zmk_widget_mod_status_init(struct zmk_widget_mod_status *widget,
                                lv_obj_t *parent) {
-    widget->label = lv_label_create(parent);
+    widget->canvas = lv_canvas_create(parent);
+    lv_canvas_set_buffer(widget->canvas, widget->cbuf, CANVAS_SIZE,
+                         CANVAS_SIZE, CANVAS_COLOR_FORMAT);
 
-    /* Font: same size as the layer-name text */
-    lv_obj_set_style_text_font(widget->label, &lv_font_montserrat_14,
-                               LV_PART_MAIN | LV_STATE_DEFAULT);
+    /* Position to overlay the BT-profile section (same offset as the
+     * middle canvas in the stock nice!view status widget) */
+    lv_obj_align(widget->canvas, LV_ALIGN_TOP_LEFT, 24, 0);
 
-    /* Opaque background so the label is readable over the BT-circle canvas */
-    lv_obj_set_style_bg_opa(widget->label, LV_OPA_COVER,
-                            LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(widget->label, LVGL_BACKGROUND,
-                              LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(widget->label, LVGL_FOREGROUND,
-                                LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    /* Position over the centre of the BT-profile section (x=24..92, y=0..68) */
-    lv_obj_set_pos(widget->label, 30, 26);
-
-    /* Add a 2px padding so the background rectangle has breathing room */
-    lv_obj_set_style_pad_all(widget->label, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
-
-    /* Start hidden — content is empty until a modifier is pressed */
-    lv_label_set_text(widget->label, "");
-    lv_obj_add_flag(widget->label, LV_OBJ_FLAG_HIDDEN);
+    /* Start hidden — shown only when a modifier is held */
+    lv_canvas_fill_bg(widget->canvas, LVGL_BACKGROUND, LV_OPA_COVER);
+    lv_obj_add_flag(widget->canvas, LV_OBJ_FLAG_HIDDEN);
 
     sys_slist_append(&widgets, &widget->node);
 
@@ -145,5 +148,5 @@ int zmk_widget_mod_status_init(struct zmk_widget_mod_status *widget,
 }
 
 lv_obj_t *zmk_widget_mod_status_obj(struct zmk_widget_mod_status *widget) {
-    return widget->label;
+    return widget->canvas;
 }

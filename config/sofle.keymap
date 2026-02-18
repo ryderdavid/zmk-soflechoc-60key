@@ -18,6 +18,14 @@
 #define ADJUST 5
 #define extra_layer 6
 #define FKEYS 7
+#define MOUSE 8
+#define PREC 9
+
+// Precision mouse movement (1/4 of default 600 speed)
+#define MOVE_UP_SLOW    MOVE_VERT(-150)
+#define MOVE_DOWN_SLOW  MOVE_VERT(150)
+#define MOVE_LEFT_SLOW  MOVE_HOR(-150)
+#define MOVE_RIGHT_SLOW MOVE_HOR(150)
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -83,6 +91,11 @@
         thumb_fatfinger_right {
             bindings = <&kp SPACE>;
             key-positions = <56 57>;
+        };
+
+        mouse_toggle {
+            bindings = <&tog MOUSE>;
+            key-positions = <5 17>;
         };
 
     };
@@ -204,6 +217,15 @@
             bindings = <&mo extra_layer>, <&tog extra_layer>;
         };
 
+        hts: hold_tap_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&mo>, <&sl>;
+        };
+
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -230,9 +252,9 @@
 
             bindings = <
 &kp GRAVE         &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp BSPC
-&lts LOWER TAB    &kp B   &kp L     &kp D     &kp C      &kp V                                      &kp J      &kp Y      &kp O      &kp U     &kp COMMA &lts LOWER MINUS
-&mo RAISE         &hml LSHFT N  &hml LCTRL R  &hml LALT T  &hml LGUI S  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &lts RAISE SQT
-&kp LSHFT         &hml LS(LC(LA(LGUI))) X   &kp Q     &kp M     &kp W      &kp Z      &td_numlk    &meh_f              &kp K      &kp F      &kp SQT    &kp SEMI  &kp DOT  &mt RSHFT FSLH
+&lts LOWER TAB    &kp B   &kp L     &kp D     &kp C      &lts MOUSE V                               &kp J      &kp Y      &kp O      &kp U     &kp COMMA &hts LOWER LOWER
+&mo RAISE         &hml LSHFT N  &hml LCTRL R  &hml LALT T  &hml LGUI S  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &hts RAISE RAISE
+&kp LSHFT         &hml LS(LC(LA(LGUI))) X   &kp Q     &kp M     &kp W      &kp Z      &td_numlk    &tog MOUSE          &kp K      &kp F      &kp SQT    &kp SEMI  &kp DOT  &mt RSHFT FSLH
                           &htk LCTRL LS(LC(LA(F3)))  &htk LALT LS(LC(LA(F2)))  &htk LGUI LS(LC(LA(F1)))   &lts RAISE SPACE  &lts LOWER ENTER     &lts LOWER ENTER         &lts RAISE SPACE  &htk RGUI LS(LC(LA(F4)))   &htk RALT LS(LC(LA(F5)))   &lts FKEYS LS(LC(LA(F6)))
             >;
 
@@ -331,7 +353,7 @@
             bindings = <
 &bt BT_CLR_ALL     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &none  &none  &none  &none  &none  &none
 &ext_power EP_TOG  &none         &none         &none         &none         &studio_unlock                         &none  &none  &none  &none  &none  &none
-&none              &none         &none         &none         &none         &tog QWERTY                   &tog COLEMAK  &none  &none  &none  &none  &none
+&none              &none         &none         &none         &none         &tog QWERTY                   &tog COLEMAK  &tog MOUSE  &none  &none  &none  &none
 &none              &none         &none         &none         &none         &caps_word    &none    &none  &none  &none  &none  &none  &none  &none
                                  &none         &none         &none         &none         &none    &none  &none  &none  &none  &none
             >;
@@ -375,6 +397,42 @@
 &trans  &kp F11  &kp F12  &trans   &trans   &trans                      &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans   &trans   &trans   &trans   &trans   &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans
                  &trans   &trans   &trans   &trans   &trans    &trans    &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        mouse_layer {
+            display-name = "mouse";
+
+            // Mouse control on right side — Gallium/Graphite OHAE cluster
+            // Upper: J  Y=scrU  O=↑   U=scrD  ,   -
+            // Home:  P  H=←    A=↓   E=→     I   '=prec
+            // Thumb right: exit  Lclk  Rclk  Mclk  -
+
+            bindings = <
+&none  &none  &none  &none  &none  &none                          &none  &none          &none           &none           &none  &none
+&none  &none  &none  &none  &none  &none                          &none  &msc SCRL_UP   &mmv MOVE_UP    &msc SCRL_DOWN  &none  &none
+&none  &none  &none  &none  &none  &none                          &none  &mmv MOVE_LEFT &mmv MOVE_DOWN  &mmv MOVE_RIGHT &none  &mo PREC
+&none  &none  &none  &none  &none  &none  &none    &tog MOUSE    &none  &none  &none  &none  &none  &none
+              &none  &none  &none  &none  &none    &tog MOUSE  &mkp LCLK  &mkp RCLK  &mkp MCLK  &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        prec_layer {
+            display-name = "prec";
+
+            // Precision mouse — same layout as mouse, 1/4 speed movement
+            // Hold ' (pinky) from mouse layer to activate; release to return
+
+            bindings = <
+&none  &none  &none  &none  &none  &none                          &none  &none               &none                &none               &none  &none
+&none  &none  &none  &none  &none  &none                          &none  &msc SCRL_UP         &mmv MOVE_UP_SLOW   &msc SCRL_DOWN      &none  &none
+&none  &none  &none  &none  &none  &none                          &none  &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW &mmv MOVE_RIGHT_SLOW &none &none
+&none  &none  &none  &none  &none  &none  &none    &trans    &none  &none  &none  &none  &none  &none
+              &none  &none  &none  &none  &none    &trans  &mkp LCLK  &mkp RCLK  &mkp MCLK  &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

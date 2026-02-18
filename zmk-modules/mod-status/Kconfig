@@ -1,0 +1,20 @@
+config ZMK_WIDGET_MOD_STATUS
+    bool "Show active modifier keys on the nice!view display"
+    depends on ZMK_DISPLAY
+    default n
+    # Re-select the LVGL features that status.c (nice!view) needs.
+    # These would normally be selected by NICE_VIEW_WIDGET_STATUS, which we
+    # disable via Kconfig.defconfig to avoid a duplicate zmk_display_status_screen().
+    select LV_FONT_MONTSERRAT_16
+    select LV_USE_IMAGE
+    select LV_USE_CANVAS
+    select LV_FONT_MONTSERRAT_14 if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    select LV_FONT_MONTSERRAT_18 if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    select LV_FONT_UNSCII_8     if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    select ZMK_WPM              if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    help
+      Adds a modifier-key indicator to the nice!view status screen.
+      When a modifier (Shift, Ctrl, Alt, GUI/Cmd) is held — including
+      home-row-mod hold-tap activations — the corresponding letter(s)
+      appear on the display (S=Shift, C=Ctrl, A=Alt, G=GUI).
+      Runs on the central half only; no additional BLE traffic is generated.

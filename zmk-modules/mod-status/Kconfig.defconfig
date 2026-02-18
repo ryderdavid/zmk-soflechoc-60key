@@ -1,0 +1,13 @@
+# When the mod-status widget is active on the central half, we provide our
+# own custom_status_screen.c that wraps the nice!view status widget and adds
+# the modifier indicator.  Disable the nice!view-provided version to avoid
+# a duplicate symbol for zmk_display_status_screen().
+
+if ZMK_WIDGET_MOD_STATUS && ZMK_DISPLAY
+if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+
+config NICE_VIEW_WIDGET_STATUS
+    default n
+
+endif # !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+endif # ZMK_WIDGET_MOD_STATUS && ZMK_DISPLAY

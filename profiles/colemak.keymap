@@ -1,6 +1,6 @@
 /*
  * Profile: colemak
- * Description: Colemak DHm with QWERTY/Gallium v2 toggles, Hyper thumb chords, tap-dance numlk encoder
+ * Description: Gallium v2 default, Colemak DH + QWERTY toggles, Hyper thumb chords, tap-dance numlk encoder
  * Created: 2026-02-10
  * Updated: 2026-02-18
  * Based on: macos
@@ -19,12 +19,12 @@
 
 #define BASE 0
 #define QWERTY 1
-#define LOWER 2
-#define RAISE 3
-#define ADJUST 4
-#define extra_layer 5
-#define FKEYS 6
-#define GALLIUM 7
+#define COLEMAK 2
+#define LOWER 3
+#define RAISE 4
+#define ADJUST 5
+#define extra_layer 6
+#define FKEYS 7
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -228,20 +228,18 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "default";
+            display-name = "gallium";
 
-            // ------------------------------------------------------------------------------------------------------------
-            // |  `~   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   | BKSPC |
-            // |  TAB  |  Q  |  W  |  F   |  P   |  B   |                   |  J   |  L    |  U    |  Y   |   ;   |   -   |
-            // | RAISE |sh/A |ct/R |op/S  |cm/T  |hy/G  |                   | me/M | cm/N  | op/E  | ct/I | sh/O  | lw/'  |
-            // | SHIFT |hy/Z |  X  |  C   |  D   |  V   |nm/NM  |  | meh  |  K   |  H    |  ,    |  .   |   /   | sf//  |
-            //               |h^X  |h^Y   |h^Z   |LW/SPC|  ENTER |  | ENTER|RS/SPC| h^C   | h^B   | h^A  |
+            // Gallium v2 (default layout)
+            // b l d c v   j y o u ,
+            // n r t s g   p h a e i
+            // x q m w z   k f ' ; .
 
             bindings = <
 &kp GRAVE         &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp BSPC
-&lts LOWER TAB    &kp Q   &kp W     &kp F     &kp P      &kp B                                      &kp J      &kp L      &kp U      &kp Y     &kp SEMI  &lts LOWER MINUS
-&mo RAISE         &hml LSHFT A  &hml LCTRL R  &hml LALT S  &hml LGUI T  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) M      &hmr RGUI N  &hmr RALT E  &hmr RCTRL I  &hmr RSHFT O  &lts RAISE SQT
-&kp LSHFT         &hml LS(LC(LA(LGUI))) Z   &kp X     &kp C     &kp D      &kp V      &td_numlk    &meh_f              &kp K      &kp H      &kp COMMA  &kp DOT   &kp FSLH  &mt RSHFT FSLH
+&lts LOWER TAB    &kp B   &kp L     &kp D     &kp C      &kp V                                      &kp J      &kp Y      &kp O      &kp U     &kp COMMA &lts LOWER MINUS
+&mo RAISE         &hml LSHFT N  &hml LCTRL R  &hml LALT T  &hml LGUI S  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &lts RAISE SQT
+&kp LSHFT         &hml LS(LC(LA(LGUI))) X   &kp Q     &kp M     &kp W      &kp Z      &td_numlk    &meh_f              &kp K      &kp F      &kp SQT    &kp SEMI  &kp DOT  &mt RSHFT FSLH
                           &htk LCTRL LS(LC(LA(F3)))  &htk LALT LS(LC(LA(F2)))  &htk LGUI LS(LC(LA(F1)))   &lts RAISE SPACE  &lts LOWER ENTER     &lts LOWER ENTER         &lts RAISE SPACE  &htk RGUI LS(LC(LA(F4)))   &htk RALT LS(LC(LA(F5)))   &lts FKEYS LS(LC(LA(F6)))
             >;
 
@@ -251,15 +249,33 @@
         qwerty_layer {
             display-name = "qwerty";
 
-            // QWERTY alpha override — toggled from adjust layer (LOWER+RAISE)
-            // Only positions where Colemak DH differs from QWERTY have explicit bindings
+            // QWERTY alpha override — diff from Gallium v2 base
 
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                     &trans                &trans       &trans       &trans        &trans           &trans
-&trans  &trans  &trans  &kp E   &kp R   &kp T                                      &kp Y                 &kp U        &kp I        &kp O         &kp P            &trans
-&trans  &trans  &hml LCTRL S  &hml LALT D  &hml LGUI F  &trans                     &hmr RS(RC(RALT)) H  &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHFT SEMI  &trans
-&trans  &trans  &trans  &trans  &kp V   &kp B   &trans    &trans                    &kp N   &kp M        &trans       &trans        &trans       &trans
-                &trans  &trans  &trans  &trans  &trans    &trans                    &trans  &trans       &trans       &trans
+&trans  &trans                   &trans  &trans       &trans       &trans                                &trans                  &trans       &trans       &trans        &trans           &trans
+&trans  &kp Q                    &kp W   &kp E        &kp R        &kp T                                 &kp Y                   &kp U        &kp I        &kp O         &kp P            &trans
+&trans  &hml LSHFT A             &hml LCTRL S  &hml LALT D  &hml LGUI F  &trans                          &hmr RS(RC(RALT)) H     &hmr RGUI J  &hmr RALT K  &hmr RCTRL L  &hmr RSHFT SEMI  &trans
+&trans  &hml LS(LC(LA(LGUI))) Z  &kp X   &kp C        &kp V        &kp B   &trans    &trans    &kp N     &kp M   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        colemak_layer {
+            display-name = "colemak";
+
+            // Colemak DH alpha override — diff from Gallium v2 base
+            // q w f p b   j l u y ;
+            // a r s t g   m n e i o
+            // z x c d v   k h , . /
+
+            bindings = <
+&trans  &trans                   &trans  &trans       &trans       &trans                                &trans                  &trans       &trans       &trans        &trans           &trans
+&trans  &kp Q                    &kp W   &kp F        &kp P        &kp B                                 &trans                  &kp L        &kp U        &kp Y         &kp SEMI         &trans
+&trans  &hml LSHFT A             &trans  &hml LALT S  &hml LGUI T  &trans                                &hmr RS(RC(RALT)) M     &hmr RGUI N  &hmr RALT E  &hmr RCTRL I  &hmr RSHFT O     &trans
+&trans  &hml LS(LC(LA(LGUI))) Z  &kp X   &kp C        &kp D        &kp V   &trans    &trans    &trans    &kp H   &kp COMMA  &kp DOT  &kp FSLH  &trans
+                &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -322,7 +338,7 @@
             bindings = <
 &bt BT_CLR_ALL     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &none  &none  &none  &none  &none  &none
 &ext_power EP_TOG  &none         &none         &none         &none         &studio_unlock                         &none  &none  &none  &none  &none  &none
-&none              &none         &none         &none         &none         &tog QWERTY                   &tog GALLIUM  &none  &none  &none  &none  &none
+&none              &none         &none         &none         &none         &tog QWERTY                   &tog COLEMAK  &none  &none  &none  &none  &none
 &none              &none         &none         &none         &none         &caps_word    &none    &none  &none  &none  &none  &none  &none  &none
                                  &none         &none         &none         &none         &none    &none  &none  &none  &none  &none
             >;
@@ -371,23 +387,5 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        gallium_layer {
-            display-name = "gallium";
-
-            // Gallium v2 alpha override (toggled from adjust layer)
-            // b l d c v   j y o u ,
-            // n r t s g   p h a e i
-            // x q m w z   k f ' ; .
-
-            bindings = <
-&trans  &trans                    &trans  &trans       &trans       &trans                              &trans                   &trans       &trans       &trans        &trans        &trans
-&trans  &kp B                     &kp L   &kp D        &kp C        &kp V                               &trans                   &kp Y        &kp O        &kp U         &kp COMMA     &trans
-&trans  &hml LSHFT N              &trans  &hml LALT T  &hml LGUI S  &trans                              &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &trans
-&trans  &hml LS(LC(LA(LGUI))) X   &kp Q   &kp M        &kp W        &kp Z   &trans    &trans    &trans  &kp F  &kp SQT  &kp SEMI  &kp DOT  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
     };
 };

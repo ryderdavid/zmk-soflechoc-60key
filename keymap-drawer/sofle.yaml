@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: sofle}
 layers:
-  default:
+  gallium:
   - GRAVE
   - '1'
   - '2'
@@ -14,42 +14,42 @@ layers:
   - '0'
   - Bspc
   - {t: TAB, h: lower}
-  - Q
-  - W
-  - F
-  - P
   - B
-  - J
   - L
-  - U
+  - D
+  - C
+  - V
+  - J
   - Y
-  - ;
+  - O
+  - U
+  - COMMA
   - {t: MINUS, h: lower}
   - raise
-  - {t: A, h: Sft}
+  - {t: N, h: Sft}
   - {t: R, h: Ctl}
-  - {t: S, h: Opt}
-  - {t: T, h: Cmd}
+  - {t: T, h: Opt}
+  - {t: S, h: Cmd}
   - {t: G, h: Hyper}
-  - {t: M, h: Meh}
-  - {t: N, h: Cmd}
-  - {t: E, h: Opt}
-  - {t: I, h: Ctl}
-  - {t: O, h: Sft}
+  - {t: P, h: Sft+Ctl+Opt}
+  - {t: H, h: Cmd}
+  - {t: A, h: Opt}
+  - {t: E, h: Ctl}
+  - {t: I, h: Sft}
   - {t: '''', h: raise}
   - Sft
-  - {t: Z, h: Hyper}
-  - X
-  - C
-  - D
-  - V
+  - {t: X, h: Sft+Ctl+Opt+Cmd}
+  - Q
+  - M
+  - W
+  - Z
   - NumLk
   - Meh+F
   - K
-  - H
-  - COMMA
+  - F
+  - ''''
+  - ;
   - DOT
-  - /
   - {t: /, h: Sft}
   - {t: Sft+Ctl+Opt+F3, h: Ctl}
   - {t: Sft+Ctl+Opt+F2, h: Opt}
@@ -75,8 +75,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - Q
+  - W
   - E
   - R
   - T
@@ -87,7 +87,7 @@ layers:
   - P
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: A, h: Sft}
   - {t: S, h: Ctl}
   - {t: D, h: Opt}
   - {t: F, h: Cmd}
@@ -99,18 +99,79 @@ layers:
   - {t: ;, h: Sft}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: Z, h: Hyper}
+  - X
+  - C
   - V
   - B
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - N
   - M
+  - COMMA
+  - DOT
+  - /
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  colemak:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Q
+  - W
+  - F
+  - P
+  - B
+  - {t: ▽, type: trans}
+  - L
+  - U
+  - Y
+  - ;
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: A, h: Sft}
+  - {t: ▽, type: trans}
+  - {t: S, h: Opt}
+  - {t: T, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: M, h: Meh}
+  - {t: N, h: Cmd}
+  - {t: E, h: Opt}
+  - {t: I, h: Ctl}
+  - {t: O, h: Sft}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: Z, h: Hyper}
+  - X
+  - C
+  - D
+  - V
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - H
+  - COMMA
+  - DOT
+  - /
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -275,7 +336,7 @@ layers:
   - ''
   - ''
   - {t: qwerty, h: toggle}
-  - {t: gallium, h: toggle}
+  - {t: colemak, h: toggle}
   - ''
   - ''
   - ''
@@ -427,67 +488,6 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  gallium:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - B
-  - L
-  - D
-  - C
-  - V
-  - {t: ▽, type: trans}
-  - Y
-  - O
-  - U
-  - COMMA
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: N, h: Sft}
-  - {t: ▽, type: trans}
-  - {t: T, h: Opt}
-  - {t: S, h: Cmd}
-  - {t: ▽, type: trans}
-  - {t: P, h: Sft+Ctl+Opt}
-  - {t: H, h: Cmd}
-  - {t: A, h: Opt}
-  - {t: E, h: Ctl}
-  - {t: I, h: Sft}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: X, h: Sft+Ctl+Opt+Cmd}
-  - Q
-  - M
-  - W
-  - Z
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - F
-  - ''''
-  - ;
-  - DOT
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
 combos:
 - p: [32, 31]
   k: Bspc

@@ -61,6 +61,8 @@ The module gets pulled into the build via `sofle.conf` or the shield overlay —
 // 6. Clear the label when bitmask == 0
 ```
 
+> **Note — split keyboard architecture:** This widget runs exclusively on the **left half (central)**. The right half (peripheral) only transmits raw key position numbers over the BLE split link; all keymap processing, behavior resolution, and HID modifier state tracking happen on the central after it receives those positions. `keycode_state_changed` therefore fires only on the central, and `zmk_hid_get_explicit_mods()` is only meaningful there. No additional inter-half BLE traffic is introduced by this widget. The module should be conditioned on `IS_ENABLED(CONFIG_ZMK_DISPLAY)` or the shield's display Kconfig to ensure it does not compile into the peripheral (right half) build.
+
 ### Display placement
 
 A small label row beneath the layer name, e.g.:

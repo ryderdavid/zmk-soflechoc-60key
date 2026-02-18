@@ -1,10 +1,12 @@
 config ZMK_WIDGET_MOD_STATUS
     bool "Show active modifier keys on the nice!view display"
     depends on ZMK_DISPLAY
-    default n
+    # Auto-enable when this module is loaded into the build
+    default y
     # Re-select the LVGL features that status.c (nice!view) needs.
     # These would normally be selected by NICE_VIEW_WIDGET_STATUS, which we
-    # disable via Kconfig.defconfig to avoid a duplicate zmk_display_status_screen().
+    # disable via an explicit conf overlay to avoid a duplicate
+    # zmk_display_status_screen() symbol.
     select LV_FONT_MONTSERRAT_16
     select LV_USE_IMAGE
     select LV_USE_CANVAS

@@ -21,7 +21,7 @@ include:
   - board: nice_nano@2.0.0
     shield: sofle_left nice_view_adapter nice_view
     snippet: studio-rpc-usb-uart
-    cmake-args: -DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/zmk-modules/mod-status
+    cmake-args: -DZMK_EXTRA_MODULES=${GITHUB_WORKSPACE}/zmk-modules/mod-status -DOVERLAY_CONFIG=${GITHUB_WORKSPACE}/zmk-modules/mod-status/disable_nice_view_widget.conf
   - board: nice_nano@2.0.0
     shield: sofle_right nice_view_adapter nice_view
   - board: nice_nano@2.0.0

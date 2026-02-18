@@ -1,13 +1,5 @@
-# When the mod-status widget is active on the central half, we provide our
-# own custom_status_screen.c that wraps the nice!view status widget and adds
-# the modifier indicator.  Disable the nice!view-provided version to avoid
-# a duplicate symbol for zmk_display_status_screen().
-
-if ZMK_WIDGET_MOD_STATUS && ZMK_DISPLAY
-if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
-
-config NICE_VIEW_WIDGET_STATUS
-    default n
-
-endif # !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
-endif # ZMK_WIDGET_MOD_STATUS && ZMK_DISPLAY
+# Nothing needed here — the NICE_VIEW_WIDGET_STATUS symbol is suppressed via
+# an explicit OVERLAY_CONFIG conf file (disable_nice_view_widget.conf) that is
+# passed through build.yaml cmake-args.  An explicit conf-file assignment beats
+# the `imply NICE_VIEW_WIDGET_STATUS` in nice_view/Kconfig.defconfig, whereas
+# a Kconfig `default n` here would be overridden by the imply.

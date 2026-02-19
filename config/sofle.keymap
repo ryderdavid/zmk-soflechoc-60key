@@ -24,10 +24,10 @@
 
 // Fast mouse movement (2x default 600 speed)
 // Encoding: Y axis = lower 16 bits, X axis = upper 16 bits
-#define MOVE_UP_FAST    ((-1500) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((1500) & 0xFFFF)
-#define MOVE_LEFT_FAST  (((-1200) & 0xFFFF) << 16)
-#define MOVE_RIGHT_FAST (((1200) & 0xFFFF) << 16)
+#define MOVE_UP_FAST    ((-2400) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((2400) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-2400) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((2400) & 0xFFFF) << 16)
 
 // Precision mouse movement (1/4 of default 600 speed)
 #define MOVE_UP_SLOW    ((-150) & 0xFFFF)
@@ -152,9 +152,9 @@
     };
 
     behaviors {
-        /* Faster acceleration kick-in for mouse move (200ms vs 300ms default) */
+        /* Faster acceleration kick-in for mouse move (150ms vs 300ms default) */
         mmv {
-            time-to-max-speed-ms = <200>;
+            time-to-max-speed-ms = <150>;
         };
 
         /* Smoother scroll: add acceleration and reduce time-to-max */

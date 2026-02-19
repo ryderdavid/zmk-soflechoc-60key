@@ -152,6 +152,16 @@
     };
 
     behaviors {
+        /* Faster acceleration kick-in for mouse move (200ms vs 300ms default) */
+        mmv {
+            time-to-max-speed-ms = <200>;
+        };
+
+        /* Smoother scroll: add acceleration and reduce time-to-max */
+        msc {
+            time-to-max-speed-ms = <200>;
+            acceleration-exponent = <1>;
+        };
         caps: caps {
             compatible = "zmk,behavior-caps-word";
             label = "CAPS";

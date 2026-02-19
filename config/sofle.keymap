@@ -31,10 +31,10 @@
 #define MOVE_RIGHT_FAST (((7200) & 0xFFFF) << 16)
 
 // Precision mouse movement (1/4 of default 600 speed)
-#define MOVE_UP_SLOW    ((-150) & 0xFFFF)
-#define MOVE_DOWN_SLOW  ((150) & 0xFFFF)
-#define MOVE_LEFT_SLOW  (((-150) & 0xFFFF) << 16)
-#define MOVE_RIGHT_SLOW (((150) & 0xFFFF) << 16)
+#define MOVE_UP_SLOW    ((-200) & 0xFFFF)
+#define MOVE_DOWN_SLOW  ((200) & 0xFFFF)
+#define MOVE_LEFT_SLOW  (((-200) & 0xFFFF) << 16)
+#define MOVE_RIGHT_SLOW (((200) & 0xFFFF) << 16)
 
 / {
     // Activate ADJUST layer by pressing raise and lower

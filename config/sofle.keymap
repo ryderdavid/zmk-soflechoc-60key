@@ -24,8 +24,8 @@
 
 // Fast mouse movement (2x default 600 speed)
 // Encoding: Y axis = lower 16 bits, X axis = upper 16 bits
-#define MOVE_UP_FAST    ((-1200) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((1200) & 0xFFFF)
+#define MOVE_UP_FAST    ((-1500) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((1500) & 0xFFFF)
 #define MOVE_LEFT_FAST  (((-1200) & 0xFFFF) << 16)
 #define MOVE_RIGHT_FAST (((1200) & 0xFFFF) << 16)
 

@@ -153,10 +153,10 @@
     };
 
     behaviors {
-        /* QMK-like mouse: fast ramp, steep acceleration curve */
+        /* Fast mouse with linear acceleration */
         mmv {
-            time-to-max-speed-ms = <100>;
-            acceleration-exponent = <2>;
+            time-to-max-speed-ms = <150>;
+            acceleration-exponent = <1>;
         };
 
         /* Scroll: moderate acceleration */

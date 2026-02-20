@@ -18,13 +18,13 @@ layers:
   - L
   - D
   - C
-  - V
+  - {t: V, h: mouse}
   - J
   - Y
   - O
   - U
   - COMMA
-  - {t: MINUS, h: lower}
+  - {t: lower, h: lower}
   - raise
   - {t: N, h: Sft}
   - {t: R, h: Ctl}
@@ -36,7 +36,7 @@ layers:
   - {t: A, h: Opt}
   - {t: E, h: Ctl}
   - {t: I, h: Sft}
-  - {t: '''', h: raise}
+  - {t: raise, h: raise}
   - Sft
   - {t: X, h: Sft+Ctl+Opt+Cmd}
   - Q
@@ -44,7 +44,7 @@ layers:
   - W
   - Z
   - NumLk
-  - Meh+F
+  - {t: mouse, h: toggle}
   - K
   - F
   - ''''
@@ -337,7 +337,7 @@ layers:
   - ''
   - {t: qwerty, h: toggle}
   - {t: colemak, h: toggle}
-  - ''
+  - {t: mouse, h: toggle}
   - ''
   - ''
   - ''
@@ -488,6 +488,128 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
+  mouse:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - '&msc SCRL_UP'
+  - '&mmv MOVE_UP'
+  - '&msc SCRL_DOWN'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mmv MOVE_LEFT'
+  - '&mmv MOVE_DOWN'
+  - '&mmv MOVE_RIGHT'
+  - ''
+  - prec
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: mouse, h: toggle}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: mouse, h: toggle}
+  - '&mkp LCLK'
+  - '&mkp RCLK'
+  - '&mkp MCLK'
+  - ''
+  prec:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {type: held}
+  - ''
+  - '&msc SCRL_UP'
+  - '&mmv MOVE_VERT(-150)'
+  - '&msc SCRL_DOWN'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - '&mmv MOVE_HOR(-150)'
+  - '&mmv MOVE_VERT(150)'
+  - '&mmv MOVE_HOR(150)'
+  - ''
+  - {type: held}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - '&mkp LCLK'
+  - '&mkp RCLK'
+  - '&mkp MCLK'
+  - ''
 combos:
 - p: [32, 31]
   k: Bspc
@@ -523,3 +645,5 @@ combos:
   k: SPACE
 - p: [56, 57]
   k: SPACE
+- p: [5, 17]
+  k: {t: mouse, h: toggle}

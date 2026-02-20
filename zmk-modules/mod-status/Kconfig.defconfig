@@ -1,0 +1,5 @@
+# Nothing needed here — the NICE_VIEW_WIDGET_STATUS symbol is suppressed via
+# an explicit OVERLAY_CONFIG conf file (disable_nice_view_widget.conf) that is
+# passed through build.yaml cmake-args.  An explicit conf-file assignment beats
+# the `imply NICE_VIEW_WIDGET_STATUS` in nice_view/Kconfig.defconfig, whereas
+# a Kconfig `default n` here would be overridden by the imply.

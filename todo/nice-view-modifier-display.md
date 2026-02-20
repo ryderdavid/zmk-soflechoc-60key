@@ -1,6 +1,6 @@
 # nice!view: Show Active Modifiers on Display
 
-**Status:** Open
+**Status:** Implemented (branch: feature/nice-view-mod-display — all CI passes)
 **Created:** 2026-02-18
 **Effort:** Medium (embedded C, ~100–150 lines + boilerplate)
 **Type:** Enhancement / Custom ZMK Module

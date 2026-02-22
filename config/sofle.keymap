@@ -273,7 +273,7 @@
             bindings = <
 &kp GRAVE         &kp N1  &kp N2    &kp N3    &kp N4     &kp N5                                     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp BSPC
 &lts LOWER TAB    &kp B   &kp L     &kp D     &kp C      &lts MOUSE V                               &kp J      &kp Y      &kp O      &kp U     &kp COMMA &hts LOWER LOWER
-&mo RAISE         &hml LSHFT N  &hml LCTRL R  &hml LALT T  &hml LGUI S  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &hts RAISE RAISE
+&mo RAISE         &hml LSHFT N  &hml LCTRL R  &hml LALT T  &hml LGUI S  &hml LS(LC(LA(LGUI))) G                      &hmr RS(RC(RALT)) P      &hmr RGUI H  &hmr RALT A  &hmr RCTRL E  &hmr RSHFT I  &kp SQT
 &kp LSHFT         &hml LS(LC(LA(LGUI))) X   &kp Q     &kp M     &kp W      &kp Z      &td_numlk    &tog MOUSE          &kp K      &kp F      &kp SQT    &kp SEMI  &kp DOT  &mt RSHFT FSLH
                           &htk LCTRL LS(LC(LA(F3)))  &htk LALT LS(LC(LA(F2)))  &htk LGUI LS(LC(LA(F1)))   &lts RAISE SPACE  &lts LOWER ENTER     &kp SPACE                &lts RAISE SPACE  &htk RGUI LS(LC(LA(F4)))   &htk RALT LS(LC(LA(F5)))   &lts FKEYS LS(LC(LA(F6)))
             >;

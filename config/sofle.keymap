@@ -45,10 +45,10 @@
 #define PREC    9
 
 // Fast mouse movement (2x default 600 speed)
-#define MOVE_UP_FAST    ((-10000) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((10000) & 0xFFFF)
-#define MOVE_LEFT_FAST  (((-10000) & 0xFFFF) << 16)
-#define MOVE_RIGHT_FAST (((10000) & 0xFFFF) << 16)
+#define MOVE_UP_FAST    ((-6000) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((6000) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-6000) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((6000) & 0xFFFF) << 16)
 
 // Precision mouse movement (1/4 of default 600 speed)
 #define MOVE_UP_SLOW    ((-200) & 0xFFFF)
@@ -124,13 +124,6 @@
         mouse_toggle {
             bindings = <&tog MOUSE>;
             key-positions = <5 17>;
-        };
-
-        // Hyper+Z: Left Shift (36) + Z (37) pressed simultaneously
-        hyper_z {
-            bindings = <&kp LS(LC(LA(LG(Z))))>;
-            key-positions = <36 37>;
-            timeout-ms = <75>;
         };
 
         // Layout toggle: bottom-right corner keys (,./Sft)
@@ -327,7 +320,7 @@
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
 &kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_mouse       &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &kp LCTRL       &kp LALT        &kp LGUI        &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
+               &htk LS(LC(LA(LG(Z)))) LCTRL  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -489,7 +482,7 @@
 &none          &none           &none           &none           &none           &none                                           &none               &none               &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
-&none          &none           &none           &none           &none           &none           &none           &tog MOUSE      &none               &none               &none                &none                &none          &none
+&none          &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &mkp RCLK            &mkp MCLK            &none
             >;
 

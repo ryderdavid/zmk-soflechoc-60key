@@ -1,0 +1,501 @@
+/*
+ * Corne-Canon Profile — SOFLE 60-key
+ *
+ * CORNE (42-key) canonical layout adapted to SOFLE (60-key).
+ * Core 42 keys are identical; 18 extra keys (number row, outer thumbs,
+ * encoders) are filled intelligently.
+ *
+ * Layers:
+ *   0 = QWERTY base (CORNE layer 0 + extras)
+ *   1 = Gallium v1 toggle overlay (CORNE layer 1)
+ *   2 = Numbers (CORNE layer 2 — kept for muscle memory despite number row)
+ *   3 = Nav (CORNE layer 3 — screenshots, arrows, undo/cut/copy/paste)
+ *   4 = Symbols (CORNE layer 4 — full symbols)
+ *   5 = Numpad (CORNE layer 5 — right-side numpad)
+ *   6 = Adjust (NEW — BT, ext power, layout toggles; conditional NAV+SYMBOLS)
+ *   7 = Fkeys (F1-F12)
+ *   8 = Mouse (mouse movement on right OHAE cluster)
+ *   9 = Prec (precision mouse — 1/4 speed)
+ *
+ * Position mapping (CORNE → SOFLE):
+ *   CORNE Row 0 (0-11)  → SOFLE Row 1 (12-23)
+ *   CORNE Row 1 (12-23) → SOFLE Row 2 (24-35)
+ *   CORNE Row 2 (24-35) → SOFLE Row 3 (36-41, 44-49) [42,43 = encoders]
+ *   CORNE Thumbs (36-41) → SOFLE inner thumbs (52-54, 55-57)
+ *   NEW: SOFLE Row 0 (0-11), outer thumbs (50-51, 58-59)
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/keys.h>
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+#include <dt-bindings/zmk/pointing.h>
+#include "corne-canon-chords.dtsi"
+
+#define QWERTY  0
+#define GALLIUM 1
+#define NUMBERS 2
+#define NAV     3
+#define SYMBOLS 4
+#define NUMPAD  5
+#define ADJUST  6
+#define FKEYS   7
+#define MOUSE   8
+#define PREC    9
+
+// Fast mouse movement (2x default 600 speed)
+#define MOVE_UP_FAST    ((-14400) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((14400) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-14400) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((14400) & 0xFFFF) << 16)
+
+// Precision mouse movement (1/4 of default 600 speed)
+#define MOVE_UP_SLOW    ((-200) & 0xFFFF)
+#define MOVE_DOWN_SLOW  ((200) & 0xFFFF)
+#define MOVE_LEFT_SLOW  (((-200) & 0xFFFF) << 16)
+#define MOVE_RIGHT_SLOW (((200) & 0xFFFF) << 16)
+
+/ {
+    // Activate ADJUST layer by pressing NAV and SYMBOLS together
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        adjust_layer {
+            if-layers = <NAV SYMBOLS>;
+            then-layer = <ADJUST>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        // ── Utility combos (always active) ──────────────────────────
+        backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <32 31>;
+        };
+
+        delete {
+            bindings = <&kp DELETE>;
+            key-positions = <27 33>;
+        };
+
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <25 41>;
+        };
+
+        esc2 {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 12>;
+        };
+
+        fwd_delete {
+            bindings = <&kp DELETE>;
+            key-positions = <28 27>;
+        };
+
+        shift_caps {
+            bindings = <&td_caps>;
+            key-positions = <36 49>;
+        };
+
+        esc3 {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
+        };
+
+        thumb_fatfinger {
+            bindings = <&kp SPACE>;
+            key-positions = <54 55>;
+        };
+
+        thumb_fatfinger_left {
+            bindings = <&kp SPACE>;
+            key-positions = <52 53>;
+        };
+
+        thumb_fatfinger_right {
+            bindings = <&kp SPACE>;
+            key-positions = <56 57>;
+        };
+
+        mouse_toggle {
+            bindings = <&tog MOUSE>;
+            key-positions = <5 17>;
+        };
+
+        // Layout toggle: bottom-right corner keys (,./Sft)
+        layout_toggle {
+            bindings = <&tog GALLIUM>;
+            key-positions = <46 47 48 49>;
+        };
+
+        // Numbers toggle: G+H positions
+        numbers_toggle {
+            bindings = <&tog NUMBERS>;
+            key-positions = <29 30>;
+        };
+    };
+
+    macros {
+        hyper: hyper {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                ;
+        };
+
+        hyper_space: hyper_space {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                ;
+        };
+
+        hyper_f: hyper_f {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                , <&macro_tap &kp F>
+                , <&macro_release &kp LSHFT &kp LCTRL &kp LALT &kp LGUI>
+                ;
+        };
+
+        meh_f: meh_f {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RSHFT &kp RCTRL &kp RALT>
+                , <&macro_tap &kp F>
+                , <&macro_release &kp RSHFT &kp RCTRL &kp RALT>
+                ;
+        };
+    };
+
+    behaviors {
+        /* Fast mouse with linear acceleration */
+        mmv {
+            time-to-max-speed-ms = <150>;
+            acceleration-exponent = <1>;
+        };
+
+        /* Scroll: moderate acceleration */
+        msc {
+            time-to-max-speed-ms = <150>;
+            acceleration-exponent = <1>;
+        };
+
+        caps: caps {
+            compatible = "zmk,behavior-caps-word";
+            label = "CAPS";
+            #binding-cells = <0>;
+            continue-list = <POUND MINUS BACKSPACE UNDERSCORE>;
+        };
+
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59>;
+            hold-trigger-on-release;
+        };
+
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38 39 40 41 42 50 51 52 53 54 55 56 57 58 59>;
+            hold-trigger-on-release;
+        };
+
+        lts: layer_tap_smart {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        htk: hold_tap_kp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        hts: hold_tap_shift {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&mo>, <&sl>;
+        };
+
+        td_caps: tap_dance_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&caps>, <&kp CLCK>;
+        };
+
+        td_cmd: tap_dance_cmd {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp RGUI>, <&hyper_space>;
+        };
+
+        td_enc_l: tap_dance_enc_left {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&hyper_f>;
+        };
+
+        td_enc_r: tap_dance_enc_right {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&none>, <&meh_f>;
+        };
+
+        td_numlk: tap_dance_numlk {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo NUMPAD>, <&tog NUMPAD>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 0 — QWERTY with SCAG home row mods (CORNE canonical)          │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Row 0 (NEW):  `   1  2  3  4  5        6  7  8  9  0  Bspc         │
+        // │ Row 1 (=CORNE 0): Tab Q  W  E  R  T    Y  U  I  O  P  Bspc         │
+        // │ Row 2 (=CORNE 1): Nav A  S  D  F  G    H  J  K  L  ;  '            │
+        // │                       Sf Ct Op Cm NUM   NUM Cm Op Ct Sf             │
+        // │ Row 3 (=CORNE 2): Sft Z  X  C  V  B [e][e] N  M  ,  .  /  Sft//   │
+        // │ Thumb: Ctrl Alt Cmd Sym/Bs Nav/En   Nav/Sp Sym/Sp Gui/En Alt Fkeys  │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        qwerty_layer {
+            display-name = "qwerty";
+
+            bindings = <
+&kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
+&kp TAB        &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp BSPC
+&mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
+&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_enc_l       &td_enc_r       &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
+               &kp LCTRL       &kp LALT        &kp LGUI        &lts SYMBOLS BSPC  &lts NAV ENTER                               &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &mo FKEYS
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 1 — Gallium v1 (toggle overlay, CORNE canonical)              │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Alpha keys match CORNE Gallium v1 exactly (Q X, not X Q like v2)    │
+        // │ All other keys transparent (inherit from QWERTY base)               │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        gallium_layer {
+            display-name = "gallium";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp COMMA           &trans
+&trans         &hml LSHFT N    &hml LCTRL R    &hml LALT T     &hml LGUI S     &trans                                          &kp P               &hmr RGUI H     &hmr RALT A     &hmr RCTRL E    &hmr RSHFT I        &lts NAV SEMI
+&trans         &kp Q           &trans          &kp M           &kp W           &kp Z           &trans          &trans          &kp K               &kp F           &kp SQT         &kp FSLH        &kp DOT             &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 2 — Numbers (CORNE canonical, kept for muscle memory)          │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Left: ` 1-5 top, 6-0 home                                          │
+        // │ Right: numpad-style 7-8-9 / 4-5-6 / 1-2-3 with operators           │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        numbers_layer {
+            display-name = "numbers";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp ASTRK           &kp N7          &kp N8          &kp N9          &trans              &trans
+&none          &kp N6          &kp N7          &kp N8          &kp N9          &kp N0                                          &kp MINUS           &kp N4          &kp N5          &kp N6          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp PLUS            &kp N1          &kp N2          &kp N3          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &kp ENTER           &kp N0          &kp DOT         &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 3 — Navigation (CORNE canonical)                              │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Left: Cmd+Shift screenshot shortcuts (1-5 top, 6-0 home)            │
+        // │       Undo/Cut/Copy/Paste bottom                                    │
+        // │ Right: Arrows, Home/End, PgUp/PgDn, scroll wheel                   │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        nav_layer {
+            display-name = "nav";
+
+            bindings = <
+&trans         &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &trans          &trans          &trans          &trans
+&trans         &kp LG(LS(N1))     &kp LG(LS(N2))     &kp LG(LS(N3))     &kp LG(LS(N4))     &kp LG(LS(N5))                                  &none           &kp PG_UP       &kp UP          &kp PG_DN       &none           &trans
+&trans         &kp LG(LS(N6))     &kp LG(LS(N7))     &kp LG(LS(N8))     &kp LG(LS(N9))     &kp LG(LS(N0))                                  &kp HOME        &kp LEFT        &kp DOWN        &kp RIGHT       &none           &trans
+&trans         &kp LG(Z)          &kp LG(X)          &kp LG(C)          &kp LG(V)          &none           &trans          &trans          &kp END         &msc SCRL_UP    &none           &msc SCRL_DOWN  &none           &none
+               &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 4 — Symbols (CORNE canonical)                                 │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Left: ! @ # $ % top, ^ & * ( ) home, ~ ` . , / bottom              │
+        // │ Right: < { [ ( brackets, > } ] ) closers, operators                 │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        symbols_layer {
+            display-name = "symbols";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LT              &kp LBRC        &kp LBKT        &kp LPAR        &kp EQUAL           &kp MINUS
+&trans         &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR                                        &kp GT              &kp RBRC        &kp RBKT        &kp RPAR        &kp PIPE            &trans
+&trans         &kp TILDE       &kp GRAVE       &kp DOT         &kp COMMA       &kp FSLH        &trans          &trans          &kp PLUS            &kp COLON       &kp SEMI        &kp DQT         &kp SQT             &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 5 — Numpad (right-side numpad, matching existing SOFLE)        │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        numpad_layer {
+            display-name = "numpad";
+
+            bindings = <
+&none          &none           &none           &none           &none           &none                                           &kp EQUAL           &none           &none           &none           &none               &trans
+&none          &none           &none           &none           &none           &studio_unlock                                  &kp MINUS           &kp N7          &kp N8          &kp N9          &none               &none
+&none          &none           &none           &none           &none           &none                                           &kp ASTRK           &kp N4          &kp N5          &kp N6          &none               &none
+&none          &none           &none           &none           &none           &caps_word      &td_numlk       &none           &kp FSLH            &kp N1          &kp N2          &kp N3          &none               &none
+               &none           &none           &none           &none           &none                                           &lts NAV TAB        &kp N0          &kp DOT         &none           &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 6 — Adjust (conditional: NAV + SYMBOLS)                       │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ BT profiles, ext power, layout toggles                              │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        adjust_layer {
+            display-name = "adjust";
+
+            bindings = <
+&bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &none               &none           &none           &none           &none               &none
+&ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
+&none          &none           &none           &none           &none           &tog GALLIUM                                    &none               &tog MOUSE      &none           &none           &none               &none
+&none          &none           &none           &none           &none           &caps_word      &none           &none           &none               &none           &none           &none           &none               &none
+               &none           &none           &none           &none           &none                                           &none               &none           &none           &none           &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 7 — F-keys                                                    │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        fkeys_layer {
+            display-name = "fkeys";
+
+            bindings = <
+&trans         &kp F1          &kp F2          &kp F3          &kp F4          &kp F5                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp F6          &kp F7          &kp F8          &kp F9          &kp F10                                         &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp F11         &kp F12         &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 8 — Mouse (right-side OHAE cluster)                           │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Upper:  scrUp  ↑   scrDn                                            │
+        // │ Home:   ←      ↓   →       prec (pinky hold)                        │
+        // │ Thumb:  exit   Lclk Rclk Mclk                                       │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        mouse_layer {
+            display-name = "mouse";
+
+            bindings = <
+&none          &none           &none           &none           &none           &none                                           &none               &none               &none                &none                &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
+&none          &none           &none           &none           &none           &none           &none           &tog MOUSE      &none               &none               &none                &none                &none          &none
+               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &mkp RCLK            &mkp MCLK            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 9 — Precision mouse (1/4 speed, hold pinky from mouse layer)  │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        prec_layer {
+            display-name = "prec";
+
+            bindings = <
+&none          &none           &none           &none           &none           &none                                           &none               &none                &none                &none                &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP         &mmv MOVE_UP_SLOW    &msc SCRL_DOWN       &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
+&none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
+               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+    };
+};

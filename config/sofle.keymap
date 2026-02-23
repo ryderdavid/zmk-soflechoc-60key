@@ -196,17 +196,11 @@
     };
 
     behaviors {
-        /* Fast mouse: reaches coarse speed quickly — normal press feels snappy */
+        /* Fast mouse: 100ms ramp to 9000 max — normal press feels coarse/snappy.
+         * Precision layer (max 200) stays fine naturally — low ceiling limits movement
+         * regardless of shared ramp. Quick tap on prec ≈ sub-pixel; hold builds slowly. */
         mmv {
-            time-to-max-speed-ms = <50>;
-            acceleration-exponent = <1>;
-        };
-
-        /* Precision mouse: long ramp — quick taps barely move, requires deliberate hold */
-        mmv_prec: mmv_prec {
-            compatible = "zmk,behavior-mouse-move";
-            #binding-cells = <1>;
-            time-to-max-speed-ms = <500>;
+            time-to-max-speed-ms = <100>;
             acceleration-exponent = <1>;
         };
 
@@ -512,8 +506,8 @@
 
             bindings = <
 &none          &none           &none           &none           &none           &none                                           &none               &none                &none                &none                &none          &none
-&none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP              &mmv_prec MOVE_UP_SLOW    &msc SCRL_DOWN            &none          &none
-&none          &none           &none           &none           &none           &none                                           &none               &mmv_prec MOVE_LEFT_SLOW  &mmv_prec MOVE_DOWN_SLOW  &mmv_prec MOVE_RIGHT_SLOW &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP              &mmv MOVE_UP_SLOW    &msc SCRL_DOWN            &none          &none
+&none          &none           &none           &none           &none           &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
             >;

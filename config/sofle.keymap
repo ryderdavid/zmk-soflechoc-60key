@@ -302,14 +302,6 @@
             bindings = <&mo NUMPAD>, <&tog NUMPAD>;
         };
 
-        // Left encoder: hold = momentary mouse, double-tap = toggle mouse
-        td_mouse: tap_dance_mouse {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo MOUSE>, <&tog MOUSE>;
-        };
-
     };
 
     keymap {
@@ -322,7 +314,7 @@
         // │ Row 1 (=CORNE 0): Tab/Nav Q W E R T    Y U I O P  -                 │
         // │ Row 2 (=CORNE 1): Nav A  S  D  F  G    H  J  K  L  ;  '            │
         // │                       Sf Ct Op Cm NUM   NUM Cm Op Ct Sf             │
-        // │ Row 3 (=CORNE 2): Sft Z  X  C  V  B [mouse][hyper] N M , . / Sft// │
+        // │ Row 3 (=CORNE 2): Sft Z  X  C  V  B [tog mouse][hyper] N M , . / Sft// │
         // │ Thumb: Ctrl Alt Cmd Sym-OSL Nav/En   Nav/Sp Sym/Sp Gui/En Alt Fk/En │
         // └──────────────────────────────────────────────────────────────────────┘
 
@@ -333,7 +325,7 @@
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
-&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_mouse       &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
+&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &tog MOUSE      &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
                &htk LS(LC(LA(LG(Z)))) LCTRL  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
             >;
 

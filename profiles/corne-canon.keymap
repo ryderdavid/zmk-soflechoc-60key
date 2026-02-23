@@ -43,6 +43,7 @@
 #define FKEYS   7
 #define MOUSE   8
 #define PREC    9
+#define WINMODE 10
 
 // Fast mouse movement (2x default 600 speed)
 #define MOVE_UP_FAST    ((-6000) & 0xFFFF)
@@ -136,6 +137,12 @@
         numbers_toggle {
             bindings = <&tog NUMBERS>;
             key-positions = <29 30>;
+        };
+
+        // Windows/Mac modifier swap: far-left 4 keys (Sft+Z+X+C)
+        winmode_toggle {
+            bindings = <&tog WINMODE>;
+            key-positions = <36 37 38 39>;
         };
     };
 
@@ -502,6 +509,29 @@
 &none          &none           &none           &none           &none           &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 10 — Windows mode (Ctrl ↔ Cmd/Win swap)                       │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Toggle: far-left 4 keys (Sft+Z+X+C)                                 │
+        // │ Swaps: S/F home row mods + J/L home row mods + outer thumbs         │
+        // │   Mac:  A/Sft  S/Ctl  D/Opt  F/Cmd   J/Cmd  K/Opt  L/Ctl  ;/Sft   │
+        // │   Win:  A/Sft  S/Win  D/Opt  F/Ctl   J/Ctl  K/Opt  L/Win  ;/Sft   │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        winmode_layer {
+            display-name = "windows";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &hml LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr RGUI L     &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &htk LS(LC(LA(LG(Z)))) LGUI  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

@@ -43,7 +43,8 @@
 #define FKEYS   7
 #define MOUSE   8
 #define PREC    9
-#define WINMODE 10
+#define WINMODE         10
+#define WINMODE_GALLIUM 11
 
 // Fast mouse movement (2x default 600 speed)
 #define MOVE_UP_FAST    ((-6000) & 0xFFFF)
@@ -65,6 +66,12 @@
         adjust_layer {
             if-layers = <NAV SYMBOLS>;
             then-layer = <ADJUST>;
+        };
+
+        // When both Gallium and Windows mode are active, use Gallium letters with Win modifiers
+        winmode_gallium_layer {
+            if-layers = <GALLIUM WINMODE>;
+            then-layer = <WINMODE_GALLIUM>;
         };
     };
 
@@ -530,6 +537,27 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr RGUI L     &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &htk LS(LC(LA(LG(Z)))) LGUI  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 11 — Windows mode + Gallium (conditional: GALLIUM + WINMODE)  │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Gallium letters with Ctrl↔Cmd/Win swapped — auto-activates when     │
+        // │ both Gallium (1) and Windows mode (10) are toggled on               │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        winmode_gallium_layer {
+            display-name = "win+gal";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &hml LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr RGUI E     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
                &htk LS(LC(LA(LG(Z)))) LGUI  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
             >;

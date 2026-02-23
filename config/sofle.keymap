@@ -126,12 +126,6 @@
             key-positions = <5 17>;
         };
 
-        // Hyper+Z (Shift+Z)
-        hyper_z {
-            bindings = <&kp LS(LC(LA(LG(Z))))>;
-            key-positions = <36 37>;
-        };
-
         // Layout toggle: bottom-right corner keys (,./Sft)
         layout_toggle {
             bindings = <&tog GALLIUM>;
@@ -293,6 +287,30 @@
             tapping-term-ms = <200>;
             bindings = <&mo NUMPAD>, <&tog NUMPAD>;
         };
+
+        // Mod-morph: Z normally, Hyper+Z when any Shift is held
+        mm_hyper_z: mod_morph_hyper_z {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp Z>, <&kp LS(LC(LA(LG(Z))))>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // Left encoder: hold = momentary mouse, double-tap = toggle mouse
+        td_mouse: tap_dance_mouse {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo MOUSE>, <&tog MOUSE>;
+        };
+
+        // Right encoder: hold = Hyper (all mods), double-tap = Hyper+F
+        td_hyper: tap_dance_hyper {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hyper>, <&hyper_f>;
+        };
     };
 
     keymap {
@@ -305,8 +323,8 @@
         // │ Row 1 (=CORNE 0): Tab/Nav Q W E R T    Y U I O P  -                 │
         // │ Row 2 (=CORNE 1): Nav A  S  D  F  G    H  J  K  L  ;  '            │
         // │                       Sf Ct Op Cm NUM   NUM Cm Op Ct Sf             │
-        // │ Row 3 (=CORNE 2): Sft Z  X  C  V  B [num][mouse] N M , . / Sft//  │
-        // │ Thumb: Ctrl Alt Cmd Sym/Bs Nav/En   Nav/Sp Sym/Sp Gui/En Alt Fkeys  │
+        // │ Row 3 (=CORNE 2): Sft Z  X  C  V  B [mouse][hyper] N M , . / Sft// │
+        // │ Thumb: Ctrl Alt Cmd Sym-OSL Nav/En   Nav/Sp Sym/Sp Gui/En Alt Fk/En │
         // └──────────────────────────────────────────────────────────────────────┘
 
         qwerty_layer {
@@ -316,8 +334,8 @@
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
-&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_numlk       &tog MOUSE      &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &kp LCTRL       &kp LALT        &kp LGUI        &lts SYMBOLS BSPC  &lts NAV ENTER                               &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &mo FKEYS
+&kp LSHFT      &mm_hyper_z     &kp X           &kp C           &kp V           &kp B           &td_mouse       &td_hyper       &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
+               &kp LCTRL       &kp LALT        &kp LGUI        &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

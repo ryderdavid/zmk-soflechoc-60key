@@ -326,7 +326,7 @@
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
 &kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &tog MOUSE      &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &htk LS(LC(LA(LG(Z)))) LCTRL  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
+               &htk LCTRL LS(LC(LA(LG(Z))))  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -530,7 +530,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr RGUI L     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LS(LC(LA(LG(Z)))) LGUI  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -551,7 +551,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr RGUI E     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LS(LC(LA(LG(Z)))) LGUI  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

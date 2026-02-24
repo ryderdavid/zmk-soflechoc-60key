@@ -47,10 +47,10 @@
 #define WINMODE_GALLIUM 11
 
 // Fast mouse movement (2x default 600 speed)
-#define MOVE_UP_FAST    ((-10500) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((10500) & 0xFFFF)
-#define MOVE_LEFT_FAST  (((-10500) & 0xFFFF) << 16)
-#define MOVE_RIGHT_FAST (((10500) & 0xFFFF) << 16)
+#define MOVE_UP_FAST    ((-7000) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((7000) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-7000) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((7000) & 0xFFFF) << 16)
 
 // Precision mouse movement (1/4 of default 600 speed)
 #define MOVE_UP_SLOW    ((-200) & 0xFFFF)
@@ -196,10 +196,10 @@
     };
 
     behaviors {
-        /* Fast mouse: 200ms ramp to 10500 max — higher ceiling, slower build-up.
+        /* Fast mouse: 75ms ramp to 7000 max — snappy initial feel, moderate ceiling.
          * Precision layer (max 200) stays fine via low ceiling regardless of shared ramp. */
         mmv {
-            time-to-max-speed-ms = <200>;
+            time-to-max-speed-ms = <75>;
             acceleration-exponent = <1>;
         };
 

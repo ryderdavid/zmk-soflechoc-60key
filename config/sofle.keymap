@@ -47,10 +47,10 @@
 #define WINMODE_GALLIUM 11
 
 // Fast mouse movement (2x default 600 speed)
-#define MOVE_UP_FAST    ((-9000) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((9000) & 0xFFFF)
-#define MOVE_LEFT_FAST  (((-9000) & 0xFFFF) << 16)
-#define MOVE_RIGHT_FAST (((9000) & 0xFFFF) << 16)
+#define MOVE_UP_FAST    ((-10500) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((10500) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-10500) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((10500) & 0xFFFF) << 16)
 
 // Precision mouse movement (1/4 of default 600 speed)
 #define MOVE_UP_SLOW    ((-200) & 0xFFFF)
@@ -196,11 +196,10 @@
     };
 
     behaviors {
-        /* Fast mouse: 100ms ramp to 9000 max — normal press feels coarse/snappy.
-         * Precision layer (max 200) stays fine naturally — low ceiling limits movement
-         * regardless of shared ramp. Quick tap on prec ≈ sub-pixel; hold builds slowly. */
+        /* Fast mouse: 200ms ramp to 10500 max — higher ceiling, slower build-up.
+         * Precision layer (max 200) stays fine via low ceiling regardless of shared ramp. */
         mmv {
-            time-to-max-speed-ms = <100>;
+            time-to-max-speed-ms = <200>;
             acceleration-exponent = <1>;
         };
 
@@ -304,6 +303,15 @@
             bindings = <&mo NUMPAD>, <&tog NUMPAD>;
         };
 
+        // Hold = momentary mouse layer; double-tap = toggle lock.
+        // Single quick tap fires &mo and releases immediately (no effect) — prevents accidents.
+        td_mouse: tap_dance_mouse {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo MOUSE>, <&tog MOUSE>;
+        };
+
     };
 
     keymap {
@@ -327,7 +335,7 @@
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
-&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &tog MOUSE      &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
+&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_mouse       &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
                &htk LCTRL LS(LC(LA(LG(Z))))  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
             >;
 

@@ -45,6 +45,7 @@
 #define PREC    9
 #define WINMODE         10
 #define WINMODE_GALLIUM 11
+#define WINMODE_MOUSE   12
 
 // Fast mouse movement (2x default 600 speed)
 #define MOVE_UP_FAST    ((-7000) & 0xFFFF)
@@ -72,6 +73,13 @@
         winmode_gallium_layer {
             if-layers = <GALLIUM WINMODE>;
             then-layer = <WINMODE_GALLIUM>;
+        };
+
+        // Restore mouse bindings that WINMODE's explicit overrides break (J/L movement, Cmd=RClick).
+        // Layer 12 > 11 > 10, so this covers both WINMODE-only and WINMODE+GALLIUM cases.
+        winmode_mouse_layer {
+            if-layers = <WINMODE MOUSE>;
+            then-layer = <WINMODE_MOUSE>;
         };
     };
 
@@ -562,6 +570,29 @@
 &trans         &trans          &hml LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr RGUI E     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
                &htk LGUI LS(LC(LA(LG(Z))))  &trans  &kp LCTRL  &trans          &trans                                        &trans              &trans          &htk RCTRL ENTER  &trans        &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 12 — Windows + Mouse (conditional: WINMODE + MOUSE)           │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ WINMODE (10) > MOUSE (8), so WINMODE's explicit home row mods at    │
+        // │ J (31) and L (33) override mouse movement, and Cmd thumb (57)       │
+        // │ overrides right-click. This layer (12) sits above both and restores │
+        // │ the broken bindings. Covers WINMODE and WINMODE+GALLIUM cases.      │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        winmode_mouse_layer {
+            display-name = "win+mse";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &trans                   &trans                    &trans         &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &trans                   &trans                    &trans         &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &mmv MOVE_LEFT_FAST      &trans                   &mmv MOVE_RIGHT_FAST      &trans         &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans                   &trans                   &trans                    &trans         &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &mkp RCLK                &trans                    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

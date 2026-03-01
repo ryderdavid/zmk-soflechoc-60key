@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: sofle}
 layers:
-  gallium:
+  qwerty:
   - GRAVE
   - '1'
   - '2'
@@ -13,68 +13,7 @@ layers:
   - '9'
   - '0'
   - Bspc
-  - {t: TAB, h: lower}
-  - B
-  - L
-  - D
-  - C
-  - {t: V, h: mouse}
-  - J
-  - Y
-  - O
-  - U
-  - COMMA
-  - {t: lower, h: lower}
-  - raise
-  - {t: N, h: Sft}
-  - {t: R, h: Ctl}
-  - {t: T, h: Opt}
-  - {t: S, h: Cmd}
-  - {t: G, h: Hyper}
-  - {t: P, h: Sft+Ctl+Opt}
-  - {t: H, h: Cmd}
-  - {t: A, h: Opt}
-  - {t: E, h: Ctl}
-  - {t: I, h: Sft}
-  - {t: raise, h: raise}
-  - Sft
-  - {t: X, h: Sft+Ctl+Opt+Cmd}
-  - Q
-  - M
-  - W
-  - Z
-  - NumLk
-  - {t: mouse, h: toggle}
-  - K
-  - F
-  - ''''
-  - ;
-  - DOT
-  - {t: /, h: Sft}
-  - {t: Sft+Ctl+Opt+F3, h: Ctl}
-  - {t: Sft+Ctl+Opt+F2, h: Opt}
-  - {t: Sft+Ctl+Opt+F1, h: Cmd}
-  - {t: SPACE, h: raise}
-  - {t: ENTER, h: lower}
-  - {t: ENTER, h: lower}
-  - {t: SPACE, h: raise}
-  - {t: Sft+Ctl+Opt+F4, h: Cmd}
-  - {t: Sft+Ctl+Opt+F5, h: Opt}
-  - {t: Sft+Ctl+Opt+F6, h: fkeys}
-  qwerty:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: TAB, h: nav}
   - Q
   - W
   - E
@@ -85,32 +24,44 @@ layers:
   - I
   - O
   - P
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - MINUS
+  - nav
   - {t: A, h: Sft}
   - {t: S, h: Ctl}
   - {t: D, h: Opt}
   - {t: F, h: Cmd}
-  - {t: ▽, type: trans}
-  - {t: H, h: Sft+Ctl+Opt}
+  - {t: G, h: numbers}
+  - {t: H, h: numbers}
   - {t: J, h: Cmd}
   - {t: K, h: Opt}
   - {t: L, h: Ctl}
   - {t: ;, h: Sft}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: Z, h: Hyper}
+  - ''''
+  - Sft
+  - Z
   - X
   - C
   - V
   - B
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: Mouse, s: Lock}
+  - Hyp+F
   - N
   - M
   - COMMA
   - DOT
   - /
+  - {t: /, h: Sft}
+  - {t: Hyper+Z, h: Ctl}
+  - Opt
+  - Cmd
+  - {t: symbols, h: symbols}
+  - {t: ENTER, h: nav}
+  - {t: SPACE, h: nav}
+  - {t: SPACE, h: symbols}
+  - {t: ENTER, h: Cmd}
+  - Opt
+  - {t: ENTER, h: fkeys}
+  gallium:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -122,56 +73,44 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  colemak:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - B
+  - L
+  - D
+  - C
+  - V
+  - J
+  - Y
+  - O
+  - U
+  - COMMA
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: N, h: Sft}
+  - {t: R, h: Ctl}
+  - {t: T, h: Opt}
+  - {t: S, h: Cmd}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - P
+  - {t: H, h: Cmd}
+  - {t: A, h: Opt}
+  - {t: E, h: Ctl}
+  - {t: I, h: Sft}
+  - {t: ;, h: nav}
   - {t: ▽, type: trans}
   - Q
+  - {t: ▽, type: trans}
+  - M
   - W
+  - Z
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - K
   - F
-  - P
-  - B
-  - {t: ▽, type: trans}
-  - L
-  - U
-  - Y
-  - ;
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: A, h: Sft}
-  - {t: ▽, type: trans}
-  - {t: S, h: Opt}
-  - {t: T, h: Cmd}
-  - {t: ▽, type: trans}
-  - {t: M, h: Meh}
-  - {t: N, h: Cmd}
-  - {t: E, h: Opt}
-  - {t: I, h: Ctl}
-  - {t: O, h: Sft}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: Z, h: Hyper}
-  - X
-  - C
-  - D
-  - V
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - H
-  - COMMA
-  - DOT
+  - ''''
   - /
+  - DOT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -183,128 +122,250 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  lower:
+  numbers:
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - GRAVE
   - '1'
   - '2'
   - '3'
   - '4'
   - '5'
+  - ASTRK
+  - '7'
+  - '8'
+  - '9'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - EQUAL
-  - {t: ▽, type: trans}
-  - {type: held}
+  - ''
   - '6'
   - '7'
   - '8'
   - '9'
+  - {t: '0', type: held}
+  - MINUS
+  - '4'
+  - '5'
+  - '6'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - PLUS
+  - '1'
+  - '2'
+  - '3'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ENTER
   - '0'
+  - DOT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  nav:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LBKT
-  - RBKT
-  - \
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  - Cmd+Sft+1
+  - Cmd+Sft+2
+  - Cmd+Sft+3
+  - Cmd+Sft+4
+  - Cmd+Sft+5
+  - ''
+  - PG UP
+  - UP
+  - PG DN
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Cmd+Sft+6
+  - Cmd+Sft+7
+  - Cmd+Sft+8
+  - Cmd+Sft+9
+  - Cmd+Sft+0
+  - HOME
+  - LEFT
+  - DOWN
+  - RIGHT
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Cmd+Z
+  - Cmd+X
+  - Cmd+C
+  - Cmd+V
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - END
+  - Scrl U
+  - ''
+  - Scrl D
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  symbols:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - EXCL
   - AT
   - HASH
   - DLLR
   - PRCNT
-  - MINUS
-  - UNDER
-  - DOT
+  - LT
   - LBRC
-  - RBRC
-  - PIPE
+  - LBKT
+  - LPAR
+  - EQUAL
+  - MINUS
   - {t: ▽, type: trans}
   - CARET
   - AMPS
   - ASTRK
   - LPAR
   - RPAR
+  - GT
+  - RBRC
+  - RBKT
+  - RPAR
+  - PIPE
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - TILDE
+  - GRAVE
+  - DOT
+  - COMMA
+  - /
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - PLUS
-  - TILDE
-  - ''''
   - COLON
+  - ;
   - DQT
-  - QMARK
+  - ''''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  raise:
-  - {t: ▽, type: trans}
-  - Cmd+Sft+1
-  - Cmd+Sft+2
-  - Cmd+Sft+3
-  - Cmd+Sft+4
-  - Cmd+Sft+5
-  - Cmd+Sft+6
-  - Cmd+Sft+7
-  - Cmd+Sft+8
-  - Cmd+Sft+9
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - PG UP
-  - UP
-  - PG DN
-  - Cmd+LBKT
-  - Cmd+RBKT
   - {type: held}
-  - Opt
-  - Ctl
-  - Sft
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - HOME
-  - LEFT
-  - DOWN
-  - RIGHT
-  - Del
-  - Bspc
-  - {t: ▽, type: trans}
-  - Cmd+Z
-  - Cmd+X
-  - Cmd+C
-  - Cmd+V
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - END
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  numpad:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - EQUAL
+  - ''
+  - ''
+  - ''
+  - ''
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - Studio
+  - MINUS
+  - '7'
+  - '8'
+  - '9'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ASTRK
+  - '4'
+  - '5'
+  - '6'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - CapsWd
+  - NumLk
+  - ''
+  - /
+  - '1'
+  - '2'
+  - '3'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: TAB, h: nav}
+  - '0'
+  - DOT
+  - ''
+  - ''
   adjust:
   - BT CLR ALL
   - {t: BT, h: '0'}
@@ -330,13 +391,13 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
   - ''
   - ''
   - ''
   - ''
-  - {t: qwerty, h: toggle}
-  - {t: colemak, h: toggle}
+  - ''
+  - {t: gallium, h: toggle}
+  - ''
   - {t: mouse, h: toggle}
   - ''
   - ''
@@ -359,73 +420,12 @@ layers:
   - ''
   - ''
   - ''
+  - {type: held}
   - ''
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  numlk:
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - EQUAL
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: ▽, type: trans}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - Studio
-  - MINUS
-  - '7'
-  - '8'
-  - '9'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ASTRK
-  - '4'
-  - '5'
-  - '6'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - CapsWd
-  - NumLk
-  - ''
-  - /
-  - '1'
-  - '2'
-  - '3'
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: TAB, h: raise}
-  - '0'
-  - DOT
   - ''
   fkeys:
   - {t: ▽, type: trans}
@@ -506,23 +506,23 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
-  - ''
-  - '&msc SCRL_UP'
-  - '&mmv MOVE_UP'
-  - '&msc SCRL_DOWN'
   - ''
   - ''
+  - Scrl U
+  - M Up
+  - Scrl D
   - ''
   - ''
   - ''
+  - Sft
+  - Ctl
+  - Opt
+  - Cmd
   - ''
   - ''
-  - ''
-  - ''
-  - '&mmv MOVE_LEFT'
-  - '&mmv MOVE_DOWN'
-  - '&mmv MOVE_RIGHT'
+  - M Lt
+  - M Dn
+  - M Rt
   - ''
   - prec
   - ''
@@ -531,7 +531,7 @@ layers:
   - ''
   - ''
   - ''
-  - ''
+  - {t: mouse, h: toggle}
   - {t: mouse, h: toggle}
   - ''
   - ''
@@ -545,9 +545,9 @@ layers:
   - ''
   - ''
   - {t: mouse, h: toggle}
-  - '&mkp LCLK'
-  - '&mkp RCLK'
-  - '&mkp MCLK'
+  - LClk
+  - RClk
+  - MClk
   - ''
   prec:
   - ''
@@ -567,23 +567,23 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
-  - ''
-  - '&msc SCRL_UP'
-  - '&mmv MOVE_VERT(-150)'
-  - '&msc SCRL_DOWN'
   - ''
   - ''
+  - Scrl U
+  - Sl Up
+  - Scrl D
   - ''
   - ''
   - ''
+  - Sft
+  - Ctl
+  - Opt
+  - Cmd
   - ''
   - ''
-  - ''
-  - ''
-  - '&mmv MOVE_HOR(-150)'
-  - '&mmv MOVE_VERT(150)'
-  - '&mmv MOVE_HOR(150)'
+  - Sl Lt
+  - Sl Dn
+  - Sl Rt
   - ''
   - {type: held}
   - ''
@@ -606,11 +606,782 @@ layers:
   - ''
   - ''
   - {t: ▽, type: trans}
-  - '&mkp LCLK'
-  - '&mkp RCLK'
-  - '&mkp MCLK'
+  - LClk
+  - RClk
+  - MClk
   - ''
+  windows:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: S, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: F, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: J, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: L, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: Hyper+Z, h: Cmd}
+  - {t: ▽, type: trans}
+  - Ctl
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ENTER, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  win+gal:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: R, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: S, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: H, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: E, h: Cmd}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: Hyper+Z, h: Cmd}
+  - {t: ▽, type: trans}
+  - Ctl
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ENTER, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  win+mse:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - M Lt
+  - {t: ▽, type: trans}
+  - M Rt
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - RClk
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
 combos:
+- p: [17, 30, 55]
+  k: '&wm_the'
+  l: [qwerty]
+- p: [17, 30, 56]
+  k: '&wm_the'
+  l: [qwerty]
+- p: [27, 31, 55]
+  k: '&wm_the'
+  l: [gallium]
+- p: [27, 31, 56]
+  k: '&wm_the'
+  l: [gallium]
+- p: [15, 41, 55]
+  k: '&wm_be'
+  l: [qwerty]
+- p: [15, 41, 56]
+  k: '&wm_be'
+  l: [qwerty]
+- p: [13, 33, 55]
+  k: '&wm_be'
+  l: [gallium]
+- p: [13, 33, 56]
+  k: '&wm_be'
+  l: [gallium]
+- p: [17, 21, 55]
+  k: '&wm_to'
+  l: [qwerty]
+- p: [17, 21, 56]
+  k: '&wm_to'
+  l: [qwerty]
+- p: [20, 27, 55]
+  k: '&wm_to'
+  l: [gallium]
+- p: [20, 27, 56]
+  k: '&wm_to'
+  l: [gallium]
+- p: [25, 44, 55]
+  k: '&wm_and'
+  l: [qwerty]
+- p: [25, 44, 56]
+  k: '&wm_and'
+  l: [qwerty]
+- p: [25, 32, 55]
+  k: '&wm_and'
+  l: [gallium]
+- p: [25, 32, 56]
+  k: '&wm_and'
+  l: [gallium]
+- p: [21, 28, 55]
+  k: '&wm_of'
+  l: [qwerty]
+- p: [21, 28, 56]
+  k: '&wm_of'
+  l: [qwerty]
+- p: [20, 45, 55]
+  k: '&wm_of'
+  l: [gallium]
+- p: [20, 45, 56]
+  k: '&wm_of'
+  l: [gallium]
+- p: [20, 44, 55]
+  k: '&wm_in'
+  l: [qwerty]
+- p: [20, 44, 56]
+  k: '&wm_in'
+  l: [qwerty]
+- p: [25, 34, 55]
+  k: '&wm_in'
+  l: [gallium]
+- p: [25, 34, 56]
+  k: '&wm_in'
+  l: [gallium]
+- p: [30, 40, 55]
+  k: '&wm_have'
+  l: [qwerty]
+- p: [30, 40, 56]
+  k: '&wm_have'
+  l: [qwerty]
+- p: [17, 31, 55]
+  k: '&wm_have'
+  l: [gallium]
+- p: [17, 31, 56]
+  k: '&wm_have'
+  l: [gallium]
+- p: [17, 25, 30, 55]
+  k: '&wm_that'
+  l: [qwerty]
+- p: [17, 25, 30, 56]
+  k: '&wm_that'
+  l: [qwerty]
+- p: [27, 31, 32, 55]
+  k: '&wm_that'
+  l: [gallium]
+- p: [27, 31, 32, 56]
+  k: '&wm_that'
+  l: [gallium]
+- p: [16, 28, 55]
+  k: '&wm_for'
+  l: [qwerty]
+- p: [16, 28, 56]
+  k: '&wm_for'
+  l: [qwerty]
+- p: [26, 45, 55]
+  k: '&wm_for'
+  l: [gallium]
+- p: [26, 45, 56]
+  k: '&wm_for'
+  l: [gallium]
+- p: [17, 44, 55]
+  k: '&wm_not'
+  l: [qwerty]
+- p: [17, 44, 56]
+  k: '&wm_not'
+  l: [qwerty]
+- p: [25, 27, 55]
+  k: '&wm_not'
+  l: [gallium]
+- p: [25, 27, 56]
+  k: '&wm_not'
+  l: [gallium]
+- p: [14, 20, 55]
+  k: '&wm_with'
+  l: [qwerty]
+- p: [14, 20, 56]
+  k: '&wm_with'
+  l: [qwerty]
+- p: [34, 40, 55]
+  k: '&wm_with'
+  l: [gallium]
+- p: [34, 40, 56]
+  k: '&wm_with'
+  l: [gallium]
+- p: [18, 21, 55]
+  k: '&wm_you'
+  l: [qwerty]
+- p: [18, 21, 56]
+  k: '&wm_you'
+  l: [qwerty]
+- p: [19, 20, 55]
+  k: '&wm_you'
+  l: [gallium]
+- p: [19, 20, 56]
+  k: '&wm_you'
+  l: [gallium]
+- p: [17, 20, 55]
+  k: '&wm_this'
+  l: [qwerty]
+- p: [17, 20, 56]
+  k: '&wm_this'
+  l: [qwerty]
+- p: [27, 34, 55]
+  k: '&wm_this'
+  l: [gallium]
+- p: [27, 34, 56]
+  k: '&wm_this'
+  l: [gallium]
+- p: [16, 21, 28, 55]
+  k: '&wm_from'
+  l: [qwerty]
+- p: [16, 21, 28, 56]
+  k: '&wm_from'
+  l: [qwerty]
+- p: [20, 26, 45, 55]
+  k: '&wm_from'
+  l: [gallium]
+- p: [20, 26, 45, 56]
+  k: '&wm_from'
+  l: [gallium]
+- p: [19, 41, 55]
+  k: '&wm_but'
+  l: [qwerty]
+- p: [19, 41, 56]
+  k: '&wm_but'
+  l: [qwerty]
+- p: [13, 21, 55]
+  k: '&wm_but'
+  l: [gallium]
+- p: [13, 21, 56]
+  k: '&wm_but'
+  l: [gallium]
+- p: [14, 25, 55]
+  k: '&wm_what'
+  l: [qwerty]
+- p: [14, 25, 56]
+  k: '&wm_what'
+  l: [qwerty]
+- p: [32, 40, 55]
+  k: '&wm_what'
+  l: [gallium]
+- p: [32, 40, 56]
+  k: '&wm_what'
+  l: [gallium]
+- p: [15, 30, 55]
+  k: '&wm_he'
+  l: [qwerty]
+- p: [15, 30, 56]
+  k: '&wm_he'
+  l: [qwerty]
+- p: [31, 33, 55]
+  k: '&wm_he'
+  l: [gallium]
+- p: [31, 33, 56]
+  k: '&wm_he'
+  l: [gallium]
+- p: [21, 44, 55]
+  k: '&wm_on'
+  l: [qwerty]
+- p: [21, 44, 56]
+  k: '&wm_on'
+  l: [qwerty]
+- p: [20, 25, 55]
+  k: '&wm_on'
+  l: [gallium]
+- p: [20, 25, 56]
+  k: '&wm_on'
+  l: [gallium]
+- p: [16, 25, 55]
+  k: '&wm_are'
+  l: [qwerty]
+- p: [16, 25, 56]
+  k: '&wm_are'
+  l: [qwerty]
+- p: [26, 32, 55]
+  k: '&wm_are'
+  l: [gallium]
+- p: [26, 32, 56]
+  k: '&wm_are'
+  l: [gallium]
+- p: [21, 27, 55]
+  k: '&wm_do'
+  l: [qwerty]
+- p: [21, 27, 56]
+  k: '&wm_do'
+  l: [qwerty]
+- p: [15, 20, 55]
+  k: '&wm_do'
+  l: [gallium]
+- p: [15, 20, 56]
+  k: '&wm_do'
+  l: [gallium]
+- p: [20, 30, 55]
+  k: '&wm_his'
+  l: [qwerty]
+- p: [20, 30, 56]
+  k: '&wm_his'
+  l: [qwerty]
+- p: [31, 34, 55]
+  k: '&wm_his'
+  l: [gallium]
+- p: [31, 34, 56]
+  k: '&wm_his'
+  l: [gallium]
+- p: [18, 41, 55]
+  k: '&wm_by'
+  l: [qwerty]
+- p: [18, 41, 56]
+  k: '&wm_by'
+  l: [qwerty]
+- p: [13, 19, 55]
+  k: '&wm_by'
+  l: [gallium]
+- p: [13, 19, 56]
+  k: '&wm_by'
+  l: [gallium]
+- p: [17, 18, 55]
+  k: '&wm_they'
+  l: [qwerty]
+- p: [17, 18, 56]
+  k: '&wm_they'
+  l: [qwerty]
+- p: [19, 27, 55]
+  k: '&wm_they'
+  l: [gallium]
+- p: [19, 27, 56]
+  k: '&wm_they'
+  l: [gallium]
+- p: [16, 30, 55]
+  k: '&wm_her'
+  l: [qwerty]
+- p: [16, 30, 56]
+  k: '&wm_her'
+  l: [qwerty]
+- p: [26, 31, 55]
+  k: '&wm_her'
+  l: [gallium]
+- p: [26, 31, 56]
+  k: '&wm_her'
+  l: [gallium]
+- p: [16, 21, 55]
+  k: '&wm_or'
+  l: [qwerty]
+- p: [16, 21, 56]
+  k: '&wm_or'
+  l: [qwerty]
+- p: [20, 26, 55]
+  k: '&wm_or'
+  l: [gallium]
+- p: [20, 26, 56]
+  k: '&wm_or'
+  l: [gallium]
+- p: [17, 25, 55]
+  k: '&wm_at'
+  l: [qwerty]
+- p: [17, 25, 56]
+  k: '&wm_at'
+  l: [qwerty]
+- p: [27, 32, 55]
+  k: '&wm_at'
+  l: [gallium]
+- p: [27, 32, 56]
+  k: '&wm_at'
+  l: [gallium]
+- p: [15, 21, 55]
+  k: '&wm_one'
+  l: [qwerty]
+- p: [15, 21, 56]
+  k: '&wm_one'
+  l: [qwerty]
+- p: [20, 33, 55]
+  k: '&wm_one'
+  l: [gallium]
+- p: [20, 33, 56]
+  k: '&wm_one'
+  l: [gallium]
+- p: [27, 30, 55]
+  k: '&wm_had'
+  l: [qwerty]
+- p: [27, 30, 56]
+  k: '&wm_had'
+  l: [qwerty]
+- p: [15, 31, 55]
+  k: '&wm_had'
+  l: [gallium]
+- p: [15, 31, 56]
+  k: '&wm_had'
+  l: [gallium]
+- p: [18, 26, 55]
+  k: '&wm_say'
+  l: [qwerty]
+- p: [18, 26, 56]
+  k: '&wm_say'
+  l: [qwerty]
+- p: [19, 28, 55]
+  k: '&wm_say'
+  l: [gallium]
+- p: [19, 28, 56]
+  k: '&wm_say'
+  l: [gallium]
+- p: [26, 30, 55]
+  k: '&wm_she'
+  l: [qwerty]
+- p: [26, 30, 56]
+  k: '&wm_she'
+  l: [qwerty]
+- p: [28, 31, 55]
+  k: '&wm_she'
+  l: [gallium]
+- p: [28, 31, 56]
+  k: '&wm_she'
+  l: [gallium]
+- p: [25, 33, 55]
+  k: '&wm_all'
+  l: [qwerty]
+- p: [25, 33, 56]
+  k: '&wm_all'
+  l: [qwerty]
+- p: [14, 32, 55]
+  k: '&wm_all'
+  l: [gallium]
+- p: [14, 32, 56]
+  k: '&wm_all'
+  l: [gallium]
+- p: [14, 30, 55]
+  k: '&wm_which'
+  l: [qwerty]
+- p: [14, 30, 56]
+  k: '&wm_which'
+  l: [qwerty]
+- p: [31, 40, 55]
+  k: '&wm_which'
+  l: [gallium]
+- p: [31, 40, 56]
+  k: '&wm_which'
+  l: [gallium]
+- p: [14, 33, 55]
+  k: '&wm_will'
+  l: [qwerty]
+- p: [14, 33, 56]
+  k: '&wm_will'
+  l: [qwerty]
+- p: [14, 40, 55]
+  k: '&wm_will'
+  l: [gallium]
+- p: [14, 40, 56]
+  k: '&wm_will'
+  l: [gallium]
+- p: [14, 27, 55]
+  k: '&wm_would'
+  l: [qwerty]
+- p: [14, 27, 56]
+  k: '&wm_would'
+  l: [qwerty]
+- p: [15, 40, 55]
+  k: '&wm_would'
+  l: [gallium]
+- p: [15, 40, 56]
+  k: '&wm_would'
+  l: [gallium]
+- p: [16, 17, 55]
+  k: '&wm_there'
+  l: [qwerty]
+- p: [16, 17, 56]
+  k: '&wm_there'
+  l: [qwerty]
+- p: [26, 27, 55]
+  k: '&wm_there'
+  l: [gallium]
+- p: [26, 27, 56]
+  k: '&wm_there'
+  l: [gallium]
+- p: [15, 17, 20, 55]
+  k: '&wm_their'
+  l: [qwerty]
+- p: [15, 17, 20, 56]
+  k: '&wm_their'
+  l: [qwerty]
+- p: [27, 33, 34, 55]
+  k: '&wm_their'
+  l: [gallium]
+- p: [27, 33, 34, 56]
+  k: '&wm_their'
+  l: [gallium]
+- p: [18, 45, 55]
+  k: '&wm_my'
+  l: [qwerty]
+- p: [18, 45, 56]
+  k: '&wm_my'
+  l: [qwerty]
+- p: [19, 39, 55]
+  k: '&wm_my'
+  l: [gallium]
+- p: [19, 39, 56]
+  k: '&wm_my'
+  l: [gallium]
+- p: [19, 21, 55]
+  k: '&wm_out'
+  l: [qwerty]
+- p: [19, 21, 56]
+  k: '&wm_out'
+  l: [qwerty]
+- p: [20, 21, 55]
+  k: '&wm_out'
+  l: [gallium]
+- p: [20, 21, 56]
+  k: '&wm_out'
+  l: [gallium]
+- p: [19, 22, 55]
+  k: '&wm_up'
+  l: [qwerty]
+- p: [19, 22, 56]
+  k: '&wm_up'
+  l: [qwerty]
+- p: [21, 30, 55]
+  k: '&wm_up'
+  l: [gallium]
+- p: [21, 30, 56]
+  k: '&wm_up'
+  l: [gallium]
+- p: [25, 41, 55]
+  k: '&wm_about'
+  l: [qwerty]
+- p: [25, 41, 56]
+  k: '&wm_about'
+  l: [qwerty]
+- p: [13, 32, 55]
+  k: '&wm_about'
+  l: [gallium]
+- p: [13, 32, 56]
+  k: '&wm_about'
+  l: [gallium]
+- p: [14, 21, 55]
+  k: '&wm_who'
+  l: [qwerty]
+- p: [14, 21, 56]
+  k: '&wm_who'
+  l: [qwerty]
+- p: [20, 40, 55]
+  k: '&wm_who'
+  l: [gallium]
+- p: [20, 40, 56]
+  k: '&wm_who'
+  l: [gallium]
+- p: [15, 29, 55]
+  k: '&wm_get'
+  l: [qwerty]
+- p: [15, 29, 56]
+  k: '&wm_get'
+  l: [qwerty]
+- p: [29, 33, 55]
+  k: '&wm_get'
+  l: [gallium]
+- p: [29, 33, 56]
+  k: '&wm_get'
+  l: [gallium]
+- p: [32, 45, 55]
+  k: '&wm_make'
+  l: [qwerty]
+- p: [32, 45, 56]
+  k: '&wm_make'
+  l: [qwerty]
+- p: [39, 44, 55]
+  k: '&wm_make'
+  l: [gallium]
+- p: [39, 44, 56]
+  k: '&wm_make'
+  l: [gallium]
+- p: [21, 29, 55]
+  k: '&wm_go'
+  l: [qwerty]
+- p: [21, 29, 56]
+  k: '&wm_go'
+  l: [qwerty]
+- p: [20, 29, 55]
+  k: '&wm_go'
+  l: [gallium]
+- p: [20, 29, 56]
+  k: '&wm_go'
+  l: [gallium]
+- p: [32, 33, 55]
+  k: '&wm_like'
+  l: [qwerty]
+- p: [32, 33, 56]
+  k: '&wm_like'
+  l: [qwerty]
+- p: [14, 44, 55]
+  k: '&wm_like'
+  l: [gallium]
+- p: [14, 44, 56]
+  k: '&wm_like'
+  l: [gallium]
+- p: [19, 31, 55]
+  k: '&wm_just'
+  l: [qwerty]
+- p: [19, 31, 56]
+  k: '&wm_just'
+  l: [qwerty]
+- p: [18, 21, 55]
+  k: '&wm_just'
+  l: [gallium]
+- p: [18, 21, 56]
+  k: '&wm_just'
+  l: [gallium]
+- p: [32, 44, 55]
+  k: '&wm_know'
+  l: [qwerty]
+- p: [32, 44, 56]
+  k: '&wm_know'
+  l: [qwerty]
+- p: [25, 44, 55]
+  k: '&wm_know'
+  l: [gallium]
+- p: [25, 44, 56]
+  k: '&wm_know'
+  l: [gallium]
+- p: [17, 32, 55]
+  k: '&wm_take'
+  l: [qwerty]
+- p: [17, 32, 56]
+  k: '&wm_take'
+  l: [qwerty]
+- p: [27, 44, 55]
+  k: '&wm_take'
+  l: [gallium]
+- p: [27, 44, 56]
+  k: '&wm_take'
+  l: [gallium]
+- p: [39, 45, 55]
+  k: '&wm_come'
+  l: [qwerty]
+- p: [39, 45, 56]
+  k: '&wm_come'
+  l: [qwerty]
+- p: [16, 39, 55]
+  k: '&wm_come'
+  l: [gallium]
+- p: [16, 39, 56]
+  k: '&wm_come'
+  l: [gallium]
 - p: [32, 31]
   k: Bspc
   a: top
@@ -647,3 +1418,9 @@ combos:
   k: SPACE
 - p: [5, 17]
   k: {t: mouse, h: toggle}
+- p: [46, 47, 48, 49]
+  k: {t: gallium, h: toggle}
+- p: [29, 30]
+  k: {t: numbers, h: toggle}
+- p: [36, 37, 38, 39]
+  k: {t: windows, h: toggle}

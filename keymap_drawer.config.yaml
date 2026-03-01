@@ -8,6 +8,38 @@ draw_config:
     tabler: "https://unpkg.com/@tabler/icons/icons/outline/{}.svg"
 
 parse_config:
+  zmk_preamble: |
+    #define KEYMAP_DRAWER
+    #define ZMK_POINTING_DEFAULT_MOVE_VAL 600
+    #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
+    #define MOVE_UP 1
+    #define MOVE_DOWN 2
+    #define MOVE_LEFT 3
+    #define MOVE_RIGHT 4
+    #define SCRL_UP 5
+    #define SCRL_DOWN 6
+    #define SCRL_LEFT 7
+    #define SCRL_RIGHT 8
+    #define LCLK 0
+    #define RCLK 1
+    #define MCLK 2
+    #define MOVE_UP_FAST 10
+    #define MOVE_DOWN_FAST 11
+    #define MOVE_LEFT_FAST 12
+    #define MOVE_RIGHT_FAST 13
+    #define MOVE_UP_SLOW 14
+    #define MOVE_DOWN_SLOW 15
+    #define MOVE_LEFT_SLOW 16
+    #define MOVE_RIGHT_SLOW 17
+    / {
+      behaviors {
+        mmv: mmv { compatible = "zmk,behavior-point-device-incremental"; label = "MMV"; #binding-cells = <1>; };
+        msc: msc { compatible = "zmk,behavior-point-device-incremental"; label = "MSC"; #binding-cells = <1>; };
+        mkp: mkp { compatible = "zmk,behavior-key-press"; label = "MKP"; #binding-cells = <1>; };
+        hml_g: hml_g { compatible = "zmk,behavior-hold-tap"; label = "HML_G"; #binding-cells = <2>; bindings = <&kp>, <&kp>; };
+        hmr_g: hmr_g { compatible = "zmk,behavior-hold-tap"; label = "HMR_G"; #binding-cells = <2>; bindings = <&kp>, <&kp>; };
+      };
+    };
   raw_binding_map:
     "&td_numlk": "NumLk"
     "&td_cmd":
@@ -35,6 +67,20 @@ parse_config:
     "&ht_meh RGUI A": {t: "Meh+A", h: "Cmd"}
     "&ht_meh RALT B": {t: "Meh+B", h: "Opt"}
     "&ht_meh RCTRL C": {t: "Meh+C", h: "Ctl"}
+    "&mmv MOVE_UP_FAST": "M Up"
+    "&mmv MOVE_DOWN_FAST": "M Dn"
+    "&mmv MOVE_LEFT_FAST": "M Lt"
+    "&mmv MOVE_RIGHT_FAST": "M Rt"
+    "&mmv MOVE_UP_SLOW": "Sl Up"
+    "&mmv MOVE_DOWN_SLOW": "Sl Dn"
+    "&mmv MOVE_LEFT_SLOW": "Sl Lt"
+    "&mmv MOVE_RIGHT_SLOW": "Sl Rt"
+    "&msc SCRL_UP": "Scrl U"
+    "&msc SCRL_DOWN": "Scrl D"
+    "&mkp LCLK": "LClk"
+    "&mkp RCLK": "RClk"
+    "&mkp MCLK": "MClk"
+    "&td_mouse": {t: "Mouse", s: "Lock"}
     "&td_lower": {t: "Spc", h: "Lower"}
     "&td_raise": {t: "Spc", h: "Raise"}
     "&hyper_tap": "Hyp+"

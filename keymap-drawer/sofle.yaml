@@ -97,7 +97,7 @@ layers:
   - {t: A, h: Opt}
   - {t: E, h: Ctl}
   - {t: I, h: Sft}
-  - EXCL
+  - {t: EXCL, h: nav}
   - {t: ▽, type: trans}
   - Q
   - {t: ▽, type: trans}

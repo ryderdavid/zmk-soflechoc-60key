@@ -1325,7 +1325,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(896, 168)" class="key keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">;</text>
+<text x="0" y="0" class="key tap">EXCL</text>
 <a href="#nav">
 <text x="0" y="24" class="key hold layer-activator">nav</text>
 </a></g>
@@ -1371,7 +1371,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(728, 196)" class="key keypos-46">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">&#x27;</text>
+<text x="0" y="0" class="key tap">COMMA</text>
 </g>
 <g transform="translate(784, 203)" class="key keypos-47">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1379,7 +1379,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(840, 217)" class="key keypos-48">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">COMMA</text>
+<text x="0" y="0" class="key tap">&#x27;</text>
 </g>
 <g transform="translate(896, 224)" class="key trans keypos-49">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>

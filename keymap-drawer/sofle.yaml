@@ -58,7 +58,7 @@ layers:
   - {t: ENTER, h: nav}
   - {t: SPACE, h: nav}
   - {t: SPACE, h: symbols}
-  - {t: ENTER, h: Cmd}
+  - Cmd
   - Opt
   - {t: ENTER, h: fkeys}
   gallium:
@@ -84,7 +84,7 @@ layers:
   - Y
   - O
   - U
-  - COMMA
+  - ;
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: N, h: Sft}
@@ -97,7 +97,7 @@ layers:
   - {t: A, h: Opt}
   - {t: E, h: Ctl}
   - {t: I, h: Sft}
-  - {t: ;, h: nav}
+  - EXCL
   - {t: ▽, type: trans}
   - Q
   - {t: ▽, type: trans}
@@ -108,9 +108,9 @@ layers:
   - {t: ▽, type: trans}
   - K
   - F
-  - ''''
-  - /
+  - COMMA
   - DOT
+  - ''''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}

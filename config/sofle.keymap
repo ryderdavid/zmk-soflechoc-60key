@@ -377,7 +377,7 @@
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml_g LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr_g RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
 &kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &td_mouse       &hyper_f        &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &htk LCTRL LS(LC(LA(LG(Z))))  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &htk RGUI ENTER  &kp RALT     &lts FKEYS ENTER
+               &htk LCTRL LS(LC(LA(LG(Z))))  &kp LALT  &kp LGUI  &hts SYMBOLS SYMBOLS  &lts NAV ENTER                           &lts NAV SPACE      &lts SYMBOLS SPACE  &kp RGUI         &kp RALT     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -395,9 +395,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp COMMA           &trans
-&trans         &hml LSHFT N    &hml LCTRL R    &hml LALT T     &hml_g LGUI S     &trans                                          &kp P               &hmr_g RGUI H     &hmr RALT A     &hmr RCTRL E    &hmr RSHFT I        &lts NAV SEMI
-&trans         &kp Q           &trans          &kp M           &kp W           &kp Z           &trans          &trans          &kp K               &kp F           &kp SQT         &kp FSLH        &kp DOT             &trans
+&trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp SEMI            &trans
+&trans         &hml LSHFT N    &hml LCTRL R    &hml LALT T     &hml_g LGUI S     &trans                                          &kp P               &hmr_g RGUI H     &hmr RALT A     &hmr RCTRL E    &hmr RSHFT I        &lts NAV EXCL
+&trans         &kp Q           &trans          &kp M           &kp W           &kp Z           &trans          &trans          &kp K               &kp F           &kp COMMA       &kp DOT         &kp SQT             &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

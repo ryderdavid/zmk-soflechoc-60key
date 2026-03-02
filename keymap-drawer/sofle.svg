@@ -321,15 +321,16 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(308, 210)" class="key keypos-41">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">B</text>
-</g>
+<a href="#mouse">
+<text x="0" y="24" class="key hold layer-activator">mouse</text>
+</a></g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Mouse</text>
-<text x="0" y="-24" class="key shifted">Lock</text>
+<text x="0" y="0" class="key tap">Del</text>
 </g>
 <g transform="translate(560, 210)" class="key keypos-43">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Hyp+F</text>
+<text x="0" y="0" class="key tap">Bspc</text>
 </g>
 <g transform="translate(616, 210)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -363,17 +364,18 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(196, 259)" class="key keypos-51">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Opt</text>
+<text x="0" y="0" class="key tap">Hyper+B</text>
+<text x="0" y="24" class="key hold">Opt</text>
 </g>
 <g transform="translate(252, 259)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Cmd</text>
+<text x="0" y="0" class="key tap">Hyper+A</text>
+<text x="0" y="24" class="key hold">Cmd</text>
 </g>
 <g transform="translate(308, 266)" class="key keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">ENTER</text>
 <a href="#symbols">
-<text x="0" y="0" class="key tap layer-activator">symbols</text>
-</a><a href="#symbols">
 <text x="0" y="24" class="key hold layer-activator">symbols</text>
 </a></g>
 <g transform="translate(364, 280)" class="key keypos-54">
@@ -396,11 +398,13 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </a></g>
 <g transform="translate(672, 259)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Cmd</text>
+<text x="0" y="0" class="key tap">Hyper+X</text>
+<text x="0" y="24" class="key hold">Cmd</text>
 </g>
 <g transform="translate(728, 259)" class="key keypos-58">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Opt</text>
+<text x="0" y="0" class="key tap">Hyper+Y</text>
+<text x="0" y="24" class="key hold">Opt</text>
 </g>
 <g transform="translate(784, 259)" class="key keypos-59">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -1084,69 +1088,61 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="495" y="222" class="combo tap"><tspan style="font-size: 88%">&amp;wm_come</tspan></text>
 </g>
 <g class="combo combopos-98">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-99">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-100">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-101">
+<g class="combo combopos-99">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-102">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-103">
+<g class="combo combopos-100">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-104">
+<g class="combo combopos-101">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-105">
+<g class="combo combopos-102">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-106">
+<g class="combo combopos-103">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-107">
+<g class="combo combopos-104">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-108">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
+<g class="combo combopos-105">
+<path d="M112,154 l20,-46" class="combo"/>
+<path d="M112,154 l-20,46" class="combo"/>
+<rect rx="6" ry="6" x="98" y="141" width="28" height="26" class="combo"/>
 <a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
+<text x="112" y="154" class="combo tap layer-activator">mouse</text>
+</a><text x="112" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-109">
+<g class="combo combopos-106">
+<rect rx="6" ry="6" x="322" y="197" width="28" height="26" class="combo"/>
+<text x="336" y="210" class="combo tap">B</text>
+</g>
+<g class="combo combopos-107">
+<rect rx="6" ry="6" x="574" y="197" width="28" height="26" class="combo"/>
+<text x="588" y="210" class="combo tap">N</text>
+</g>
+<g class="combo combopos-108">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -1154,7 +1150,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-110">
+<g class="combo combopos-109">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -1162,7 +1158,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-111">
+<g class="combo combopos-110">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -1352,7 +1348,9 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(308, 210)" class="key keypos-41">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Z</text>
-</g>
+<a href="#mouse">
+<text x="0" y="24" class="key hold layer-activator">mouse</text>
+</a></g>
 <g transform="translate(364, 210)" class="key trans keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
@@ -2112,69 +2110,61 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="355" y="184" class="combo tap"><tspan style="font-size: 88%">&amp;wm_come</tspan></text>
 </g>
 <g class="combo combopos-98">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-99">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-100">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-101">
+<g class="combo combopos-99">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-102">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-103">
+<g class="combo combopos-100">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-104">
+<g class="combo combopos-101">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-105">
+<g class="combo combopos-102">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-106">
+<g class="combo combopos-103">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-107">
+<g class="combo combopos-104">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-108">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
+<g class="combo combopos-105">
+<path d="M196,102 l93,-3" class="combo"/>
+<path d="M196,102 l-93,3" class="combo"/>
+<rect rx="6" ry="6" x="182" y="88" width="28" height="26" class="combo"/>
 <a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
+<text x="196" y="102" class="combo tap layer-activator">mouse</text>
+</a><text x="196" y="112" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-109">
+<g class="combo combopos-106">
+<rect rx="6" ry="6" x="322" y="197" width="28" height="26" class="combo"/>
+<text x="336" y="210" class="combo tap">Z</text>
+</g>
+<g class="combo combopos-107">
+<rect rx="6" ry="6" x="574" y="197" width="28" height="26" class="combo"/>
+<text x="588" y="210" class="combo tap">K</text>
+</g>
+<g class="combo combopos-108">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -2182,7 +2172,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-110">
+<g class="combo combopos-109">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -2190,7 +2180,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-111">
+<g class="combo combopos-110">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -2443,69 +2433,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -2513,7 +2479,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -2521,7 +2487,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -2795,69 +2761,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -2865,7 +2807,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -2873,7 +2815,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -3126,69 +3068,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -3196,7 +3114,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -3204,7 +3122,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -3420,69 +3338,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -3490,7 +3384,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -3498,7 +3392,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -3716,69 +3610,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -3786,7 +3656,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -3794,7 +3664,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -4047,69 +3917,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -4117,7 +3963,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -4125,7 +3971,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -4285,8 +4131,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(252, 203)" class="key keypos-40">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(308, 210)" class="key keypos-41">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<g transform="translate(308, 210)" class="key held keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 </g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -4355,69 +4201,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -4425,7 +4247,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -4433,7 +4255,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -4591,8 +4413,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <g transform="translate(252, 203)" class="key keypos-40">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
-<g transform="translate(308, 210)" class="key keypos-41">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<g transform="translate(308, 210)" class="key held keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 </g>
 <g transform="translate(364, 210)" class="key keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -4654,69 +4476,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -4724,7 +4522,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -4732,7 +4530,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -4960,7 +4758,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(252, 259)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctl</text>
+<text x="0" y="0" class="key tap">Hyper+A</text>
+<text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(308, 266)" class="key trans keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -4980,7 +4779,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(672, 259)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">ENTER</text>
+<text x="0" y="0" class="key tap">Hyper+X</text>
 <text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(728, 259)" class="key trans keypos-58">
@@ -4992,69 +4791,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -5062,7 +4837,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -5070,7 +4845,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -5298,7 +5073,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(252, 259)" class="key keypos-52">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctl</text>
+<text x="0" y="0" class="key tap">Hyper+A</text>
+<text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(308, 266)" class="key trans keypos-53">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -5318,7 +5094,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 </g>
 <g transform="translate(672, 259)" class="key keypos-57">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">ENTER</text>
+<text x="0" y="0" class="key tap">Hyper+X</text>
 <text x="0" y="24" class="key hold">Ctl</text>
 </g>
 <g transform="translate(728, 259)" class="key trans keypos-58">
@@ -5330,69 +5106,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -5400,7 +5152,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -5408,7 +5160,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>
@@ -5589,9 +5341,8 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
-<g transform="translate(308, 210)" class="key trans keypos-41">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(308, 210)" class="key held keypos-41">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key held"/>
 </g>
 <g transform="translate(364, 210)" class="key trans keypos-42">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -5666,69 +5417,45 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g class="combo combopos-0">
-<path d="M700,105 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
-<path d="M700,105 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
-<rect rx="6" ry="6" x="686" y="92" width="28" height="26" class="combo"/>
-<text x="700" y="105" class="combo tap">Bspc</text>
-</g>
-<g class="combo combopos-1">
-<path d="M490,182 h-288 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<path d="M490,182 h288 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<rect rx="6" ry="6" x="476" y="169" width="28" height="26" class="combo"/>
-<text x="490" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-2">
 <path d="M196,126 h-106 a6.0,6.0 0 0 0 -6.0,6.0 v10" class="combo"/>
 <path d="M196,126 h106 a6.0,6.0 0 0 1 6.0,6.0 v59" class="combo"/>
 <rect rx="6" ry="6" x="182" y="113" width="28" height="26" class="combo"/>
 <text x="196" y="126" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-3">
+<g class="combo combopos-1">
 <path d="M28,21 l0,16" class="combo"/>
 <path d="M28,21 l0,72" class="combo"/>
 <rect rx="6" ry="6" x="14" y="8" width="28" height="26" class="combo"/>
 <text x="28" y="21" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-4">
-<path d="M224,182 h22 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
-<path d="M224,182 h-22 a6.0,6.0 0 0 1 -6.0,-6.0 v-17" class="combo"/>
-<rect rx="6" ry="6" x="210" y="169" width="28" height="26" class="combo"/>
-<text x="224" y="182" class="combo tap">Del</text>
-</g>
-<g class="combo combopos-5">
+<g class="combo combopos-2">
 <path d="M462,259 h-428 a6.0,6.0 0 0 1 -6.0,-6.0 v-10" class="combo"/>
 <path d="M462,259 h428 a6.0,6.0 0 0 0 6.0,-6.0 v-10" class="combo"/>
 <rect rx="6" ry="6" x="448" y="246" width="28" height="26" class="combo"/>
 <text x="462" y="259" class="combo tap">CapsWd</text>
 <text x="462" y="248" class="combo shifted">CapsLk</text>
 </g>
-<g class="combo combopos-6">
+<g class="combo combopos-3">
 <path d="M56,14 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v17" class="combo"/>
 <path d="M56,14 h22 a6.0,6.0 0 0 1 6.0,6.0 v10" class="combo"/>
 <rect rx="6" ry="6" x="42" y="1" width="28" height="26" class="combo"/>
 <text x="56" y="14" class="combo tap">Esc</text>
 </g>
-<g class="combo combopos-7">
+<g class="combo combopos-4">
 <path d="M462,280 l-79,0" class="combo"/>
 <path d="M462,280 l79,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="267" width="28" height="26" class="combo"/>
 <text x="462" y="280" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-8">
+<g class="combo combopos-5">
 <rect rx="6" ry="6" x="266" y="250" width="28" height="26" class="combo"/>
 <text x="280" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-9">
+<g class="combo combopos-6">
 <rect rx="6" ry="6" x="630" y="250" width="28" height="26" class="combo"/>
 <text x="644" y="262" class="combo tap">SPACE</text>
 </g>
-<g class="combo combopos-10">
-<rect rx="6" ry="6" x="294" y="57" width="28" height="26" class="combo"/>
-<a href="#mouse">
-<text x="308" y="70" class="combo tap layer-activator">mouse</text>
-</a><text x="308" y="81" class="combo hold">toggle</text>
-</g>
-<g class="combo combopos-11">
+<g class="combo combopos-7">
 <path d="M812,210 l-66,-11" class="combo"/>
 <path d="M812,210 l66,11" class="combo"/>
 <rect rx="6" ry="6" x="798" y="197" width="28" height="26" class="combo"/>
@@ -5736,7 +5463,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="812" y="210" class="combo tap layer-activator">gallium</text>
 </a><text x="812" y="221" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-12">
+<g class="combo combopos-8">
 <path d="M462,154 l-135,0" class="combo"/>
 <path d="M462,154 l135,0" class="combo"/>
 <rect rx="6" ry="6" x="448" y="141" width="28" height="26" class="combo"/>
@@ -5744,7 +5471,7 @@ rect.key { filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.2)); }</style>
 <text x="462" y="154" class="combo tap layer-activator">numbers</text>
 </a><text x="462" y="165" class="combo hold">toggle</text>
 </g>
-<g class="combo combopos-13">
+<g class="combo combopos-9">
 <path d="M112,210 l-66,11" class="combo"/>
 <path d="M112,210 l66,-11" class="combo"/>
 <rect rx="6" ry="6" x="98" y="197" width="28" height="26" class="combo"/>

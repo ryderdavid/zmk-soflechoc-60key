@@ -14,8 +14,11 @@ zephyr_library_include_directories(${CMAKE_SOURCE_DIR}/include)
 zephyr_library_sources(custom_status_screen.c)
 zephyr_library_sources(mod_status.c)
 
-# Custom 1-bpp font with Mac modifier symbols (⇧ ⌃ ⌥ ⌘)
+# Custom 1-bpp fonts with Mac modifier symbols (⇧ ⌃ ⌥ ⌘) at four sizes
 zephyr_library_sources(mac_symbols_14.c)
+zephyr_library_sources(mac_symbols_22.c)
+zephyr_library_sources(mac_symbols_32.c)
+zephyr_library_sources(mac_symbols_48.c)
 
 # Re-compile the nice!view widget sources that we gate off via
 # CONFIG_NICE_VIEW_WIDGET_STATUS=n (to prevent duplicate symbols).

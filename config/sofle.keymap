@@ -48,19 +48,19 @@
 #define WINMODE_GALLIUM 11
 #define WINMODE_MOUSE   12
 
-// Mouse movement (130% of ZMK default 600 = 780)
+// Mouse movement (195% of ZMK default 600 = 1170)
 // KEYMAP_DRAWER defines simple integers in its preamble (bitwise & breaks DTS parser)
 #ifndef KEYMAP_DRAWER
-#define MOVE_UP_FAST    ((-780) & 0xFFFF)
-#define MOVE_DOWN_FAST  ((780) & 0xFFFF)
-#define MOVE_LEFT_FAST  (((-780) & 0xFFFF) << 16)
-#define MOVE_RIGHT_FAST (((780) & 0xFFFF) << 16)
+#define MOVE_UP_FAST    ((-1170) & 0xFFFF)
+#define MOVE_DOWN_FAST  ((1170) & 0xFFFF)
+#define MOVE_LEFT_FAST  (((-1170) & 0xFFFF) << 16)
+#define MOVE_RIGHT_FAST (((1170) & 0xFFFF) << 16)
 
-// Precision mouse movement (1/4 of fast speed)
-#define MOVE_UP_SLOW    ((-260) & 0xFFFF)
-#define MOVE_DOWN_SLOW  ((260) & 0xFFFF)
-#define MOVE_LEFT_SLOW  (((-260) & 0xFFFF) << 16)
-#define MOVE_RIGHT_SLOW (((260) & 0xFFFF) << 16)
+// Precision mouse movement (1/3 of fast speed)
+#define MOVE_UP_SLOW    ((-390) & 0xFFFF)
+#define MOVE_DOWN_SLOW  ((390) & 0xFFFF)
+#define MOVE_LEFT_SLOW  (((-390) & 0xFFFF) << 16)
+#define MOVE_RIGHT_SLOW (((390) & 0xFFFF) << 16)
 #endif
 
 / {
@@ -222,6 +222,22 @@
                 , <&macro_release &kp RSHFT &kp RCTRL &kp RALT>
                 ;
         };
+
+        arrow_right: arrow_right {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp MINUS &kp GT>;
+        };
+
+        arrow_left: arrow_left {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp LT &kp MINUS>;
+        };
     };
 
     behaviors {
@@ -311,14 +327,13 @@
             bindings = <&mo>, <&sl>;
         };
 
-        // Right middle thumb (57): Enter only when pressed alone; suppress if B,N,M,comma or adjacent thumbs (56,58) are held (mash protection)
+        // Right middle thumb (57): Tap=Enter, Hold=Cmd (balanced: Enter fires only on clean tap-release)
         enter_mash_proof: enter_mash_proof {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             tapping-term-ms = <200>;
-            hold-trigger-key-positions = <44 45 46 47 56 58>;
-            bindings = <&mo>, <&kp>;
+            bindings = <&kp>, <&kp>;
         };
 
         td_caps: tap_dance_caps {
@@ -326,6 +341,13 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&caps>, <&kp CLCK>;
+        };
+
+        td_shift: tap_dance_shift {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sk LSHFT>, <&caps>, <&kp CLCK>;
         };
 
         td_cmd: tap_dance_cmd {
@@ -388,8 +410,8 @@
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml_g LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr_g RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
-&kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &lts MOUSE B    &kp DELETE      &kp BACKSPACE   &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                           &lts SYMBOLS SPACE  &lts NAV SPACE      &enter_mash_proof 0 ENTER  &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
+&td_shift      &kp Z           &kp X           &kp C           &kp V           &lts MOUSE B    &kp DELETE      &kp BACKSPACE   &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
+               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                           &lts SYMBOLS SPACE  &lts NAV SPACE      &enter_mash_proof RGUI ENTER  &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -410,7 +432,7 @@
 &trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp SEMI            &trans
 &trans         &hml LSHFT N    &hml LCTRL R    &hml LALT T     &hml_g LGUI S     &trans                                          &kp P               &hmr_g RGUI H     &hmr RALT A     &hmr RCTRL E    &hmr RSHFT I        &lts NAV EXCL
 &trans         &kp Q           &trans          &kp M           &kp W           &lts MOUSE Z    &trans          &trans          &kp K               &kp F           &kp COMMA       &kp DOT         &kp SQT             &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof 0 ENTER  &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -453,7 +475,7 @@
 &trans         &kp LG(LS(N1))     &kp LG(LS(N2))     &kp LG(LS(N3))     &kp LG(LS(N4))     &kp LG(LS(N5))                                  &none           &kp PG_UP       &kp UP          &kp PG_DN       &none           &trans
 &trans         &kp LG(LS(N6))     &kp LG(LS(N7))     &kp LG(LS(N8))     &kp LG(LS(N9))     &kp LG(LS(N0))                                  &kp HOME        &kp LEFT        &kp DOWN        &kp RIGHT       &none           &trans
 &trans         &kp LG(Z)          &kp LG(X)          &kp LG(C)          &kp LG(V)          &none           &trans          &trans          &kp END         &msc SCRL_UP    &none           &msc SCRL_DOWN  &none           &none
-               &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &enter_mash_proof 0 ENTER  &trans          &trans
+               &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -473,8 +495,8 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LT              &kp LBRC        &kp LBKT        &kp LPAR        &kp EQUAL           &kp MINUS
 &trans         &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR                                        &kp GT              &kp RBRC        &kp RBKT        &kp RPAR        &kp PIPE            &trans
-&trans         &kp TILDE       &kp GRAVE       &kp DOT         &kp COMMA       &kp FSLH        &trans          &trans          &kp PLUS            &kp COLON       &kp SEMI        &kp DQT         &kp SQT             &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof 0 ENTER  &trans          &trans
+&trans         &kp TILDE       &kp GRAVE       &kp DOT         &kp COMMA       &kp FSLH        &trans          &trans          &kp PLUS            &kp COLON       &arrow_left     &arrow_right    &kp SQT             &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -491,8 +513,8 @@
 &none          &none           &none           &none           &none           &none                                           &kp EQUAL           &none           &none           &none           &none               &trans
 &none          &none           &none           &none           &none           &studio_unlock                                  &kp MINUS           &kp N7          &kp N8          &kp N9          &none               &none
 &none          &none           &none           &none           &none           &none                                           &kp ASTRK           &kp N4          &kp N5          &kp N6          &none               &none
-&none          &none           &none           &none           &none           &caps_word      &td_numlk       &none           &kp FSLH            &kp N1          &kp N2          &kp N3          &none               &none
-               &none           &none           &none           &none           &none                                           &lts NAV TAB        &kp DOT         &enter_mash_proof 0 ENTER  &kp N0           &none
+&td_shift      &none           &none           &none           &none           &caps_word      &td_numlk       &none           &kp FSLH            &kp N1          &kp N2          &kp N3          &none               &none
+               &none           &none           &none           &none           &none                                           &lts NAV TAB        &kp DOT         &enter_mash_proof RGUI ENTER  &kp N0           &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -511,8 +533,8 @@
 &bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &none               &none           &none           &none           &none               &none
 &ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
 &none          &none           &none           &none           &none           &tog GALLIUM                                    &none               &tog MOUSE      &none           &none           &none               &none
-&none          &none           &none           &none           &none           &caps_word      &none           &none           &none               &none           &none           &none           &none               &none
-               &none           &none           &none           &none           &none                                           &none               &none           &enter_mash_proof 0 ENTER  &none           &none
+&td_shift      &none           &none           &none           &none           &caps_word      &none           &none           &none               &none           &none           &none           &none               &none
+               &none           &none           &none           &none           &none                                           &none               &none           &enter_mash_proof RGUI ENTER  &none           &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -530,7 +552,7 @@
 &trans         &kp F6          &kp F7          &kp F8          &kp F9          &kp F10                                         &trans              &trans          &trans          &trans          &trans              &kp C_MUTE
 &trans         &kp F11         &kp F12         &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_UP
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_DN
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof 0 ENTER  &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -551,8 +573,8 @@
 &none          &none           &none           &none           &none           &none                                           &none               &none               &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
 &none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
-&none          &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &enter_mash_proof 0 ENTER  &mkp MCLK            &none
+&td_shift      &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
+               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &enter_mash_proof RGUI ENTER  &mkp MCLK            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -569,8 +591,8 @@
 &none          &none           &none           &none           &none           &none                                           &none               &none                &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP              &mmv MOVE_UP_SLOW    &msc SCRL_DOWN            &none          &none
 &none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
-&none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &enter_mash_proof 0 ENTER  &mkp MCLK            &none
+&td_shift      &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
+               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &enter_mash_proof RGUI ENTER  &mkp MCLK            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -593,7 +615,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml_g LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr_g RGUI L     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof 0 ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof RGUI ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -614,7 +636,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml_g LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr_g RGUI E     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof 0 ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof RGUI ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -637,7 +659,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &trans                   &trans                    &trans         &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &mmv MOVE_LEFT_FAST      &trans                   &mmv MOVE_RIGHT_FAST      &trans         &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans                   &trans                   &trans                    &trans         &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &enter_mash_proof 0 ENTER  &trans                    &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &enter_mash_proof RGUI ENTER  &trans                    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

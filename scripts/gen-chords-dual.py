@@ -104,13 +104,27 @@ CHORDS = [
     ("know",  ["k", "n"]),
     ("take",  ["t", "k"]),
     ("come",  ["c", "m"]),
+    ("can",   ["c", "a"]),
+    ("has",   ["h", "a"]),
+    ("any",   ["n", "y"]),
+    ("those", ["t", "h", "o"]),
+    ("why",   ["w", "y"]),
+    ("when",  ["w", "n"]),
+    ("won't", ["w", "t"]),
+    ("could", ["c", "d"]),
+    ("should",["s", "d"]),
+    ("might", ["m", "h"]),
+    ("can't", ["c", "n"]),
+    ("yes",   ["y", "h"]),
+    ("no",    ["n", "q"]),
 ]
 
 
 # ── Code generation ──────────────────────────────────────────────────
 def zmk_keys(word: str) -> str:
     """Convert a word to ZMK &kp bindings."""
-    return " ".join(f"&kp {ch.upper()}" for ch in word)
+    mapping = {"'": "SQT"}
+    return " ".join(f"&kp {mapping.get(ch, ch.upper())}" for ch in word)
 
 
 def gen_macro(name: str, word: str) -> str:
@@ -126,7 +140,7 @@ def gen_macro(name: str, word: str) -> str:
 
 
 def gen_combo(name: str, positions: list[int], space_pos: int,
-              suffix: str, layer: int) -> str:
+              suffix: str, layer: str) -> str:
     all_pos = sorted(positions + [space_pos])
     pos_str = " ".join(str(p) for p in all_pos)
     return (
@@ -160,9 +174,9 @@ def generate_dtsi() -> str:
                 )
                 continue
             seen_positions[pos_key] = (word, sfx)
-            combos.append(gen_combo(name, q_positions, space_pos, sfx, 0))
+            combos.append(gen_combo(name, q_positions, space_pos, sfx, "0 10"))
 
-        # Gallium v1 combos (layer 1)
+        # Gallium v1 combos (layer 1 + winmode_gallium 11)
         g_positions = [GALLIUM_V1_POS[k] for k in keys]
         for space_pos, sfx in [(SPACE_L, "gl"), (SPACE_R, "gr")]:
             pos_key = f"g:{tuple(sorted(g_positions + [space_pos]))}"
@@ -173,7 +187,7 @@ def generate_dtsi() -> str:
                 )
                 continue
             seen_positions[pos_key] = (word, sfx)
-            combos.append(gen_combo(name, g_positions, space_pos, sfx, 1))
+            combos.append(gen_combo(name, g_positions, space_pos, sfx, "1 11"))
 
     if skipped:
         print("Position conflicts (first definition wins):", file=sys.stderr)
@@ -209,7 +223,7 @@ def main():
         print(f"\n// {macro_count} macros, {combo_count} combos", file=sys.stderr)
         return
 
-    out = Path(__file__).resolve().parent.parent / "profiles" / "corne-canon-chords.dtsi"
+    out = Path(__file__).resolve().parent.parent / "config" / "corne-canon-chords.dtsi"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(dtsi)
 

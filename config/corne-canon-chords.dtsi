@@ -402,6 +402,110 @@
             tap-ms = <0>;
             bindings = <&kp C &kp O &kp M &kp E &kp SPACE>;
         };
+
+        wm_can: wm_can {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp A &kp N &kp SPACE>;
+        };
+
+        wm_has: wm_has {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp H &kp A &kp S &kp SPACE>;
+        };
+
+        wm_any: wm_any {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp A &kp N &kp Y &kp SPACE>;
+        };
+
+        wm_those: wm_those {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp H &kp O &kp S &kp E &kp SPACE>;
+        };
+
+        wm_why: wm_why {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp H &kp Y &kp SPACE>;
+        };
+
+        wm_when: wm_when {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp H &kp E &kp N &kp SPACE>;
+        };
+
+        wm_won_t: wm_won_t {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp O &kp N &kp SQT &kp T &kp SPACE>;
+        };
+
+        wm_could: wm_could {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp O &kp U &kp L &kp D &kp SPACE>;
+        };
+
+        wm_should: wm_should {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp H &kp O &kp U &kp L &kp D &kp SPACE>;
+        };
+
+        wm_might: wm_might {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp M &kp I &kp G &kp H &kp T &kp SPACE>;
+        };
+
+        wm_can_t: wm_can_t {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp A &kp N &kp SQT &kp T &kp SPACE>;
+        };
+
+        wm_yes: wm_yes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp Y &kp E &kp S &kp SPACE>;
+        };
+
+        wm_no: wm_no {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp N &kp O &kp SPACE>;
+        };
     };
 
     combos {
@@ -1775,6 +1879,370 @@
         chord_come_gr {
             bindings = <&wm_come>;
             key-positions = <16 39 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_can_ql {
+            bindings = <&wm_can>;
+            key-positions = <25 39 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_can_qr {
+            bindings = <&wm_can>;
+            key-positions = <25 39 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_can_gl {
+            bindings = <&wm_can>;
+            key-positions = <16 32 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_can_gr {
+            bindings = <&wm_can>;
+            key-positions = <16 32 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_has_ql {
+            bindings = <&wm_has>;
+            key-positions = <25 30 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_has_qr {
+            bindings = <&wm_has>;
+            key-positions = <25 30 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_has_gl {
+            bindings = <&wm_has>;
+            key-positions = <31 32 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_has_gr {
+            bindings = <&wm_has>;
+            key-positions = <31 32 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_any_ql {
+            bindings = <&wm_any>;
+            key-positions = <18 44 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_any_qr {
+            bindings = <&wm_any>;
+            key-positions = <18 44 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_any_gl {
+            bindings = <&wm_any>;
+            key-positions = <19 25 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_any_gr {
+            bindings = <&wm_any>;
+            key-positions = <19 25 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_those_ql {
+            bindings = <&wm_those>;
+            key-positions = <17 21 30 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_those_qr {
+            bindings = <&wm_those>;
+            key-positions = <17 21 30 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_those_gl {
+            bindings = <&wm_those>;
+            key-positions = <20 27 31 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_those_gr {
+            bindings = <&wm_those>;
+            key-positions = <20 27 31 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_why_ql {
+            bindings = <&wm_why>;
+            key-positions = <14 18 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_why_qr {
+            bindings = <&wm_why>;
+            key-positions = <14 18 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_why_gl {
+            bindings = <&wm_why>;
+            key-positions = <19 40 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_why_gr {
+            bindings = <&wm_why>;
+            key-positions = <19 40 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_when_ql {
+            bindings = <&wm_when>;
+            key-positions = <14 44 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_when_qr {
+            bindings = <&wm_when>;
+            key-positions = <14 44 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_when_gl {
+            bindings = <&wm_when>;
+            key-positions = <25 40 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_when_gr {
+            bindings = <&wm_when>;
+            key-positions = <25 40 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_won_t_ql {
+            bindings = <&wm_won_t>;
+            key-positions = <14 17 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_won_t_qr {
+            bindings = <&wm_won_t>;
+            key-positions = <14 17 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_won_t_gl {
+            bindings = <&wm_won_t>;
+            key-positions = <27 40 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_won_t_gr {
+            bindings = <&wm_won_t>;
+            key-positions = <27 40 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_could_ql {
+            bindings = <&wm_could>;
+            key-positions = <27 39 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_could_qr {
+            bindings = <&wm_could>;
+            key-positions = <27 39 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_could_gl {
+            bindings = <&wm_could>;
+            key-positions = <15 16 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_could_gr {
+            bindings = <&wm_could>;
+            key-positions = <15 16 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_should_ql {
+            bindings = <&wm_should>;
+            key-positions = <26 27 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_should_qr {
+            bindings = <&wm_should>;
+            key-positions = <26 27 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_should_gl {
+            bindings = <&wm_should>;
+            key-positions = <15 28 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_should_gr {
+            bindings = <&wm_should>;
+            key-positions = <15 28 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_might_ql {
+            bindings = <&wm_might>;
+            key-positions = <30 45 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_might_qr {
+            bindings = <&wm_might>;
+            key-positions = <30 45 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_might_gl {
+            bindings = <&wm_might>;
+            key-positions = <31 39 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_might_gr {
+            bindings = <&wm_might>;
+            key-positions = <31 39 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_can_t_ql {
+            bindings = <&wm_can_t>;
+            key-positions = <39 44 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_can_t_qr {
+            bindings = <&wm_can_t>;
+            key-positions = <39 44 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_can_t_gl {
+            bindings = <&wm_can_t>;
+            key-positions = <16 25 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_can_t_gr {
+            bindings = <&wm_can_t>;
+            key-positions = <16 25 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_yes_ql {
+            bindings = <&wm_yes>;
+            key-positions = <18 30 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_yes_qr {
+            bindings = <&wm_yes>;
+            key-positions = <18 30 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_yes_gl {
+            bindings = <&wm_yes>;
+            key-positions = <19 31 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_yes_gr {
+            bindings = <&wm_yes>;
+            key-positions = <19 31 56>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_no_ql {
+            bindings = <&wm_no>;
+            key-positions = <13 44 55>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_no_qr {
+            bindings = <&wm_no>;
+            key-positions = <13 44 56>;
+            timeout-ms = <50>;
+            layers = <0 10>;
+        };
+
+        chord_no_gl {
+            bindings = <&wm_no>;
+            key-positions = <25 37 55>;
+            timeout-ms = <50>;
+            layers = <1 11>;
+        };
+
+        chord_no_gr {
+            bindings = <&wm_no>;
+            key-positions = <25 37 56>;
             timeout-ms = <50>;
             layers = <1 11>;
         };

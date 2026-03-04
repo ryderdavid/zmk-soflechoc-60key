@@ -354,7 +354,7 @@
         td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&kp LSHFT>, <&tog CAPS_DISPLAY>;
         };
 
@@ -433,7 +433,7 @@
         // └──────────────────────────────────────────────────────────────────────┘
 
         gallium_layer {
-            display-name = "gallium";
+            display-name = "gal";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
@@ -616,14 +616,14 @@
         // └──────────────────────────────────────────────────────────────────────┘
 
         winmode_layer {
-            display-name = "windows";
+            display-name = "win";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml_g LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr_g RGUI L     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof RGUI ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -644,7 +644,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &hml_g LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr_g RGUI E     &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &trans          &trans                                        &trans              &trans          &enter_mash_proof RGUI ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

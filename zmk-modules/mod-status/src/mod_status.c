@@ -4,7 +4,8 @@
  *
  * nice!view modifier-key indicator widget.
  *
- * Shows Mac modifier symbols (⇧⌃⌥⌘) when modifiers are held.
+ * Shows modifier glyphs when modifiers are held.
+ * Mac mode: ⇧⌃⌥⌘ symbols.  Windows mode (layers 10-12): ⇧ CTL ALT ⊞.
  * Caps toggle indicator is handled by the layer name in status.c
  * (lowercase → UPPERCASE when CAPS_DISPLAY layer is active).
  *
@@ -24,8 +25,15 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/display.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/keycode_state_changed.h>
+#include <zmk/events/layer_state_changed.h>
 #include <zmk/hid.h>
+#include <zmk/keymap.h>
 #include <dt-bindings/zmk/modifiers.h>
+
+/* Windows-mode layers (from sofle.keymap) */
+#define WINMODE_LAYER_IDX   10
+#define WINGAL_LAYER_IDX    11
+#define WINMSE_LAYER_IDX    12
 
 /* util.h from the nice!view widget directory (included via CMakeLists) */
 #include "util.h"
@@ -74,51 +82,145 @@ static const int16_t layout_w[4][4] = {
 
 struct mod_status_state {
     uint8_t mods;        /* zmk_mod_flags_t bitmask */
+    bool windows_mode;   /* true when any WINMODE layer is active */
 };
 
 /* ------------------------------------------------------------------ */
 /* Display update (runs in the LVGL work-queue context)               */
 /* ------------------------------------------------------------------ */
 
+/* Glyph rendering types for per-modifier drawing */
+enum glyph_type {
+    GLYPH_SYMBOL,   /* Mac symbol via mac_symbols font */
+    GLYPH_TEXT,      /* Text label via Montserrat font */
+    GLYPH_WINLOGO,   /* Windows logo drawn programmatically */
+};
+
+struct glyph_entry {
+    enum glyph_type type;
+    const char *text;  /* symbol UTF-8 or text label (NULL for WINLOGO) */
+};
+
+/* Draw a Windows logo (2×2 grid of filled squares) centered in a cell */
+static void draw_win_logo(lv_obj_t *canvas, int16_t cx, int16_t cy,
+                           int16_t cw, int16_t ch) {
+    /* Logo occupies ~60% of the cell */
+    int16_t logo_size;
+    int16_t gap;
+
+    if (cw >= 60) {
+        logo_size = 40; gap = 4;
+    } else if (cw >= 30) {
+        logo_size = 20; gap = 2;
+    } else {
+        logo_size = 13; gap = 1;
+    }
+
+    int16_t pane = (logo_size - gap) / 2;
+    int16_t ox = cx + (cw - logo_size) / 2;
+    int16_t oy = cy + (ch - logo_size) / 2;
+
+    lv_draw_rect_dsc_t rect_dsc;
+    init_rect_dsc(&rect_dsc, LVGL_FOREGROUND);
+
+    /* Top-left */
+    canvas_draw_rect(canvas, ox, oy, pane, pane, &rect_dsc);
+    /* Top-right */
+    canvas_draw_rect(canvas, ox + pane + gap, oy, pane, pane, &rect_dsc);
+    /* Bottom-left */
+    canvas_draw_rect(canvas, ox, oy + pane + gap, pane, pane, &rect_dsc);
+    /* Bottom-right */
+    canvas_draw_rect(canvas, ox + pane + gap, oy + pane + gap, pane, pane, &rect_dsc);
+}
+
 static void set_mod_status(struct zmk_widget_mod_status *widget,
                            struct mod_status_state state) {
-    /* Build list of active symbols in SCAG order (max 4) */
-    const char *symbols[4];
+    /* Build list of active glyphs in SCAG order (max 4) */
+    struct glyph_entry entries[4];
     int n = 0;
-    if (state.mods & (MOD_LSFT | MOD_RSFT)) symbols[n++] = mod_sym_shift;
-    if (state.mods & (MOD_LCTL | MOD_RCTL)) symbols[n++] = mod_sym_ctrl;
-    if (state.mods & (MOD_LALT | MOD_RALT)) symbols[n++] = mod_sym_alt;
-    if (state.mods & (MOD_LGUI | MOD_RGUI)) symbols[n++] = mod_sym_gui;
+
+    if (state.mods & (MOD_LSFT | MOD_RSFT)) {
+        /* Shift symbol is universal */
+        entries[n++] = (struct glyph_entry){GLYPH_SYMBOL, mod_sym_shift};
+    }
+    if (state.mods & (MOD_LCTL | MOD_RCTL)) {
+        entries[n++] = state.windows_mode
+            ? (struct glyph_entry){GLYPH_TEXT, "CTL"}
+            : (struct glyph_entry){GLYPH_SYMBOL, mod_sym_ctrl};
+    }
+    if (state.mods & (MOD_LALT | MOD_RALT)) {
+        entries[n++] = state.windows_mode
+            ? (struct glyph_entry){GLYPH_TEXT, "ALT"}
+            : (struct glyph_entry){GLYPH_SYMBOL, mod_sym_alt};
+    }
+    if (state.mods & (MOD_LGUI | MOD_RGUI)) {
+        entries[n++] = state.windows_mode
+            ? (struct glyph_entry){GLYPH_WINLOGO, NULL}
+            : (struct glyph_entry){GLYPH_SYMBOL, mod_sym_gui};
+    }
 
     if (n == 0) {
         lv_obj_add_flag(widget->canvas, LV_OBJ_FLAG_HIDDEN);
         return;
     }
 
-    /* Choose font by count: 1=largest/centered, 2–4=smaller dice layout; 4 mods use 22px for legibility */
-    const lv_font_t *font;
+    /* Choose fonts by count */
+    const lv_font_t *sym_font;
+    const lv_font_t *txt_font;
     int idx = n - 1;
     switch (n) {
-        case 1: font = &mac_symbols_48; break;
-        case 2: font = &mac_symbols_32; break;
-        case 3: font = &mac_symbols_22; break;
-        default: font = &mac_symbols_22; break;  /* 4 mods: 22px (was 14) so not overly small */
+        case 1:
+            sym_font = &mac_symbols_48;
+            txt_font = &lv_font_montserrat_18;
+            break;
+        case 2:
+            sym_font = &mac_symbols_32;
+            txt_font = &lv_font_montserrat_16;
+            break;
+        default: /* 3 or 4 */
+            sym_font = &mac_symbols_22;
+            txt_font = &lv_font_montserrat_14;
+            break;
     }
 
     lv_canvas_fill_bg(widget->canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-
-    lv_draw_label_dsc_t label_dsc;
-    init_label_dsc(&label_dsc, LVGL_FOREGROUND, font, LV_TEXT_ALIGN_CENTER);
 
     for (int i = 0; i < n; i++) {
         int16_t cx = layout_x[idx][i];
         int16_t cy = layout_y[idx][i];
         int16_t cw = layout_w[idx][i];
-        /* Single mod: center the glyph vertically in the canvas; multiples use layout_y as-is */
-        if (n == 1) {
-            cy = (MOD_CANVAS_W - (int16_t)font->line_height) / 2;
+        int16_t ch = cw; /* cells are square */
+
+        switch (entries[i].type) {
+        case GLYPH_SYMBOL: {
+            lv_draw_label_dsc_t label_dsc;
+            init_label_dsc(&label_dsc, LVGL_FOREGROUND, sym_font, LV_TEXT_ALIGN_CENTER);
+            if (n == 1) {
+                cy = (MOD_CANVAS_W - (int16_t)sym_font->line_height) / 2;
+            }
+            canvas_draw_text(widget->canvas, cx, cy, cw, &label_dsc, entries[i].text);
+            break;
         }
-        canvas_draw_text(widget->canvas, cx, cy, cw, &label_dsc, symbols[i]);
+        case GLYPH_TEXT: {
+            lv_draw_label_dsc_t label_dsc;
+            init_label_dsc(&label_dsc, LVGL_FOREGROUND, txt_font, LV_TEXT_ALIGN_CENTER);
+            /* Center text vertically in cell */
+            int16_t text_y = cy + (ch - (int16_t)txt_font->line_height) / 2;
+            if (n == 1) {
+                text_y = (MOD_CANVAS_W - (int16_t)txt_font->line_height) / 2;
+            }
+            canvas_draw_text(widget->canvas, cx, text_y, cw, &label_dsc, entries[i].text);
+            break;
+        }
+        case GLYPH_WINLOGO: {
+            if (n == 1) {
+                cy = 0;
+                ch = MOD_CANVAS_W;
+            }
+            draw_win_logo(widget->canvas, cx, cy, cw, ch);
+            break;
+        }
+        }
     }
 
     rotate_canvas(widget->canvas);
@@ -140,6 +242,9 @@ static struct mod_status_state mod_status_get_state(const zmk_event_t *eh) {
     ARG_UNUSED(eh);
     return (struct mod_status_state){
         .mods = zmk_hid_get_explicit_mods(),
+        .windows_mode = zmk_keymap_layer_active(WINMODE_LAYER_IDX) ||
+                        zmk_keymap_layer_active(WINGAL_LAYER_IDX) ||
+                        zmk_keymap_layer_active(WINMSE_LAYER_IDX),
     };
 }
 
@@ -147,6 +252,7 @@ ZMK_DISPLAY_WIDGET_LISTENER(widget_mod_status, struct mod_status_state,
                              mod_status_update_cb, mod_status_get_state)
 
 ZMK_SUBSCRIPTION(widget_mod_status, zmk_keycode_state_changed);
+ZMK_SUBSCRIPTION(widget_mod_status, zmk_layer_state_changed);
 
 /* ------------------------------------------------------------------ */
 /* Public API                                                          */

@@ -49,6 +49,7 @@ struct output_status_state {
 struct layer_status_state {
     zmk_keymap_layer_index_t index;
     const char *label;
+    bool caps;
 };
 
 struct wpm_status_state {
@@ -318,13 +319,22 @@ static void draw_bottom(lv_obj_t *widget, const struct status_state *state) {
     // Fill background
     lv_canvas_fill_bg(canvas, LVGL_BACKGROUND, LV_OPA_COVER);
 
-    // Draw layer
+    // Draw layer (uppercase when caps is active)
     if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
         char text[10] = {};
 
         sprintf(text, "LAYER %i", state->layer_index);
 
         canvas_draw_text(canvas, 0, 5, 68, &label_dsc, text);
+    } else if (state->caps_active) {
+        char upper[16];
+        int i;
+        for (i = 0; i < (int)sizeof(upper) - 1 && state->layer_label[i]; i++) {
+            char c = state->layer_label[i];
+            upper[i] = (c >= 'a' && c <= 'z') ? c - 32 : c;
+        }
+        upper[i] = '\0';
+        canvas_draw_text(canvas, 0, 5, 68, &label_dsc, upper);
     } else {
         canvas_draw_text(canvas, 0, 5, 68, &label_dsc, state->layer_label);
     }
@@ -416,6 +426,7 @@ ZMK_SUBSCRIPTION(widget_output_status, zmk_ble_active_profile_changed);
 static void set_layer_status(struct zmk_widget_status *widget, struct layer_status_state state) {
     widget->state.layer_index = state.index;
     widget->state.layer_label = state.label;
+    widget->state.caps_active = state.caps;
 
     draw_bottom(widget->obj, &widget->state);
 }
@@ -425,10 +436,32 @@ static void layer_status_update_cb(struct layer_status_state state) {
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_layer_status(widget, state); }
 }
 
+/* Caps layer indices (must match keymap defines) */
+#define CAPS_DISPLAY_LAYER_IDX 13
+#define GALLIUM_CAPS_LAYER_IDX 14
+
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
+    bool caps = zmk_keymap_layer_active(CAPS_DISPLAY_LAYER_IDX) ||
+                zmk_keymap_layer_active(GALLIUM_CAPS_LAYER_IDX);
+
+    /* Find highest active layer, skipping the caps tracking layers */
     zmk_keymap_layer_index_t index = zmk_keymap_highest_layer_active();
+    while ((index == CAPS_DISPLAY_LAYER_IDX || index == GALLIUM_CAPS_LAYER_IDX) && index > 0) {
+        /* Walk down to find the real top layer */
+        for (int i = index - 1; i >= 0; i--) {
+            if (zmk_keymap_layer_active(i)) {
+                index = i;
+                break;
+            }
+        }
+        break;
+    }
+
     return (struct layer_status_state){
-        .index = index, .label = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(index))};
+        .index = index,
+        .label = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(index)),
+        .caps = caps,
+    };
 }
 
 ZMK_DISPLAY_WIDGET_LISTENER(widget_layer_status, struct layer_status_state, layer_status_update_cb,

@@ -2,16 +2,11 @@
  * Copyright (c) 2026 ryderdavid
  * SPDX-License-Identifier: MIT
  *
- * nice!view modifier-key + caps-toggle indicator widget.
+ * nice!view modifier-key indicator widget.
  *
- * Shows Mac modifier symbols (⇧⌃⌥⌘) when modifiers are held, and a ⇪
- * caps indicator when the CAPS_DISPLAY layer (13) is active.  The caps
- * toggle is board-internal (&kt LSHFT + &tog CAPS_DISPLAY) — no OS caps
- * lock is involved.
- *
- * Active modifiers are shown as Mac symbols (SCAG order):
- *   ⇧ = Shift   ⌃ = Ctrl   ⌥ = Alt/Opt   ⌘ = GUI/Cmd
- * Caps toggle is shown as ⇪ when the CAPS_DISPLAY layer is on.
+ * Shows Mac modifier symbols (⇧⌃⌥⌘) when modifiers are held.
+ * Caps toggle indicator is handled by the layer name in status.c
+ * (lowercase → UPPERCASE when CAPS_DISPLAY layer is active).
  *
  * Architecture note: this widget compiles ONLY on the central half
  * (left, the host-connected side).  The central is the only place where
@@ -29,9 +24,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/display.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/keycode_state_changed.h>
-#include <zmk/events/layer_state_changed.h>
 #include <zmk/hid.h>
-#include <zmk/keymap.h>
 #include <dt-bindings/zmk/modifiers.h>
 
 /* util.h from the nice!view widget directory (included via CMakeLists) */
@@ -49,15 +42,11 @@ static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 
 #define MOD_CANVAS_W 68
 
-/* Single-symbol UTF-8 (SCAG order): ⇧ ⌃ ⌥ ⌘ + ⇪ caps lock */
+/* Single-symbol UTF-8 (SCAG order): ⇧ ⌃ ⌥ ⌘ */
 static const char mod_sym_shift[] = "\xe2\x87\xa7";
 static const char mod_sym_ctrl[]  = "\xe2\x8c\x83";
 static const char mod_sym_alt[]   = "\xe2\x8c\xa5";
 static const char mod_sym_gui[]   = "\xe2\x8c\x98";
-static const char mod_sym_caps[]  = "\xe2\x87\xaa";  /* U+21EA ⇪ */
-
-/* Layer index for the transparent caps-tracking layer (must match keymap) */
-#define CAPS_DISPLAY_LAYER 13
 
 /* Per-cell rectangles (x, y, width): each glyph is drawn centered in its cell. */
 static const int16_t layout_x[4][4] = {
@@ -85,7 +74,6 @@ static const int16_t layout_w[4][4] = {
 
 struct mod_status_state {
     uint8_t mods;        /* zmk_mod_flags_t bitmask */
-    bool caps_active;    /* CAPS_DISPLAY layer is on (board-internal toggle) */
 };
 
 /* ------------------------------------------------------------------ */
@@ -94,20 +82,6 @@ struct mod_status_state {
 
 static void set_mod_status(struct zmk_widget_mod_status *widget,
                            struct mod_status_state state) {
-    /* Caps toggle takes priority — show ⇪ centered when active */
-    if (state.caps_active) {
-        lv_canvas_fill_bg(widget->canvas, LVGL_BACKGROUND, LV_OPA_COVER);
-
-        lv_draw_label_dsc_t label_dsc;
-        init_label_dsc(&label_dsc, LVGL_FOREGROUND, &mac_symbols_48, LV_TEXT_ALIGN_CENTER);
-        int16_t cy = (MOD_CANVAS_W - (int16_t)mac_symbols_48.line_height) / 2;
-        canvas_draw_text(widget->canvas, 0, cy, MOD_CANVAS_W, &label_dsc, mod_sym_caps);
-
-        rotate_canvas(widget->canvas);
-        lv_obj_remove_flag(widget->canvas, LV_OBJ_FLAG_HIDDEN);
-        return;
-    }
-
     /* Build list of active symbols in SCAG order (max 4) */
     const char *symbols[4];
     int n = 0;
@@ -166,7 +140,6 @@ static struct mod_status_state mod_status_get_state(const zmk_event_t *eh) {
     ARG_UNUSED(eh);
     return (struct mod_status_state){
         .mods = zmk_hid_get_explicit_mods(),
-        .caps_active = zmk_keymap_layer_active(CAPS_DISPLAY_LAYER),
     };
 }
 
@@ -174,7 +147,6 @@ ZMK_DISPLAY_WIDGET_LISTENER(widget_mod_status, struct mod_status_state,
                              mod_status_update_cb, mod_status_get_state)
 
 ZMK_SUBSCRIPTION(widget_mod_status, zmk_keycode_state_changed);
-ZMK_SUBSCRIPTION(widget_mod_status, zmk_layer_state_changed);
 
 /* ------------------------------------------------------------------ */
 /* Public API                                                          */

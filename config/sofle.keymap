@@ -355,7 +355,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sk LSHFT>, <&caps>, <&tog CAPS_DISPLAY>;
+            bindings = <&kp LSHFT>, <&tog CAPS_DISPLAY>;
         };
 
         td_cmd: tap_dance_cmd {

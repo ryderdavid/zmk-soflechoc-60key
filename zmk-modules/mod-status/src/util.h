@@ -33,6 +33,7 @@ struct status_state {
     bool profiles_bonded[NICEVIEW_PROFILE_COUNT];
     uint8_t layer_index;
     const char *layer_label;
+    bool caps_active;
     uint8_t wpm[10];
     /* Ticker: last 4 chars in typing order (oldest first), and last key position */
     char ticker_chars[5];

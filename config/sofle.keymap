@@ -224,14 +224,6 @@
                 ;
         };
 
-        caps_toggle: caps_toggle {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kt LSHFT &tog CAPS_DISPLAY>;
-        };
-
         arrow_right: arrow_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -349,14 +341,14 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&caps>, <&caps_toggle>;
+            bindings = <&caps>, <&tog CAPS_DISPLAY>;
         };
 
         td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sk LSHFT>, <&caps>, <&caps_toggle>;
+            bindings = <&sk LSHFT>, <&caps>, <&tog CAPS_DISPLAY>;
         };
 
         td_cmd: tap_dance_cmd {
@@ -675,11 +667,11 @@
         };
 
         // ┌──────────────────────────────────────────────────────────────────────┐
-        // │ Layer 13 — CAPS_DISPLAY (transparent flag layer for display widget) │
+        // │ Layer 13 — CAPS_DISPLAY (shifted QWERTY alphas for caps toggle)   │
         // ├──────────────────────────────────────────────────────────────────────┤
-        // │ All &trans — this layer exists solely so the nice!view display can  │
-        // │ detect caps-toggle state via zmk_layer_state_changed events.        │
-        // │ Toggled on/off by the caps_toggle macro alongside &kt LSHFT.       │
+        // │ Board-internal caps lock: alpha keys send shifted versions,        │
+        // │ non-alphas fall through via &trans. Display widget tracks this     │
+        // │ layer to show ⇪. Triple-tap shift (pos 36) toggles on/off.       │
         // └──────────────────────────────────────────────────────────────────────┘
 
         caps_display_layer {
@@ -687,9 +679,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp LS(Q)       &kp LS(W)       &kp LS(E)       &kp LS(R)       &kp LS(T)                                       &kp LS(Y)           &kp LS(U)       &kp LS(I)       &kp LS(O)       &kp LS(P)           &trans
+&trans         &kp LS(A)       &kp LS(S)       &kp LS(D)       &kp LS(F)       &kp LS(G)                                       &kp LS(H)           &kp LS(J)       &kp LS(K)       &kp LS(L)       &trans              &trans
+&td_shift      &kp LS(Z)       &kp LS(X)       &kp LS(C)       &kp LS(V)       &kp LS(B)       &trans          &trans          &kp LS(N)           &kp LS(M)       &trans          &trans          &trans              &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

@@ -48,6 +48,7 @@
 #define WINMODE_GALLIUM 11
 #define WINMODE_MOUSE   12
 #define CAPS_DISPLAY    13
+#define GALLIUM_CAPS    14
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 // KEYMAP_DRAWER defines simple integers in its preamble (bitwise & breaks DTS parser)
@@ -85,6 +86,12 @@
         winmode_mouse_layer {
             if-layers = <WINMODE MOUSE>;
             then-layer = <WINMODE_MOUSE>;
+        };
+
+        // When Gallium + caps toggle are both active, use shifted Gallium letters
+        gallium_caps_layer {
+            if-layers = <GALLIUM CAPS_DISPLAY>;
+            then-layer = <GALLIUM_CAPS>;
         };
     };
 
@@ -682,6 +689,27 @@
 &trans         &kp LS(Q)       &kp LS(W)       &kp LS(E)       &kp LS(R)       &kp LS(T)                                       &kp LS(Y)           &kp LS(U)       &kp LS(I)       &kp LS(O)       &kp LS(P)           &trans
 &trans         &kp LS(A)       &kp LS(S)       &kp LS(D)       &kp LS(F)       &kp LS(G)                                       &kp LS(H)           &kp LS(J)       &kp LS(K)       &kp LS(L)       &trans              &trans
 &td_shift      &kp LS(Z)       &kp LS(X)       &kp LS(C)       &kp LS(V)       &kp LS(B)       &trans          &trans          &kp LS(N)           &kp LS(M)       &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 14 — GALLIUM_CAPS (shifted Gallium alphas for caps toggle)   │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Conditional: GALLIUM + CAPS_DISPLAY → GALLIUM_CAPS                 │
+        // │ Alpha keys send shifted Gallium letters, non-alphas fall through.  │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        gallium_caps_layer {
+            display-name = "gal+cap";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp LS(B)       &kp LS(L)       &kp LS(D)       &kp LS(C)       &kp LS(V)                                       &kp LS(J)           &kp LS(Y)       &kp LS(O)       &kp LS(U)       &trans              &trans
+&trans         &kp LS(N)       &kp LS(R)       &kp LS(T)       &kp LS(S)       &kp LS(G)                                       &kp LS(P)           &kp LS(H)       &kp LS(A)       &kp LS(E)       &kp LS(I)           &trans
+&td_shift      &kp LS(Q)       &kp LS(X)       &kp LS(M)       &kp LS(W)       &kp LS(Z)       &trans          &trans          &kp LS(K)           &kp LS(F)       &trans          &trans          &trans              &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

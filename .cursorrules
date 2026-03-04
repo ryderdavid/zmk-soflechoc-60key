@@ -1,0 +1,9 @@
+# ZMK Sofle Choc 60-key — Cursor rules
+
+## Build after changes
+
+After making any change that affects firmware (keymap, config, mod-status widget, shields, etc.), **always rebuild** the affected half(ves) and save the `.uf2` to `firmware/firmware/` so the user can flash without an extra step.
+
+- Keymap/config-only changes: rebuild **both** left and right.
+- Mod-status or left-shield-only changes: rebuild **left** (nice_view) only.
+- Use the same Docker + `-DZephyr_DIR=...` flow as in `scripts/build-and-flash.sh`.

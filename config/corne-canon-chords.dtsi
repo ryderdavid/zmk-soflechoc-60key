@@ -411,1372 +411,1372 @@
             bindings = <&wm_the>;
             key-positions = <17 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_the_qr {
             bindings = <&wm_the>;
             key-positions = <17 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_the_gl {
             bindings = <&wm_the>;
             key-positions = <27 31 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_the_gr {
             bindings = <&wm_the>;
             key-positions = <27 31 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_be_ql {
             bindings = <&wm_be>;
             key-positions = <15 41 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_be_qr {
             bindings = <&wm_be>;
             key-positions = <15 41 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_be_gl {
             bindings = <&wm_be>;
             key-positions = <13 33 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_be_gr {
             bindings = <&wm_be>;
             key-positions = <13 33 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_to_ql {
             bindings = <&wm_to>;
             key-positions = <17 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_to_qr {
             bindings = <&wm_to>;
             key-positions = <17 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_to_gl {
             bindings = <&wm_to>;
             key-positions = <20 27 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_to_gr {
             bindings = <&wm_to>;
             key-positions = <20 27 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_and_ql {
             bindings = <&wm_and>;
             key-positions = <25 44 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_and_qr {
             bindings = <&wm_and>;
             key-positions = <25 44 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_and_gl {
             bindings = <&wm_and>;
             key-positions = <25 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_and_gr {
             bindings = <&wm_and>;
             key-positions = <25 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_of_ql {
             bindings = <&wm_of>;
             key-positions = <21 28 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_of_qr {
             bindings = <&wm_of>;
             key-positions = <21 28 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_of_gl {
             bindings = <&wm_of>;
             key-positions = <20 45 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_of_gr {
             bindings = <&wm_of>;
             key-positions = <20 45 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_in_ql {
             bindings = <&wm_in>;
             key-positions = <20 44 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_in_qr {
             bindings = <&wm_in>;
             key-positions = <20 44 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_in_gl {
             bindings = <&wm_in>;
             key-positions = <25 34 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_in_gr {
             bindings = <&wm_in>;
             key-positions = <25 34 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_have_ql {
             bindings = <&wm_have>;
             key-positions = <30 40 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_have_qr {
             bindings = <&wm_have>;
             key-positions = <30 40 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_have_gl {
             bindings = <&wm_have>;
             key-positions = <17 31 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_have_gr {
             bindings = <&wm_have>;
             key-positions = <17 31 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_that_ql {
             bindings = <&wm_that>;
             key-positions = <17 25 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_that_qr {
             bindings = <&wm_that>;
             key-positions = <17 25 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_that_gl {
             bindings = <&wm_that>;
             key-positions = <27 31 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_that_gr {
             bindings = <&wm_that>;
             key-positions = <27 31 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_for_ql {
             bindings = <&wm_for>;
             key-positions = <16 28 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_for_qr {
             bindings = <&wm_for>;
             key-positions = <16 28 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_for_gl {
             bindings = <&wm_for>;
             key-positions = <26 45 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_for_gr {
             bindings = <&wm_for>;
             key-positions = <26 45 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_not_ql {
             bindings = <&wm_not>;
             key-positions = <17 44 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_not_qr {
             bindings = <&wm_not>;
             key-positions = <17 44 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_not_gl {
             bindings = <&wm_not>;
             key-positions = <25 27 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_not_gr {
             bindings = <&wm_not>;
             key-positions = <25 27 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_with_ql {
             bindings = <&wm_with>;
             key-positions = <14 20 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_with_qr {
             bindings = <&wm_with>;
             key-positions = <14 20 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_with_gl {
             bindings = <&wm_with>;
             key-positions = <34 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_with_gr {
             bindings = <&wm_with>;
             key-positions = <34 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_you_ql {
             bindings = <&wm_you>;
             key-positions = <18 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_you_qr {
             bindings = <&wm_you>;
             key-positions = <18 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_you_gl {
             bindings = <&wm_you>;
             key-positions = <19 20 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_you_gr {
             bindings = <&wm_you>;
             key-positions = <19 20 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_this_ql {
             bindings = <&wm_this>;
             key-positions = <17 20 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_this_qr {
             bindings = <&wm_this>;
             key-positions = <17 20 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_this_gl {
             bindings = <&wm_this>;
             key-positions = <27 34 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_this_gr {
             bindings = <&wm_this>;
             key-positions = <27 34 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_from_ql {
             bindings = <&wm_from>;
             key-positions = <16 21 28 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_from_qr {
             bindings = <&wm_from>;
             key-positions = <16 21 28 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_from_gl {
             bindings = <&wm_from>;
             key-positions = <20 26 45 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_from_gr {
             bindings = <&wm_from>;
             key-positions = <20 26 45 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_but_ql {
             bindings = <&wm_but>;
             key-positions = <19 41 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_but_qr {
             bindings = <&wm_but>;
             key-positions = <19 41 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_but_gl {
             bindings = <&wm_but>;
             key-positions = <13 21 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_but_gr {
             bindings = <&wm_but>;
             key-positions = <13 21 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_what_ql {
             bindings = <&wm_what>;
             key-positions = <14 25 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_what_qr {
             bindings = <&wm_what>;
             key-positions = <14 25 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_what_gl {
             bindings = <&wm_what>;
             key-positions = <32 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_what_gr {
             bindings = <&wm_what>;
             key-positions = <32 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_he_ql {
             bindings = <&wm_he>;
             key-positions = <15 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_he_qr {
             bindings = <&wm_he>;
             key-positions = <15 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_he_gl {
             bindings = <&wm_he>;
             key-positions = <31 33 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_he_gr {
             bindings = <&wm_he>;
             key-positions = <31 33 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_on_ql {
             bindings = <&wm_on>;
             key-positions = <21 44 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_on_qr {
             bindings = <&wm_on>;
             key-positions = <21 44 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_on_gl {
             bindings = <&wm_on>;
             key-positions = <20 25 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_on_gr {
             bindings = <&wm_on>;
             key-positions = <20 25 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_are_ql {
             bindings = <&wm_are>;
             key-positions = <16 25 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_are_qr {
             bindings = <&wm_are>;
             key-positions = <16 25 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_are_gl {
             bindings = <&wm_are>;
             key-positions = <26 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_are_gr {
             bindings = <&wm_are>;
             key-positions = <26 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_do_ql {
             bindings = <&wm_do>;
             key-positions = <21 27 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_do_qr {
             bindings = <&wm_do>;
             key-positions = <21 27 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_do_gl {
             bindings = <&wm_do>;
             key-positions = <15 20 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_do_gr {
             bindings = <&wm_do>;
             key-positions = <15 20 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_his_ql {
             bindings = <&wm_his>;
             key-positions = <20 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_his_qr {
             bindings = <&wm_his>;
             key-positions = <20 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_his_gl {
             bindings = <&wm_his>;
             key-positions = <31 34 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_his_gr {
             bindings = <&wm_his>;
             key-positions = <31 34 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_by_ql {
             bindings = <&wm_by>;
             key-positions = <18 41 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_by_qr {
             bindings = <&wm_by>;
             key-positions = <18 41 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_by_gl {
             bindings = <&wm_by>;
             key-positions = <13 19 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_by_gr {
             bindings = <&wm_by>;
             key-positions = <13 19 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_they_ql {
             bindings = <&wm_they>;
             key-positions = <17 18 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_they_qr {
             bindings = <&wm_they>;
             key-positions = <17 18 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_they_gl {
             bindings = <&wm_they>;
             key-positions = <19 27 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_they_gr {
             bindings = <&wm_they>;
             key-positions = <19 27 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_her_ql {
             bindings = <&wm_her>;
             key-positions = <16 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_her_qr {
             bindings = <&wm_her>;
             key-positions = <16 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_her_gl {
             bindings = <&wm_her>;
             key-positions = <26 31 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_her_gr {
             bindings = <&wm_her>;
             key-positions = <26 31 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_or_ql {
             bindings = <&wm_or>;
             key-positions = <16 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_or_qr {
             bindings = <&wm_or>;
             key-positions = <16 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_or_gl {
             bindings = <&wm_or>;
             key-positions = <20 26 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_or_gr {
             bindings = <&wm_or>;
             key-positions = <20 26 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_at_ql {
             bindings = <&wm_at>;
             key-positions = <17 25 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_at_qr {
             bindings = <&wm_at>;
             key-positions = <17 25 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_at_gl {
             bindings = <&wm_at>;
             key-positions = <27 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_at_gr {
             bindings = <&wm_at>;
             key-positions = <27 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_one_ql {
             bindings = <&wm_one>;
             key-positions = <15 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_one_qr {
             bindings = <&wm_one>;
             key-positions = <15 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_one_gl {
             bindings = <&wm_one>;
             key-positions = <20 33 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_one_gr {
             bindings = <&wm_one>;
             key-positions = <20 33 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_had_ql {
             bindings = <&wm_had>;
             key-positions = <27 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_had_qr {
             bindings = <&wm_had>;
             key-positions = <27 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_had_gl {
             bindings = <&wm_had>;
             key-positions = <15 31 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_had_gr {
             bindings = <&wm_had>;
             key-positions = <15 31 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_say_ql {
             bindings = <&wm_say>;
             key-positions = <18 26 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_say_qr {
             bindings = <&wm_say>;
             key-positions = <18 26 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_say_gl {
             bindings = <&wm_say>;
             key-positions = <19 28 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_say_gr {
             bindings = <&wm_say>;
             key-positions = <19 28 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_she_ql {
             bindings = <&wm_she>;
             key-positions = <26 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_she_qr {
             bindings = <&wm_she>;
             key-positions = <26 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_she_gl {
             bindings = <&wm_she>;
             key-positions = <28 31 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_she_gr {
             bindings = <&wm_she>;
             key-positions = <28 31 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_all_ql {
             bindings = <&wm_all>;
             key-positions = <25 33 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_all_qr {
             bindings = <&wm_all>;
             key-positions = <25 33 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_all_gl {
             bindings = <&wm_all>;
             key-positions = <14 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_all_gr {
             bindings = <&wm_all>;
             key-positions = <14 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_which_ql {
             bindings = <&wm_which>;
             key-positions = <14 30 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_which_qr {
             bindings = <&wm_which>;
             key-positions = <14 30 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_which_gl {
             bindings = <&wm_which>;
             key-positions = <31 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_which_gr {
             bindings = <&wm_which>;
             key-positions = <31 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_will_ql {
             bindings = <&wm_will>;
             key-positions = <14 33 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_will_qr {
             bindings = <&wm_will>;
             key-positions = <14 33 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_will_gl {
             bindings = <&wm_will>;
             key-positions = <14 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_will_gr {
             bindings = <&wm_will>;
             key-positions = <14 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_would_ql {
             bindings = <&wm_would>;
             key-positions = <14 27 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_would_qr {
             bindings = <&wm_would>;
             key-positions = <14 27 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_would_gl {
             bindings = <&wm_would>;
             key-positions = <15 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_would_gr {
             bindings = <&wm_would>;
             key-positions = <15 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_there_ql {
             bindings = <&wm_there>;
             key-positions = <16 17 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_there_qr {
             bindings = <&wm_there>;
             key-positions = <16 17 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_there_gl {
             bindings = <&wm_there>;
             key-positions = <26 27 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_there_gr {
             bindings = <&wm_there>;
             key-positions = <26 27 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_their_ql {
             bindings = <&wm_their>;
             key-positions = <15 17 20 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_their_qr {
             bindings = <&wm_their>;
             key-positions = <15 17 20 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_their_gl {
             bindings = <&wm_their>;
             key-positions = <27 33 34 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_their_gr {
             bindings = <&wm_their>;
             key-positions = <27 33 34 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_my_ql {
             bindings = <&wm_my>;
             key-positions = <18 45 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_my_qr {
             bindings = <&wm_my>;
             key-positions = <18 45 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_my_gl {
             bindings = <&wm_my>;
             key-positions = <19 39 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_my_gr {
             bindings = <&wm_my>;
             key-positions = <19 39 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_out_ql {
             bindings = <&wm_out>;
             key-positions = <19 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_out_qr {
             bindings = <&wm_out>;
             key-positions = <19 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_out_gl {
             bindings = <&wm_out>;
             key-positions = <20 21 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_out_gr {
             bindings = <&wm_out>;
             key-positions = <20 21 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_up_ql {
             bindings = <&wm_up>;
             key-positions = <19 22 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_up_qr {
             bindings = <&wm_up>;
             key-positions = <19 22 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_up_gl {
             bindings = <&wm_up>;
             key-positions = <21 30 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_up_gr {
             bindings = <&wm_up>;
             key-positions = <21 30 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_about_ql {
             bindings = <&wm_about>;
             key-positions = <25 41 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_about_qr {
             bindings = <&wm_about>;
             key-positions = <25 41 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_about_gl {
             bindings = <&wm_about>;
             key-positions = <13 32 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_about_gr {
             bindings = <&wm_about>;
             key-positions = <13 32 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_who_ql {
             bindings = <&wm_who>;
             key-positions = <14 21 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_who_qr {
             bindings = <&wm_who>;
             key-positions = <14 21 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_who_gl {
             bindings = <&wm_who>;
             key-positions = <20 40 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_who_gr {
             bindings = <&wm_who>;
             key-positions = <20 40 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_get_ql {
             bindings = <&wm_get>;
             key-positions = <15 29 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_get_qr {
             bindings = <&wm_get>;
             key-positions = <15 29 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_get_gl {
             bindings = <&wm_get>;
             key-positions = <29 33 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_get_gr {
             bindings = <&wm_get>;
             key-positions = <29 33 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_make_ql {
             bindings = <&wm_make>;
             key-positions = <32 45 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_make_qr {
             bindings = <&wm_make>;
             key-positions = <32 45 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_make_gl {
             bindings = <&wm_make>;
             key-positions = <39 44 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_make_gr {
             bindings = <&wm_make>;
             key-positions = <39 44 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_go_ql {
             bindings = <&wm_go>;
             key-positions = <21 29 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_go_qr {
             bindings = <&wm_go>;
             key-positions = <21 29 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_go_gl {
             bindings = <&wm_go>;
             key-positions = <20 29 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_go_gr {
             bindings = <&wm_go>;
             key-positions = <20 29 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_like_ql {
             bindings = <&wm_like>;
             key-positions = <32 33 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_like_qr {
             bindings = <&wm_like>;
             key-positions = <32 33 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_like_gl {
             bindings = <&wm_like>;
             key-positions = <14 44 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_like_gr {
             bindings = <&wm_like>;
             key-positions = <14 44 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_just_ql {
             bindings = <&wm_just>;
             key-positions = <19 31 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_just_qr {
             bindings = <&wm_just>;
             key-positions = <19 31 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_just_gl {
             bindings = <&wm_just>;
             key-positions = <18 21 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_just_gr {
             bindings = <&wm_just>;
             key-positions = <18 21 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_know_ql {
             bindings = <&wm_know>;
             key-positions = <32 44 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_know_qr {
             bindings = <&wm_know>;
             key-positions = <32 44 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_know_gl {
             bindings = <&wm_know>;
             key-positions = <25 44 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_know_gr {
             bindings = <&wm_know>;
             key-positions = <25 44 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_take_ql {
             bindings = <&wm_take>;
             key-positions = <17 32 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_take_qr {
             bindings = <&wm_take>;
             key-positions = <17 32 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_take_gl {
             bindings = <&wm_take>;
             key-positions = <27 44 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_take_gr {
             bindings = <&wm_take>;
             key-positions = <27 44 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_come_ql {
             bindings = <&wm_come>;
             key-positions = <39 45 55>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_come_qr {
             bindings = <&wm_come>;
             key-positions = <39 45 56>;
             timeout-ms = <50>;
-            layers = <0>;
+            layers = <0 10>;
         };
 
         chord_come_gl {
             bindings = <&wm_come>;
             key-positions = <16 39 55>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
 
         chord_come_gr {
             bindings = <&wm_come>;
             key-positions = <16 39 56>;
             timeout-ms = <50>;
-            layers = <1>;
+            layers = <1 11>;
         };
     };
 };

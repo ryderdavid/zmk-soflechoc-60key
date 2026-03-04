@@ -20,9 +20,11 @@ zephyr_library_sources(mac_symbols_22.c)
 zephyr_library_sources(mac_symbols_32.c)
 zephyr_library_sources(mac_symbols_48.c)
 
+# 8px font for ticker stacked modifier display (bundled, not from nice_view)
+zephyr_library_sources(mac_symbols_8.c)
+
 # Re-compile the nice!view widget sources that we gate off via
 # CONFIG_NICE_VIEW_WIDGET_STATUS=n (to prevent duplicate symbols).
 zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/status.c")
 zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/bolt.c")
 zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/util.c")
-zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/mac_symbols_8.c")

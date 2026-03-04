@@ -47,6 +47,7 @@
 #define WINMODE         10
 #define WINMODE_GALLIUM 11
 #define WINMODE_MOUSE   12
+#define CAPS_DISPLAY    13
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 // KEYMAP_DRAWER defines simple integers in its preamble (bitwise & breaks DTS parser)
@@ -223,6 +224,14 @@
                 ;
         };
 
+        caps_toggle: caps_toggle {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kt LSHFT &tog CAPS_DISPLAY>;
+        };
+
         arrow_right: arrow_right {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -340,14 +349,14 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&caps>, <&kp CLCK>;
+            bindings = <&caps>, <&caps_toggle>;
         };
 
         td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sk LSHFT>, <&caps>, <&kp CLCK>;
+            bindings = <&sk LSHFT>, <&caps>, <&caps_toggle>;
         };
 
         td_cmd: tap_dance_cmd {
@@ -574,7 +583,7 @@
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
 &none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
 &td_shift      &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &enter_mash_proof RGUI ENTER  &mkp MCLK            &none
+               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &mkp RCLK             &mkp MCLK            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -592,7 +601,7 @@
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP              &mmv MOVE_UP_SLOW    &msc SCRL_DOWN            &none          &none
 &none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &td_shift      &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &enter_mash_proof RGUI ENTER  &mkp MCLK            &none
+               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK             &mkp MCLK            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -660,6 +669,28 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &mmv MOVE_LEFT_FAST      &trans                   &mmv MOVE_RIGHT_FAST      &trans         &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans                   &trans                   &trans                    &trans         &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &enter_mash_proof RGUI ENTER  &trans                    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 13 — CAPS_DISPLAY (transparent flag layer for display widget) │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ All &trans — this layer exists solely so the nice!view display can  │
+        // │ detect caps-toggle state via zmk_layer_state_changed events.        │
+        // │ Toggled on/off by the caps_toggle macro alongside &kt LSHFT.       │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        caps_display_layer {
+            display-name = "caps";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

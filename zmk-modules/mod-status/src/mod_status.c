@@ -2,16 +2,16 @@
  * Copyright (c) 2026 ryderdavid
  * SPDX-License-Identifier: MIT
  *
- * nice!view modifier-key + caps lock indicator widget.
+ * nice!view modifier-key + caps-toggle indicator widget.
  *
- * Subscribes to zmk_keycode_state_changed and zmk_hid_indicators_changed
- * events.  Shows Mac modifier symbols (⇧⌃⌥⌘) when modifiers are held,
- * and a ⇪ caps lock indicator when caps lock is active (reported by host
- * via HID LED indicators).
+ * Shows Mac modifier symbols (⇧⌃⌥⌘) when modifiers are held, and a ⇪
+ * caps indicator when the CAPS_DISPLAY layer (13) is active.  The caps
+ * toggle is board-internal (&kt LSHFT + &tog CAPS_DISPLAY) — no OS caps
+ * lock is involved.
  *
  * Active modifiers are shown as Mac symbols (SCAG order):
  *   ⇧ = Shift   ⌃ = Ctrl   ⌥ = Alt/Opt   ⌘ = GUI/Cmd
- * Caps lock is shown as ⇪ when active.
+ * Caps toggle is shown as ⇪ when the CAPS_DISPLAY layer is on.
  *
  * Architecture note: this widget compiles ONLY on the central half
  * (left, the host-connected side).  The central is the only place where
@@ -29,9 +29,9 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/display.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/keycode_state_changed.h>
-#include <zmk/events/hid_indicators_changed.h>
+#include <zmk/events/layer_state_changed.h>
 #include <zmk/hid.h>
-#include <zmk/hid_indicators.h>
+#include <zmk/keymap.h>
 #include <dt-bindings/zmk/modifiers.h>
 
 /* util.h from the nice!view widget directory (included via CMakeLists) */
@@ -56,8 +56,8 @@ static const char mod_sym_alt[]   = "\xe2\x8c\xa5";
 static const char mod_sym_gui[]   = "\xe2\x8c\x98";
 static const char mod_sym_caps[]  = "\xe2\x87\xaa";  /* U+21EA ⇪ */
 
-/* HID LED indicator bit for Caps Lock */
-#define ZMK_LED_CAPSLOCK_BIT BIT(1)
+/* Layer index for the transparent caps-tracking layer (must match keymap) */
+#define CAPS_DISPLAY_LAYER 13
 
 /* Per-cell rectangles (x, y, width): each glyph is drawn centered in its cell. */
 static const int16_t layout_x[4][4] = {
@@ -84,8 +84,8 @@ static const int16_t layout_w[4][4] = {
 /* ------------------------------------------------------------------ */
 
 struct mod_status_state {
-    uint8_t mods;      /* zmk_mod_flags_t bitmask */
-    bool caps_lock;    /* host-reported caps lock LED state */
+    uint8_t mods;        /* zmk_mod_flags_t bitmask */
+    bool caps_active;    /* CAPS_DISPLAY layer is on (board-internal toggle) */
 };
 
 /* ------------------------------------------------------------------ */
@@ -94,8 +94,8 @@ struct mod_status_state {
 
 static void set_mod_status(struct zmk_widget_mod_status *widget,
                            struct mod_status_state state) {
-    /* Caps lock takes priority — show ⇪ centered when active */
-    if (state.caps_lock) {
+    /* Caps toggle takes priority — show ⇪ centered when active */
+    if (state.caps_active) {
         lv_canvas_fill_bg(widget->canvas, LVGL_BACKGROUND, LV_OPA_COVER);
 
         lv_draw_label_dsc_t label_dsc;
@@ -164,10 +164,9 @@ static void mod_status_update_cb(struct mod_status_state state) {
 
 static struct mod_status_state mod_status_get_state(const zmk_event_t *eh) {
     ARG_UNUSED(eh);
-    zmk_hid_indicators_t indicators = zmk_hid_indicators_get_current_profile();
     return (struct mod_status_state){
         .mods = zmk_hid_get_explicit_mods(),
-        .caps_lock = (indicators & ZMK_LED_CAPSLOCK_BIT) != 0,
+        .caps_active = zmk_keymap_layer_active(CAPS_DISPLAY_LAYER),
     };
 }
 
@@ -175,7 +174,7 @@ ZMK_DISPLAY_WIDGET_LISTENER(widget_mod_status, struct mod_status_state,
                              mod_status_update_cb, mod_status_get_state)
 
 ZMK_SUBSCRIPTION(widget_mod_status, zmk_keycode_state_changed);
-ZMK_SUBSCRIPTION(widget_mod_status, zmk_hid_indicators_changed);
+ZMK_SUBSCRIPTION(widget_mod_status, zmk_layer_state_changed);
 
 /* ------------------------------------------------------------------ */
 /* Public API                                                          */

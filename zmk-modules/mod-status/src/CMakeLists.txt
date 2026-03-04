@@ -4,7 +4,11 @@ set(NICE_VIEW_WIDGET_DIR "${CMAKE_SOURCE_DIR}/boards/shields/nice_view")
 
 zephyr_library()
 
-# Make nice!view widget headers available (widgets/status.h, util.h, bolt.h)
+# Our src/ directory first so our modified status.h / util.h (with ticker
+# state fields) take precedence over the stock nice_view headers.
+zephyr_library_include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+# nice!view widget headers still needed for bolt.h etc.
 zephyr_library_include_directories(${NICE_VIEW_WIDGET_DIR})
 
 # ZMK app include dir (for zmk/hid.h, zmk/display.h, etc.)
@@ -23,8 +27,11 @@ zephyr_library_sources(mac_symbols_48.c)
 # 8px font for ticker stacked modifier display (bundled, not from nice_view)
 zephyr_library_sources(mac_symbols_8.c)
 
-# Re-compile the nice!view widget sources that we gate off via
+# Modified nice!view status.c with ticker support (local copy, not from
+# the ZMK tree — the stock version has no ticker).
+zephyr_library_sources(nice_view_status.c)
+
+# Re-compile the remaining nice!view widget sources that we gate off via
 # CONFIG_NICE_VIEW_WIDGET_STATUS=n (to prevent duplicate symbols).
-zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/status.c")
 zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/bolt.c")
 zephyr_library_sources("${NICE_VIEW_WIDGET_DIR}/widgets/util.c")

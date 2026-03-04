@@ -35,7 +35,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <dt-bindings/zmk/modifiers.h>
 
 /* util.h from the nice!view widget directory (included via CMakeLists) */
-#include "widgets/util.h"
+#include "util.h"
 
 #include "mod_status.h"
 

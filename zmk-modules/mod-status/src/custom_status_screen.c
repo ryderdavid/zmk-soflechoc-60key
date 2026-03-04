@@ -22,7 +22,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 /* nice!view status widget (status.c / bolt.c / util.c compiled by our
    CMakeLists.txt from the shield source tree) */
-#include "widgets/status.h"
+#include "status.h"
 
 /* Modifier indicator widget */
 #include "mod_status.h"

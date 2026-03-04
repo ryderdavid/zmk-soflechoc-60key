@@ -417,7 +417,7 @@
             bindings = <
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
-&mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml_g LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr_g RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &kp SQT
+&mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml_g LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr_g RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &lts NAV SQT
 &td_shift      &kp Z           &kp X           &kp C           &kp V           &lts MOUSE B    &kp DELETE      &kp BACKSPACE   &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
                &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                           &lts SYMBOLS SPACE  &lts NAV SPACE      &enter_mash_proof RGUI ENTER  &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
             >;
@@ -637,7 +637,7 @@
         // └──────────────────────────────────────────────────────────────────────┘
 
         winmode_gallium_layer {
-            display-name = "win+gal";
+            display-name = "w+gal";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans

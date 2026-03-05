@@ -5,7 +5,7 @@
  * nice!view modifier-key indicator widget.
  *
  * Shows modifier glyphs when modifiers are held.
- * Mac mode: ⇧⌃⌥⌘ symbols.  Windows mode (layers 10-12): ⇧ CTL ALT ⊞.
+ * Mac mode: ⇧⌃⌥⌘ symbols.  Windows mode (layers 10-12): ⇧ [C] [A] ⊞.
  * Caps toggle indicator is handled by the layer name in status.c
  * (lowercase → UPPERCASE when CAPS_DISPLAY layer is active).
  *
@@ -92,19 +92,43 @@ struct mod_status_state {
 /* Glyph rendering types for per-modifier drawing */
 enum glyph_type {
     GLYPH_SYMBOL,   /* Mac symbol via mac_symbols font */
-    GLYPH_TEXT,      /* Text label via Montserrat font */
-    GLYPH_WINLOGO,   /* Windows logo drawn programmatically */
+    GLYPH_KEYCAP,   /* Letter inside a rounded rectangle */
+    GLYPH_WINLOGO,  /* Windows logo drawn programmatically */
 };
 
 struct glyph_entry {
     enum glyph_type type;
-    const char *text;  /* symbol UTF-8 or text label (NULL for WINLOGO) */
+    const char *text;  /* symbol UTF-8 or keycap letter (NULL for WINLOGO) */
 };
+
+/* Draw a letter inside a rounded rectangle, centered in a cell */
+static void draw_keycap(lv_obj_t *canvas, int16_t cx, int16_t cy,
+                         int16_t cw, int16_t ch, const char *letter,
+                         const lv_font_t *font) {
+    /* Keycap box: ~80% of cell with some padding */
+    int16_t pad = cw >= 60 ? 6 : (cw >= 30 ? 3 : 2);
+    int16_t radius = cw >= 60 ? 8 : (cw >= 30 ? 4 : 3);
+    int16_t bx = cx + pad;
+    int16_t by = cy + pad;
+    int16_t bw = cw - 2 * pad;
+    int16_t bh = ch - 2 * pad;
+
+    /* Filled rounded rect in foreground */
+    lv_draw_rect_dsc_t rect_dsc;
+    init_rect_dsc(&rect_dsc, LVGL_FOREGROUND);
+    rect_dsc.radius = radius;
+    canvas_draw_rect(canvas, bx, by, bw, bh, &rect_dsc);
+
+    /* Letter in background (inverted) color, centered in the box */
+    lv_draw_label_dsc_t label_dsc;
+    init_label_dsc(&label_dsc, LVGL_BACKGROUND, font, LV_TEXT_ALIGN_CENTER);
+    int16_t text_y = by + (bh - (int16_t)font->line_height) / 2;
+    canvas_draw_text(canvas, bx, text_y, bw, &label_dsc, letter);
+}
 
 /* Draw a Windows logo (2×2 grid of filled squares) centered in a cell */
 static void draw_win_logo(lv_obj_t *canvas, int16_t cx, int16_t cy,
                            int16_t cw, int16_t ch) {
-    /* Logo occupies ~60% of the cell */
     int16_t logo_size;
     int16_t gap;
 
@@ -123,13 +147,9 @@ static void draw_win_logo(lv_obj_t *canvas, int16_t cx, int16_t cy,
     lv_draw_rect_dsc_t rect_dsc;
     init_rect_dsc(&rect_dsc, LVGL_FOREGROUND);
 
-    /* Top-left */
     canvas_draw_rect(canvas, ox, oy, pane, pane, &rect_dsc);
-    /* Top-right */
     canvas_draw_rect(canvas, ox + pane + gap, oy, pane, pane, &rect_dsc);
-    /* Bottom-left */
     canvas_draw_rect(canvas, ox, oy + pane + gap, pane, pane, &rect_dsc);
-    /* Bottom-right */
     canvas_draw_rect(canvas, ox + pane + gap, oy + pane + gap, pane, pane, &rect_dsc);
 }
 
@@ -140,17 +160,16 @@ static void set_mod_status(struct zmk_widget_mod_status *widget,
     int n = 0;
 
     if (state.mods & (MOD_LSFT | MOD_RSFT)) {
-        /* Shift symbol is universal */
         entries[n++] = (struct glyph_entry){GLYPH_SYMBOL, mod_sym_shift};
     }
     if (state.mods & (MOD_LCTL | MOD_RCTL)) {
         entries[n++] = state.windows_mode
-            ? (struct glyph_entry){GLYPH_TEXT, "CTL"}
+            ? (struct glyph_entry){GLYPH_KEYCAP, "C"}
             : (struct glyph_entry){GLYPH_SYMBOL, mod_sym_ctrl};
     }
     if (state.mods & (MOD_LALT | MOD_RALT)) {
         entries[n++] = state.windows_mode
-            ? (struct glyph_entry){GLYPH_TEXT, "ALT"}
+            ? (struct glyph_entry){GLYPH_KEYCAP, "A"}
             : (struct glyph_entry){GLYPH_SYMBOL, mod_sym_alt};
     }
     if (state.mods & (MOD_LGUI | MOD_RGUI)) {
@@ -166,20 +185,20 @@ static void set_mod_status(struct zmk_widget_mod_status *widget,
 
     /* Choose fonts by count */
     const lv_font_t *sym_font;
-    const lv_font_t *txt_font;
+    const lv_font_t *cap_font;
     int idx = n - 1;
     switch (n) {
         case 1:
             sym_font = &mac_symbols_48;
-            txt_font = &lv_font_montserrat_18;
+            cap_font = &lv_font_montserrat_18;
             break;
         case 2:
             sym_font = &mac_symbols_32;
-            txt_font = &lv_font_montserrat_16;
+            cap_font = &lv_font_montserrat_16;
             break;
         default: /* 3 or 4 */
             sym_font = &mac_symbols_22;
-            txt_font = &lv_font_montserrat_14;
+            cap_font = &lv_font_montserrat_14;
             break;
     }
 
@@ -191,35 +210,27 @@ static void set_mod_status(struct zmk_widget_mod_status *widget,
         int16_t cw = layout_w[idx][i];
         int16_t ch = cw; /* cells are square */
 
+        /* For single-mod layout, use full canvas as the cell */
+        if (n == 1) {
+            cy = 0;
+            ch = MOD_CANVAS_W;
+        }
+
         switch (entries[i].type) {
         case GLYPH_SYMBOL: {
             lv_draw_label_dsc_t label_dsc;
             init_label_dsc(&label_dsc, LVGL_FOREGROUND, sym_font, LV_TEXT_ALIGN_CENTER);
-            if (n == 1) {
-                cy = (MOD_CANVAS_W - (int16_t)sym_font->line_height) / 2;
-            }
-            canvas_draw_text(widget->canvas, cx, cy, cw, &label_dsc, entries[i].text);
+            /* Center symbol vertically in cell */
+            int16_t sym_y = cy + (ch - (int16_t)sym_font->line_height) / 2;
+            canvas_draw_text(widget->canvas, cx, sym_y, cw, &label_dsc, entries[i].text);
             break;
         }
-        case GLYPH_TEXT: {
-            lv_draw_label_dsc_t label_dsc;
-            init_label_dsc(&label_dsc, LVGL_FOREGROUND, txt_font, LV_TEXT_ALIGN_CENTER);
-            /* Center text vertically in cell */
-            int16_t text_y = cy + (ch - (int16_t)txt_font->line_height) / 2;
-            if (n == 1) {
-                text_y = (MOD_CANVAS_W - (int16_t)txt_font->line_height) / 2;
-            }
-            canvas_draw_text(widget->canvas, cx, text_y, cw, &label_dsc, entries[i].text);
+        case GLYPH_KEYCAP:
+            draw_keycap(widget->canvas, cx, cy, cw, ch, entries[i].text, cap_font);
             break;
-        }
-        case GLYPH_WINLOGO: {
-            if (n == 1) {
-                cy = 0;
-                ch = MOD_CANVAS_W;
-            }
+        case GLYPH_WINLOGO:
             draw_win_logo(widget->canvas, cx, cy, cw, ch);
             break;
-        }
         }
     }
 

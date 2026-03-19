@@ -417,7 +417,7 @@
             bindings = <
 &kp GRAVE      &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
-&mo NAV        &hml LSHFT A    &hml LCTRL S    &hml LALT D     &hml_g LGUI F     &lts NUMBERS G                                  &lts NUMBERS H      &hmr_g RGUI J     &hmr RALT K     &hmr RCTRL L    &hmr RSHFT SEMI     &lts NAV SQT
+&mo NAV        &hml LCTRL A    &hml LALT S     &hml_g LGUI D   &hml LSHFT F      &lts NUMBERS G                                  &lts NUMBERS H      &hmr RSHFT J      &hmr_g RGUI K   &hmr RALT L     &hmr RCTRL SEMI     &lts NAV SQT
 &td_shift      &kp Z           &kp X           &kp C           &kp V           &lts MOUSE B    &kp DELETE      &kp BACKSPACE   &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
                &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                           &lts SYMBOLS SPACE  &lts NAV SPACE      &enter_mash_proof RGUI ENTER  &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
             >;
@@ -438,7 +438,7 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp SEMI            &trans
-&trans         &hml LSHFT N    &hml LCTRL R    &hml LALT T     &hml_g LGUI S     &trans                                          &kp P               &hmr_g RGUI H     &hmr RALT A     &hmr RCTRL E    &hmr RSHFT I        &lts NAV EXCL
+&trans         &hml LCTRL N    &hml LALT R     &hml_g LGUI T   &hml LSHFT S      &trans                                          &kp P               &hmr RSHFT H      &hmr_g RGUI A   &hmr RALT E     &hmr RCTRL I        &lts NAV EXCL
 &trans         &kp Q           &trans          &kp M           &kp W           &lts MOUSE Z    &trans          &trans          &kp K               &kp F           &kp COMMA       &kp DOT         &kp SQT             &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
             >;
@@ -480,7 +480,7 @@
 
             bindings = <
 &trans         &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &trans          &trans          &trans          &kp DELETE
-&trans         &kp LG(LS(N1))     &kp LG(LS(N2))     &kp LG(LS(N3))     &kp LG(LS(N4))     &kp LG(LS(N5))                                  &none           &kp PG_UP       &kp UP          &kp PG_DN       &none           &trans
+&trans         &kp LG(LS(N1))     &kp LG(LS(N2))     &kp LG(LS(N3))     &kp LG(LS(N4))     &kp LG(LS(N5))                                  &none           &kp PG_UP       &kp UP          &kp PG_DN       &kp LG(LBKT)    &kp LG(RBKT)
 &trans         &kp LG(LS(N6))     &kp LG(LS(N7))     &kp LG(LS(N8))     &kp LG(LS(N9))     &kp LG(LS(N0))                                  &kp HOME        &kp LEFT        &kp DOWN        &kp RIGHT       &none           &trans
 &trans         &kp LG(Z)          &kp LG(X)          &kp LG(C)          &kp LG(V)          &none           &trans          &trans          &kp END         &msc SCRL_UP    &none           &msc SCRL_DOWN  &none           &none
                &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
@@ -580,7 +580,7 @@
             bindings = <
 &none          &none           &none           &none           &none           &none                                           &none               &none               &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
-&none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
+&none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
 &td_shift      &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &mkp RCLK             &mkp MCLK            &none
             >;
@@ -598,7 +598,7 @@
             bindings = <
 &none          &none           &none           &none           &none           &none                                           &none               &none                &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP              &mmv MOVE_UP_SLOW    &msc SCRL_DOWN            &none          &none
-&none          &kp LSHFT       &kp LCTRL       &kp LALT        &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
+&none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &td_shift      &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK             &mkp MCLK            &none
             >;
@@ -621,7 +621,7 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &hml_g LGUI S     &trans          &hml LCTRL F    &trans                                          &trans              &hmr RCTRL J    &trans          &hmr_g RGUI L     &trans              &trans
+&trans         &hml_g LGUI A   &trans            &hml LCTRL D    &trans          &trans                                          &trans              &trans          &hmr RCTRL K    &trans              &hmr_g RGUI SEMI    &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
                &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
             >;
@@ -642,7 +642,7 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &hml_g LGUI R     &trans          &hml LCTRL S    &trans                                          &trans              &hmr RCTRL H    &trans          &hmr_g RGUI E     &trans              &trans
+&trans         &hml_g LGUI N   &trans            &hml LCTRL T    &trans          &trans                                          &trans              &trans          &hmr RCTRL A    &trans              &hmr_g RGUI I       &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
                &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
             >;

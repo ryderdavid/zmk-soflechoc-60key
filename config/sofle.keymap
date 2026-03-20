@@ -49,6 +49,9 @@
 #define WINMODE_MOUSE   12
 #define CAPS_DISPLAY    13
 #define GALLIUM_CAPS    14
+#define ENTHIUM         15
+#define ENTHIUM_CAPS    16
+#define ENTHIUM_WIN     17
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 // KEYMAP_DRAWER defines simple integers in its preamble (bitwise & breaks DTS parser)
@@ -92,6 +95,18 @@
         gallium_caps_layer {
             if-layers = <GALLIUM CAPS_DISPLAY>;
             then-layer = <GALLIUM_CAPS>;
+        };
+
+        // When Enthium + caps toggle are both active, use shifted Enthium letters
+        enthium_caps_layer {
+            if-layers = <ENTHIUM CAPS_DISPLAY>;
+            then-layer = <ENTHIUM_CAPS>;
+        };
+
+        // When Enthium + Windows mode are both active, swap Ctrl↔GUI
+        enthium_win_layer {
+            if-layers = <ENTHIUM WINMODE>;
+            then-layer = <ENTHIUM_WIN>;
         };
     };
 
@@ -171,16 +186,50 @@
             layers = <1 11>;
         };
 
-        // Layout toggle: bottom-right corner keys (,./Sft)
-        layout_toggle {
+        // Layout cycle: bottom-right corner keys (,./Sft)
+        // QWERTY → Gallium → Enthium → QWERTY
+        layout_to_gallium {
             bindings = <&tog GALLIUM>;
             key-positions = <46 47 48 49>;
+            layers = <QWERTY WINMODE>;
+        };
+
+        layout_to_enthium {
+            bindings = <&gallium_to_enthium>;
+            key-positions = <46 47 48 49>;
+            layers = <GALLIUM WINMODE_GALLIUM>;
+        };
+
+        layout_to_qwerty {
+            bindings = <&tog ENTHIUM>;
+            key-positions = <46 47 48 49>;
+            layers = <ENTHIUM ENTHIUM_WIN>;
         };
 
         // Numbers toggle: G+H positions
         numbers_toggle {
             bindings = <&tog NUMBERS>;
             key-positions = <29 30>;
+        };
+
+        // Enthium mouse toggle: V+/ positions (mirrored from Gallium)
+        mouse_toggle_e {
+            bindings = <&tog MOUSE>;
+            key-positions = <37 44>;
+            layers = <ENTHIUM ENTHIUM_WIN>;
+        };
+
+        // Enthium fat-finger protection
+        fatfinger_del_e {
+            bindings = <&kp J>;
+            key-positions = <41 42>;
+            layers = <ENTHIUM ENTHIUM_WIN>;
+        };
+
+        fatfinger_bksp_e {
+            bindings = <&kp FSLH>;
+            key-positions = <44 43>;
+            layers = <ENTHIUM ENTHIUM_WIN>;
         };
 
         // Windows/Mac modifier swap: far-left 4 keys (Sft+Z+X+C)
@@ -245,6 +294,14 @@
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&kp LT &kp MINUS>;
+        };
+
+        gallium_to_enthium: gallium_to_enthium {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog GALLIUM &tog ENTHIUM>;
         };
     };
 
@@ -419,7 +476,7 @@
 &lts NAV TAB   &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LCTRL A    &hml LALT S     &hml_g LGUI D   &hml LSHFT F      &lts NUMBERS G                                  &lts NUMBERS H      &hmr RSHFT J      &hmr_g RGUI K   &hmr RALT L     &hmr RCTRL SEMI     &lts NAV SQT
 &td_shift      &kp Z           &kp X           &kp C           &kp V           &lts MOUSE B    &kp DELETE      &kp BACKSPACE   &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                           &lts SYMBOLS SPACE  &lts NAV SPACE      &enter_mash_proof RGUI ENTER  &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
+               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts MOUSE ENTER                         &lts SYMBOLS ENTER  &lts NAV SPACE      &kp RGUI                      &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -440,7 +497,7 @@
 &trans         &kp B           &kp L           &kp D           &kp C           &kp V                                           &kp J               &kp Y           &kp O           &kp U           &kp SEMI            &trans
 &trans         &hml LCTRL N    &hml LALT R     &hml_g LGUI T   &hml LSHFT S      &trans                                          &kp P               &hmr RSHFT H      &hmr_g RGUI A   &hmr RALT E     &hmr RCTRL I        &lts NAV EXCL
 &trans         &kp Q           &trans          &kp M           &kp W           &lts MOUSE Z    &trans          &trans          &kp K               &kp F           &kp COMMA       &kp DOT         &kp SQT             &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -483,7 +540,7 @@
 &trans         &kp LG(LS(N1))     &kp LG(LS(N2))     &kp LG(LS(N3))     &kp LG(LS(N4))     &kp LG(LS(N5))                                  &none           &kp PG_UP       &kp UP          &kp PG_DN       &kp LG(LBKT)    &kp LG(RBKT)
 &trans         &kp LG(LS(N6))     &kp LG(LS(N7))     &kp LG(LS(N8))     &kp LG(LS(N9))     &kp LG(LS(N0))                                  &kp HOME        &kp LEFT        &kp DOWN        &kp RIGHT       &none           &trans
 &trans         &kp LG(Z)          &kp LG(X)          &kp LG(C)          &kp LG(V)          &none           &trans          &trans          &kp END         &msc SCRL_UP    &none           &msc SCRL_DOWN  &none           &none
-               &trans              &trans              &trans              &trans              &trans                                          &trans          &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
+               &trans              &trans              &trans              &trans              &trans                                          &none           &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -504,7 +561,7 @@
 &trans         &kp EXCL        &kp AT          &kp HASH        &kp DLLR        &kp PRCNT                                       &kp LT              &kp LBRC        &kp LBKT        &kp LPAR        &kp EQUAL           &kp MINUS
 &trans         &kp CARET       &kp AMPS        &kp ASTRK       &kp LPAR        &kp RPAR                                        &kp GT              &kp RBRC        &kp RBKT        &kp RPAR        &kp PIPE            &trans
 &trans         &kp TILDE       &kp GRAVE       &kp DOT         &kp COMMA       &kp FSLH        &trans          &trans          &kp PLUS            &kp COLON       &arrow_left     &arrow_right    &kp SQT             &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &none           &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -522,7 +579,7 @@
 &none          &none           &none           &none           &none           &studio_unlock                                  &kp MINUS           &kp N7          &kp N8          &kp N9          &none               &none
 &none          &none           &none           &none           &none           &none                                           &kp ASTRK           &kp N4          &kp N5          &kp N6          &none               &none
 &td_shift      &none           &none           &none           &none           &caps_word      &td_numlk       &none           &kp FSLH            &kp N1          &kp N2          &kp N3          &none               &none
-               &none           &none           &none           &none           &none                                           &lts NAV TAB        &kp DOT         &enter_mash_proof RGUI ENTER  &kp N0           &none
+               &none           &none           &none           &none           &none                                           &lts NAV TAB        &kp DOT         &trans  &kp N0           &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -540,9 +597,9 @@
             bindings = <
 &bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &bt BT_CLR          &none           &none           &none           &none               &none
 &ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
-&none          &none           &none           &none           &none           &tog GALLIUM                                    &none               &tog MOUSE      &none           &none           &none               &none
+&none          &none           &none           &none           &none           &tog GALLIUM                                    &tog ENTHIUM        &tog MOUSE      &none           &none           &none               &none
 &td_shift      &none           &none           &none           &none           &caps_word      &none           &none           &none               &none           &none           &none           &none               &none
-               &none           &none           &none           &none           &none                                           &none               &none           &enter_mash_proof RGUI ENTER  &none           &none
+               &none           &none           &none           &none           &none                                           &none               &none           &trans  &none           &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -560,7 +617,7 @@
 &trans         &kp F6          &kp F7          &kp F8          &kp F9          &kp F10                                         &trans              &trans          &trans          &trans          &trans              &kp C_MUTE
 &trans         &kp F11         &kp F12         &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_UP
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_DN
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &enter_mash_proof RGUI ENTER  &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans  &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -623,7 +680,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &hml_g LGUI A   &trans            &hml LCTRL D    &trans          &trans                                          &trans              &trans          &hmr RCTRL K    &trans              &hmr_g RGUI SEMI    &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &trans  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -644,7 +701,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &hml_g LGUI N   &trans            &hml LCTRL T    &trans          &trans                                          &trans              &trans          &hmr RCTRL A    &trans              &hmr_g RGUI I       &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
-               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &enter_mash_proof RGUI ENTER  &trans        &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts NAV ENTER                              &lts SYMBOLS SPACE  &lts NAV SPACE  &trans  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -667,7 +724,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &trans                   &trans                    &trans         &trans
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &mmv MOVE_LEFT_FAST      &trans                   &mmv MOVE_RIGHT_FAST      &trans         &trans
 &trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans                   &trans                   &trans                    &trans         &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &enter_mash_proof RGUI ENTER  &trans                    &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans                   &trans  &trans                    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -711,6 +768,65 @@
 &trans         &kp LS(N)       &kp LS(R)       &kp LS(T)       &kp LS(S)       &kp LS(G)                                       &kp LS(P)           &kp LS(H)       &kp LS(A)       &kp LS(E)       &kp LS(I)           &trans
 &td_shift      &kp LS(Q)       &kp LS(X)       &kp LS(M)       &kp LS(W)       &kp LS(Z)       &trans          &trans          &kp LS(K)           &kp LS(F)       &trans          &trans          &trans              &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 15 — Enthium v14 (mirrored: consonants left, vowels right)   │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Mirrored so R can go on left thumb; Space stays on right.          │
+        // │ Original Enthium left→right becomes right→left.                    │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        enthium_layer {
+            display-name = "enthium";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp Z           &kp P           &kp D           &kp L           &kp X                                           &kp EQUAL           &kp U           &kp O           &kp Y           &kp Q               &trans
+&lts NAV W     &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hml LSHFT H    &lts NUMBERS K                                  &lts NUMBERS MINUS  &hmr RSHFT E    &hmr_g RGUI A   &hmr RALT I     &hmr RCTRL C        &lts NAV B
+&trans         &kp V           &kp F           &kp G           &kp M           &lts MOUSE J    &trans          &trans          &kp FSLH            &kp SEMI        &kp DOT         &kp COMMA       &kp SQT             &trans
+               &trans          &trans          &trans          &lts SYMBOLS R  &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 16 — Enthium caps (conditional: ENTHIUM + CAPS_DISPLAY)      │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        enthium_caps_layer {
+            display-name = "enth+cap";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp LS(Z)       &kp LS(P)       &kp LS(D)       &kp LS(L)       &kp LS(X)                                       &trans              &kp LS(U)       &kp LS(O)       &kp LS(Y)       &kp LS(Q)           &trans
+&trans         &kp LS(S)       &kp LS(N)       &kp LS(T)       &kp LS(H)       &kp LS(K)                                       &trans              &kp LS(E)       &kp LS(A)       &kp LS(I)       &kp LS(C)           &trans
+&td_shift      &kp LS(V)       &kp LS(F)       &kp LS(G)       &kp LS(M)       &kp LS(J)       &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ┌──────────────────────────────────────────────────────────────────────┐
+        // │ Layer 17 — Enthium + Windows mode (conditional: ENTHIUM + WINMODE) │
+        // ├──────────────────────────────────────────────────────────────────────┤
+        // │ Swaps Ctrl↔GUI on mirrored Enthium CAGS home row (25↔27, 32↔34)   │
+        // └──────────────────────────────────────────────────────────────────────┘
+
+        enthium_win_layer {
+            display-name = "enth+win";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &hml_g LGUI S   &trans          &hml LCTRL T    &trans          &trans                                          &trans              &trans          &hmr RCTRL A    &trans          &hmr_g RGUI C       &trans
+&trans         &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &trans
+               &htk LGUI LS(LC(LA(LG(Z))))  &trans  &htk LCTRL LS(LC(LA(LG(A))))  &lts SYMBOLS ENTER  &lts MOUSE ENTER                            &lts SYMBOLS ENTER  &lts NAV SPACE  &kp RGUI  &trans        &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

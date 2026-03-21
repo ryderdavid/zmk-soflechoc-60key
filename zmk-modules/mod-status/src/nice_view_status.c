@@ -436,61 +436,25 @@ static void layer_status_update_cb(struct layer_status_state state) {
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_layer_status(widget, state); }
 }
 
-/* Caps layer indices (must match keymap defines) */
-#define CAPS_DISPLAY_LAYER_IDX 14
-#define GALLIUM_CAPS_LAYER_IDX 15
-#define ENTHIUM_CAPS_LAYER_IDX 16
-
-/* Overlay layers: transparent mode switches that should yield to content layers
- * on the display.  When e.g. SYMBOLS (5) is active alongside WINMODE (11),
- * we want the display to read "symbols", not "win". */
-#define WINMODE_LAYER_IDX  11
-#define WINGAL_LAYER_IDX   12
-#define WINMSE_LAYER_IDX   13
-#define ENTHIUM_WIN_LAYER_IDX 17
-
-static bool is_overlay_layer(zmk_keymap_layer_index_t idx) {
-    return idx == CAPS_DISPLAY_LAYER_IDX || idx == GALLIUM_CAPS_LAYER_IDX ||
-           idx == ENTHIUM_CAPS_LAYER_IDX ||
-           idx == WINMODE_LAYER_IDX || idx == WINGAL_LAYER_IDX ||
-           idx == WINMSE_LAYER_IDX || idx == ENTHIUM_WIN_LAYER_IDX;
-}
+/* Simplified 9-layer architecture — no overlay/caps layers.
+ * 0=QWERTY, 1=ENGRAM, 2=ENTHIUM, 3=NUMBERS, 4=NAV,
+ * 5=ADJUST, 6=FKEYS, 7=MOUSE, 8=PREC */
 
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
-    bool caps = zmk_keymap_layer_active(CAPS_DISPLAY_LAYER_IDX) ||
-                zmk_keymap_layer_active(GALLIUM_CAPS_LAYER_IDX) ||
-                zmk_keymap_layer_active(ENTHIUM_CAPS_LAYER_IDX);
+    /* Find highest active layer — content layers (>=3) win over alpha toggles */
+    zmk_keymap_layer_index_t index = 0;
 
-    /* Find highest active content layer (non-overlay).
-     * If only base/gallium/enthium + a mode overlay, show the overlay.
-     * Content layers 3-10 (numbers, nav, symbols, etc.) always win. */
-    zmk_keymap_layer_index_t content = 0;
-    zmk_keymap_layer_index_t overlay = 0;
-
-    for (int i = 17; i >= 0; i--) {
-        if (!zmk_keymap_layer_active(i)) continue;
-        if (is_overlay_layer(i)) {
-            if (!overlay) overlay = i;
-        } else if (!content) {
-            content = i;
+    for (int i = 8; i >= 0; i--) {
+        if (zmk_keymap_layer_active(i)) {
+            index = i;
+            break;
         }
-        if (content && overlay) break;
-    }
-
-    /* If a real content layer (>=3) is active, show it; otherwise show overlay */
-    zmk_keymap_layer_index_t index;
-    if (content >= 3) {
-        index = content;           /* symbols, nav, numbers, etc. */
-    } else if (overlay) {
-        index = overlay;           /* win, w+gal, win+mse */
-    } else {
-        index = content;           /* base or gallium */
     }
 
     return (struct layer_status_state){
         .index = index,
         .label = zmk_keymap_layer_name(zmk_keymap_layer_index_to_id(index)),
-        .caps = caps,
+        .caps = false,
     };
 }
 

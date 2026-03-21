@@ -334,6 +334,20 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        mm_hash_dllr: mm_hash_dllr {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp HASH>, <&kp DLLR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_fslh_bslh: mm_fslh_bslh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         // ── Engram number row mod-morphs: symbol base, number on shift ──
         mm_pipe_n1: mm_pipe_n1 {
             compatible = "zmk,behavior-mod-morph";
@@ -450,7 +464,7 @@
 &kp TAB        &none           &kp Y           &kp O           &kp U           &mm_sqt_lpar                                    &mm_dqt_rpar        &kp L           &kp D           &kp W           &kp LBKT            &kp RBKT
 &lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &mm_comma_semi                                  &mm_dot_colon       &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
 &mt LSHFT Z    &kp G           &kp X           &kp J           &kp K           &kp MINUS       &trans          &trans          &mm_qmark_excl      &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
-               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &kp HASH        &htk RGUI FSLH  &trans
+               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &mm_hash_dllr   &mm_fslh_bslh   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -465,8 +479,8 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &kp Q           &kp Y           &kp O           &kp U           &kp EQUAL                                       &kp X               &kp L           &kp D           &kp P           &kp Z               &trans
 &lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI A   &hml LSHFT E    &kp MINUS                                       &kp K               &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT N     &hmr RCTRL S        &lts NAV W
-&kp LSHFT      &kp SQT         &kp COMMA       &kp DOT         &kp SEMI        &lts MOUSE FSLH &trans          &trans          &kp J               &kp M           &kp G           &kp F           &kp V               &mt RSHFT EXCL
-               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &lts NAV R      &trans          &trans          &trans
+&mt LSHFT EXCL &kp SQT         &kp COMMA       &kp DOT         &kp SEMI        &lts MOUSE FSLH &trans          &trans          &kp J               &kp M           &kp G           &kp F           &kp V               &mt RSHFT EXCL
+               &trans          &trans          &trans          &lts NUMBERS SPACE  &trans                                      &lts NUMBERS R      &lts NAV SPACE  &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

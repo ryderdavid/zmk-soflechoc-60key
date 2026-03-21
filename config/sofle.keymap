@@ -279,6 +279,7 @@
             bindings = <&mo>, <&kp>;
         };
 
+
         htk: hold_tap_kp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -286,6 +287,122 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
+        };
+
+        // ── Engram mod-morphs: custom shifted pairs ──────────────
+        // base tap = symbol, shift = different character
+
+        mm_comma_semi: mm_comma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dot_colon: mm_dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_sqt_lpar: mm_sqt_lpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dqt_rpar: mm_dqt_rpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DQT>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_qmark_excl: mm_qmark_excl {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp QMARK>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_at_grave: mm_at_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp AT>, <&kp GRAVE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // ── Engram number row mod-morphs: symbol base, number on shift ──
+        mm_pipe_n1: mm_pipe_n1 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE>, <&kp N1>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_equal_n2: mm_equal_n2 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp N2>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_tilde_n3: mm_tilde_n3 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE>, <&kp N3>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_plus_n4: mm_plus_n4 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PLUS>, <&kp N4>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_lt_n5: mm_lt_n5 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LT>, <&kp N5>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_gt_n6: mm_gt_n6 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp GT>, <&kp N6>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_caret_n7: mm_caret_n7 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp CARET>, <&kp N7>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_amps_n8: mm_amps_n8 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp AMPS>, <&kp N8>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_prcnt_n9: mm_prcnt_n9 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PRCNT>, <&kp N9>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_astrk_n0: mm_astrk_n0 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ASTRK>, <&kp N0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         td_enc_l: tap_dance_enc_left {
@@ -329,10 +446,10 @@
             display-name = "bvhzql";
 
             bindings = <
-&lts NUMBERS AT  &kp PIPE    &kp EQUAL       &kp TILDE       &kp PLUS        &kp LT                                          &kp GT              &kp CARET       &kp AMPS        &kp PRCNT       &kp ASTRK           &kp BSPC
-&kp TAB        &none           &kp Y           &kp O           &kp U           &kp SQT                                         &kp DQT             &kp L           &kp D           &kp W           &kp LBKT            &kp RBKT
-&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &kp COMMA                                       &kp DOT             &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
-&mt LSHFT Z    &kp G           &kp X           &kp J           &kp K           &kp MINUS       &trans          &trans          &kp FSLH            &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
+&mm_at_grave     &mm_pipe_n1 &mm_equal_n2    &mm_tilde_n3    &mm_plus_n4     &mm_lt_n5                                       &mm_gt_n6           &mm_caret_n7    &mm_amps_n8     &mm_prcnt_n9    &mm_astrk_n0        &kp BSPC
+&kp TAB        &none           &kp Y           &kp O           &kp U           &mm_sqt_lpar                                    &mm_dqt_rpar        &kp L           &kp D           &kp W           &kp LBKT            &kp RBKT
+&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &mm_comma_semi                                  &mm_dot_colon       &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
+&mt LSHFT Z    &kp G           &kp X           &kp J           &kp K           &kp MINUS       &trans          &trans          &mm_qmark_excl      &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
                &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &kp HASH        &htk RGUI FSLH  &trans
             >;
 

@@ -781,7 +781,7 @@
         // └──────────────────────────────────────────────────────────────────────┘
 
         enthium_layer {
-            display-name = "enthium";
+            display-name = "enth";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
@@ -799,7 +799,7 @@
         // └──────────────────────────────────────────────────────────────────────┘
 
         enthium_caps_layer {
-            display-name = "enth+cap";
+            display-name = "ent+caps";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans

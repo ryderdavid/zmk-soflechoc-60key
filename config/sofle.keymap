@@ -331,7 +331,7 @@
             bindings = <
 &lts NUMBERS LBKT  &kp PIPE    &kp EQUAL       &kp TILDE       &kp PLUS        &kp LT                                          &kp GT              &kp CARET       &kp AMPS        &kp PRCNT       &kp ASTRK           &kp RBKT
 &kp TAB        &kp AT          &kp Y           &kp O           &kp U           &kp SQT                                         &kp DQT             &kp L           &kp D           &kp W           &none               &none
-&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &lts NUMBERS COMMA                              &lts NUMBERS DOT    &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
+&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &kp COMMA                                       &kp DOT             &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
 &kp LSHFT      &kp Z           &kp G           &kp X           &kp J           &lts MOUSE K    &trans          &trans          &kp FSLH            &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
                &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &kp HASH        &htk RGUI FSLH  &trans
             >;

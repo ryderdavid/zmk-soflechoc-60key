@@ -439,6 +439,7 @@ static void layer_status_update_cb(struct layer_status_state state) {
 /* Caps layer indices (must match keymap defines) */
 #define CAPS_DISPLAY_LAYER_IDX 13
 #define GALLIUM_CAPS_LAYER_IDX 14
+#define ENTHIUM_CAPS_LAYER_IDX 16
 
 /* Overlay layers: transparent mode switches that should yield to content layers
  * on the display.  When e.g. SYMBOLS (4) is active alongside WINMODE (10),
@@ -446,24 +447,27 @@ static void layer_status_update_cb(struct layer_status_state state) {
 #define WINMODE_LAYER_IDX  10
 #define WINGAL_LAYER_IDX   11
 #define WINMSE_LAYER_IDX   12
+#define ENTHIUM_WIN_LAYER_IDX 17
 
 static bool is_overlay_layer(zmk_keymap_layer_index_t idx) {
     return idx == CAPS_DISPLAY_LAYER_IDX || idx == GALLIUM_CAPS_LAYER_IDX ||
+           idx == ENTHIUM_CAPS_LAYER_IDX ||
            idx == WINMODE_LAYER_IDX || idx == WINGAL_LAYER_IDX ||
-           idx == WINMSE_LAYER_IDX;
+           idx == WINMSE_LAYER_IDX || idx == ENTHIUM_WIN_LAYER_IDX;
 }
 
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
     bool caps = zmk_keymap_layer_active(CAPS_DISPLAY_LAYER_IDX) ||
-                zmk_keymap_layer_active(GALLIUM_CAPS_LAYER_IDX);
+                zmk_keymap_layer_active(GALLIUM_CAPS_LAYER_IDX) ||
+                zmk_keymap_layer_active(ENTHIUM_CAPS_LAYER_IDX);
 
     /* Find highest active content layer (non-overlay).
-     * If only base/gallium + a mode overlay, show the overlay.
+     * If only base/gallium/enthium + a mode overlay, show the overlay.
      * Content layers 2-9 (numbers, nav, symbols, etc.) always win. */
     zmk_keymap_layer_index_t content = 0;
     zmk_keymap_layer_index_t overlay = 0;
 
-    for (int i = 14; i >= 0; i--) {
+    for (int i = 17; i >= 0; i--) {
         if (!zmk_keymap_layer_active(i)) continue;
         if (is_overlay_layer(i)) {
             if (!overlay) overlay = i;

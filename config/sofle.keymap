@@ -341,9 +341,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &none           &kp Y           &kp O           &kp U           &none                                           &none               &kp L           &kp D           &kp W           &none               &trans
-&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &trans                                          &trans              &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
-&kp LSHFT      &kp Z           &kp G           &kp X           &kp J           &lts MOUSE K    &trans          &trans          &kp R               &kp M           &kp F           &kp P           &kp Q               &trans
+&kp GRAVE      &kp UNDER       &kp Y           &kp O           &kp U           &kp SQT                                         &kp RPAR            &kp L           &kp D           &kp W           &kp UNDER           &trans
+&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &kp SEMI                                        &kp COLON           &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
+&kp LSHFT      &kp Z           &kp G           &kp X           &kp J           &lts MOUSE K    &trans          &trans          &kp EXCL            &kp M           &kp F           &kp P           &kp Q               &kp MINUS
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

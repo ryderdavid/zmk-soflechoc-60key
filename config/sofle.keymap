@@ -338,7 +338,7 @@
 &kp TAB        &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV        &hml LCTRL A    &hml LALT S     &hml_g LGUI D   &hml LSHFT F    &kp G                                           &kp H               &hmr RSHFT J    &hmr_g RGUI K   &hmr RALT L     &hmr RCTRL SEMI     &lts NAV SQT
 &kp LSHFT      &kp Z           &kp X           &kp C           &kp V           &kp B           &hyper          &meh            &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &mt RSHFT FSLH
-               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts NUMBERS ESC    &lts MOUSE ENTER                         &lts NUMBERS SPACE  &lts NAV SPACE      &kp HASH                      &htk RGUI FSLH                  &lts FKEYS ENTER
+               &htk LCTRL LS(LC(LA(LG(Z))))  &htk LALT LS(LC(LA(LG(B))))  &htk LGUI LS(LC(LA(LG(A))))  &lts NUMBERS ESC    &lts MOUSE ENTER                         &lts NUMBERS SPACE  &lts NAV SPACE      &kp RGUI                      &htk RALT LS(LC(LA(LG(Y))))     &lts FKEYS ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -354,7 +354,7 @@
 &kp TAB        &kp AT          &kp Y           &kp O           &kp U           &kp SQT                                         &kp DQT             &kp L           &kp D           &kp W           &none               &none
 &lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &lts NUMBERS COMMA                              &lts NUMBERS DOT    &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
 &kp LSHFT      &kp Z           &kp G           &kp X           &kp J           &lts MOUSE K    &trans          &trans          &kp FSLH            &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
-               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &trans          &trans          &trans
+               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &kp HASH        &htk RGUI FSLH  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

@@ -523,8 +523,8 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &kp TAB        &kp B           &kp Y           &kp O           &kp U           &kp SQT                                         &kp SEMI            &kp L           &kp D           &kp W           &kp V               &kp Z
-&lts NAV C     &hml LCTRL I    &hml LALT E     &hml_g LGUI A   &hml LSHFT COMMA &kp DOT                                        &kp H               &hmr RSHFT T    &hmr_g RGUI S   &hmr RALT N     &hmr RCTRL Q        &trans
-&mt LSHFT G    &kp X           &kp J           &kp K           &kp MINUS       &lts MOUSE FSLH &trans          &trans          &kp R               &kp M           &kp F           &kp P           &trans              &trans
+&trans         &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &kp COMMA                                       &kp DOT             &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV Q
+&kp LSHFT      &kp G           &kp X           &kp J           &kp K           &lts MOUSE MINUS &trans         &trans          &kp FSLH            &kp R           &kp M           &kp F           &kp P               &trans
                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

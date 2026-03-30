@@ -26,17 +26,17 @@ layers:
   - P
   - MINUS
   - nav
-  - {t: A, h: Sft}
-  - {t: S, h: Ctl}
-  - {t: D, h: Opt}
-  - {t: F, h: Cmd}
+  - {t: A, h: Ctl}
+  - {t: S, h: Opt}
+  - {t: D, h: Cmd}
+  - {t: F, h: Sft}
   - {t: G, h: numbers}
   - {t: H, h: numbers}
-  - {t: J, h: Cmd}
-  - {t: K, h: Opt}
-  - {t: L, h: Ctl}
-  - {t: ;, h: Sft}
-  - ''''
+  - {t: J, h: Sft}
+  - {t: K, h: Cmd}
+  - {t: L, h: Opt}
+  - {t: ;, h: Ctl}
+  - {t: '''', h: nav}
   - '&td_shift'
   - Z
   - X
@@ -61,7 +61,7 @@ layers:
   - {t: ENTER, h: Cmd}
   - {t: Hyper+Y, h: Opt}
   - {t: ENTER, h: fkeys}
-  gallium:
+  gal:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -87,16 +87,16 @@ layers:
   - ;
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: N, h: Sft}
-  - {t: R, h: Ctl}
-  - {t: T, h: Opt}
-  - {t: S, h: Cmd}
+  - {t: N, h: Ctl}
+  - {t: R, h: Opt}
+  - {t: T, h: Cmd}
+  - {t: S, h: Sft}
   - {t: ▽, type: trans}
   - P
-  - {t: H, h: Cmd}
-  - {t: A, h: Opt}
-  - {t: E, h: Ctl}
-  - {t: I, h: Sft}
+  - {t: H, h: Sft}
+  - {t: A, h: Cmd}
+  - {t: E, h: Opt}
+  - {t: I, h: Ctl}
   - {t: EXCL, h: nav}
   - {t: ▽, type: trans}
   - Q
@@ -206,8 +206,8 @@ layers:
   - PG UP
   - UP
   - PG DN
-  - ''
-  - {t: ▽, type: trans}
+  - Cmd+LBKT
+  - Cmd+RBKT
   - {t: ▽, type: trans}
   - Cmd+Sft+6
   - Cmd+Sft+7
@@ -396,7 +396,7 @@ layers:
   - ''
   - ''
   - ''
-  - {t: gallium, h: toggle}
+  - {t: gal, h: toggle}
   - ''
   - {t: mouse, h: toggle}
   - ''
@@ -514,9 +514,9 @@ layers:
   - ''
   - ''
   - ''
-  - Sft
   - Ctl
   - Opt
+  - Sft
   - Cmd
   - ''
   - ''
@@ -546,7 +546,7 @@ layers:
   - ''
   - {t: mouse, h: toggle}
   - LClk
-  - {t: ENTER, h: Cmd}
+  - RClk
   - MClk
   - ''
   prec:
@@ -575,9 +575,9 @@ layers:
   - ''
   - ''
   - ''
-  - Sft
   - Ctl
   - Opt
+  - Sft
   - Cmd
   - ''
   - ''
@@ -607,10 +607,10 @@ layers:
   - ''
   - {t: ▽, type: trans}
   - LClk
-  - {t: ENTER, h: Cmd}
+  - RClk
   - MClk
   - ''
-  windows:
+  win:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -636,16 +636,16 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: A, h: Cmd}
   - {t: ▽, type: trans}
-  - {t: S, h: Cmd}
-  - {t: ▽, type: trans}
-  - {t: F, h: Ctl}
+  - {t: D, h: Ctl}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: J, h: Ctl}
   - {t: ▽, type: trans}
-  - {t: L, h: Cmd}
   - {t: ▽, type: trans}
+  - {t: K, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: ;, h: Cmd}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -664,14 +664,14 @@ layers:
   - {t: Hyper+Z, h: Cmd}
   - {t: ▽, type: trans}
   - {t: Hyper+A, h: Ctl}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: ENTER, h: symbols}
+  - {t: ENTER, h: nav}
+  - {t: SPACE, h: symbols}
+  - {t: SPACE, h: nav}
   - {t: ENTER, h: Cmd}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  win+gal:
+  w+gal:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -697,16 +697,16 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: N, h: Cmd}
   - {t: ▽, type: trans}
-  - {t: R, h: Cmd}
-  - {t: ▽, type: trans}
-  - {t: S, h: Ctl}
+  - {t: T, h: Ctl}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: H, h: Ctl}
   - {t: ▽, type: trans}
-  - {t: E, h: Cmd}
   - {t: ▽, type: trans}
+  - {t: A, h: Ctl}
+  - {t: ▽, type: trans}
+  - {t: I, h: Cmd}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -725,10 +725,10 @@ layers:
   - {t: Hyper+Z, h: Cmd}
   - {t: ▽, type: trans}
   - {t: Hyper+A, h: Ctl}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: ENTER, h: symbols}
+  - {t: ENTER, h: nav}
+  - {t: SPACE, h: symbols}
+  - {t: SPACE, h: nav}
   - {t: ENTER, h: Cmd}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -793,751 +793,873 @@ layers:
   - {t: ENTER, h: Cmd}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  caps:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+Q
+  - Sft+W
+  - Sft+E
+  - Sft+R
+  - Sft+T
+  - Sft+Y
+  - Sft+U
+  - Sft+I
+  - Sft+O
+  - Sft+P
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+A
+  - Sft+S
+  - Sft+D
+  - Sft+F
+  - Sft+G
+  - Sft+H
+  - Sft+J
+  - Sft+K
+  - Sft+L
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '&td_shift'
+  - Sft+Z
+  - Sft+X
+  - Sft+C
+  - Sft+V
+  - Sft+B
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+N
+  - Sft+M
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  gal+cap:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+B
+  - Sft+L
+  - Sft+D
+  - Sft+C
+  - Sft+V
+  - Sft+J
+  - Sft+Y
+  - Sft+O
+  - Sft+U
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+N
+  - Sft+R
+  - Sft+T
+  - Sft+S
+  - Sft+G
+  - Sft+P
+  - Sft+H
+  - Sft+A
+  - Sft+E
+  - Sft+I
+  - {t: ▽, type: trans}
+  - '&td_shift'
+  - Sft+Q
+  - Sft+X
+  - Sft+M
+  - Sft+W
+  - Sft+Z
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Sft+K
+  - Sft+F
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
 combos:
 - p: [17, 30, 55]
   k: '&wm_the'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 30, 56]
   k: '&wm_the'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 31, 55]
   k: '&wm_the'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 31, 56]
   k: '&wm_the'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 41, 55]
   k: '&wm_be'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 41, 56]
   k: '&wm_be'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [13, 33, 55]
   k: '&wm_be'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [13, 33, 56]
   k: '&wm_be'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 21, 55]
   k: '&wm_to'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 21, 56]
   k: '&wm_to'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 27, 55]
   k: '&wm_to'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 27, 56]
   k: '&wm_to'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 44, 55]
   k: '&wm_and'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 44, 56]
   k: '&wm_and'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 32, 55]
   k: '&wm_and'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 32, 56]
   k: '&wm_and'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [21, 28, 55]
   k: '&wm_of'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [21, 28, 56]
   k: '&wm_of'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 45, 55]
   k: '&wm_of'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 45, 56]
   k: '&wm_of'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 44, 55]
   k: '&wm_in'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 44, 56]
   k: '&wm_in'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 34, 55]
   k: '&wm_in'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 34, 56]
   k: '&wm_in'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [30, 40, 55]
   k: '&wm_have'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [30, 40, 56]
   k: '&wm_have'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 31, 55]
   k: '&wm_have'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 31, 56]
   k: '&wm_have'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 25, 30, 55]
   k: '&wm_that'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 25, 30, 56]
   k: '&wm_that'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 31, 32, 55]
   k: '&wm_that'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 31, 32, 56]
   k: '&wm_that'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 28, 55]
   k: '&wm_for'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 28, 56]
   k: '&wm_for'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 45, 55]
   k: '&wm_for'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 45, 56]
   k: '&wm_for'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 44, 55]
   k: '&wm_not'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 44, 56]
   k: '&wm_not'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 27, 55]
   k: '&wm_not'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 27, 56]
   k: '&wm_not'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 20, 55]
   k: '&wm_with'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 20, 56]
   k: '&wm_with'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [34, 40, 55]
   k: '&wm_with'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [34, 40, 56]
   k: '&wm_with'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 21, 55]
   k: '&wm_you'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 21, 56]
   k: '&wm_you'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 20, 55]
   k: '&wm_you'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 20, 56]
   k: '&wm_you'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 20, 55]
   k: '&wm_this'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 20, 56]
   k: '&wm_this'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 34, 55]
   k: '&wm_this'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 34, 56]
   k: '&wm_this'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 21, 28, 55]
   k: '&wm_from'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 21, 28, 56]
   k: '&wm_from'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 26, 45, 55]
   k: '&wm_from'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 26, 45, 56]
   k: '&wm_from'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 41, 55]
   k: '&wm_but'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 41, 56]
   k: '&wm_but'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [13, 21, 55]
   k: '&wm_but'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [13, 21, 56]
   k: '&wm_but'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 25, 55]
   k: '&wm_what'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 25, 56]
   k: '&wm_what'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [32, 40, 55]
   k: '&wm_what'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [32, 40, 56]
   k: '&wm_what'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 30, 55]
   k: '&wm_he'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 30, 56]
   k: '&wm_he'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [31, 33, 55]
   k: '&wm_he'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [31, 33, 56]
   k: '&wm_he'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [21, 44, 55]
   k: '&wm_on'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [21, 44, 56]
   k: '&wm_on'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 25, 55]
   k: '&wm_on'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 25, 56]
   k: '&wm_on'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 25, 55]
   k: '&wm_are'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 25, 56]
   k: '&wm_are'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 32, 55]
   k: '&wm_are'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 32, 56]
   k: '&wm_are'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [21, 27, 55]
   k: '&wm_do'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [21, 27, 56]
   k: '&wm_do'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 20, 55]
   k: '&wm_do'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 20, 56]
   k: '&wm_do'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 30, 55]
   k: '&wm_his'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 30, 56]
   k: '&wm_his'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [31, 34, 55]
   k: '&wm_his'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [31, 34, 56]
   k: '&wm_his'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 41, 55]
   k: '&wm_by'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 41, 56]
   k: '&wm_by'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [13, 19, 55]
   k: '&wm_by'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [13, 19, 56]
   k: '&wm_by'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 18, 55]
   k: '&wm_they'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 18, 56]
   k: '&wm_they'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 27, 55]
   k: '&wm_they'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 27, 56]
   k: '&wm_they'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 30, 55]
   k: '&wm_her'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 30, 56]
   k: '&wm_her'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 31, 55]
   k: '&wm_her'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 31, 56]
   k: '&wm_her'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 21, 55]
   k: '&wm_or'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 21, 56]
   k: '&wm_or'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 26, 55]
   k: '&wm_or'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 26, 56]
   k: '&wm_or'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 25, 55]
   k: '&wm_at'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 25, 56]
   k: '&wm_at'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 32, 55]
   k: '&wm_at'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 32, 56]
   k: '&wm_at'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 21, 55]
   k: '&wm_one'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 21, 56]
   k: '&wm_one'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 33, 55]
   k: '&wm_one'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 33, 56]
   k: '&wm_one'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 30, 55]
   k: '&wm_had'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 30, 56]
   k: '&wm_had'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 31, 55]
   k: '&wm_had'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 31, 56]
   k: '&wm_had'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 26, 55]
   k: '&wm_say'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 26, 56]
   k: '&wm_say'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 28, 55]
   k: '&wm_say'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 28, 56]
   k: '&wm_say'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 30, 55]
   k: '&wm_she'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 30, 56]
   k: '&wm_she'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [28, 31, 55]
   k: '&wm_she'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [28, 31, 56]
   k: '&wm_she'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 33, 55]
   k: '&wm_all'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 33, 56]
   k: '&wm_all'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 32, 55]
   k: '&wm_all'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 32, 56]
   k: '&wm_all'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 30, 55]
   k: '&wm_which'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 30, 56]
   k: '&wm_which'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [31, 40, 55]
   k: '&wm_which'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [31, 40, 56]
   k: '&wm_which'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 33, 55]
   k: '&wm_will'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 33, 56]
   k: '&wm_will'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 40, 55]
   k: '&wm_will'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 40, 56]
   k: '&wm_will'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 27, 55]
   k: '&wm_would'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 27, 56]
   k: '&wm_would'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 40, 55]
   k: '&wm_would'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 40, 56]
   k: '&wm_would'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 17, 55]
   k: '&wm_there'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 17, 56]
   k: '&wm_there'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 27, 55]
   k: '&wm_there'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 27, 56]
   k: '&wm_there'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 17, 20, 55]
   k: '&wm_their'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 17, 20, 56]
   k: '&wm_their'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 33, 34, 55]
   k: '&wm_their'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 33, 34, 56]
   k: '&wm_their'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 45, 55]
   k: '&wm_my'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 45, 56]
   k: '&wm_my'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 39, 55]
   k: '&wm_my'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 39, 56]
   k: '&wm_my'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 21, 55]
   k: '&wm_out'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 21, 56]
   k: '&wm_out'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 21, 55]
   k: '&wm_out'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 21, 56]
   k: '&wm_out'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 22, 55]
   k: '&wm_up'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 22, 56]
   k: '&wm_up'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [21, 30, 55]
   k: '&wm_up'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [21, 30, 56]
   k: '&wm_up'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 41, 55]
   k: '&wm_about'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 41, 56]
   k: '&wm_about'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [13, 32, 55]
   k: '&wm_about'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [13, 32, 56]
   k: '&wm_about'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 21, 55]
   k: '&wm_who'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 21, 56]
   k: '&wm_who'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 40, 55]
   k: '&wm_who'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 40, 56]
   k: '&wm_who'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 29, 55]
   k: '&wm_get'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 29, 56]
   k: '&wm_get'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [29, 33, 55]
   k: '&wm_get'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [29, 33, 56]
   k: '&wm_get'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [32, 45, 55]
   k: '&wm_make'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [32, 45, 56]
   k: '&wm_make'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [39, 44, 55]
   k: '&wm_make'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [39, 44, 56]
   k: '&wm_make'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [21, 29, 55]
   k: '&wm_go'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [21, 29, 56]
   k: '&wm_go'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 29, 55]
   k: '&wm_go'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 29, 56]
   k: '&wm_go'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [32, 33, 55]
   k: '&wm_like'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [32, 33, 56]
   k: '&wm_like'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 44, 55]
   k: '&wm_like'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 44, 56]
   k: '&wm_like'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 31, 55]
   k: '&wm_just'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 31, 56]
   k: '&wm_just'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 21, 55]
   k: '&wm_just'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 21, 56]
   k: '&wm_just'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [32, 44, 55]
   k: '&wm_know'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [32, 44, 56]
   k: '&wm_know'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 44, 55]
   k: '&wm_know'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 44, 56]
   k: '&wm_know'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 32, 55]
   k: '&wm_take'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 32, 56]
   k: '&wm_take'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 44, 55]
   k: '&wm_take'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 44, 56]
   k: '&wm_take'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [39, 45, 55]
   k: '&wm_come'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [39, 45, 56]
   k: '&wm_come'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 39, 55]
   k: '&wm_come'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 39, 56]
   k: '&wm_come'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 39, 55]
   k: '&wm_can'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 39, 56]
   k: '&wm_can'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 32, 55]
   k: '&wm_can'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 32, 56]
   k: '&wm_can'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 30, 55]
   k: '&wm_has'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 30, 56]
   k: '&wm_has'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [31, 32, 55]
   k: '&wm_has'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [31, 32, 56]
   k: '&wm_has'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 44, 55]
   k: '&wm_any'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 44, 56]
   k: '&wm_any'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 25, 55]
   k: '&wm_any'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 25, 56]
   k: '&wm_any'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [17, 21, 30, 55]
   k: '&wm_those'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 21, 30, 56]
   k: '&wm_those'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [20, 27, 31, 55]
   k: '&wm_those'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [20, 27, 31, 56]
   k: '&wm_those'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 18, 55]
   k: '&wm_why'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 18, 56]
   k: '&wm_why'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 40, 55]
   k: '&wm_why'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 40, 56]
   k: '&wm_why'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 44, 55]
   k: '&wm_when'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 44, 56]
   k: '&wm_when'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 40, 55]
   k: '&wm_when'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 40, 56]
   k: '&wm_when'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [14, 17, 55]
   k: '&wm_won_t'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [14, 17, 56]
   k: '&wm_won_t'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 40, 55]
   k: '&wm_won_t'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 40, 56]
   k: '&wm_won_t'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [27, 39, 55]
   k: '&wm_could'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [27, 39, 56]
   k: '&wm_could'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 16, 55]
   k: '&wm_could'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 16, 56]
   k: '&wm_could'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [26, 27, 55]
   k: '&wm_should'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [26, 27, 56]
   k: '&wm_should'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [15, 28, 55]
   k: '&wm_should'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [15, 28, 56]
   k: '&wm_should'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [30, 45, 55]
   k: '&wm_might'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [30, 45, 56]
   k: '&wm_might'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [31, 39, 55]
   k: '&wm_might'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [31, 39, 56]
   k: '&wm_might'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [39, 44, 55]
   k: '&wm_can_t'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [39, 44, 56]
   k: '&wm_can_t'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [16, 25, 55]
   k: '&wm_can_t'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [16, 25, 56]
   k: '&wm_can_t'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [18, 30, 55]
   k: '&wm_yes'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [18, 30, 56]
   k: '&wm_yes'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [19, 31, 55]
   k: '&wm_yes'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [19, 31, 56]
   k: '&wm_yes'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [13, 44, 55]
   k: '&wm_no'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [13, 44, 56]
   k: '&wm_no'
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [25, 37, 55]
   k: '&wm_no'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 37, 56]
   k: '&wm_no'
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [25, 41]
   k: Esc
   a: top
@@ -1562,25 +1684,25 @@ combos:
   k: SPACE
 - p: [14, 37]
   k: {t: mouse, h: toggle}
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [17, 13]
   k: {t: mouse, h: toggle}
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [41, 42]
   k: B
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [41, 42]
   k: Z
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [44, 43]
   k: N
-  l: [qwerty, windows]
+  l: [qwerty, win]
 - p: [44, 43]
   k: K
-  l: [gallium, win+gal]
+  l: [gal, w+gal]
 - p: [46, 47, 48, 49]
-  k: {t: gallium, h: toggle}
+  k: {t: gal, h: toggle}
 - p: [29, 30]
   k: {t: numbers, h: toggle}
 - p: [36, 37, 38, 39]
-  k: {t: windows, h: toggle}
+  k: {t: win, h: toggle}

@@ -436,15 +436,15 @@ static void layer_status_update_cb(struct layer_status_state state) {
     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) { set_layer_status(widget, state); }
 }
 
-/* Simplified 9-layer architecture — no overlay/caps layers.
- * 0=QWERTY, 1=ENGRAM, 2=ENTHIUM, 3=NUMBERS, 4=NAV,
- * 5=ADJUST, 6=FKEYS, 7=MOUSE, 8=PREC */
+/* 10-layer architecture — no overlay/caps layers.
+ * 0=QWERTY, 1=ENGRAM, 2=ENTHIUM, 3=ENGRAMMER, 4=NUMBERS, 5=NAV,
+ * 6=ADJUST, 7=FKEYS, 8=MOUSE, 9=PREC */
 
 static struct layer_status_state layer_status_get_state(const zmk_event_t *eh) {
-    /* Find highest active layer — content layers (>=3) win over alpha toggles */
+    /* Find highest active layer — content layers (>=4) win over alpha toggles */
     zmk_keymap_layer_index_t index = 0;
 
-    for (int i = 8; i >= 0; i--) {
+    for (int i = 9; i >= 0; i--) {
         if (zmk_keymap_layer_active(i)) {
             index = i;
             break;

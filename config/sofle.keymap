@@ -188,42 +188,42 @@
 
         // ── H-digraph combos: Enth+ ──────────────────────────────
         th_enthplus {
-            bindings = <&th_digraph>;
+            bindings = <&mm_th>;
             key-positions = <31 32>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
         };
 
         sh_enthplus {
-            bindings = <&sh_digraph>;
+            bindings = <&mm_sh>;
             key-positions = <32 33>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
         };
 
         ch_enthplus {
-            bindings = <&ch_digraph>;
+            bindings = <&mm_ch>;
             key-positions = <25 26>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
         };
 
         gh_enthplus {
-            bindings = <&gh_digraph>;
+            bindings = <&mm_gh>;
             key-positions = <46 47>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
         };
 
         ph_enthplus {
-            bindings = <&ph_digraph>;
+            bindings = <&mm_ph>;
             key-positions = <21 22>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
         };
 
         wh_enthplus {
-            bindings = <&wh_digraph>;
+            bindings = <&mm_wh>;
             key-positions = <34 35>;
             layers = <ENTHPLUS>;
             timeout-ms = <30>;
@@ -231,42 +231,42 @@
 
         // ── H-digraph combos: HD Gold ────────────────────────────
         th_hdgold {
-            bindings = <&th_digraph>;
+            bindings = <&mm_th>;
             key-positions = <53 41>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
 
         sh_hdgold {
-            bindings = <&sh_digraph>;
+            bindings = <&mm_sh>;
             key-positions = <26 27>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
 
         ch_hdgold {
-            bindings = <&ch_digraph>;
+            bindings = <&mm_ch>;
             key-positions = <38 39>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
 
         gh_hdgold {
-            bindings = <&gh_digraph>;
+            bindings = <&mm_gh>;
             key-positions = <14 15>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
 
         ph_hdgold {
-            bindings = <&ph_digraph>;
+            bindings = <&mm_ph>;
             key-positions = <16 17>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
 
         wh_hdgold {
-            bindings = <&wh_digraph>;
+            bindings = <&mm_wh>;
             key-positions = <40 41>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
@@ -340,8 +340,8 @@
             bindings = <&tog ENTHIUM &tog HD_GOLD>;
         };
 
-        // ── H-digraph macros ─────────────────────────────────────
-        th_digraph: th_digraph {
+        // ── H-digraph macros (lowercase) ────────────────────────
+        th_lower: th_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -349,7 +349,7 @@
             bindings = <&kp T &kp H>;
         };
 
-        sh_digraph: sh_digraph {
+        sh_lower: sh_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -357,7 +357,7 @@
             bindings = <&kp S &kp H>;
         };
 
-        ch_digraph: ch_digraph {
+        ch_lower: ch_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -365,7 +365,7 @@
             bindings = <&kp C &kp H>;
         };
 
-        gh_digraph: gh_digraph {
+        gh_lower: gh_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -373,7 +373,7 @@
             bindings = <&kp G &kp H>;
         };
 
-        ph_digraph: ph_digraph {
+        ph_lower: ph_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
@@ -381,12 +381,87 @@
             bindings = <&kp P &kp H>;
         };
 
-        wh_digraph: wh_digraph {
+        wh_lower: wh_lower {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&kp W &kp H>;
+        };
+
+        // ── H-digraph macros (title case: Shift+combo → Th, Sh…)
+        // First letter inherits held shift → uppercase,
+        // then shift released so H comes out lowercase.
+        th_title: th_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp T>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        sh_title: sh_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp S>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        ch_title: ch_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp C>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        gh_title: gh_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp G>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        ph_title: ph_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp P>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
+        };
+
+        wh_title: wh_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&kp W>
+                , <&macro_release &kp LSHFT &kp RSHFT>
+                , <&macro_tap &kp H>
+                ;
         };
     };
 
@@ -472,6 +547,49 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&none>, <&meh_f>;
+        };
+
+        // ── H-digraph mod-morphs: lowercase / Shift → Title case
+        mm_th: mm_th {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&th_lower>, <&th_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_sh: mm_sh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sh_lower>, <&sh_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_ch: mm_ch {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&ch_lower>, <&ch_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_gh: mm_gh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&gh_lower>, <&gh_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_ph: mm_ph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&ph_lower>, <&ph_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_wh: mm_wh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&wh_lower>, <&wh_title>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
     };

@@ -230,42 +230,42 @@
         };
 
         // ── H-digraph title case combos: Enth+ (Shift + digraph keys)
-        Th_enthplus {
+        tc_th_enthplus {
             bindings = <&th_title>;
             key-positions = <36 31 32>;
             layers = <ENTHPLUS>;
             timeout-ms = <50>;
         };
 
-        Sh_enthplus {
+        tc_sh_enthplus {
             bindings = <&sh_title>;
             key-positions = <36 32 33>;
             layers = <ENTHPLUS>;
             timeout-ms = <50>;
         };
 
-        Ch_enthplus {
+        tc_ch_enthplus {
             bindings = <&ch_title>;
             key-positions = <36 25 26>;
             layers = <ENTHPLUS>;
             timeout-ms = <50>;
         };
 
-        Gh_enthplus {
+        tc_gh_enthplus {
             bindings = <&gh_title>;
             key-positions = <36 46 47>;
             layers = <ENTHPLUS>;
             timeout-ms = <50>;
         };
 
-        Ph_enthplus {
+        tc_ph_enthplus {
             bindings = <&ph_title>;
             key-positions = <36 21 22>;
             layers = <ENTHPLUS>;
             timeout-ms = <50>;
         };
 
-        Wh_enthplus {
+        tc_wh_enthplus {
             bindings = <&wh_title>;
             key-positions = <36 34 35>;
             layers = <ENTHPLUS>;
@@ -273,42 +273,42 @@
         };
 
         // ── H-digraph title case combos: HD Gold (Shift + digraph keys)
-        Th_hdgold {
+        tc_th_hdgold {
             bindings = <&th_title>;
             key-positions = <36 53 41>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
-        Sh_hdgold {
+        tc_sh_hdgold {
             bindings = <&sh_title>;
             key-positions = <36 26 27>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
-        Ch_hdgold {
+        tc_ch_hdgold {
             bindings = <&ch_title>;
             key-positions = <36 38 39>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
-        Gh_hdgold {
+        tc_gh_hdgold {
             bindings = <&gh_title>;
             key-positions = <36 14 15>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
-        Ph_hdgold {
+        tc_ph_hdgold {
             bindings = <&ph_title>;
             key-positions = <36 16 17>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
-        Wh_hdgold {
+        tc_wh_hdgold {
             bindings = <&wh_title>;
             key-positions = <36 40 41>;
             layers = <HD_GOLD>;

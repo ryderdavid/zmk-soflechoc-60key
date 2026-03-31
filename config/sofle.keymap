@@ -222,6 +222,13 @@
             timeout-ms = <30>;
         };
 
+        wh_enthplus {
+            bindings = <&wh_digraph>;
+            key-positions = <34 35>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <30>;
+        };
+
         // ── H-digraph combos: HD Gold ────────────────────────────
         th_hdgold {
             bindings = <&th_digraph>;

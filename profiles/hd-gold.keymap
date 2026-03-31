@@ -357,6 +357,21 @@
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
+
+        // ── QU digraph combos: Q(13) + right neighbor(14) ────────
+        qu_combo {
+            bindings = <&qu_lower>;
+            key-positions = <13 14>;
+            layers = <QWERTY ENTHPLUS ENTHIUM>;
+            timeout-ms = <30>;
+        };
+
+        tc_qu_combo {
+            bindings = <&qu_title>;
+            key-positions = <36 13 14>;
+            layers = <QWERTY ENTHPLUS ENTHIUM>;
+            timeout-ms = <50>;
+        };
     };
 
     macros {
@@ -424,6 +439,28 @@
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&tog ENTHIUM &tog HD_GOLD>;
+        };
+
+        // ── QU digraph macros ─────────────────────────────────────
+        qu_lower: qu_lower {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp Q &kp U>;
+        };
+
+        qu_title: qu_title {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp Q>
+                , <&macro_release &kp LSHFT>
+                , <&macro_tap &kp U>
+                ;
         };
 
         // ── H-digraph macros (lowercase) ────────────────────────

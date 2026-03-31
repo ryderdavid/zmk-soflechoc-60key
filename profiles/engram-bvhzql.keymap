@@ -1,8 +1,8 @@
 /*
- * Profile: hd-gold
- * Description: HD Gold on layer 3, Enth+ on layer 1, H-digraph combos
+ * Profile: engram-bvhzql
+ * Description: Quad-layout with Engram BVh ZQl on layer 1 (retired — replaced by Enth+)
  * Created: 2026-03-31
- * Based on: engrammer quad-layout
+ * Based on: upstream quad-layout with Engrammer
  */
 
 /*
@@ -12,9 +12,9 @@
  *
  * Layers:
  *   0 = QWERTY base with CAGS HRM
- *   1 = Enth+ toggle overlay (Enthium variant, right homerow K,T,S,N,H)
+ *   1 = Engram BVh ZQl toggle overlay (custom shifted pairs via mod-morphs)
  *   2 = Enthium v14 toggle overlay (original orientation)
- *   3 = Hands Down Gold toggle overlay (T on thumb, H-digraph combos)
+ *   3 = Engrammer toggle overlay (standard shifted pairs, no mod-morphs)
  *   4 = Numbers (number grid + numpad, merged)
  *   5 = Nav (arrows, undo/cut/copy/paste)
  *   6 = Adjust (conditional: NAV + NUMBERS — BT, power, toggles)
@@ -22,7 +22,7 @@
  *   8 = Mouse (mouse movement on right OHAE cluster)
  *   9 = Prec (precision mouse — 1/3 speed)
  *
- * Cycle: QWERTY → Enth+ → Enthium → HD Gold → QWERTY (combo: pos 46+47+48+49)
+ * Cycle: QWERTY → Engram → Enthium → Engrammer → QWERTY (combo: pos 46+47+48+49)
  */
 
 #include <behaviors.dtsi>
@@ -33,9 +33,9 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY    0
-#define ENTHPLUS  1
+#define ENGRAM    1
 #define ENTHIUM   2
-#define HD_GOLD   3
+#define ENGRAMMER 3
 #define NUMBERS   4
 #define NAV       5
 #define ADJUST    6
@@ -103,29 +103,29 @@
             key-positions = <56 57>;
         };
 
-        // ── Layout cycle: QWERTY → Enth+ → Enthium → HD Gold → QWERTY
-        layout_to_enthplus {
-            bindings = <&tog ENTHPLUS>;
+        // ── Layout cycle: QWERTY → Engram → Enthium → QWERTY ─────
+        layout_to_engram {
+            bindings = <&tog ENGRAM>;
             key-positions = <46 47 48 49>;
             layers = <QWERTY>;
         };
 
         layout_to_enthium {
-            bindings = <&enthplus_to_enthium>;
+            bindings = <&engram_to_enthium>;
             key-positions = <46 47 48 49>;
-            layers = <ENTHPLUS>;
+            layers = <ENGRAM>;
         };
 
-        layout_to_hd_gold {
-            bindings = <&enthium_to_hd_gold>;
+        layout_to_engrammer {
+            bindings = <&enthium_to_engrammer>;
             key-positions = <46 47 48 49>;
             layers = <ENTHIUM>;
         };
 
         layout_to_qwerty {
-            bindings = <&tog HD_GOLD>;
+            bindings = <&tog ENGRAMMER>;
             key-positions = <46 47 48 49>;
-            layers = <HD_GOLD>;
+            layers = <ENGRAMMER>;
         };
 
         // ── Numbers toggle: G+H positions ─────────────────────────
@@ -147,20 +147,33 @@
             layers = <QWERTY>;
         };
 
-        // ── Fat-finger protection: Enth+ ─────────────────────────
-        fatfinger_del_enthplus {
-            bindings = <&kp FSLH>;
+        // ── Fat-finger protection: Engram ────────────────────────
+        fatfinger_del_eng {
+            bindings = <&kp K>;
             key-positions = <41 42>;
-            layers = <ENTHPLUS>;
+            layers = <ENGRAM>;
         };
 
-        fatfinger_bksp_enthplus {
-            bindings = <&kp J>;
+        fatfinger_bksp_eng {
+            bindings = <&kp R>;
             key-positions = <44 43>;
-            layers = <ENTHPLUS>;
+            layers = <ENGRAM>;
         };
 
         // ── Fat-finger protection: Enthium ───────────────────────
+        // ── Fat-finger protection: Engrammer ─────────────────────
+        fatfinger_del_engr {
+            bindings = <&kp FSLH>;
+            key-positions = <41 42>;
+            layers = <ENGRAMMER>;
+        };
+
+        fatfinger_bksp_engr {
+            bindings = <&kp R>;
+            key-positions = <44 43>;
+            layers = <ENGRAMMER>;
+        };
+
         fatfinger_del_e {
             bindings = <&kp FSLH>;
             key-positions = <41 42>;
@@ -171,98 +184,6 @@
             bindings = <&kp J>;
             key-positions = <44 43>;
             layers = <ENTHIUM>;
-        };
-
-        // ── Fat-finger protection: HD Gold ───────────────────────
-        fatfinger_del_hdgold {
-            bindings = <&kp Z>;
-            key-positions = <41 42>;
-            layers = <HD_GOLD>;
-        };
-
-        fatfinger_bksp_hdgold {
-            bindings = <&kp MINUS>;
-            key-positions = <44 43>;
-            layers = <HD_GOLD>;
-        };
-
-        // ── H-digraph combos: Enth+ ──────────────────────────────
-        th_enthplus {
-            bindings = <&th_digraph>;
-            key-positions = <31 32>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        sh_enthplus {
-            bindings = <&sh_digraph>;
-            key-positions = <32 33>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        ch_enthplus {
-            bindings = <&ch_digraph>;
-            key-positions = <25 26>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        gh_enthplus {
-            bindings = <&gh_digraph>;
-            key-positions = <46 47>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        ph_enthplus {
-            bindings = <&ph_digraph>;
-            key-positions = <21 22>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        // ── H-digraph combos: HD Gold ────────────────────────────
-        th_hdgold {
-            bindings = <&th_digraph>;
-            key-positions = <53 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        sh_hdgold {
-            bindings = <&sh_digraph>;
-            key-positions = <26 27>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        ch_hdgold {
-            bindings = <&ch_digraph>;
-            key-positions = <38 39>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        gh_hdgold {
-            bindings = <&gh_digraph>;
-            key-positions = <14 15>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        ph_hdgold {
-            bindings = <&ph_digraph>;
-            key-positions = <16 17>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        wh_hdgold {
-            bindings = <&wh_digraph>;
-            key-positions = <40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
         };
     };
 
@@ -317,69 +238,20 @@
                 ;
         };
 
-        enthplus_to_enthium: enthplus_to_enthium {
+        engram_to_enthium: engram_to_enthium {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&tog ENTHPLUS &tog ENTHIUM>;
+            bindings = <&tog ENGRAM &tog ENTHIUM>;
         };
 
-        enthium_to_hd_gold: enthium_to_hd_gold {
+        enthium_to_engrammer: enthium_to_engrammer {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&tog ENTHIUM &tog HD_GOLD>;
-        };
-
-        // ── H-digraph macros ─────────────────────────────────────
-        th_digraph: th_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp T &kp H>;
-        };
-
-        sh_digraph: sh_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp S &kp H>;
-        };
-
-        ch_digraph: ch_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp C &kp H>;
-        };
-
-        gh_digraph: gh_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp G &kp H>;
-        };
-
-        ph_digraph: ph_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp P &kp H>;
-        };
-
-        wh_digraph: wh_digraph {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&kp W &kp H>;
+            bindings = <&tog ENTHIUM &tog ENGRAMMER>;
         };
     };
 
@@ -453,6 +325,136 @@
             bindings = <&kp>, <&kp>;
         };
 
+        // ── Engram mod-morphs: custom shifted pairs ──────────────
+        // base tap = symbol, shift = different character
+
+        mm_comma_semi: mm_comma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dot_colon: mm_dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_sqt_lpar: mm_sqt_lpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp LPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dqt_rpar: mm_dqt_rpar {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DQT>, <&kp RPAR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_qmark_excl: mm_qmark_excl {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp QMARK>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_at_grave: mm_at_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp AT>, <&kp GRAVE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_hash_dllr: mm_hash_dllr {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp HASH>, <&kp DLLR>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_fslh_bslh: mm_fslh_bslh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        // ── Engram number row mod-morphs: symbol base, number on shift ──
+        mm_pipe_n1: mm_pipe_n1 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE>, <&kp N1>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_equal_n2: mm_equal_n2 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp N2>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_tilde_n3: mm_tilde_n3 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE>, <&kp N3>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_plus_n4: mm_plus_n4 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PLUS>, <&kp N4>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_lt_n5: mm_lt_n5 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LT>, <&kp N5>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_gt_n6: mm_gt_n6 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp GT>, <&kp N6>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_caret_n7: mm_caret_n7 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp CARET>, <&kp N7>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_amps_n8: mm_amps_n8 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp AMPS>, <&kp N8>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_prcnt_n9: mm_prcnt_n9 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp PRCNT>, <&kp N9>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_astrk_n0: mm_astrk_n0 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ASTRK>, <&kp N0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         td_enc_l: tap_dance_enc_left {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -488,17 +490,17 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 1 — Enth+ (Enthium variant, right homerow K,T,S,N,H)
+        // ── Layer 1 — Engram BVh ZQl ─────────────────────────────
 
-        enthplus_layer {
-            display-name = "enth+";
+        engram_layer {
+            display-name = "bvhzql";
 
             bindings = <
-&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp Q           &kp Y           &kp O           &kp U           &kp EQUAL                                       &kp X               &kp L           &kp D           &kp P           &kp Z               &trans
-&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI A   &hml LSHFT E    &kp MINUS                                       &kp K               &hmr RSHFT T    &hmr_g RGUI S   &hmr RALT N     &hmr RCTRL H        &lts NAV W
-&mt LSHFT EXCL &kp SQT         &kp COMMA       &kp DOT         &kp SEMI        &lts MOUSE FSLH &trans          &trans          &kp J               &kp M           &kp G           &kp F           &kp V               &mt RSHFT EXCL
-               &trans          &trans          &trans          &lts NUMBERS SPACE  &trans                                      &lts NUMBERS R      &lts NAV SPACE  &trans          &trans          &trans
+&mm_at_grave     &mm_pipe_n1 &mm_equal_n2    &mm_tilde_n3    &mm_plus_n4     &mm_lt_n5                                       &mm_gt_n6           &mm_caret_n7    &mm_amps_n8     &mm_prcnt_n9    &mm_astrk_n0        &kp BSPC
+&kp TAB        &none           &kp Y           &kp O           &kp U           &mm_sqt_lpar                                    &mm_dqt_rpar        &kp L           &kp D           &kp W           &kp LBKT            &kp RBKT
+&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &mm_comma_semi                                  &mm_dot_colon       &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV V
+&mt LSHFT Z    &kp G           &kp X           &kp J           &kp K           &kp MINUS       &trans          &trans          &mm_qmark_excl      &kp R           &kp M           &kp F           &kp P               &mt RSHFT Q
+               &trans          &trans          &trans          &trans          &trans                                          &lts NUMBERS SPACE  &trans          &mm_hash_dllr   &mm_fslh_bslh   &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -520,17 +522,17 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 3 — Hands Down Gold (T on thumb, H-digraph combos)
+        // ── Layer 3 — Engrammer (standard shifted pairs) ──────────
 
-        hd_gold_layer {
-            display-name = "hd-Au";
+        engrammer_layer {
+            display-name = "engrmmr";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&kp TAB        &kp J           &kp G           &kp M           &kp P           &kp V                                           &kp SEMI            &kp DOT         &kp FSLH        &kp DQT         &kp SQT             &trans
-&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &kp COMMA           &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&kp LSHFT      &kp X           &kp C           &kp L           &kp W           &lts MOUSE Z    &trans          &trans          &kp MINUS           &kp U           &kp O           &kp Y           &kp K               &trans
-               &trans          &trans          &trans          &kp T           &trans                                          &trans              &trans          &trans          &trans          &trans
+&kp TAB        &kp B           &kp Y           &kp O           &kp U           &kp SQT                                         &kp SEMI            &kp L           &kp D           &kp W           &kp V               &kp Z
+&trans         &hml LCTRL C    &hml LALT I     &hml_g LGUI E   &hml LSHFT A    &kp COMMA                                       &kp DOT             &hmr RSHFT H    &hmr_g RGUI T   &hmr RALT S     &hmr RCTRL N        &lts NAV Q
+&kp LSHFT      &kp G           &kp X           &kp J           &kp K           &lts MOUSE MINUS &trans         &trans          &kp FSLH            &kp R           &kp M           &kp F           &kp P               &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -576,7 +578,7 @@
             bindings = <
 &bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &bt BT_CLR          &none           &none           &none           &none               &none
 &ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
-&none          &none           &none           &none           &none           &tog ENTHPLUS                                   &tog ENTHIUM        &tog HD_GOLD    &tog MOUSE      &none           &none               &none
+&none          &none           &none           &none           &none           &tog ENGRAM                                     &tog ENTHIUM        &tog ENGRAMMER  &tog MOUSE      &none           &none               &none
 &none          &none           &none           &none           &none           &none           &none           &none           &none               &none           &none           &none           &none               &none
                &none           &none           &none           &none           &none                                           &none               &none           &none           &none           &none
             >;

@@ -289,7 +289,7 @@
 
         tc_ch_hdgold {
             bindings = <&ch_title>;
-            key-positions = <36 40 41>;
+            key-positions = <36 39 40>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
@@ -308,7 +308,12 @@
             timeout-ms = <50>;
         };
 
-        // tc_wh_hdgold dropped — no WH combo on HD Gold
+        tc_wh_hdgold {
+            bindings = <&wh_title>;
+            key-positions = <36 40 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
 
         // ── H-digraph combos: HD Gold ────────────────────────────
         th_hdgold {
@@ -327,7 +332,7 @@
 
         ch_hdgold {
             bindings = <&ch_lower>;
-            key-positions = <40 41>;
+            key-positions = <39 40>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
@@ -346,7 +351,12 @@
             timeout-ms = <30>;
         };
 
-        // WH dropped on HD Gold — W(41) has no usable right neighbor
+        wh_hdgold {
+            bindings = <&wh_lower>;
+            key-positions = <40 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
 
         // ── QU digraph combos: Q(13) + right neighbor(14) ────────
         qu_combo {

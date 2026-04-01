@@ -272,6 +272,49 @@
             timeout-ms = <50>;
         };
 
+        // ── H-digraph title case combos: Enth+ (Right Shift + digraph keys)
+        tcr_th_enthplus {
+            bindings = <&th_title>;
+            key-positions = <49 31 32>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
+        tcr_sh_enthplus {
+            bindings = <&sh_title>;
+            key-positions = <49 32 33>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
+        tcr_ch_enthplus {
+            bindings = <&ch_title>;
+            key-positions = <49 25 26>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
+        tcr_gh_enthplus {
+            bindings = <&gh_title>;
+            key-positions = <49 46 47>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
+        tcr_ph_enthplus {
+            bindings = <&ph_title>;
+            key-positions = <49 21 22>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
+        tcr_wh_enthplus {
+            bindings = <&wh_title>;
+            key-positions = <49 34 35>;
+            layers = <ENTHPLUS>;
+            timeout-ms = <50>;
+        };
+
         // ── H-digraph title case combos: HD Gold (Shift + digraph keys)
         tc_th_hdgold {
             bindings = <&th_title>;
@@ -311,6 +354,49 @@
         tc_wh_hdgold {
             bindings = <&wh_title>;
             key-positions = <36 40 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        // ── H-digraph title case combos: HD Gold (Right Shift + digraph keys)
+        tcr_th_hdgold {
+            bindings = <&th_title>;
+            key-positions = <49 53 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_sh_hdgold {
+            bindings = <&sh_title>;
+            key-positions = <49 26 27>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_ch_hdgold {
+            bindings = <&ch_title>;
+            key-positions = <49 39 40>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_gh_hdgold {
+            bindings = <&gh_title>;
+            key-positions = <49 14 15>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_ph_hdgold {
+            bindings = <&ph_title>;
+            key-positions = <49 16 17>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_wh_hdgold {
+            bindings = <&wh_title>;
+            key-positions = <49 40 41>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
@@ -373,6 +459,13 @@
             timeout-ms = <50>;
         };
 
+        tcr_qu_combo {
+            bindings = <&qu_title>;
+            key-positions = <49 13 14>;
+            layers = <QWERTY ENTHPLUS ENTHIUM>;
+            timeout-ms = <50>;
+        };
+
         // ── QU combo on HD Gold: J(13) + G(14) ─────────────────
         qu_hdgold {
             bindings = <&qu_lower>;
@@ -384,6 +477,13 @@
         tc_qu_hdgold {
             bindings = <&qu_title>;
             key-positions = <36 13 14>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_qu_hdgold {
+            bindings = <&qu_title>;
+            key-positions = <49 13 14>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };

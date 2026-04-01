@@ -618,6 +618,34 @@
             timeout-ms = <30>;
         };
 
+        ch_hdgold_sd {
+            bindings = <&ch_lower>;
+            key-positions = <26 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
+
+        tc_ch_hdgold_sd {
+            bindings = <&ch_title>;
+            key-positions = <36 26 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        tcr_ch_hdgold_sd {
+            bindings = <&ch_title>;
+            key-positions = <49 26 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        hrm_ch_hdgold_sd {
+            bindings = <&ch_title>;
+            key-positions = <31 26 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
         gh_hdgold {
             bindings = <&gh_lower>;
             key-positions = <14 15>;

@@ -481,6 +481,29 @@
             timeout-ms = <50>;
         };
 
+        // TH title case via N+D (27+28)
+        tc_th_hdgold_nd {
+            bindings = <&th_title>;
+            key-positions = <36 27 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        // TH title case via HRM shift (pos 31, RSHFT/A)
+        hrm_th_hdgold {
+            bindings = <&th_title>;
+            key-positions = <31 53 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
+        hrm_th_hdgold_nd {
+            bindings = <&th_title>;
+            key-positions = <31 27 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
         tc_sh_hdgold {
             bindings = <&sh_title>;
             key-positions = <36 26 27>;
@@ -524,6 +547,13 @@
             timeout-ms = <50>;
         };
 
+        tcr_th_hdgold_nd {
+            bindings = <&th_title>;
+            key-positions = <49 27 28>;
+            layers = <HD_GOLD>;
+            timeout-ms = <50>;
+        };
+
         tcr_sh_hdgold {
             bindings = <&sh_title>;
             key-positions = <49 26 27>;
@@ -563,6 +593,13 @@
         th_hdgold {
             bindings = <&th_lower>;
             key-positions = <53 41>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
+
+        th_hdgold_nd {
+            bindings = <&th_lower>;
+            key-positions = <27 28>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };

@@ -193,6 +193,13 @@
             layers = <HD_VIB>;
         };
 
+        // ── T fat-finger: HD Gold (T+Enter → T) ─────────────────
+        t_fatfinger_hdgold {
+            bindings = <&kp T>;
+            key-positions = <53 54>;
+            layers = <HD_GOLD>;
+        };
+
         // ── H-digraph combos: HD Vibranium (left hand) ──────────
         th_hd_vib {
             bindings = <&th_lower>;

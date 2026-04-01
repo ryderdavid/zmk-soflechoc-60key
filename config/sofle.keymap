@@ -1020,49 +1020,6 @@
             bindings = <&none>, <&meh_f>;
         };
 
-        // ── HD Gold punctuation mod-morphs ──────────────────────
-        mm_dot_amp: mm_dot_amp {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp AMPS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_fslh_astrk: mm_fslh_astrk {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp FSLH>, <&kp ASTRK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_dqt_qmark: mm_dqt_qmark {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DQT>, <&kp QMARK>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_sqt_excl: mm_sqt_excl {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SQT>, <&kp EXCL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_comma_pipe: mm_comma_pipe {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp PIPE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mm_minus_plus: mm_minus_plus {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS>, <&kp PLUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
     };
 
     keymap {
@@ -1123,9 +1080,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &kp SEMI            &mm_dot_amp     &mm_fslh_astrk  &mm_dqt_qmark   &mm_sqt_excl        &trans
-&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &mm_comma_pipe      &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&trans         &kp X           &kp F           &kp L           &kp C           &lts MOUSE W    &trans          &trans          &mm_minus_plus      &kp U           &kp O           &kp Y           &kp K               &trans
+&trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
+&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
+&trans         &kp X           &kp F           &kp L           &kp C           &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &trans
                &trans          &trans          &trans          &kp T           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

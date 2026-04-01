@@ -175,7 +175,7 @@
 
         // ── Fat-finger protection: HD Gold ───────────────────────
         fatfinger_del_hdgold {
-            bindings = <&kp Z>;
+            bindings = <&kp W>;
             key-positions = <41 42>;
             layers = <HD_GOLD>;
         };
@@ -289,7 +289,7 @@
 
         tc_ch_hdgold {
             bindings = <&ch_title>;
-            key-positions = <36 38 39>;
+            key-positions = <36 40 41>;
             layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
@@ -308,12 +308,7 @@
             timeout-ms = <50>;
         };
 
-        tc_wh_hdgold {
-            bindings = <&wh_title>;
-            key-positions = <36 40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
+        // tc_wh_hdgold dropped — no WH combo on HD Gold
 
         // ── H-digraph combos: HD Gold ────────────────────────────
         th_hdgold {
@@ -332,7 +327,7 @@
 
         ch_hdgold {
             bindings = <&ch_lower>;
-            key-positions = <38 39>;
+            key-positions = <40 41>;
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
@@ -351,12 +346,7 @@
             timeout-ms = <30>;
         };
 
-        wh_hdgold {
-            bindings = <&wh_lower>;
-            key-positions = <40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
+        // WH dropped on HD Gold — W(41) has no usable right neighbor
 
         // ── QU digraph combos: Q(13) + right neighbor(14) ────────
         qu_combo {
@@ -370,6 +360,21 @@
             bindings = <&qu_title>;
             key-positions = <36 13 14>;
             layers = <QWERTY ENTHPLUS ENTHIUM>;
+            timeout-ms = <50>;
+        };
+
+        // ── QU combo on HD Gold: J(13) + G(14) ─────────────────
+        qu_hdgold {
+            bindings = <&qu_lower>;
+            key-positions = <13 14>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
+
+        tc_qu_hdgold {
+            bindings = <&qu_title>;
+            key-positions = <36 13 14>;
+            layers = <HD_GOLD>;
             timeout-ms = <50>;
         };
 
@@ -710,6 +715,49 @@
             bindings = <&none>, <&meh_f>;
         };
 
+        // ── HD Gold punctuation mod-morphs ──────────────────────
+        mm_dot_amp: mm_dot_amp {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp AMPS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_fslh_astrk: mm_fslh_astrk {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp ASTRK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_dqt_qmark: mm_dqt_qmark {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DQT>, <&kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_sqt_excl: mm_sqt_excl {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp EXCL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_comma_pipe: mm_comma_pipe {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp PIPE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mm_minus_plus: mm_minus_plus {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS>, <&kp PLUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
     };
 
     keymap {
@@ -770,9 +818,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&kp TAB        &kp J           &kp G           &kp M           &kp P           &kp V                                           &kp SEMI            &kp DOT         &kp FSLH        &kp DQT         &kp SQT             &trans
-&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &kp COMMA           &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&kp LSHFT      &kp X           &kp C           &kp L           &kp W           &lts MOUSE Z    &trans          &trans          &kp MINUS           &kp U           &kp O           &kp Y           &kp K               &trans
+&trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &kp SEMI            &mm_dot_amp     &mm_fslh_astrk  &mm_dqt_qmark   &mm_sqt_excl        &trans
+&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &mm_comma_pipe      &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
+&trans         &kp X           &kp F           &kp L           &kp C           &lts MOUSE W    &trans          &trans          &mm_minus_plus      &kp U           &kp O           &kp Y           &kp K               &trans
                &trans          &trans          &trans          &kp T           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

@@ -832,6 +832,23 @@
                 ;
         };
 
+        // ── Linger macros (hold = multi-char sequence) ─────────
+        ck_linger: ck_linger {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp K>;
+        };
+
+        fr_linger: fr_linger {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp F &kp R>;
+        };
+
         // ── H-digraph macros (lowercase) ────────────────────────
         th_lower: th_lower {
             compatible = "zmk,behavior-macro";
@@ -1034,6 +1051,34 @@
             bindings = <&kp>, <&kp>;
         };
 
+        // ── Linger hold-taps: hold = macro, tap = key ─────────
+        ht_c_ck: ht_c_ck {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&ck_linger>, <&kp>;
+        };
+
+        ht_f_fr: ht_f_fr {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&fr_linger>, <&kp>;
+        };
+
+        ht_t_th: ht_t_th {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&th_lower>, <&kp>;
+        };
+
         td_enc_l: tap_dance_enc_left {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -1110,8 +1155,8 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
 &trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&trans         &kp X           &kp F           &kp L           &kp C           &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &trans
-               &trans          &trans          &trans          &kp T           &trans                                          &trans              &trans          &trans          &trans          &trans
+&trans         &kp X           &ht_f_fr 0 F    &kp L           &ht_c_ck 0 C    &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &trans
+               &trans          &trans          &trans          &ht_t_th 0 T    &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

@@ -12,8 +12,8 @@
  *
  * Layers:
  *   0 = QWERTY base with CAGS HRM
- *   1 = Enth+ toggle overlay (Enthium variant, right homerow K,T,S,N,H)
- *   2 = Hands Down Vibranium toggle overlay (linger keys, H-digraph combos)
+ *   1 = Hands Down Vibranium V toggle overlay (CSNTK home, linger keys)
+ *   2 = Hands Down Vibranium P toggle overlay (SCNTK home, linger keys)
  *   3 = Hands Down Gold toggle overlay (T on thumb, H-digraph combos)
  *   4 = Numbers (number grid + numpad, merged)
  *   5 = Nav (arrows, undo/cut/copy/paste)
@@ -22,7 +22,7 @@
  *   8 = Mouse (mouse movement on right OHAE cluster)
  *   9 = Prec (precision mouse — 1/3 speed)
  *
- * Cycle: QWERTY → Enth+ → HD Vibranium → HD Gold → QWERTY (combo: pos 46+47+48+49)
+ * Cycle: QWERTY → HD Vib V → HD Vib P → HD Gold → QWERTY (combo: pos 46+47+48+49)
  */
 
 #include <behaviors.dtsi>
@@ -33,8 +33,8 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY    0
-#define ENTHPLUS  1
-#define HD_VIB    2
+#define HD_VIB_V  1
+#define HD_VIB_P  2
 #define HD_GOLD   3
 #define NUMBERS   4
 #define NAV       5
@@ -103,23 +103,23 @@
             key-positions = <56 57>;
         };
 
-        // ── Layout cycle: QWERTY → Enth+ → Enthium → HD Gold → QWERTY
-        layout_to_enthplus {
-            bindings = <&tog ENTHPLUS>;
+        // ── Layout cycle: QWERTY → HD Vib V → HD Vib P → HD Gold → QWERTY
+        layout_to_hd_vib_v {
+            bindings = <&tog HD_VIB_V>;
             key-positions = <46 47 48 49>;
             layers = <QWERTY>;
         };
 
-        layout_to_hd_vib {
-            bindings = <&enthplus_to_hd_vib>;
+        layout_to_hd_vib_p {
+            bindings = <&hd_vib_v_to_hd_vib_p>;
             key-positions = <46 47 48 49>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
         };
 
         layout_to_hd_gold {
-            bindings = <&hd_vib_to_hd_gold>;
+            bindings = <&hd_vib_p_to_hd_gold>;
             key-positions = <46 47 48 49>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
         };
 
         layout_to_qwerty {
@@ -147,30 +147,30 @@
             layers = <QWERTY>;
         };
 
-        // ── Fat-finger protection: Enth+ ─────────────────────────
-        fatfinger_del_enthplus {
+        // ── Fat-finger protection: HD Vibranium V ─────────────────
+        fatfinger_del_hd_vib_v {
             bindings = <&kp FSLH>;
             key-positions = <41 42>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
         };
 
-        fatfinger_bksp_enthplus {
-            bindings = <&kp J>;
+        fatfinger_bksp_hd_vib_v {
+            bindings = <&kp MINUS>;
             key-positions = <44 43>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
         };
 
         // ── Fat-finger protection: HD Vibranium ──────────────────
         fatfinger_del_hd_vib {
             bindings = <&kp FSLH>;
             key-positions = <41 42>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
         };
 
         fatfinger_bksp_hd_vib {
             bindings = <&kp MINUS>;
             key-positions = <44 43>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
         };
 
         // ── Fat-finger protection: HD Gold ───────────────────────
@@ -186,11 +186,17 @@
             layers = <HD_GOLD>;
         };
 
-        // ── R fat-finger: HD Vibranium (R+Enter → R) ─────────────
-        r_fatfinger_hd_vib {
+        // ── R fat-finger: HD Vibranium V and P (R+Enter → R) ─────
+        r_fatfinger_hd_vib_v {
             bindings = <&kp R>;
             key-positions = <53 54>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_V>;
+        };
+
+        r_fatfinger_hd_vib_p {
+            bindings = <&kp R>;
+            key-positions = <53 54>;
+            layers = <HD_VIB_P>;
         };
 
         // ── T fat-finger: HD Gold (T+Enter → T) ─────────────────
@@ -204,42 +210,42 @@
         th_hd_vib {
             bindings = <&th_lower>;
             key-positions = <28 29>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         sh_hd_vib {
             bindings = <&sh_lower>;
             key-positions = <25 26>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         ch_hd_vib {
             bindings = <&ch_lower>;
             key-positions = <26 27>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         gh_hd_vib {
             bindings = <&gh_lower>;
             key-positions = <16 17>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         ph_hd_vib {
             bindings = <&ph_lower>;
             key-positions = <38 39>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         wh_hd_vib {
             bindings = <&wh_lower>;
             key-positions = <14 15>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
@@ -247,42 +253,42 @@
         tc_th_hd_vib {
             bindings = <&th_title>;
             key-positions = <36 28 29>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tc_sh_hd_vib {
             bindings = <&sh_title>;
             key-positions = <36 25 26>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tc_ch_hd_vib {
             bindings = <&ch_title>;
             key-positions = <36 26 27>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tc_gh_hd_vib {
             bindings = <&gh_title>;
             key-positions = <36 16 17>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tc_ph_hd_vib {
             bindings = <&ph_title>;
             key-positions = <36 38 39>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tc_wh_hd_vib {
             bindings = <&wh_title>;
             key-positions = <36 14 15>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
@@ -290,42 +296,42 @@
         tcr_th_hd_vib {
             bindings = <&th_title>;
             key-positions = <49 28 29>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_sh_hd_vib {
             bindings = <&sh_title>;
             key-positions = <49 25 26>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_ch_hd_vib {
             bindings = <&ch_title>;
             key-positions = <49 26 27>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_gh_hd_vib {
             bindings = <&gh_title>;
             key-positions = <49 16 17>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_ph_hd_vib {
             bindings = <&ph_title>;
             key-positions = <49 38 39>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_wh_hd_vib {
             bindings = <&wh_title>;
             key-positions = <49 14 15>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
@@ -333,150 +339,110 @@
         qu_hd_vib {
             bindings = <&qu_lower>;
             key-positions = <13 14>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
         tc_qu_hd_vib {
             bindings = <&qu_title>;
             key-positions = <36 13 14>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
         tcr_qu_hd_vib {
             bindings = <&qu_title>;
             key-positions = <49 13 14>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <50>;
         };
 
-        // ── H-digraph combos: Enth+ ──────────────────────────────
-        th_enthplus {
+        // ── H-digraph combos: HD Vibranium V (CSNTK, left hand) ──
+        th_hd_vib_v {
             bindings = <&th_lower>;
-            key-positions = <31 32>;
-            layers = <ENTHPLUS>;
+            key-positions = <28 29>;
+            layers = <HD_VIB_V>;
             timeout-ms = <30>;
         };
 
-        sh_enthplus {
+        sh_hd_vib_v {
             bindings = <&sh_lower>;
-            key-positions = <32 33>;
-            layers = <ENTHPLUS>;
+            key-positions = <26 27>;
+            layers = <HD_VIB_V>;
             timeout-ms = <30>;
         };
 
-        ch_enthplus {
+        ch_hd_vib_v {
             bindings = <&ch_lower>;
             key-positions = <25 26>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
             timeout-ms = <30>;
         };
 
-        gh_enthplus {
+        gh_hd_vib_v {
             bindings = <&gh_lower>;
-            key-positions = <46 47>;
-            layers = <ENTHPLUS>;
+            key-positions = <16 17>;
+            layers = <HD_VIB_V>;
             timeout-ms = <30>;
         };
 
-        ph_enthplus {
-            bindings = <&ph_lower>;
-            key-positions = <21 22>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
+        // PH/WH skipped on VV — P not on layer, W+X(13+14) conflicts with QU
 
-        wh_enthplus {
-            bindings = <&wh_lower>;
-            key-positions = <34 35>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <30>;
-        };
-
-        // ── H-digraph title case combos: Enth+ (Shift + digraph keys)
-        tc_th_enthplus {
+        // ── H-digraph title case: HD Vib V (Left Shift)
+        tc_th_hd_vib_v {
             bindings = <&th_title>;
-            key-positions = <36 31 32>;
-            layers = <ENTHPLUS>;
+            key-positions = <36 28 29>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tc_sh_enthplus {
+        tc_sh_hd_vib_v {
             bindings = <&sh_title>;
-            key-positions = <36 32 33>;
-            layers = <ENTHPLUS>;
+            key-positions = <36 26 27>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tc_ch_enthplus {
+        tc_ch_hd_vib_v {
             bindings = <&ch_title>;
             key-positions = <36 25 26>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tc_gh_enthplus {
+        tc_gh_hd_vib_v {
             bindings = <&gh_title>;
-            key-positions = <36 46 47>;
-            layers = <ENTHPLUS>;
+            key-positions = <36 16 17>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tc_ph_enthplus {
-            bindings = <&ph_title>;
-            key-positions = <36 21 22>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <50>;
-        };
-
-        tc_wh_enthplus {
-            bindings = <&wh_title>;
-            key-positions = <36 34 35>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <50>;
-        };
-
-        // ── H-digraph title case combos: Enth+ (Right Shift + digraph keys)
-        tcr_th_enthplus {
+        // ── H-digraph title case: HD Vib V (Right Shift)
+        tcr_th_hd_vib_v {
             bindings = <&th_title>;
-            key-positions = <49 31 32>;
-            layers = <ENTHPLUS>;
+            key-positions = <49 28 29>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tcr_sh_enthplus {
+        tcr_sh_hd_vib_v {
             bindings = <&sh_title>;
-            key-positions = <49 32 33>;
-            layers = <ENTHPLUS>;
+            key-positions = <49 26 27>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tcr_ch_enthplus {
+        tcr_ch_hd_vib_v {
             bindings = <&ch_title>;
             key-positions = <49 25 26>;
-            layers = <ENTHPLUS>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
-        tcr_gh_enthplus {
+        tcr_gh_hd_vib_v {
             bindings = <&gh_title>;
-            key-positions = <49 46 47>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <50>;
-        };
-
-        tcr_ph_enthplus {
-            bindings = <&ph_title>;
-            key-positions = <49 21 22>;
-            layers = <ENTHPLUS>;
-            timeout-ms = <50>;
-        };
-
-        tcr_wh_enthplus {
-            bindings = <&wh_title>;
-            key-positions = <49 34 35>;
-            layers = <ENTHPLUS>;
+            key-positions = <49 16 17>;
+            layers = <HD_VIB_V>;
             timeout-ms = <50>;
         };
 
@@ -678,21 +644,21 @@
         qu_combo {
             bindings = <&qu_lower>;
             key-positions = <13 14>;
-            layers = <QWERTY ENTHPLUS>;
+            layers = <QWERTY HD_VIB_V>;
             timeout-ms = <30>;
         };
 
         tc_qu_combo {
             bindings = <&qu_title>;
             key-positions = <36 13 14>;
-            layers = <QWERTY ENTHPLUS>;
+            layers = <QWERTY HD_VIB_V>;
             timeout-ms = <50>;
         };
 
         tcr_qu_combo {
             bindings = <&qu_title>;
             key-positions = <49 13 14>;
-            layers = <QWERTY ENTHPLUS>;
+            layers = <QWERTY HD_VIB_V>;
             timeout-ms = <50>;
         };
 
@@ -719,17 +685,17 @@
         };
 
         // ── N'T contraction combos: N + T ────────────────────────
-        nt_enthplus {
+        nt_hd_vib_v {
             bindings = <&nt_contraction>;
-            key-positions = <31 33>;
-            layers = <ENTHPLUS>;
+            key-positions = <27 28>;
+            layers = <HD_VIB_V>;
             timeout-ms = <30>;
         };
 
         nt_hd_vib {
             bindings = <&nt_contraction>;
             key-positions = <27 28>;
-            layers = <HD_VIB>;
+            layers = <HD_VIB_P>;
             timeout-ms = <30>;
         };
 
@@ -800,20 +766,20 @@
                 ;
         };
 
-        enthplus_to_hd_vib: enthplus_to_hd_vib {
+        hd_vib_v_to_hd_vib_p: hd_vib_v_to_hd_vib_p {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&tog ENTHPLUS &tog HD_VIB>;
+            bindings = <&tog HD_VIB_V &tog HD_VIB_P>;
         };
 
-        hd_vib_to_hd_gold: hd_vib_to_hd_gold {
+        hd_vib_p_to_hd_gold: hd_vib_p_to_hd_gold {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&tog HD_VIB &tog HD_GOLD>;
+            bindings = <&tog HD_VIB_P &tog HD_GOLD>;
         };
 
         // ── N'T contraction macro ─────────────────────────────────
@@ -1138,17 +1104,17 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 1 — Enth+ (Enthium variant, right homerow K,T,S,N,H)
+        // ── Layer 1 — Hands Down Vibranium V (CSNTK home, linger keys)
 
-        enthplus_layer {
-            display-name = "enth+";
+        hd_vib_v_layer {
+            display-name = "hd-Vv";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp Q           &kp Y           &kp O           &kp U           &kp EQUAL                                       &kp X               &kp L           &kp D           &kp P           &kp Z               &trans
-&lts NAV B     &hml LCTRL C    &hml LALT I     &hml_g LGUI A   &hml LSHFT E    &kp MINUS                                       &kp K               &hmr RSHFT T    &hmr_g RGUI S   &hmr RALT N     &hmr RCTRL H        &lts NAV W
-&mt LSHFT EXCL &kp SQT         &kp COMMA       &kp DOT         &kp SEMI        &lts MOUSE FSLH &trans          &trans          &kp J               &kp M           &kp G           &kp F           &kp V               &mt RSHFT EXCL
-               &trans          &trans          &trans          &lts NUMBERS SPACE  &trans                                      &lts NUMBERS R      &lts NAV SPACE  &trans          &trans          &trans
+&trans         &htk Q W        &htk Z X        &kp M           &kp G           &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
+&trans         &hml LCTRL C    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp K                                           &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
+&trans         &lts NAV Z      &kp F           &kp L           &kp D           &lts MOUSE FSLH &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &lts NAV QMARK      &trans
+               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -1226,7 +1192,7 @@
             bindings = <
 &bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &bt BT_CLR          &none           &none           &none           &none               &none
 &ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
-&none          &none           &none           &none           &none           &tog ENTHPLUS                                   &tog HD_VIB         &tog HD_GOLD    &tog MOUSE      &none           &none               &none
+&none          &none           &none           &none           &none           &tog HD_VIB_V                                   &tog HD_VIB_P         &tog HD_GOLD    &tog MOUSE      &none           &none               &none
 &none          &none           &none           &none           &none           &none           &none           &none           &none               &none           &none           &none           &none               &none
                &none           &none           &none           &none           &none                                           &none               &none           &none           &none           &none
             >;

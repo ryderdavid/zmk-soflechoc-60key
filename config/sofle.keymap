@@ -713,6 +713,21 @@
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
+
+        // ── 'RE contraction: R + E ───────────────────────────────
+        re_hd_vib {
+            bindings = <&re_contraction>;
+            key-positions = <53 32>;
+            layers = <HD_VIB_V HD_VIB_P>;
+            timeout-ms = <30>;
+        };
+
+        re_hdgold {
+            bindings = <&re_contraction>;
+            key-positions = <25 32>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
     };
 
     macros {
@@ -811,6 +826,15 @@
                 , <&macro_release &kp LSHFT>
                 , <&macro_tap &kp U>
                 ;
+        };
+
+        // ── 'RE contraction macro ─────────────────────────────────
+        re_contraction: re_contraction {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp SQT &kp R &kp E>;
         };
 
         // ── Possessive/contraction macro ─────────────────────────

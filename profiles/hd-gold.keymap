@@ -739,6 +739,14 @@
             layers = <HD_GOLD>;
             timeout-ms = <30>;
         };
+
+        // ── T'S contraction: T(53) + S(26) on HD Gold ───────────
+        ts_hdgold {
+            bindings = <&ts_contraction>;
+            key-positions = <53 26>;
+            layers = <HD_GOLD>;
+            timeout-ms = <30>;
+        };
     };
 
     macros {
@@ -837,6 +845,15 @@
                 , <&macro_release &kp LSHFT>
                 , <&macro_tap &kp U>
                 ;
+        };
+
+        // ── Possessive/contraction macro ─────────────────────────
+        ts_contraction: ts_contraction {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp SQT &kp S>;
         };
 
         // ── Linger macros (hold = multi-char sequence) ─────────

@@ -1163,7 +1163,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Z X        &htk Q W        &kp M           &kp G           &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
 &trans         &hml LCTRL S    &hml LALT C     &hml_g LGUI N   &hml LSHFT T    &kp K                                           &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&trans         &htk Z V        &kp P           &kp L           &kp D           &lts MOUSE FSLH &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &htk QMARK F        &trans
+&trans         &lts NAV Z      &kp P           &kp L           &kp D           &lts MOUSE FSLH &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &lts NAV QMARK      &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
@@ -1179,7 +1179,7 @@
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
 &trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&trans         &htk Z X        &ht_f_fr 0 F    &kp L           &ht_c_ck 0 C    &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &htk QMARK K        &trans
+&trans         &lts NAV Z      &ht_f_fr 0 F    &kp L           &ht_c_ck 0 C    &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &lts NAV QMARK      &trans
                &trans          &trans          &trans          &ht_t_th 0 T    &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

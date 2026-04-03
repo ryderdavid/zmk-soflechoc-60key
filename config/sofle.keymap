@@ -1135,7 +1135,7 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &htk Q W        &htk Z X        &kp M           &kp G           &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
+&trans         &htk Q W        &htk Z X        &htk P M        &htk B G        &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
 &trans         &hml LCTRL C    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp K                                           &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
 &trans         &kp P           &kp F           &kp L           &kp D           &lts MOUSE FSLH &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp B               &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
@@ -1151,7 +1151,7 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &htk Z X        &htk Q W        &kp M           &kp G           &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
+&trans         &htk Z X        &htk Q W        &htk V M        &htk F G        &htk EXCL DQT                                   &htk AT HASH        &htk COLON DOT  &htk QMARK SQT  &kp J           &kp B               &trans
 &trans         &hml LCTRL S    &hml LALT C     &hml_g LGUI N   &hml LSHFT T    &kp K                                           &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
 &trans         &kp V           &kp P           &kp L           &kp D           &lts MOUSE FSLH &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp F               &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
@@ -1167,7 +1167,7 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &htk Z J        &htk Q G        &kp M           &kp P           &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
+&trans         &htk Z J        &htk Q G        &htk X M        &htk K P        &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
 &trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
 &trans         &kp X           &ht_f_fr 0 F    &kp L           &ht_c_ck 0 C    &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &trans
                &trans          &trans          &trans          &ht_t_th 0 T    &trans                                          &trans              &trans          &trans          &trans          &trans
@@ -1233,8 +1233,8 @@
 &kp LG(Z)      &kp F1          &kp F2          &kp F3          &kp F4          &kp F5                                          &trans              &trans          &trans          &trans          &trans              &trans
 &kp LG(X)      &kp F6          &kp F7          &kp F8          &kp F9          &kp F10                                         &trans              &trans          &trans          &trans          &trans              &kp C_MUTE
 &kp LG(C)      &kp F11         &kp F12         &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_UP
-&kp LG(V)      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_DN
-               &studio_unlock  &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+&kp LG(V)      &kp LG(Z)       &kp LG(X)       &kp LG(C)       &kp LG(V)       &trans          &trans          &trans          &trans              &trans          &trans          &trans          &trans              &kp C_VOL_DN
+               &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

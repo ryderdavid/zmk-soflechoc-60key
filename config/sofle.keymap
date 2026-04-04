@@ -71,6 +71,12 @@
     combos {
         compatible = "zmk,combos";
 
+        // ── ZMK Studio unlock: top-left + top-right ──────────────
+        studio_unlock_combo {
+            bindings = <&studio_unlock>;
+            key-positions = <0 11>;
+        };
+
         // ── Escape combos ─────────────────────────────────────────
         esc {
             bindings = <&kp ESCAPE>;

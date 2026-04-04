@@ -392,7 +392,26 @@
             timeout-ms = <30>;
         };
 
-        // PH/WH skipped on VV — P not on layer, W+X(13+14) conflicts with QU
+        wh_hd_vib_f {
+            bindings = <&wh_lower>;
+            key-positions = <14 15>;
+            layers = <HD_VIB_F>;
+            timeout-ms = <30>;
+        };
+
+        tc_wh_hd_vib_f {
+            bindings = <&wh_title>;
+            key-positions = <36 14 15>;
+            layers = <HD_VIB_F>;
+            timeout-ms = <50>;
+        };
+
+        tcr_wh_hd_vib_f {
+            bindings = <&wh_title>;
+            key-positions = <49 14 15>;
+            layers = <HD_VIB_F>;
+            timeout-ms = <50>;
+        };
 
         // ── H-digraph title case: HD Vib V (Left Shift)
         tc_th_hd_vib_f {

@@ -14,7 +14,7 @@
  *   0 = QWERTY base with CAGS HRM
  *   1 = Hands Down Vibranium F toggle overlay (SCNTK home, linger keys)
  *   2 = Hands Down Promethium toggle overlay (SNTH home, Magic H)
- *   3 = Hands Down Gold toggle overlay (T on thumb, H-digraph combos)
+ *   3 = HD Au+ custom variant (RSNTB home, Magic H on thumb)
  *   4 = Numbers (number grid + numpad, merged)
  *   5 = Nav (arrows, undo/cut/copy/paste)
  *   6 = Adjust (conditional: NAV + NUMBERS — BT, power, toggles)
@@ -22,7 +22,7 @@
  *   8 = Mouse (mouse movement on right OHAE cluster)
  *   9 = Prec (precision mouse — 1/3 speed)
  *
- * Cycle: QWERTY → HD Vib F → HD Promethium → HD Gold → QWERTY (combo: pos 46+47+48+49)
+ * Cycle: QWERTY → HD Vib F → HD Promethium → HD Au+ → QWERTY (combo: pos 46+47+48+49)
  */
 
 #include <behaviors.dtsi>
@@ -35,7 +35,7 @@
 #define QWERTY    0
 #define HD_VIB_F  1
 #define HD_PROM   2
-#define HD_GOLD   3
+#define HD_AU_PLUS 3
 #define NUMBERS   4
 #define NAV       5
 #define ADJUST    6
@@ -123,15 +123,15 @@
         };
 
         layout_to_hd_gold {
-            bindings = <&hd_prom_to_hd_gold>;
+            bindings = <&hd_prom_to_hd_au_plus>;
             key-positions = <46 47 48 49>;
             layers = <HD_PROM>;
         };
 
         layout_to_qwerty {
-            bindings = <&tog HD_GOLD>;
+            bindings = <&tog HD_AU_PLUS>;
             key-positions = <46 47 48 49>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
         };
 
         // ── Numbers toggle: G+H positions ─────────────────────────
@@ -183,13 +183,13 @@
         fatfinger_del_hdgold {
             bindings = <&kp W>;
             key-positions = <41 42>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
         };
 
         fatfinger_bksp_hdgold {
             bindings = <&kp MINUS>;
             key-positions = <44 43>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
         };
 
         // ── R fat-finger: HD Vibranium V and P (R+Enter → R) ─────
@@ -205,11 +205,11 @@
             layers = <HD_PROM>;
         };
 
-        // ── T fat-finger: HD Gold (T+Enter → T) ─────────────────
-        t_fatfinger_hdgold {
-            bindings = <&kp T>;
+        // ── H fat-finger: Au+ (H+Space → H) ─────────────────────
+        h_fatfinger_au_plus {
+            bindings = <&kp H>;
             key-positions = <53 54>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
         };
 
         // ── H-digraph combos: HD Promethium (SNTH home, H at 28)
@@ -433,245 +433,95 @@
             timeout-ms = <50>;
         };
 
-        // ── H-digraph title case combos: HD Gold (Shift + digraph keys)
-        tc_th_hdgold {
-            bindings = <&th_title>;
-            key-positions = <36 53 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        // TH title case via N+D (27+28)
-        tc_th_hdgold_nd {
-            bindings = <&th_title>;
-            key-positions = <36 27 28>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        // TH title case via HRM shift (pos 31, RSHFT/A)
-        hrm_th_hdgold {
-            bindings = <&th_title>;
-            key-positions = <31 53 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        hrm_th_hdgold_nd {
-            bindings = <&th_title>;
-            key-positions = <31 27 28>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tc_sh_hdgold {
-            bindings = <&sh_title>;
-            key-positions = <36 26 27>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tc_ch_hdgold {
-            bindings = <&ch_title>;
-            key-positions = <36 39 40>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tc_gh_hdgold {
-            bindings = <&gh_title>;
-            key-positions = <36 14 15>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tc_ph_hdgold {
-            bindings = <&ph_title>;
-            key-positions = <36 16 17>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tc_wh_hdgold {
-            bindings = <&wh_title>;
-            key-positions = <36 40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        // ── H-digraph title case combos: HD Gold (Right Shift + digraph keys)
-        tcr_th_hdgold {
-            bindings = <&th_title>;
-            key-positions = <49 53 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_th_hdgold_nd {
-            bindings = <&th_title>;
-            key-positions = <49 27 28>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_sh_hdgold {
-            bindings = <&sh_title>;
-            key-positions = <49 26 27>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_ch_hdgold {
-            bindings = <&ch_title>;
-            key-positions = <49 39 40>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_gh_hdgold {
-            bindings = <&gh_title>;
-            key-positions = <49 14 15>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_ph_hdgold {
-            bindings = <&ph_title>;
-            key-positions = <49 16 17>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_wh_hdgold {
-            bindings = <&wh_title>;
-            key-positions = <49 40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        // ── H-digraph combos: HD Gold ────────────────────────────
-        th_hdgold {
-            bindings = <&th_lower>;
-            key-positions = <53 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        th_hdgold_nd {
-            bindings = <&th_lower>;
-            key-positions = <27 28>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        sh_hdgold {
+        // ── Au+ combos: SH=S+N, CH=C+L, TH=N+T, QU=J+G ─────
+        sh_au_plus {
             bindings = <&sh_lower>;
             key-positions = <26 27>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
-        ch_hdgold {
+        ch_au_plus {
             bindings = <&ch_lower>;
-            key-positions = <39 40>;
-            layers = <HD_GOLD>;
+            key-positions = <38 39>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
-        ch_hdgold_sd {
-            bindings = <&ch_lower>;
-            key-positions = <26 28>;
-            layers = <HD_GOLD>;
+        th_au_plus {
+            bindings = <&th_lower>;
+            key-positions = <27 28>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
-        tc_ch_hdgold_sd {
-            bindings = <&ch_title>;
-            key-positions = <36 26 28>;
-            layers = <HD_GOLD>;
+        // Au+ title case (left shift)
+        tc_sh_au_plus {
+            bindings = <&sh_title>;
+            key-positions = <36 26 27>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <50>;
         };
 
-        tcr_ch_hdgold_sd {
+        tc_ch_au_plus {
             bindings = <&ch_title>;
-            key-positions = <49 26 28>;
-            layers = <HD_GOLD>;
+            key-positions = <36 38 39>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <50>;
         };
 
-        hrm_ch_hdgold_sd {
-            bindings = <&ch_title>;
-            key-positions = <31 26 28>;
-            layers = <HD_GOLD>;
+        tc_th_au_plus {
+            bindings = <&th_title>;
+            key-positions = <36 27 28>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <50>;
         };
 
-        gh_hdgold {
-            bindings = <&gh_lower>;
-            key-positions = <14 15>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
+        // Au+ title case (right shift)
+        tcr_sh_au_plus {
+            bindings = <&sh_title>;
+            key-positions = <49 26 27>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
         };
 
-        ph_hdgold {
-            bindings = <&ph_lower>;
-            key-positions = <16 17>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
+        tcr_ch_au_plus {
+            bindings = <&ch_title>;
+            key-positions = <49 38 39>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
         };
 
-        wh_hdgold {
-            bindings = <&wh_lower>;
-            key-positions = <40 41>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
+        tcr_th_au_plus {
+            bindings = <&th_title>;
+            key-positions = <49 27 28>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
         };
 
-        // ── QU digraph combos: Q(13) + right neighbor(14) ────────
+        // ── QU combos: J+G (13+14) ──────────────────────────────
         qu_combo {
             bindings = <&qu_lower>;
             key-positions = <13 14>;
-            layers = <QWERTY HD_VIB_F>;
+            layers = <QWERTY HD_VIB_F HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
         tc_qu_combo {
             bindings = <&qu_title>;
             key-positions = <36 13 14>;
-            layers = <QWERTY HD_VIB_F>;
+            layers = <QWERTY HD_VIB_F HD_AU_PLUS>;
             timeout-ms = <50>;
         };
 
         tcr_qu_combo {
             bindings = <&qu_title>;
             key-positions = <49 13 14>;
-            layers = <QWERTY HD_VIB_F>;
+            layers = <QWERTY HD_VIB_F HD_AU_PLUS>;
             timeout-ms = <50>;
         };
 
-        // ── QU combo on HD Gold: J(13) + G(14) ─────────────────
-        qu_hdgold {
-            bindings = <&qu_lower>;
-            key-positions = <13 14>;
-            layers = <HD_GOLD>;
-            timeout-ms = <30>;
-        };
-
-        tc_qu_hdgold {
-            bindings = <&qu_title>;
-            key-positions = <36 13 14>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        tcr_qu_hdgold {
-            bindings = <&qu_title>;
-            key-positions = <49 13 14>;
-            layers = <HD_GOLD>;
-            timeout-ms = <50>;
-        };
-
-        // ── N'T contraction combos: N + T ────────────────────────
+        // ── N'T contraction combos ───────────────────────────────
         nt_hd_vib_f {
             bindings = <&nt_contraction>;
             key-positions = <27 40>;
@@ -686,18 +536,18 @@
             timeout-ms = <30>;
         };
 
-        nt_hdgold {
+        nt_au_plus {
             bindings = <&nt_contraction>;
-            key-positions = <53 27>;
-            layers = <HD_GOLD>;
+            key-positions = <27 40>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
-        // ── T'S contraction: T(53) + S(26) on HD Gold ───────────
-        ts_hdgold {
+        // ── T'S contraction: T(28) + S(26) on Au+ ───────────────
+        ts_au_plus {
             bindings = <&ts_contraction>;
-            key-positions = <53 26>;
-            layers = <HD_GOLD>;
+            key-positions = <28 26>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
 
@@ -709,10 +559,10 @@
             timeout-ms = <30>;
         };
 
-        re_hdgold {
+        re_au_plus {
             bindings = <&re_contraction>;
             key-positions = <25 32>;
-            layers = <HD_GOLD>;
+            layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
     };
@@ -776,12 +626,12 @@
             bindings = <&tog HD_VIB_F &tog HD_PROM>;
         };
 
-        hd_prom_to_hd_gold: hd_prom_to_hd_gold {
+        hd_prom_to_hd_au_plus: hd_prom_to_hd_au_plus {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&tog HD_PROM &tog HD_GOLD>;
+            bindings = <&tog HD_PROM &tog HD_AU_PLUS>;
         };
 
         // ── N'T contraction macro ─────────────────────────────────
@@ -1071,6 +921,15 @@
             bindings = <&fr_linger>, <&kp>;
         };
 
+        ht_w_wh: ht_w_wh {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            bindings = <&wh_lower>, <&kp>;
+        };
+
         ht_t_th: ht_t_th {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -1159,17 +1018,17 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 3 — Hands Down Gold (T on thumb, H-digraph combos)
+        // ── Layer 3 — HD Au+ (custom Gold variant, Magic H on thumb)
 
-        hd_gold_layer {
-            display-name = "hd-Au";
+        hd_au_plus_layer {
+            display-name = "hd-Au+";
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Z J        &htk Q G        &htk X M        &htk K P        &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
-&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT D    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
-&trans         &kp X           &ht_f_fr 0 F    &kp L           &ht_c_ck 0 C    &lts MOUSE W    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &trans
-               &trans          &trans          &trans          &ht_t_th 0 T    &trans                                          &trans              &trans          &trans          &trans          &trans
+&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL W        &trans
+&mt LSHFT ENTER &ht_f_fr 0 F  &ht_c_ck 0 C    &kp L           &kp D           &ht_w_wh 0 W   &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &mt RSHFT ENTER
+               &trans          &trans          &trans          &ak_h           &kp SPACE                                       &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -1215,7 +1074,7 @@
             bindings = <
 &bt BT_CLR_ALL &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4                                    &bt BT_CLR          &none           &none           &none           &none               &none
 &ext_power EP_TOG &none        &none           &none           &none           &studio_unlock                                  &none               &none           &none           &none           &none               &none
-&none          &none           &none           &none           &none           &tog HD_VIB_F                                   &tog HD_PROM         &tog HD_GOLD    &tog MOUSE      &none           &none               &none
+&none          &none           &none           &none           &none           &tog HD_VIB_F                                   &tog HD_PROM         &tog HD_AU_PLUS    &tog MOUSE      &none           &none               &none
 &none          &none           &none           &none           &none           &none           &none           &none           &none               &none           &none           &none           &none               &none
                &none           &none           &none           &none           &none                                           &none               &none           &none           &none           &none
             >;

@@ -22,7 +22,7 @@
  *   8 = Mouse (mouse movement on right OHAE cluster)
  *   9 = Prec (precision mouse — 1/3 speed)
  *
- * Cycle: QWERTY → HD Vib F → HD Promethium → HD Au+ → QWERTY (combo: pos 46+47+48+49)
+ * Cycle: QWERTY → HD Vib F → HD Promethium → HD Au+ → Enthium-M → QWERTY (combo: pos 46+47+48+49)
  */
 
 #include <behaviors.dtsi>
@@ -42,6 +42,7 @@
 #define FKEYS     7
 #define MOUSE     8
 #define PREC      9
+#define ENTH_M    10
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -128,10 +129,16 @@
             layers = <HD_PROM>;
         };
 
-        layout_to_qwerty {
-            bindings = <&tog HD_AU_PLUS>;
+        layout_to_enth_m {
+            bindings = <&au_plus_to_enth_m>;
             key-positions = <46 47 48 49>;
             layers = <HD_AU_PLUS>;
+        };
+
+        layout_to_qwerty {
+            bindings = <&tog ENTH_M>;
+            key-positions = <46 47 48 49>;
+            layers = <ENTH_M>;
         };
 
         // ── Numbers toggle: G+H positions ─────────────────────────
@@ -203,6 +210,26 @@
             bindings = <&kp R>;
             key-positions = <53 54>;
             layers = <HD_PROM>;
+        };
+
+        // ── R fat-finger: Enthium Mirrored ───────────────────────
+        r_fatfinger_enth_m {
+            bindings = <&kp R>;
+            key-positions = <53 54>;
+            layers = <ENTH_M>;
+        };
+
+        // ── Fat-finger protection: Enthium Mirrored ─────────────
+        fatfinger_del_enth_m {
+            bindings = <&kp J>;
+            key-positions = <41 42>;
+            layers = <ENTH_M>;
+        };
+
+        fatfinger_bksp_enth_m {
+            bindings = <&kp FSLH>;
+            key-positions = <44 43>;
+            layers = <ENTH_M>;
         };
 
         // ── H fat-finger: Au+ (H+Space → H) ─────────────────────
@@ -632,6 +659,14 @@
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&tog HD_PROM &tog HD_AU_PLUS>;
+        };
+
+        au_plus_to_enth_m: au_plus_to_enth_m {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog HD_AU_PLUS &tog ENTH_M>;
         };
 
         // ── N'T contraction macro ─────────────────────────────────
@@ -1125,6 +1160,22 @@
 &none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ── Layer 10 — Enthium Mirrored (vowels on right) ────────
+
+        enth_m_layer {
+            display-name = "enth-M";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp Z           &kp P           &kp D           &kp L           &kp X                                           &kp EQUAL           &kp U           &kp O           &kp Y           &kp Q               &trans
+&lts NAV B     &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hml LSHFT H    &lts NUMBERS K                                  &lts NUMBERS MINUS  &hmr RSHFT E    &hmr_g RGUI A   &hmr RALT I     &hmr RCTRL C        &lts NAV W
+&trans         &kp V           &kp F           &kp G           &kp M           &lts MOUSE J    &trans          &trans          &kp FSLH            &kp SEMI        &kp DOT         &kp COMMA       &kp SQT             &mt RSHFT EXCL
+               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

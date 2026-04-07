@@ -32,17 +32,17 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 #include <dt-bindings/zmk/pointing.h>
 
-#define QWERTY    0
-#define HD_VIB_F  1
-#define HD_PROM   2
+#define QWERTY     0
+#define HD_VIB_F   1
+#define HD_PROM    2
 #define HD_AU_PLUS 3
-#define NUMBERS   4
-#define NAV       5
-#define ADJUST    6
-#define FKEYS     7
-#define MOUSE     8
-#define PREC      9
-#define ENTH_M    10
+#define ENTH_M     4
+#define NUMBERS    5
+#define NAV        6
+#define ADJUST     7
+#define FKEYS      8
+#define MOUSE      9
+#define PREC       10
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -1069,7 +1069,23 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 4 — Numbers (merged with numpad) ───────────────
+        // ── Layer 4 — Enthium Mirrored (vowels on right) ─────────
+
+        enth_m_layer {
+            display-name = "enth-M";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp Z           &kp P           &kp D           &kp L           &kp X                                           &kp EQUAL           &kp U           &kp O           &kp Y           &kp Q               &trans
+&lts NAV B     &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hml LSHFT H    &lts NUMBERS K                                  &lts NUMBERS MINUS  &hmr RSHFT E    &hmr_g RGUI A   &hmr RALT I     &hmr RCTRL C        &lts NAV W
+&trans         &kp V           &kp F           &kp G           &kp M           &lts MOUSE J    &trans          &trans          &kp FSLH            &kp SEMI        &kp DOT         &kp COMMA       &kp SQT             &mt RSHFT EXCL
+               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ── Layer 5 — Numbers (merged with numpad) ───────────────
 
         numbers_layer {
             display-name = "numbers";
@@ -1085,7 +1101,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 5 — Navigation ─────────────────────────────────
+        // ── Layer 6 — Navigation ─────────────────────────────────
 
         nav_layer {
             display-name = "nav";
@@ -1101,7 +1117,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 6 — Adjust (conditional: NAV + NUMBERS) ───────
+        // ── Layer 7 — Adjust (conditional: NAV + NUMBERS) ───────
 
         adjust_layer {
             display-name = "adjust";
@@ -1117,7 +1133,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 7 — F-keys + utilities ─────────────────────────
+        // ── Layer 8 — F-keys + utilities ─────────────────────────
 
         fkeys_layer {
             display-name = "fkeys";
@@ -1133,7 +1149,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 8 — Mouse ──────────────────────────────────────
+        // ── Layer 9 — Mouse ──────────────────────────────────────
 
         mouse_layer {
             display-name = "mouse";
@@ -1149,7 +1165,7 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 9 — Precision mouse ────────────────────────────
+        // ── Layer 10 — Precision mouse ────────────────────────────
 
         prec_layer {
             display-name = "prec";
@@ -1165,20 +1181,5 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 10 — Enthium Mirrored (vowels on right) ────────
-
-        enth_m_layer {
-            display-name = "enth-M";
-
-            bindings = <
-&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp Z           &kp P           &kp D           &kp L           &kp X                                           &kp EQUAL           &kp U           &kp O           &kp Y           &kp Q               &trans
-&lts NAV B     &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hml LSHFT H    &lts NUMBERS K                                  &lts NUMBERS MINUS  &hmr RSHFT E    &hmr_g RGUI A   &hmr RALT I     &hmr RCTRL C        &lts NAV W
-&trans         &kp V           &kp F           &kp G           &kp M           &lts MOUSE J    &trans          &trans          &kp FSLH            &kp SEMI        &kp DOT         &kp COMMA       &kp SQT             &mt RSHFT EXCL
-               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
     };
 };

@@ -570,7 +570,14 @@
             timeout-ms = <30>;
         };
 
-        // ── T'S contraction: T(28) + S(26) on Au+ ───────────────
+        // ── T'S contraction: T(28) + S ─────────────────────────
+        ts_vf {
+            bindings = <&ts_contraction>;
+            key-positions = <28 25>;
+            layers = <HD_VIB_F>;
+            timeout-ms = <30>;
+        };
+
         ts_au_plus {
             bindings = <&ts_contraction>;
             key-positions = <28 26>;

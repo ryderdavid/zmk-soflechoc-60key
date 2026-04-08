@@ -34,16 +34,16 @@
 
 #define QWERTY     0
 #define HD_VIB_F   1
-#define HD_PROM    2
-#define HD_AU_PLUS 3
-#define ENTH_M     4
-#define NUMBERS    5
-#define NAV        6
-#define ADJUST     7
-#define FKEYS      8
-#define MOUSE      9
-#define PREC       10
-#define HD_VF_INV  11
+#define HD_VF_INV  2
+#define HD_PROM    3
+#define HD_AU_PLUS 4
+#define ENTH_M     5
+#define NUMBERS    6
+#define NAV        7
+#define ADJUST     8
+#define FKEYS      9
+#define MOUSE      10
+#define PREC       11
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -1163,7 +1163,23 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 2 — Hands Down Promethium (Magic H, SNTH home)
+        // ── Layer 2 — HD Vibranium F^ (inverted: top↔bottom) ────
+
+        hd_vf_inv_layer {
+            display-name = "hd-Vf^";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &kp F           &kp P           &kp L           &kp D           &kp V                                           &htk AT HASH        &kp U           &kp O           &kp Y           &kp B               &trans
+&trans         &hml LCTRL S    &hml LALT C     &hml_g_ak_n LGUI 0  &hml LSHFT T    &kp K                                       &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr_ak_h RCTRL 0   &trans
+&trans         &htk Z X        &htk Q W        &htk B M        &htk F G        &lts MOUSE J    &trans          &trans          &htk PLUS MINUS     &htk COLON DOT  &htk ASTRK FSLH &htk EXCL DQT   &htk QMARK SQT      &trans
+               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ── Layer 3 — Hands Down Promethium (Magic H, SNTH home)
 
         hd_prom_layer {
             display-name = "hd-Pm";
@@ -1302,22 +1318,6 @@
 &none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        // ── Layer 11 — HD Vibranium F^ (inverted: top↔bottom) ───
-
-        hd_vf_inv_layer {
-            display-name = "hd-Vf^";
-
-            bindings = <
-&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp F           &kp P           &kp L           &kp D           &kp V                                           &htk AT HASH        &kp U           &kp O           &kp Y           &kp B               &trans
-&trans         &hml LCTRL S    &hml LALT C     &hml_g_ak_n LGUI 0  &hml LSHFT T    &kp K                                       &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr_ak_h RCTRL 0   &trans
-&trans         &htk Z X        &htk Q W        &htk B M        &htk F G        &lts MOUSE J    &trans          &trans          &htk PLUS MINUS     &htk COLON DOT  &htk ASTRK FSLH &htk EXCL DQT   &htk QMARK SQT      &trans
-               &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

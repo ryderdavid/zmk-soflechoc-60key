@@ -1195,7 +1195,7 @@
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
 &none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
 &none          &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &tog MOUSE          &mkp LCLK           &mkp RCLK            &mkp MCLK            &none
+               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK           &mkp RCLK            &mkp MCLK            &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

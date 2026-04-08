@@ -986,6 +986,28 @@
             akt_uh { trigger-keys = <U>; max-prior-idle-ms = <300>; bindings = <&kp A>; };
         };
 
+        // ── Adaptive N: C then N quickly = "k" (for VF ck shortcut)
+        ak_n: ak_n {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp N>;
+
+            akt_cn { trigger-keys = <C>; max-prior-idle-ms = <300>; bindings = <&kp K>; };
+        };
+
+        // ── HRM wrapper for adaptive N (hold=GUI, tap=ak_n)
+        hml_g_ak_n: hml_g_ak_n {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <350>;
+            bindings = <&kp>, <&ak_n>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59>;
+            hold-trigger-on-release;
+        };
+
         td_enc_l: tap_dance_enc_left {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -1029,7 +1051,7 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Z X        &htk Q W        &htk B M        &htk F G        &kp J                                           &htk AT HASH        &htk COLON DOT  &htk ASTRK FSLH &htk EXCL DQT   &htk QMARK SQT      &trans
-&trans         &hml LCTRL S    &hml LALT C     &hml_g LGUI N   &hml LSHFT T    &kp K                                           &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
+&trans         &hml LCTRL S    &hml LALT C     &hml_g_ak_n LGUI 0  &hml LSHFT T    &kp K                                       &htk SEMI COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL H        &trans
 &trans         &kp F           &kp P           &kp L           &kp D           &lts MOUSE V    &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp B               &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;

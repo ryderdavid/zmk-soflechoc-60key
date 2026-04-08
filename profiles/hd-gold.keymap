@@ -96,7 +96,7 @@
 
         // ── Thumb fat-finger protection ───────────────────────────
         thumb_fatfinger {
-            bindings = <&kp SPACE>;
+            bindings = <&kp ENTER>;
             key-positions = <54 55>;
         };
 
@@ -984,6 +984,7 @@
             akt_eh { trigger-keys = <E>; max-prior-idle-ms = <300>; bindings = <&kp O>; };
             akt_oh { trigger-keys = <O>; max-prior-idle-ms = <300>; bindings = <&kp U>; };
             akt_uh { trigger-keys = <U>; max-prior-idle-ms = <300>; bindings = <&kp A>; };
+            akt_ih { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp N &kp G>; };
         };
 
         // ── Adaptive N: C then N quickly = "k" (for VF ck shortcut)

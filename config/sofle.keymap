@@ -1090,6 +1090,17 @@
             hold-trigger-on-release;
         };
 
+        // ── Hold-tap wrapper for adaptive H on thumb (hold=layer, tap=ak_h)
+        lts_ak_h: lts_ak_h {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            bindings = <&mo>, <&ak_h>;
+        };
+
         // ── Adaptive N: C then N quickly = "k" (for VF ck shortcut)
         ak_n: ak_n {
             compatible = "zmk,behavior-adaptive-key";
@@ -1187,7 +1198,7 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &kp F           &kp P           &htk V D        &htk FSLH L     &htk Z X                                        &htk COLON SEMI     &kp U           &kp O           &kp Y           &kp B               &trans
-&trans         &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &ak_h           &kp K                                           &htk EQUAL COMMA    &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &trans
+&trans         &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hmr_ak_h LSHFT 0  &kp K                                        &htk EQUAL COMMA    &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &trans
 &trans         &kp V           &htk Q W        &kp G           &kp M           &lts MOUSE J    &trans          &trans          &htk PLUS MINUS     &htk HASH DOT   &htk EXCL SQT   &htk QMARK DQT  &htk ASTRK FSLH     &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
@@ -1205,7 +1216,7 @@
 &trans         &htk Q J        &htk F G        &htk X M        &htk K P        &htk Z V                                        &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
 &trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &htk W C            &lts NAV ENTER
 &kp LSHFT      &ht_f_fr 0 F   &ht_c_ck 0 C    &kp L           &kp D           &ht_w_wh 0 W   &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &mt RSHFT ENTER
-               &trans          &trans          &trans          &ak_h           &lts MOUSE R                                    &trans              &trans          &trans          &trans          &trans
+               &trans          &trans          &trans          &lts_ak_h FKEYS 0  &lts MOUSE R                                 &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

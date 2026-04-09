@@ -1202,10 +1202,10 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &htk Z J        &htk Q G        &htk X M        &htk K P        &kp V                                           &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
-&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL W        &trans
-&mt LSHFT ENTER &ht_f_fr 0 F  &ht_c_ck 0 C    &kp L           &kp D           &ht_w_wh 0 W   &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &mt RSHFT ENTER
-               &trans          &trans          &trans          &ak_h           &kp SPACE                                       &trans              &trans          &trans          &trans          &trans
+&trans         &htk Q J        &htk F G        &htk X M        &htk K P        &htk Z V                                        &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL SQT       &trans
+&trans         &hml LCTRL R    &hml LALT S     &hml_g LGUI N   &hml LSHFT T    &kp B                                           &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &htk W C            &lts NAV ENTER
+&kp LSHFT      &ht_f_fr 0 F   &ht_c_ck 0 C    &kp L           &kp D           &ht_w_wh 0 W   &trans          &trans          &htk PLUS MINUS     &kp U           &kp O           &kp Y           &kp K               &mt RSHFT ENTER
+               &trans          &trans          &trans          &ak_h           &lts MOUSE R                                    &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

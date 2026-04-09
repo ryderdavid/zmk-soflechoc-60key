@@ -1099,6 +1099,7 @@
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
             bindings = <&mo>, <&ak_h>;
+            hold-trigger-on-release;
         };
 
         // ── Adaptive N: C then N quickly = "k" (for VF ck shortcut)

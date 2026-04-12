@@ -1246,7 +1246,9 @@
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        }; (combo 34+35 or 24+25) ──
+        };
+
+        // ── Layer 9 — Windows Shortcuts (combo 34+35 or 24+25) ──
 
         win_sc_layer {
             display-name = "win-sc";

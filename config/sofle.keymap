@@ -37,11 +37,11 @@
 #define HD_PROM    2
 #define HD_AU_PLUS 3
 #define MOUSE      4
-#define NUMBERS    5
-#define NAV        6
-#define ADJUST     7
-#define FKEYS      8
-#define WIN_SC     9
+#define WIN_SC     5
+#define NUMBERS    6
+#define NAV        7
+#define ADJUST     8
+#define FKEYS      9
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER

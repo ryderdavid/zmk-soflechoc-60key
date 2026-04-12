@@ -579,6 +579,13 @@
             timeout-ms = <30>;
         };
 
+        sc_au_plus {
+            bindings = <&sc_lower>;
+            key-positions = <26 40>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <30>;
+        };
+
         wh_au_plus {
             bindings = <&wh_lower>;
             key-positions = <13 26>;
@@ -887,6 +894,15 @@
             wait-ms = <0>;
             tap-ms = <0>;
             bindings = <&kp T &kp SQT &kp S>;
+        };
+
+        // ── SC digraph macro ──────────────────────────────────────
+        sc_lower: sc_lower {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp C>;
         };
 
         // ── KH digraph macro ──────────────────────────────────────

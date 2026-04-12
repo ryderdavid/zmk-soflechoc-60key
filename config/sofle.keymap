@@ -1328,8 +1328,8 @@
             bindings = <
 &trans         &trans          &trans          &trans          &kp LG(LS(S))   &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Q W        &htk J G        &htk X M        &htk K P        &htk Z V                                        &htk COLON SEMI     &htk AMPS DOT   &htk ASTRK FSLH &htk QMARK DQT  &htk EXCL EQUAL     &htk BSLH MINUS
-&trans         &hml LCTRL F    &hml_ak_s LALT 0  &hml_g LGUI N   &hml LSHFT T    &kp B                                        &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &htk W C            &lts NAV ENTER
-&kp LSHFT      &none           &ht_c_ck 0 C    &kp L           &kp D           &kp K           &htk LPAR LBKT  &htk RPAR RBKT  &htk PIPE SQT       &kp U           &kp O           &kp Y           &none               &mt RSHFT ENTER
+&trans         &hml LCTRL F    &hml_ak_s LALT 0  &hml_g LGUI N   &hml LSHFT T    &kp B                                        &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &lts NAV ENTER
+&kp LSHFT      &none           &ht_c_ck 0 C    &kp L           &kp D           &kp K           &htk LPAR LBKT  &htk RPAR RBKT  &htk PLUS SQT       &kp U           &kp O           &kp Y           &none               &mt RSHFT ENTER
                &trans          &trans          &trans          &lts_ak_h FKEYS 0  &lts MOUSE R                                 &trans              &trans          &trans          &trans          &trans
             >;
 

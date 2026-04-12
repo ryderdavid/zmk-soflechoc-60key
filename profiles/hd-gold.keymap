@@ -671,7 +671,7 @@
 
         re_au_plus {
             bindings = <&re_contraction>;
-            key-positions = <54 32>;
+            key-positions = <53 32>;
             layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
@@ -1236,7 +1236,7 @@
 &trans         &htk Q W        &htk J G        &htk X M        &htk K P        &htk Z V                                        &htk COLON SEMI     &htk EXCL DOT   &htk QMARK FSLH &htk LPAR DQT   &htk RPAR SQT       &htk BSLH MINUS
 &nav_cw NAV 0  &hml LCTRL F    &hml_ak_s LALT 0  &hml_g LGUI N   &hml LSHFT T    &kp B                                        &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &lts NAV ENTER
 &kp LSHFT      &none           &ht_c_ck 0 C    &kp L           &kp D           &kp W           &htk LPAR LBKT  &htk RPAR RBKT  &kp K               &kp U           &kp O           &kp Y           &none               &mt RSHFT ENTER
-               &trans          &trans          &trans          &lts_ak_h FKEYS 0  &lts MOUSE R                                 &trans              &trans          &trans          &trans          &trans
+               &trans          &trans          &trans          &lts MOUSE R    &lts_ak_h FKEYS 0                                &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

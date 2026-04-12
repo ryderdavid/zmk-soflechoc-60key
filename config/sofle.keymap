@@ -1276,7 +1276,7 @@
             display-name = "hd-Au+";
 
             bindings = <
-&trans         &trans          &trans          &trans          &kp LG(LS(S))   &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &htk Q W        &htk J G        &htk X M        &htk K P        &htk Z V                                        &htk COLON SEMI     &htk EXCL DOT   &htk QMARK FSLH &htk LPAR DQT   &htk RPAR SQT       &htk BSLH MINUS
 &nav_cw NAV 0  &hml LCTRL F    &hml_ak_s LALT 0  &hml_g_ak_n LGUI 0  &hml_ak_t LSHFT 0   &kp B                                &htk PIPE COMMA     &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &lts NAV ENTER
 &kp LSHFT      &none           &ht_c_ck 0 C    &kp L           &kp D           &kp W           &htk LPAR LBKT  &htk RPAR RBKT  &kp K               &kp U           &kp O           &kp Y           &none               &mt RSHFT ENTER

@@ -44,6 +44,7 @@
 #define FKEYS      9
 #define MOUSE      10
 #define PREC       11
+#define WIN_SC     12
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -77,6 +78,14 @@
         studio_unlock_combo {
             bindings = <&studio_unlock>;
             key-positions = <0 11>;
+        };
+
+        // ── Windows shortcuts layer: hold pos 34+35 ──────────────
+        win_sc_combo {
+            bindings = <&mo WIN_SC>;
+            key-positions = <34 35>;
+            timeout-ms = <50>;
+            slow-release;
         };
 
         // ── Escape combos ─────────────────────────────────────────
@@ -1330,6 +1339,26 @@
 &none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
 &none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
                &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ── Layer 12 — Windows Shortcuts ─────────────────────────
+        // Activated by holding combo(34+35).
+        // Common Windows shortcuts: Win+D, Win+L, Win+E, Win+Tab,
+        // Win+Arrow (snap), Win+V (clipboard), Win+. (emoji),
+        // Win+Shift+S (snip), Alt+Tab, Ctrl+Shift+Esc (task mgr).
+
+        win_sc_layer {
+            display-name = "win-sc";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &kp LG(W)       &kp LG(E)       &kp LG(R)       &kp LG(TAB)                                     &kp LG(UP)          &kp LG(UP)      &trans          &trans          &kp LG(DOT)         &trans
+&trans         &kp LG(A)       &kp LG(S)       &kp LG(D)       &kp LG(LS(S))   &trans                                          &kp LG(LEFT)        &kp LG(DOWN)    &kp LG(RIGHT)   &kp LG(L)       &kp LG(V)           &trans
+&trans         &kp LG(Z)       &kp LG(X)       &kp LG(C)       &kp LG(V)       &trans          &trans          &trans          &kp LC(LS(ESC))     &trans          &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

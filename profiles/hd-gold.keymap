@@ -38,13 +38,12 @@
 #define HD_PROM    3
 #define HD_AU_PLUS 4
 #define ENTH_M     5
-#define NUMBERS    6
-#define NAV        7
-#define ADJUST     8
-#define FKEYS      9
-#define MOUSE      10
-#define PREC       11
-#define WIN_SC     12
+#define WIN_SC     6
+#define NUMBERS    7
+#define NAV        8
+#define ADJUST     9
+#define FKEYS      10
+#define MOUSE      11
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -1352,7 +1351,23 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        // ── Layer 5 — Numbers (merged with numpad) ───────────────
+        // ── Layer 6 — Windows Shortcuts (combo 34+35 or 24+25) ──
+
+        win_sc_layer {
+            display-name = "win-sc";
+
+            bindings = <
+&trans         &trans          &trans          &trans          &kp LG(LS(S))   &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
+&trans         &trans          &kp LG(W)       &kp LG(E)       &kp LG(R)       &kp LG(TAB)                                     &trans              &trans          &kp LG(UP)      &trans          &kp LG(DOT)         &trans
+&trans         &kp LG(A)       &kp LG(S)       &kp LG(D)       &kp LG(LS(S))   &trans                                          &trans              &kp LG(LEFT)    &kp LG(DOWN)    &kp LG(RIGHT)   &kp LG(L)           &kp LG(V)
+&trans         &kp LC(Z)       &kp LC(X)       &kp LC(C)       &kp LC(V)       &trans          &trans          &trans          &kp LC(LS(ESC))     &trans          &trans          &trans          &trans              &trans
+               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        // ── Layer 7 — Numbers (merged with numpad) ───────────────
 
         numbers_layer {
             display-name = "numbers";
@@ -1424,45 +1439,9 @@
             bindings = <
 &none          &none           &none           &none           &none           &none                                           &none               &none               &none                &none                &none          &none
 &none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP        &mmv MOVE_UP_FAST    &msc SCRL_DOWN       &none          &none
-&none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &mo PREC
+&none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_FAST &mmv MOVE_DOWN_FAST  &mmv MOVE_RIGHT_FAST &none          &none
 &none          &none           &none           &none           &none           &none           &tog MOUSE      &tog MOUSE      &none               &none               &none                &none                &none          &none
                &none           &none           &none           &none           &kp ENTER                                       &kp ENTER           &mkp LCLK           &mkp RCLK            &mkp MCLK            &none
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        // ── Layer 10 — Precision mouse ────────────────────────────
-
-        prec_layer {
-            display-name = "prec";
-
-            bindings = <
-&none          &none           &none           &none           &none           &none                                           &none               &none                &none                &none                &none          &none
-&none          &none           &none           &none           &none           &none                                           &none               &msc SCRL_UP         &mmv MOVE_UP_SLOW    &msc SCRL_DOWN       &none          &none
-&none          &kp LCTRL       &kp LALT        &kp LSHFT       &kp LGUI        &none                                           &none               &mmv MOVE_LEFT_SLOW  &mmv MOVE_DOWN_SLOW  &mmv MOVE_RIGHT_SLOW &none          &none
-&none          &none           &none           &none           &none           &none           &none           &trans          &none               &none                &none                &none                &none          &none
-               &none           &none           &none           &none           &none                                           &trans              &mkp LCLK            &mkp RCLK            &mkp MCLK            &none
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        // ── Layer 12 — Windows Shortcuts ─────────────────────────
-        // Activated by holding combo(34+35).
-        // Common Windows shortcuts: Win+D, Win+L, Win+E, Win+Tab,
-        // Win+Arrow (snap), Win+V (clipboard), Win+. (emoji),
-        // Win+Shift+S (snip), Alt+Tab, Ctrl+Shift+Esc (task mgr).
-
-        win_sc_layer {
-            display-name = "win-sc";
-
-            bindings = <
-&trans         &trans          &trans          &trans          &kp LG(LS(S))   &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &trans          &kp LG(W)       &kp LG(E)       &kp LG(R)       &kp LG(TAB)                                     &trans              &trans          &kp LG(UP)      &trans          &kp LG(DOT)         &trans
-&trans         &kp LG(A)       &kp LG(S)       &kp LG(D)       &kp LG(LS(S))   &trans                                          &trans              &kp LG(LEFT)    &kp LG(DOWN)    &kp LG(RIGHT)   &kp LG(L)           &kp LG(V)
-&trans         &kp LG(Z)       &kp LG(X)       &kp LG(C)       &kp LG(V)       &trans          &trans          &trans          &kp LC(LS(ESC))     &trans          &trans          &trans          &trans              &trans
-               &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

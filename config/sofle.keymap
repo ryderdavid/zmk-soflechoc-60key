@@ -675,6 +675,36 @@
             layers = <HD_AU_PLUS>;
             timeout-ms = <30>;
         };
+
+        // ── Au+ word combos: wt/tho/thi/tha → with/those/this/that
+        // W=13, T=28, H=54 (thumb ak_h), I=33, A=31, O=46
+        word_with_au {
+            bindings = <&word_with>;
+            key-positions = <13 28>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <40>;
+        };
+
+        word_those_au {
+            bindings = <&word_those>;
+            key-positions = <28 54 46>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
+        };
+
+        word_this_au {
+            bindings = <&word_this>;
+            key-positions = <28 54 33>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
+        };
+
+        word_that_au {
+            bindings = <&word_that>;
+            key-positions = <28 54 31>;
+            layers = <HD_AU_PLUS>;
+            timeout-ms = <50>;
+        };
     };
 
     macros {
@@ -957,6 +987,39 @@
                 , <&macro_release &kp LSHFT>
                 , <&macro_tap &kp H>
                 ;
+        };
+
+        // ── Au+ word combos ──────────────────────────────────────
+        word_with: word_with {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp I &kp T &kp H>;
+        };
+
+        word_those: word_those {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp H &kp O &kp S &kp E>;
+        };
+
+        word_this: word_this {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp H &kp I &kp S>;
+        };
+
+        word_that: word_that {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp H &kp A &kp T>;
         };
     };
 

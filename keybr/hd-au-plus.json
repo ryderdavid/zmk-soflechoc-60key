@@ -1,0 +1,57 @@
+{
+  "id": "hd-au-plus",
+  "name": "Hands Down Au+",
+  "language": "en",
+  "geometry": "ansi_101",
+  "keys": {
+    "KeyQ": ["w", "W"],
+    "KeyW": ["g", "G"],
+    "KeyE": ["m", "M"],
+    "KeyR": ["p", "P"],
+    "KeyT": ["v", "V"],
+    "KeyY": [";", ":"],
+    "KeyU": [".", "!"],
+    "KeyI": ["/", "?"],
+    "KeyO": ["\"", "("],
+    "KeyP": ["'", ")"],
+
+    "KeyA": ["f", "F"],
+    "KeyS": ["s", "S"],
+    "KeyD": ["n", "N"],
+    "KeyF": ["t", "T"],
+    "KeyG": ["b", "B"],
+    "KeyH": [",", "|"],
+    "KeyJ": ["a", "A"],
+    "KeyK": ["e", "E"],
+    "KeyL": ["i", "I"],
+    "Semicolon": ["c", "C"],
+
+    "KeyX": ["c", "C"],
+    "KeyC": ["l", "L"],
+    "KeyV": ["d", "D"],
+    "KeyB": ["w", "W"],
+    "KeyN": ["k", "K"],
+    "KeyM": ["u", "U"],
+    "Comma": ["o", "O"],
+    "Period": ["y", "Y"],
+
+    "Quote": ["h", "H"],
+    "Backslash": ["r", "R"]
+  },
+  "_notes": {
+    "source": "config/sofle.keymap layer HD_AU_PLUS (hd-Au+)",
+    "convention": "ZMK hold-tap = <hold> <tap>; only tap outputs are mapped (keybr cannot train holds)",
+    "untrainable_in_keybr": {
+      "Q": "hold of pos 13 (htk Q W)",
+      "J": "hold of pos 14 (htk J G)",
+      "X": "hold of pos 15 (htk X M)",
+      "Z": "hold of pos 17 (htk Z V)"
+    },
+    "magic_keys_mapped_off_block": {
+      "Quote→H": "ak_h on right thumb pos 54 (lts_ak_h FKEYS 0)",
+      "Backslash→R": "ak_r on right thumb pos 53 (lts_ak_r MOUSE 0)"
+    },
+    "duplicates_in_layout": ["w on KeyQ and KeyB", "c on Semicolon and KeyX"],
+    "shift_pairs": "uppercase for letters; for punctuation top row, the second codepoint reflects the hold-paired symbol from htk (e.g. KeyU . / !)"
+  }
+}

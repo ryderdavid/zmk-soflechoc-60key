@@ -682,28 +682,28 @@
             bindings = <&word_with>;
             key-positions = <13 28>;
             layers = <HD_AU_PLUS>;
-            timeout-ms = <40>;
+            timeout-ms = <75>;
         };
 
         word_those_au {
             bindings = <&word_those>;
             key-positions = <28 54 46>;
             layers = <HD_AU_PLUS>;
-            timeout-ms = <50>;
+            timeout-ms = <100>;
         };
 
         word_this_au {
             bindings = <&word_this>;
             key-positions = <28 54 33>;
             layers = <HD_AU_PLUS>;
-            timeout-ms = <50>;
+            timeout-ms = <100>;
         };
 
         word_that_au {
             bindings = <&word_that>;
             key-positions = <28 54 31>;
             layers = <HD_AU_PLUS>;
-            timeout-ms = <50>;
+            timeout-ms = <100>;
         };
     };
 
@@ -1324,9 +1324,9 @@
 
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans         &kp F           &kp P           &htk V D        &htk FSLH L     &htk Z X                                        &htk COLON SEMI     &kp U           &kp O           &kp Y           &kp B               &trans
-&trans         &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hmr_ak_h LSHFT 0  &kp K                                        &htk EQUAL COMMA    &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &trans
-&trans         &kp V           &htk Q W        &kp G           &kp M           &lts MOUSE J    &trans          &trans          &htk PLUS MINUS     &htk HASH DOT   &htk EXCL SQT   &htk QMARK DQT  &htk ASTRK FSLH     &trans
+&trans         &kp V           &kp W           &kp G           &kp M           &lts MOUSE J                                    &kp SEMI            &kp DOT         &kp SQT         &kp FSLH        &kp EQUAL           &kp Z
+&trans         &hml LCTRL S    &hml LALT N     &hml_g LGUI T   &hmr_ak_h LSHFT 0  &kp K                                        &kp COMMA           &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &kp Q
+&kp LSHFT      &kp F           &kp P           &kp D           &kp L           &kp X           &trans          &trans          &kp MINUS           &kp U           &kp O           &kp Y           &kp B               &trans
                &trans          &trans          &trans          &kp R           &trans                                          &trans              &trans          &trans          &trans          &trans
             >;
 

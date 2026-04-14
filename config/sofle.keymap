@@ -1567,8 +1567,8 @@
             bindings = <
 &trans         &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
 &trans         &kp V           &kp W           &kp G           &kp M           &lts MOUSE B                                    &kp SEMI            &kp DOT         &kp SQT         &kp FSLH        &kp EQUAL           &kp Z
-&kp F          &hml_ak_s LCTRL 0  &hml_ak_n LALT 0  &hml_ak_t LGUI 0  &hmr_ak_h LSHFT 0  &kp K                                  &kp COMMA           &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &trans
-&kp LSHFT      &kp Q           &kp P           &kp D           &kp L           &kp X           &trans          &trans          &kp MINUS           &kp U           &kp O           &kp Y           &kp B               &trans
+&kp X          &hml_ak_s LCTRL 0  &hml_ak_n LALT 0  &hml_ak_t LGUI 0  &hmr_ak_h LSHFT 0  &kp K                                  &kp COMMA           &hmr RSHFT A    &hmr_g RGUI E   &hmr RALT I     &hmr RCTRL C        &trans
+&kp LSHFT      &kp Q           &kp P           &kp D           &kp L           &kp F           &trans          &trans          &kp MINUS           &kp U           &kp O           &kp Y           &kp B               &trans
                &trans          &trans          &trans          &lts_ak_r MOUSE 0  &trans                                       &trans              &trans          &trans          &trans          &trans
             >;
 

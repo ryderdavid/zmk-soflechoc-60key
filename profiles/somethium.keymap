@@ -877,7 +877,7 @@
 &kp TAB         &kp Q           &kp W           &kp E           &kp R           &kp T                                           &kp Y               &kp U           &kp I           &kp O           &kp P               &kp MINUS
 &mo NAV         &hml LCTRL A    &hml LALT S     &hml_g LGUI D   &hml LSHFT F    &kp G                                           &kp H               &hmr RSHFT J    &hmr_g RGUI K   &hmr RALT L     &hmr RCTRL SEMI     &mo FKEYS
 &kp LSHFT       &kp Z           &kp X           &kp C           &kp V           &kp B           &trans              &trans      &kp N               &kp M           &kp COMMA       &kp DOT         &kp FSLH            &kp RSHFT
-                &trans          &trans          &trans          &kp ESC         &kp SPACE                                       &kp ENTER       &trans          &none           &trans
+                &trans          &trans          &trans          &kp ESC         &kp SPACE                                       &kp ENTER       &trans          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -961,20 +961,6 @@
 &trans          &trans          &kp LC(W)       &kp LC(E)       &kp LC(R)       &kp LC(TAB)                                     &trans              &trans          &kp LC(UP)      &trans          &kp LC(DOT)         &trans
 &trans          &kp LC(A)       &kp LC(S)       &kp LC(D)       &kp LC(LS(S))   &trans                                          &trans              &kp LC(LEFT)    &kp LC(DOWN)    &kp LC(RIGHT)   &kp LC(L)           &kp LC(V)
 &trans          &macro_undo_win &kp LC(X)       &kp LC(C)       &kp LC(V)       &kp LC(A)       &trans              &trans      &kp LC(LS(ESC))     &trans          &trans          &trans          &trans              &trans
-                &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        sm_off_layer {
-            display-name = "sm-off";
-
-            bindings = <
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans          &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &trans
-&trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans      &trans              &trans          &trans          &trans          &trans              &trans
                 &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans
             >;
 

@@ -1,0 +1,292 @@
+/*
+ * Somethium HDP combos — Sofle position mapping (36-key core on rows 1–3 + inner thumbs)
+ */
+
+/ {
+    combos {
+        som_toggle_qwerty {
+            bindings = <&toggle_qwerty>;
+            key-positions = <45 46 47 48>;
+            layers = <0>;
+        };
+
+        qw_toggle_som {
+            bindings = <&toggle_somethium>;
+            key-positions = <14 30 45 48>;
+            layers = <1>;
+        };
+
+        som_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <12 13>;
+            layers = <0>;
+        };
+
+        qw_esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <12 13>;
+            layers = <1>;
+        };
+
+        som_tab {
+            bindings = <&kp TAB>;
+            key-positions = <24 25>;
+            layers = <0>;
+        };
+
+        som_nt {
+            bindings = <&th_lower>;
+            key-positions = <26 27>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_nd {
+            bindings = <&nt_contraction>;
+            key-positions = <26 39>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_st {
+            bindings = <&ts_contraction>;
+            key-positions = <25 27>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_sm {
+            bindings = <&word_some>;
+            key-positions = <25 14>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_wt {
+            bindings = <&word_what>;
+            key-positions = <13 27>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_wm {
+            bindings = <&wh_lower>;
+            key-positions = <13 14>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_mg {
+            bindings = <&gh_lower>;
+            key-positions = <14 15>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_ps {
+            bindings = <&ph_lower>;
+            key-positions = <36 25>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_pc {
+            bindings = <&ph_lower>;
+            key-positions = <36 37>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_pcld_win {
+            bindings = <&mo WIN>;
+            key-positions = <36 37 38 39>;
+            layers = <0>;
+            slow-release;
+        };
+
+        som_cl {
+            bindings = <&ch_lower>;
+            key-positions = <37 38>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_what {
+            bindings = <&word_what>;
+            key-positions = <13 31 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_when {
+            bindings = <&word_when>;
+            key-positions = <13 32 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_where {
+            bindings = <&word_where>;
+            key-positions = <13 47 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_enter {
+            bindings = <&mo FKEYS>;
+            key-positions = <47 48>;
+            layers = <0>;
+        };
+
+        som_sn {
+            bindings = <&sh_lower>;
+            key-positions = <25 26>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_arrow {
+            bindings = <&word_arrow>;
+            key-positions = <46 44>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_grave {
+            bindings = <&kp GRAVE>;
+            key-positions = <31 30>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_ck {
+            bindings = <&ch_lower>;
+            key-positions = <37 39>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_aeix_ent {
+            bindings = <&kp ENTER>;
+            key-positions = <31 32 33 34>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_eix_ent {
+            bindings = <&kp LSFT &kp ENTER>;
+            key-positions = <32 33 34>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_ship {
+            bindings = <&word_ship>;
+            key-positions = <25 26 34>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_q {
+            bindings = <&kp Q>;
+            key-positions = <13 25>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_qu {
+            bindings = <&qu_lower>;
+            key-positions = <39 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_z {
+            bindings = <&kp Z>;
+            key-positions = <27 40>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_secret {
+            bindings = <&macro_secret>;
+            key-positions = <12 13 14 15>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        som_thy {
+            bindings = <&word_they>;
+            key-positions = <26 27 47>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_sent_toggle {
+            bindings = <&tog SM_OFF>;
+            key-positions = <36 50>;
+            layers = <0>;
+        };
+
+        som_fkeys {
+            bindings = <&mo FKEYS>;
+            key-positions = <21 22>;
+            layers = <0>;
+        };
+
+        som_equal {
+            bindings = <&kp EQUAL>;
+            key-positions = <44 45>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_ie {
+            bindings = <&word_ing>;
+            key-positions = <33 32>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_ld {
+            bindings = <&kp L &kp D>;
+            key-positions = <38 39>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_lk {
+            bindings = <&word_like>;
+            key-positions = <38 28>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_uo {
+            bindings = <&kp O &kp U>;
+            key-positions = <45 46>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_cn {
+            bindings = <&word_can>;
+            key-positions = <37 26>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        som_caps_word {
+            bindings = <&caps_word>;
+            key-positions = <36 50>;
+            layers = <0>;
+            timeout-ms = <50>;
+        };
+
+        qw_bspc {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <22 21>;
+            layers = <1>;
+        };
+    };
+};

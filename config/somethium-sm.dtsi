@@ -1,0 +1,229 @@
+/*
+ * Somethium smart typing assist (ZMK state-machine pattern)
+ * Layers = states; transition macros advance via sticky-layer.
+ * Toggle SM_OFF layer on ADJUST to disable assist.
+ */
+
+#define SM_OFF 9
+
+/ {
+    behaviors {
+        sk_sent: sticky_shift_sentence {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <0>;
+            bindings = <&kp LSFT>;
+            release-after-ms = <4000>;
+            quick-release;
+        };
+
+        ak_i_cap: ak_i_cap {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp I>;
+            akt_sp_i { trigger-keys = <SPACE>; max-prior-idle-ms = <400>; bindings = <&macro_cap_i>; };
+        };
+
+        ak_ing: ak_ing {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp H>;
+            akt_ih { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp N &kp G>; };
+        };
+
+        ak_have: ak_have {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp V>;
+            akt_hv { trigger-keys = <H>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp A &kp V &kp E>; };
+        };
+
+        ak_with: ak_with {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>;
+            akt_wslash { trigger-keys = <W>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp I &kp T &kp H>; };
+        };
+
+        td_comma_cw: tap_dance_comma_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp COMMA>, <&caps_word>;
+        };
+
+        leader_roll: leader_roll {
+            compatible = "zmk,behavior-leader-key";
+            #binding-cells = <0>;
+
+            seq_should { sequence = <S L D>; bindings = <&word_should>; };
+            seq_could  { sequence = <C L D>; bindings = <&word_could>; };
+            seq_ing    { sequence = <I H>; bindings = <&word_ing>; };
+            seq_with   { sequence = <W FSLH>; bindings = <&word_with>; };
+        };
+    };
+
+    macros {
+        macro_cap_i: macro_cap_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings
+                = <&macro_press &kp LSFT>
+                , <&macro_tap &kp I>
+                , <&macro_release &kp LSFT>
+                ;
+        };
+
+        macro_secret: macro_secret {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp E &kp C &kp R &kp E &kp T>;
+        };
+
+        word_what: word_what {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp H &kp A &kp T>;
+        };
+
+        word_when: word_when {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp H &kp E &kp N>;
+        };
+
+        word_where: word_where {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp W &kp H &kp E &kp R &kp E>;
+        };
+
+        word_they: word_they {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp T &kp H &kp E &kp Y>;
+        };
+
+        word_ship: word_ship {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp H &kp I &kp P>;
+        };
+
+        word_ing: word_ing {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp I &kp N &kp G>;
+        };
+
+        word_like: word_like {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp L &kp I &kp K &kp E>;
+        };
+
+        word_some: word_some {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp O &kp M &kp E>;
+        };
+
+        word_can: word_can {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp A &kp N>;
+        };
+
+        word_arrow: word_arrow {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp MINUS &kp RARROW>;
+        };
+
+        toggle_qwerty: toggle_qwerty {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog QWERTY>;
+        };
+
+        toggle_somethium: toggle_somethium {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&tog SOMETHIUM>;
+        };
+
+        word_should: word_should {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp S &kp H &kp O &kp U &kp L &kp D>;
+        };
+
+        word_could: word_could {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&kp C &kp O &kp U &kp L &kp D>;
+        };
+
+    };
+
+    combos {
+        sent_cap_dot_space {
+            bindings = <&sk_sent>;
+            key-positions = <19 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        sent_cap_excl_space {
+            bindings = <&sk_sent>;
+            key-positions = <11 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        sent_cap_quest_space {
+            bindings = <&sk_sent>;
+            key-positions = <49 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        cap_i_space {
+            bindings = <&macro_cap_i>;
+            key-positions = <55 33>;
+            layers = <0>;
+            timeout-ms = <100>;
+        };
+    };
+};

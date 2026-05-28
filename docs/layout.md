@@ -1,5 +1,7 @@
 # Sofle Choc 60-Key Physical Layout
 
+Somethium (36-key) → Sofle position mapping: see [somethium-port.md](somethium-port.md).
+
 ## Position Map
 
 ```

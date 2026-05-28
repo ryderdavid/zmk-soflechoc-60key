@@ -2,6 +2,8 @@
 
 AI-powered ZMK keyboard configuration for the [Sofle Choc 60-key](https://keyboardhoarders.com) split ergonomic keyboard.
 
+**Active layout (branch `port/somethium`):** [Hands Down Somethium](https://github.com/ryderdavid/HandsDownSomethium36) (HDP) ported from the 36-key QMK Corne build. See [docs/somethium-port.md](docs/somethium-port.md) for mapping and parity notes. Previous hd-gold profile preserved in [profiles/hd-gold.keymap](profiles/hd-gold.keymap) and [profiles/hd-gold-pre-somethium.keymap](profiles/hd-gold-pre-somethium.keymap).
+
 This repo is a standard ZMK config that also works as a **Claude Code-powered keymap editor**. Describe your key changes in plain English and Claude translates them into correct ZMK bindings.
 
 ![IMG_0700](https://github.com/user-attachments/assets/5908f61d-e762-4a3d-ab9d-74b530c19164)

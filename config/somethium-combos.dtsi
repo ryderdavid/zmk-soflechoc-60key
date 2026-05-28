@@ -222,12 +222,6 @@
             timeout-ms = <50>;
         };
 
-        som_sent_toggle {
-            bindings = <&tog SM_OFF>;
-            key-positions = <36 50>;
-            layers = <0>;
-        };
-
         som_fkeys {
             bindings = <&mo FKEYS>;
             key-positions = <21 22>;
@@ -281,6 +275,12 @@
             key-positions = <36 50>;
             layers = <0>;
             timeout-ms = <50>;
+        };
+
+        som_sent_toggle {
+            bindings = <&tog SM_OFF>;
+            key-positions = <36 51>;
+            layers = <0>;
         };
 
         qw_bspc {

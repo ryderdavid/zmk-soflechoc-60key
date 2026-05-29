@@ -1,0 +1,48 @@
+/*
+ * Somethium smart-typing behaviors (included in main behaviors { }).
+ */
+
+        ak_i_cap: ak_i_cap {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp I>;
+            akt_sp_i { trigger-keys = <SPACE>; max-prior-idle-ms = <400>; bindings = <&macro_cap_i>; };
+        };
+
+        ak_ing: ak_ing {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp H>;
+            akt_ih { trigger-keys = <I>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp N &kp G>; };
+        };
+
+        ak_have: ak_have {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp V>;
+            akt_hv { trigger-keys = <H>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp A &kp V &kp E>; };
+        };
+
+        ak_with: ak_with {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>;
+            akt_wslash { trigger-keys = <W>; max-prior-idle-ms = <300>; bindings = <&kp BSPC &kp I &kp T &kp H>; };
+        };
+
+        td_comma_cw: tap_dance_comma_caps {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp COMMA>, <&caps_word>;
+        };
+
+        leader_roll: leader_roll {
+            compatible = "zmk,behavior-leader-key";
+            #binding-cells = <0>;
+
+            seq_should { sequence = <S L D>; bindings = <&word_should>; };
+            seq_could  { sequence = <C L D>; bindings = <&word_could>; };
+            seq_ing    { sequence = <I H>; bindings = <&word_ing>; };
+            seq_with   { sequence = <W FSLH>; bindings = <&word_with>; };
+        };

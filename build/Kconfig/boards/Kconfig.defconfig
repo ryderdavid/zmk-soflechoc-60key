@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/workspace/zmk/app/boards/nicekeyboards/nice_nano/Kconfig.defconfig"

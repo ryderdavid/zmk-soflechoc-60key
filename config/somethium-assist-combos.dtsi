@@ -1,0 +1,31 @@
+/*
+ * Smart-typing assist combos (included in main combos { }).
+ */
+
+        sent_cap_dot_space {
+            bindings = <&sk LSFT>;
+            key-positions = <19 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        sent_cap_excl_space {
+            bindings = <&sk LSFT>;
+            key-positions = <11 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        sent_cap_quest_space {
+            bindings = <&sk LSFT>;
+            key-positions = <49 55>;
+            layers = <0>;
+            timeout-ms = <80>;
+        };
+
+        cap_i_space {
+            bindings = <&macro_cap_i>;
+            key-positions = <55 33>;
+            layers = <0>;
+            timeout-ms = <100>;
+        };

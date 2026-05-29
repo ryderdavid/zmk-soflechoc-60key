@@ -1,9 +1,8 @@
 /*
  * Somethium HDP combos — Sofle position mapping (36-key core on rows 1–3 + inner thumbs)
+ * Included inside the main combos { } block in sofle.keymap.
  */
 
-/ {
-    combos {
         som_toggle_qwerty {
             bindings = <&toggle_qwerty>;
             key-positions = <45 46 47 48>;
@@ -288,5 +287,3 @@
             key-positions = <22 21>;
             layers = <1>;
         };
-    };
-};

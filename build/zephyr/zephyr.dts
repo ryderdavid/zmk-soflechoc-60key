@@ -1,0 +1,2139 @@
+/dts-v1/;
+
+/ {
+	#address-cells = < 0x1 >;
+	#size-cells = < 0x1 >;
+	model = "nice!nano";
+	compatible = "nice,nano";
+	chosen {
+		zephyr,bt-hci = &bt_hci_controller;
+		zephyr,entropy = &rng;
+		zephyr,flash-controller = &flash_controller;
+		zephyr,boot-mode = &boot_retention;
+		zmk,magic-boot-mode = &adafruit_boot_retention;
+		zephyr,code-partition = &code_partition;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zmk,battery = &vbatt;
+		zephyr,display = &nice_view;
+		zmk,kscan = &kscan0;
+		zmk,underglow = &led_strip;
+	};
+	aliases {
+	};
+	soc {
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x1 >;
+		compatible = "nordic,nrf52840-qiaa", "nordic,nrf52840", "nordic,nrf52", "simple-bus";
+		interrupt-parent = < &nvic >;
+		ranges;
+		nvic: interrupt-controller@e000e100 {
+			#address-cells = < 0x1 >;
+			compatible = "arm,v7m-nvic";
+			reg = < 0xe000e100 0xc00 >;
+			interrupt-controller;
+			#interrupt-cells = < 0x2 >;
+			arm,num-irq-priority-bits = < 0x3 >;
+			phandle = < 0x1 >;
+		};
+		systick: timer@e000e010 {
+			compatible = "arm,armv7m-systick";
+			reg = < 0xe000e010 0x10 >;
+			status = "disabled";
+		};
+		ficr: ficr@10000000 {
+			compatible = "nordic,nrf-ficr";
+			reg = < 0x10000000 0x1000 >;
+			#nordic,ficr-cells = < 0x1 >;
+			status = "okay";
+		};
+		uicr: uicr@10001000 {
+			compatible = "nordic,nrf-uicr";
+			reg = < 0x10001000 0x1000 >;
+			status = "okay";
+		};
+		sram0: memory@20000000 {
+			compatible = "mmio-sram";
+			reg = < 0x20000000 0x40000 >;
+		};
+		clock: clock@40000000 {
+			compatible = "nordic,nrf-clock";
+			reg = < 0x40000000 0x1000 >;
+			interrupts = < 0x0 0x1 >;
+			status = "okay";
+		};
+		power: power@40000000 {
+			compatible = "nordic,nrf-power";
+			reg = < 0x40000000 0x1000 >;
+			interrupts = < 0x0 0x1 >;
+			status = "okay";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x1 >;
+			gpregret1: gpregret1@4000051c {
+				#address-cells = < 0x1 >;
+				#size-cells = < 0x1 >;
+				compatible = "nordic,nrf-gpregret";
+				reg = < 0x4000051c 0x1 >;
+				status = "okay";
+				adafruit_boot_retention: retention@0 {
+					compatible = "zephyr,retention";
+					status = "okay";
+					reg = < 0x0 0x1 >;
+				};
+			};
+			gpregret2: gpregret2@40000520 {
+				#address-cells = < 0x1 >;
+				#size-cells = < 0x1 >;
+				compatible = "nordic,nrf-gpregret";
+				reg = < 0x40000520 0x1 >;
+				status = "okay";
+			};
+			reg1: regulator@40000578 {
+				compatible = "nordic,nrf5x-regulator";
+				reg = < 0x40000578 0x1 >;
+				regulator-name = "REG1";
+				regulator-initial-mode = < 0x1 >;
+			};
+			reg0: regulator@40000580 {
+				compatible = "nordic,nrf52x-regulator-hv";
+				reg = < 0x40000580 0x1 >;
+				regulator-name = "REG0";
+				status = "okay";
+			};
+		};
+		radio: radio@40001000 {
+			compatible = "nordic,nrf-radio";
+			reg = < 0x40001000 0x1000 >;
+			interrupts = < 0x1 0x1 >;
+			status = "okay";
+			ieee802154-supported;
+			ble-2mbps-supported;
+			ble-coded-phy-supported;
+			tx-high-power-supported;
+			ieee802154: ieee802154 {
+				compatible = "nordic,nrf-ieee802154";
+				status = "disabled";
+			};
+			bt_hci_controller: bt_hci_controller {
+				compatible = "zephyr,bt-hci-ll-sw-split";
+				status = "okay";
+			};
+		};
+		uart0: pro_micro_serial: uart@40002000 {
+			compatible = "nordic,nrf-uarte";
+			reg = < 0x40002000 0x1000 >;
+			interrupts = < 0x2 0x1 >;
+			status = "disabled";
+			current-speed = < 0x1c200 >;
+			pinctrl-0 = < &uart0_default >;
+			pinctrl-1 = < &uart0_sleep >;
+			pinctrl-names = "default", "sleep";
+		};
+		i2c0: pro_micro_i2c: i2c@40003000 {
+			compatible = "nordic,nrf-twi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003000 0x1000 >;
+			interrupts = < 0x3 0x1 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			status = "disabled";
+			zephyr,pm-device-runtime-auto;
+			pinctrl-0 = < &i2c0_default >;
+			pinctrl-1 = < &i2c0_sleep >;
+			pinctrl-names = "default", "sleep";
+			oled: ssd1306@3c {
+				compatible = "solomon,ssd1306fb";
+				reg = < 0x3c >;
+				width = < 0x80 >;
+				height = < 0x20 >;
+				segment-offset = < 0x0 >;
+				page-offset = < 0x0 >;
+				display-offset = < 0x0 >;
+				multiplex-ratio = < 0x1f >;
+				segment-remap;
+				com-invdir;
+				com-sequential;
+				inversion-on;
+				prechargep = < 0x22 >;
+			};
+		};
+		spi0: nice_view_spi: spi@40003000 {
+			compatible = "nordic,nrf-spim";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003000 0x1000 >;
+			interrupts = < 0x3 0x1 >;
+			max-frequency = < 0x7a1200 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			status = "okay";
+			pinctrl-0 = < &spi0_default >;
+			pinctrl-1 = < &spi0_sleep >;
+			pinctrl-names = "default", "sleep";
+			cs-gpios = < &pro_micro 0x1 0x0 >;
+			nice_view: ls0xx@0 {
+				compatible = "sharp,ls0xx";
+				spi-max-frequency = < 0xf4240 >;
+				reg = < 0x0 >;
+				width = < 0xa0 >;
+				height = < 0x44 >;
+			};
+		};
+		i2c1: i2c@40004000 {
+			compatible = "nordic,nrf-twim";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40004000 0x1000 >;
+			interrupts = < 0x4 0x1 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			status = "disabled";
+			zephyr,pm-device-runtime-auto;
+		};
+		spi1: pro_micro_spi: spi@40004000 {
+			compatible = "nordic,nrf-spim";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40004000 0x1000 >;
+			interrupts = < 0x4 0x1 >;
+			max-frequency = < 0x7a1200 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			status = "disabled";
+			pinctrl-0 = < &spi1_default >;
+			pinctrl-1 = < &spi1_sleep >;
+			pinctrl-names = "default", "sleep";
+		};
+		nfct: nfct@40005000 {
+			compatible = "nordic,nrf-nfct";
+			reg = < 0x40005000 0x1000 >;
+			interrupts = < 0x5 0x1 >;
+			status = "disabled";
+		};
+		gpiote: gpiote0: gpiote@40006000 {
+			compatible = "nordic,nrf-gpiote";
+			reg = < 0x40006000 0x1000 >;
+			interrupts = < 0x6 0x5 >;
+			status = "okay";
+			instance = < 0x0 >;
+			phandle = < 0xd >;
+		};
+		adc: adc@40007000 {
+			compatible = "nordic,nrf-saadc";
+			reg = < 0x40007000 0x1000 >;
+			interrupts = < 0x7 0x1 >;
+			status = "okay";
+			#io-channel-cells = < 0x1 >;
+			zephyr,pm-device-runtime-auto;
+		};
+		timer0: timer@40008000 {
+			compatible = "nordic,nrf-timer";
+			status = "disabled";
+			reg = < 0x40008000 0x1000 >;
+			cc-num = < 0x4 >;
+			max-bit-width = < 0x20 >;
+			interrupts = < 0x8 0x1 >;
+			prescaler = < 0x0 >;
+		};
+		timer1: timer@40009000 {
+			compatible = "nordic,nrf-timer";
+			status = "disabled";
+			reg = < 0x40009000 0x1000 >;
+			cc-num = < 0x4 >;
+			max-bit-width = < 0x20 >;
+			interrupts = < 0x9 0x1 >;
+			prescaler = < 0x0 >;
+			phandle = < 0xe >;
+		};
+		timer2: timer@4000a000 {
+			compatible = "nordic,nrf-timer";
+			status = "disabled";
+			reg = < 0x4000a000 0x1000 >;
+			cc-num = < 0x4 >;
+			max-bit-width = < 0x20 >;
+			interrupts = < 0xa 0x1 >;
+			prescaler = < 0x0 >;
+		};
+		rtc0: rtc@4000b000 {
+			compatible = "nordic,nrf-rtc";
+			reg = < 0x4000b000 0x1000 >;
+			cc-num = < 0x3 >;
+			interrupts = < 0xb 0x1 >;
+			status = "disabled";
+			clock-frequency = < 0x8000 >;
+			prescaler = < 0x1 >;
+		};
+		temp: temp@4000c000 {
+			compatible = "nordic,nrf-temp";
+			reg = < 0x4000c000 0x1000 >;
+			interrupts = < 0xc 0x1 >;
+			status = "okay";
+		};
+		rng: random@4000d000 {
+			compatible = "nordic,nrf-rng";
+			reg = < 0x4000d000 0x1000 >;
+			interrupts = < 0xd 0x1 >;
+			status = "okay";
+		};
+		ecb: ecb@4000e000 {
+			compatible = "nordic,nrf-ecb";
+			reg = < 0x4000e000 0x1000 >;
+			interrupts = < 0xe 0x1 >;
+			status = "okay";
+		};
+		ccm: ccm@4000f000 {
+			compatible = "nordic,nrf-ccm";
+			reg = < 0x4000f000 0x1000 >;
+			interrupts = < 0xf 0x1 >;
+			length-field-length-8-bits;
+			status = "okay";
+		};
+		wdt: wdt0: watchdog@40010000 {
+			compatible = "nordic,nrf-wdt";
+			reg = < 0x40010000 0x1000 >;
+			interrupts = < 0x10 0x1 >;
+			status = "okay";
+		};
+		rtc1: rtc@40011000 {
+			compatible = "nordic,nrf-rtc";
+			reg = < 0x40011000 0x1000 >;
+			cc-num = < 0x4 >;
+			interrupts = < 0x11 0x1 >;
+			status = "disabled";
+			clock-frequency = < 0x8000 >;
+			prescaler = < 0x1 >;
+		};
+		qdec: qdec0: qdec@40012000 {
+			compatible = "nordic,nrf-qdec";
+			reg = < 0x40012000 0x1000 >;
+			interrupts = < 0x12 0x1 >;
+			status = "disabled";
+		};
+		comp: comparator@40013000 {
+			compatible = "nordic,nrf-comp";
+			reg = < 0x40013000 0x1000 >;
+			interrupts = < 0x13 0x1 >;
+			status = "disabled";
+		};
+		egu0: swi0: egu@40014000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40014000 0x1000 >;
+			interrupts = < 0x14 0x1 >;
+			status = "okay";
+		};
+		egu1: swi1: egu@40015000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40015000 0x1000 >;
+			interrupts = < 0x15 0x1 >;
+			status = "okay";
+		};
+		egu2: swi2: egu@40016000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40016000 0x1000 >;
+			interrupts = < 0x16 0x1 >;
+			status = "okay";
+		};
+		egu3: swi3: egu@40017000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40017000 0x1000 >;
+			interrupts = < 0x17 0x1 >;
+			status = "okay";
+		};
+		egu4: swi4: egu@40018000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40018000 0x1000 >;
+			interrupts = < 0x18 0x1 >;
+			status = "okay";
+		};
+		egu5: swi5: egu@40019000 {
+			compatible = "nordic,nrf-egu", "nordic,nrf-swi";
+			reg = < 0x40019000 0x1000 >;
+			interrupts = < 0x19 0x1 >;
+			status = "okay";
+		};
+		timer3: timer@4001a000 {
+			compatible = "nordic,nrf-timer";
+			status = "disabled";
+			reg = < 0x4001a000 0x1000 >;
+			cc-num = < 0x6 >;
+			max-bit-width = < 0x20 >;
+			interrupts = < 0x1a 0x1 >;
+			prescaler = < 0x0 >;
+		};
+		timer4: timer@4001b000 {
+			compatible = "nordic,nrf-timer";
+			status = "disabled";
+			reg = < 0x4001b000 0x1000 >;
+			cc-num = < 0x6 >;
+			max-bit-width = < 0x20 >;
+			interrupts = < 0x1b 0x1 >;
+			prescaler = < 0x0 >;
+		};
+		pwm0: pwm@4001c000 {
+			compatible = "nordic,nrf-pwm";
+			reg = < 0x4001c000 0x1000 >;
+			interrupts = < 0x1c 0x1 >;
+			status = "disabled";
+			#pwm-cells = < 0x3 >;
+		};
+		pdm0: pdm@4001d000 {
+			compatible = "nordic,nrf-pdm";
+			reg = < 0x4001d000 0x1000 >;
+			interrupts = < 0x1d 0x1 >;
+			status = "disabled";
+		};
+		acl: acl@4001e000 {
+			compatible = "nordic,nrf-acl";
+			reg = < 0x4001e000 0x1000 >;
+			status = "okay";
+		};
+		flash_controller: flash-controller@4001e000 {
+			compatible = "nordic,nrf52-flash-controller";
+			reg = < 0x4001e000 0x1000 >;
+			partial-erase;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x1 >;
+			flash0: flash@0 {
+				compatible = "soc-nv-flash";
+				erase-block-size = < 0x1000 >;
+				write-block-size = < 0x4 >;
+				reg = < 0x0 0x100000 >;
+				partitions {
+					compatible = "fixed-partitions";
+					#address-cells = < 0x1 >;
+					#size-cells = < 0x1 >;
+					sd_partition: partition@0 {
+						reg = < 0x0 0x26000 >;
+					};
+					code_partition: partition@26000 {
+						reg = < 0x26000 0xc6000 >;
+					};
+					storage_partition: partition@ec000 {
+						reg = < 0xec000 0x8000 >;
+					};
+					boot_partition: partition@f4000 {
+						reg = < 0xf4000 0xc000 >;
+					};
+				};
+			};
+		};
+		ppi: ppi@4001f000 {
+			compatible = "nordic,nrf-ppi";
+			reg = < 0x4001f000 0x1000 >;
+			status = "okay";
+		};
+		mwu: mwu@40020000 {
+			compatible = "nordic,nrf-mwu";
+			reg = < 0x40020000 0x1000 >;
+			status = "okay";
+		};
+		pwm1: pwm@40021000 {
+			compatible = "nordic,nrf-pwm";
+			reg = < 0x40021000 0x1000 >;
+			interrupts = < 0x21 0x1 >;
+			status = "disabled";
+			#pwm-cells = < 0x3 >;
+		};
+		pwm2: pwm@40022000 {
+			compatible = "nordic,nrf-pwm";
+			reg = < 0x40022000 0x1000 >;
+			interrupts = < 0x22 0x1 >;
+			status = "disabled";
+			#pwm-cells = < 0x3 >;
+		};
+		spi2: spi@40023000 {
+			compatible = "nordic,nrf-spim";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40023000 0x1000 >;
+			interrupts = < 0x23 0x1 >;
+			max-frequency = < 0x7a1200 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			status = "disabled";
+		};
+		rtc2: rtc@40024000 {
+			compatible = "nordic,nrf-rtc";
+			reg = < 0x40024000 0x1000 >;
+			cc-num = < 0x4 >;
+			interrupts = < 0x24 0x1 >;
+			status = "disabled";
+			clock-frequency = < 0x8000 >;
+			prescaler = < 0x1 >;
+		};
+		i2s0: i2s@40025000 {
+			compatible = "nordic,nrf-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40025000 0x1000 >;
+			interrupts = < 0x25 0x1 >;
+			status = "disabled";
+		};
+		usbd: zephyr_udc0: usbd@40027000 {
+			compatible = "nordic,nrf-usbd";
+			reg = < 0x40027000 0x1000 >;
+			interrupts = < 0x27 0x1 >;
+			num-bidir-endpoints = < 0x1 >;
+			num-in-endpoints = < 0x7 >;
+			num-out-endpoints = < 0x7 >;
+			num-isoin-endpoints = < 0x1 >;
+			num-isoout-endpoints = < 0x1 >;
+			status = "okay";
+		};
+		uart1: uart@40028000 {
+			compatible = "nordic,nrf-uarte";
+			reg = < 0x40028000 0x1000 >;
+			interrupts = < 0x28 0x1 >;
+			status = "disabled";
+		};
+		qspi: qspi@40029000 {
+			compatible = "nordic,nrf-qspi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40029000 0x1000 >, < 0x12000000 0x8000000 >;
+			reg-names = "qspi", "qspi_mm";
+			interrupts = < 0x29 0x1 >;
+			status = "disabled";
+		};
+		pwm3: pwm@4002d000 {
+			compatible = "nordic,nrf-pwm";
+			reg = < 0x4002d000 0x1000 >;
+			interrupts = < 0x2d 0x1 >;
+			status = "disabled";
+			#pwm-cells = < 0x3 >;
+		};
+		spi3: spi@4002f000 {
+			compatible = "nordic,nrf-spim";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x4002f000 0x1000 >;
+			interrupts = < 0x2f 0x1 >;
+			max-frequency = < 0x1e84800 >;
+			easydma-maxcnt-bits = < 0x10 >;
+			rx-delay-supported;
+			rx-delay = < 0x2 >;
+			status = "okay";
+			pinctrl-0 = < &spi3_default >;
+			pinctrl-1 = < &spi3_sleep >;
+			pinctrl-names = "default", "sleep";
+			led_strip: ws2812@0 {
+				compatible = "worldsemi,ws2812-spi";
+				reg = < 0x0 >;
+				spi-max-frequency = < 0x3d0900 >;
+				chain-length = < 0x24 >;
+				spi-one-frame = < 0x70 >;
+				spi-zero-frame = < 0x40 >;
+				color-mapping = < 0x2 0x1 0x3 >;
+			};
+		};
+		gpio0: gpio@50000000 {
+			compatible = "nordic,nrf-gpio";
+			gpio-controller;
+			reg = < 0x50000000 0x200 0x50000500 0x300 >;
+			#gpio-cells = < 0x2 >;
+			status = "okay";
+			port = < 0x0 >;
+			gpiote-instance = < &gpiote >;
+			phandle = < 0xf >;
+		};
+		gpio1: gpio@50000300 {
+			compatible = "nordic,nrf-gpio";
+			gpio-controller;
+			reg = < 0x50000300 0x200 0x50000800 0x300 >;
+			#gpio-cells = < 0x2 >;
+			ngpios = < 0x10 >;
+			status = "okay";
+			port = < 0x1 >;
+			gpiote-instance = < &gpiote >;
+			phandle = < 0x10 >;
+		};
+		cryptocell: crypto@5002a000 {
+			compatible = "nordic,cryptocell", "arm,cryptocell-310";
+			reg = < 0x5002a000 0x1000 >, < 0x5002b000 0x1000 >;
+			reg-names = "wrapper", "core";
+			interrupts = < 0x2a 0x1 >;
+			status = "disabled";
+		};
+	};
+	pinctrl: pin-controller {
+		compatible = "nordic,nrf-pinctrl";
+		uart0_default: uart0_default {
+			phandle = < 0x2 >;
+			group1 {
+				psels = < 0x1000008 >;
+				bias-pull-up;
+			};
+			group2 {
+				psels = < 0x6 >;
+			};
+		};
+		uart0_sleep: uart0_sleep {
+			phandle = < 0x3 >;
+			group1 {
+				psels = < 0x1000008 >, < 0x6 >;
+				low-power-enable;
+			};
+		};
+		i2c0_default: i2c0_default {
+			phandle = < 0x4 >;
+			group1 {
+				psels = < 0xc000011 >, < 0xb000014 >;
+			};
+		};
+		i2c0_sleep: i2c0_sleep {
+			phandle = < 0x5 >;
+			group1 {
+				psels = < 0xc000011 >, < 0xb000014 >;
+				low-power-enable;
+			};
+		};
+		spi1_default: spi1_default {
+			phandle = < 0x9 >;
+			group1 {
+				psels = < 0x400002d >, < 0x500000a >, < 0x600002b >;
+			};
+		};
+		spi1_sleep: spi1_sleep {
+			phandle = < 0xa >;
+			group1 {
+				psels = < 0x400002d >, < 0x500000a >, < 0x600002b >;
+				low-power-enable;
+			};
+		};
+		spi3_default: spi3_default {
+			phandle = < 0xb >;
+			group1 {
+				psels = < 0x5000006 >;
+			};
+		};
+		spi3_sleep: spi3_sleep {
+			phandle = < 0xc >;
+			group1 {
+				psels = < 0x5000006 >;
+				low-power-enable;
+			};
+		};
+		spi0_default: spi0_default {
+			phandle = < 0x6 >;
+			group1 {
+				psels = < 0x4000014 >, < 0x5000011 >, < 0x6000019 >;
+			};
+		};
+		spi0_sleep: spi0_sleep {
+			phandle = < 0x7 >;
+			group1 {
+				psels = < 0x4000014 >, < 0x5000011 >, < 0x6000019 >;
+				low-power-enable;
+			};
+		};
+	};
+	rng_hci: entropy_bt_hci {
+		compatible = "zephyr,bt-hci-entropy";
+		status = "okay";
+	};
+	sw_pwm: sw-pwm {
+		compatible = "nordic,nrf-sw-pwm";
+		status = "disabled";
+		generator = < &timer1 >;
+		clock-prescaler = < 0x0 >;
+		#pwm-cells = < 0x3 >;
+	};
+	cpus {
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x0 >;
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-m4f";
+			reg = < 0x0 >;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x1 >;
+			itm: itm@e0000000 {
+				compatible = "arm,armv7m-itm";
+				reg = < 0xe0000000 0x1000 >;
+				swo-ref-frequency = < 0x1e84800 >;
+			};
+		};
+	};
+	magic_mapper {
+		compatible = "zmk,bootmode-to-magic-mapper";
+		status = "okay";
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x1 >;
+		boot_retention: retention@0 {
+			compatible = "zephyr,retention";
+			status = "okay";
+			reg = < 0x0 0x1 >;
+		};
+	};
+	pro_micro: pro_micro_d: connector {
+		compatible = "arduino-pro-micro";
+		#gpio-cells = < 0x2 >;
+		gpio-map-mask = < 0xffffffff 0xffffffc0 >;
+		gpio-map-pass-thru = < 0x0 0x3f >;
+		gpio-map = < 0x0 0x0 &gpio0 0x8 0x0 >, < 0x1 0x0 &gpio0 0x6 0x0 >, < 0x2 0x0 &gpio0 0x11 0x0 >, < 0x3 0x0 &gpio0 0x14 0x0 >, < 0x4 0x0 &gpio0 0x16 0x0 >, < 0x5 0x0 &gpio0 0x18 0x0 >, < 0x6 0x0 &gpio1 0x0 0x0 >, < 0x7 0x0 &gpio0 0xb 0x0 >, < 0x8 0x0 &gpio1 0x4 0x0 >, < 0x9 0x0 &gpio1 0x6 0x0 >, < 0xa 0x0 &gpio0 0x9 0x0 >, < 0x10 0x0 &gpio0 0xa 0x0 >, < 0xe 0x0 &gpio1 0xb 0x0 >, < 0xf 0x0 &gpio1 0xd 0x0 >, < 0x12 0x0 &gpio1 0xf 0x0 >, < 0x13 0x0 &gpio0 0x2 0x0 >, < 0x14 0x0 &gpio0 0x1d 0x0 >, < 0x15 0x0 &gpio0 0x1f 0x0 >;
+		phandle = < 0x8 >;
+	};
+	pro_micro_a: connector_a {
+		compatible = "arduino-pro-micro";
+		#gpio-cells = < 0x2 >;
+		gpio-map-mask = < 0xffffffff 0xffffffc0 >;
+		gpio-map-pass-thru = < 0x0 0x3f >;
+		gpio-map = < 0x0 0x0 &gpio1 0xf 0x0 >, < 0x1 0x0 &gpio0 0x2 0x0 >, < 0x2 0x0 &gpio0 0x1d 0x0 >, < 0x3 0x0 &gpio0 0x1f 0x0 >, < 0x6 0x0 &gpio0 0x16 0x0 >, < 0x7 0x0 &gpio1 0x0 0x0 >, < 0x8 0x0 &gpio1 0x4 0x0 >, < 0x9 0x0 &gpio1 0x6 0x0 >, < 0xa 0x0 &gpio0 0x9 0x0 >;
+	};
+	leds {
+		compatible = "gpio-leds";
+		blue_led: led_0 {
+			gpios = < &gpio0 0xf 0x0 >;
+		};
+	};
+	EXT_POWER {
+		compatible = "zmk,ext-power-generic";
+		control-gpios = < &gpio0 0xd 0x0 >;
+		init-delay-ms = < 0x32 >;
+	};
+	vbatt: vbatt {
+		compatible = "zmk,battery-nrf-vddh";
+	};
+	key_physical_attrs: key_physical_attrs {
+		compatible = "zmk,key-physical-attrs";
+		#key-cells = < 0x7 >;
+		phandle = < 0x11 >;
+	};
+	josefadamcik_sofle_layout: josefadamcik_sofle_layout {
+		compatible = "zmk,physical-layout";
+		display-name = "Sofle";
+		keys = < &key_physical_attrs 0x64 0x64 0x0 0x25 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x64 0x25 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0xc8 0xc 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x12c 0x0 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x190 0xc 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x1f4 0x18 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x384 0x18 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x3e8 0xc 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x44c 0x0 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x4b0 0xc 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x514 0x25 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x578 0x25 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x0 0x89 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x64 0x89 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0xc8 0x70 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x12c 0x64 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x190 0x70 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x1f4 0x7c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x384 0x7c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x3e8 0x70 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x44c 0x64 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x4b0 0x70 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x514 0x89 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x578 0x89 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x0 0xed 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x64 0xed 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0xc8 0xd4 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x12c 0xc8 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x190 0xd4 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x1f4 0xe0 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x384 0xe0 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x3e8 0xd4 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x44c 0xc8 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x4b0 0xd4 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x514 0xed 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x578 0xed 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x0 0x151 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x64 0x151 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0xc8 0x138 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x12c 0x12c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x190 0x138 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x1f4 0x144 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x258 0x112 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x320 0x112 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x384 0x144 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x3e8 0x138 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x44c 0x12c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x4b0 0x138 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x514 0x151 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x578 0x151 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0xaf 0x1b5 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x113 0x19c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x177 0x19c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x1ea 0x19c 0x4b0 0x1ea 0x19c >, < &key_physical_attrs 0x64 0x96 0x258 0x17f 0x960 0x258 0x1b1 >, < &key_physical_attrs 0x64 0x96 0x320 0x17f 0xfffff6a0 0x384 0x1b1 >, < &key_physical_attrs 0x64 0x64 0x38e 0x19c 0xfffffb50 0x3f2 0x19c >, < &key_physical_attrs 0x64 0x64 0x401 0x19c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x465 0x19c 0x0 0x0 0x0 >, < &key_physical_attrs 0x64 0x64 0x4c9 0x1b5 0x0 0x0 0x0 >;
+		transform = < &default_transform >;
+	};
+	default_transform: keymap_transform_0 {
+		compatible = "zmk,matrix-transform";
+		columns = < 0x10 >;
+		rows = < 0x4 >;
+		map = < 0x0 0x1 0x2 0x3 0x4 0x5 0x6 0x7 0x8 0x9 0xa 0xb 0x100 0x101 0x102 0x103 0x104 0x105 0x106 0x107 0x108 0x109 0x10a 0x10b 0x200 0x201 0x202 0x203 0x204 0x205 0x206 0x207 0x208 0x209 0x20a 0x20b 0x300 0x301 0x302 0x303 0x304 0x305 0x405 0x406 0x306 0x307 0x308 0x309 0x30a 0x30b 0x400 0x401 0x402 0x403 0x404 0x407 0x408 0x409 0x40a 0x40b >;
+		col-offset = < 0x6 >;
+		phandle = < 0x12 >;
+	};
+	kscan0: kscan {
+		compatible = "zmk,kscan-gpio-matrix";
+		wakeup-source;
+		diode-direction = "col2row";
+		row-gpios = < &pro_micro 0x5 0x20 >, < &pro_micro 0x6 0x20 >, < &pro_micro 0x7 0x20 >, < &pro_micro 0x8 0x20 >, < &pro_micro 0x9 0x20 >;
+		col-gpios = < &pro_micro 0xa 0x0 >, < &pro_micro 0x10 0x0 >, < &pro_micro 0xe 0x0 >, < &pro_micro 0xf 0x0 >, < &pro_micro 0x12 0x0 >, < &pro_micro 0x13 0x0 >;
+	};
+	left_encoder: encoder_left {
+		compatible = "alps,ec11";
+		a-gpios = < &pro_micro 0x15 0x10 >;
+		b-gpios = < &pro_micro 0x14 0x10 >;
+		steps = < 0x50 >;
+		status = "disabled";
+		phandle = < 0x13 >;
+	};
+	right_encoder: encoder_right {
+		compatible = "alps,ec11";
+		a-gpios = < &pro_micro 0x14 0x10 >;
+		b-gpios = < &pro_micro 0x15 0x10 >;
+		steps = < 0x50 >;
+		status = "okay";
+		phandle = < 0x14 >;
+	};
+	sensors: sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = < &left_encoder &right_encoder >;
+		triggers-per-rotation = < 0x14 >;
+	};
+	behaviors {
+		kp: key_press {
+			compatible = "zmk,behavior-key-press";
+			#binding-cells = < 0x1 >;
+			display-name = "Key Press";
+			phandle = < 0x15 >;
+		};
+		trans: transparent {
+			compatible = "zmk,behavior-transparent";
+			#binding-cells = < 0x0 >;
+			display-name = "Transparent";
+			phandle = < 0x4a >;
+		};
+		none: none {
+			compatible = "zmk,behavior-none";
+			#binding-cells = < 0x0 >;
+			display-name = "None";
+			phandle = < 0x23 >;
+		};
+		mt: mod_tap {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "hold-preferred";
+			tapping-term-ms = < 0xc8 >;
+			bindings = < &kp >, < &kp >;
+			display-name = "Mod-Tap";
+			phandle = < 0x54 >;
+		};
+		sk: sticky_key {
+			compatible = "zmk,behavior-sticky-key";
+			#binding-cells = < 0x1 >;
+			release-after-ms = < 0x3e8 >;
+			bindings = < &kp >;
+			ignore-modifiers;
+			display-name = "Sticky Key";
+			phandle = < 0x43 >;
+		};
+		mo: momentary_layer {
+			compatible = "zmk,behavior-momentary-layer";
+			#binding-cells = < 0x1 >;
+			display-name = "Momentary Layer";
+			phandle = < 0x16 >;
+		};
+		tog: toggle_layer {
+			compatible = "zmk,behavior-toggle-layer";
+			#binding-cells = < 0x1 >;
+			display-name = "Toggle Layer";
+			locking;
+			phandle = < 0x2f >;
+		};
+		sys_reset: sysreset {
+			compatible = "zmk,behavior-reset";
+			#binding-cells = < 0x0 >;
+			display-name = "Reset";
+		};
+		bootloader: bootload {
+			compatible = "zmk,behavior-reset";
+			type = < 0x57 >;
+			bootloader;
+			#binding-cells = < 0x0 >;
+			display-name = "Bootloader";
+		};
+		inc_dec_cp: inc_dec_kp: enc_key_press {
+			compatible = "zmk,behavior-sensor-rotate-var";
+			#sensor-binding-cells = < 0x2 >;
+			bindings = < &kp >, < &kp >;
+			phandle = < 0x56 >;
+		};
+		rgb_ug: rgb_ug {
+			compatible = "zmk,behavior-rgb-underglow";
+			#binding-cells = < 0x2 >;
+			display-name = "Underglow";
+		};
+		bt: bluetooth {
+			compatible = "zmk,behavior-bluetooth";
+			#binding-cells = < 0x2 >;
+			display-name = "Bluetooth";
+			phandle = < 0x5b >;
+		};
+		ext_power: extpower {
+			compatible = "zmk,behavior-ext-power";
+			#binding-cells = < 0x1 >;
+			display-name = "External Power";
+			phandle = < 0x5d >;
+		};
+		caps_word: caps_word {
+			compatible = "zmk,behavior-caps-word";
+			#binding-cells = < 0x0 >;
+			continue-list = < 0x207002d 0x7002a 0x7004c >;
+			display-name = "Caps Word";
+			phandle = < 0x1c >;
+		};
+		macro_tap: macro_tap {
+			compatible = "zmk,macro-control-mode-tap";
+			#binding-cells = < 0x0 >;
+			phandle = < 0x45 >;
+		};
+		macro_press: macro_press {
+			compatible = "zmk,macro-control-mode-press";
+			#binding-cells = < 0x0 >;
+			phandle = < 0x44 >;
+		};
+		macro_release: macro_release {
+			compatible = "zmk,macro-control-mode-release";
+			#binding-cells = < 0x0 >;
+			phandle = < 0x46 >;
+		};
+		macro_tap_time: macro_tap_time {
+			compatible = "zmk,macro-control-tap-time";
+			#binding-cells = < 0x1 >;
+		};
+		macro_wait_time: macro_wait_time {
+			compatible = "zmk,macro-control-wait-time";
+			#binding-cells = < 0x1 >;
+		};
+		macro_pause_for_release: macro_pause_for_release {
+			compatible = "zmk,macro-pause-for-release";
+			#binding-cells = < 0x0 >;
+			phandle = < 0x47 >;
+		};
+		macro_param_1to1: macro_param_1to1 {
+			compatible = "zmk,macro-param-1to1";
+			#binding-cells = < 0x0 >;
+		};
+		macro_param_1to2: macro_param_1to2 {
+			compatible = "zmk,macro-param-1to2";
+			#binding-cells = < 0x0 >;
+		};
+		macro_param_2to1: macro_param_2to1 {
+			compatible = "zmk,macro-param-2to1";
+			#binding-cells = < 0x0 >;
+		};
+		macro_param_2to2: macro_param_2to2 {
+			compatible = "zmk,macro-param-2to2";
+			#binding-cells = < 0x0 >;
+		};
+		studio_unlock: studio_unlock {
+			compatible = "zmk,behavior-studio-unlock";
+			#binding-cells = < 0x0 >;
+			display-name = "Studio Unlock";
+			phandle = < 0x2e >;
+		};
+		mkp: mouse_key_press {
+			compatible = "zmk,behavior-mouse-key-press";
+			#binding-cells = < 0x1 >;
+			display-name = "Mouse Key Press";
+			phandle = < 0x2b >;
+		};
+		mmv: mouse_move {
+			compatible = "zmk,behavior-input-two-axis";
+			#binding-cells = < 0x1 >;
+			x-input-code = < 0x0 >;
+			y-input-code = < 0x1 >;
+			time-to-max-speed-ms = < 0x12c >;
+			acceleration-exponent = < 0x1 >;
+			phandle = < 0x2c >;
+		};
+		msc: mouse_scroll {
+			compatible = "zmk,behavior-input-two-axis";
+			#binding-cells = < 0x1 >;
+			x-input-code = < 0x6 >;
+			y-input-code = < 0x8 >;
+			time-to-max-speed-ms = < 0x12c >;
+			acceleration-exponent = < 0x0 >;
+			phandle = < 0x2d >;
+		};
+		hml: home_row_mod_left {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &kp >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x57 >;
+		};
+		hmr: home_row_mod_right {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &kp >;
+			hold-trigger-key-positions = < 0x0 0x1 0x2 0x3 0x4 0x5 0xc 0xd 0xe 0xf 0x10 0x11 0x18 0x19 0x1a 0x1b 0x1c 0x1d 0x24 0x25 0x26 0x27 0x28 0x29 0x2a 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x4e >;
+		};
+		hml_g: home_row_mod_left_gui {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x15e >;
+			bindings = < &kp >, < &kp >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x4d >;
+		};
+		hmr_g: home_row_mod_right_gui {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x15e >;
+			bindings = < &kp >, < &kp >;
+			hold-trigger-key-positions = < 0x0 0x1 0x2 0x3 0x4 0x5 0xc 0xd 0xe 0xf 0x10 0x11 0x18 0x19 0x1a 0x1b 0x1c 0x1d 0x24 0x25 0x26 0x27 0x28 0x29 0x2a 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x50 >;
+		};
+		lts: layer_tap_smart {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &mo >, < &kp >;
+			phandle = < 0x48 >;
+		};
+		htk: hold_tap_kp {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0xc8 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &kp >, < &kp >;
+			phandle = < 0x49 >;
+		};
+		ht_c_ck: ht_c_ck {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0xc8 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &ck_linger >, < &kp >;
+		};
+		ht_f_fr: ht_f_fr {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0xc8 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &fr_linger >, < &kp >;
+		};
+		ht_w_wh: ht_w_wh {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0xc8 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &wh_lower >, < &kp >;
+		};
+		ht_t_th: ht_t_th {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0xc8 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &th_lower >, < &kp >;
+		};
+		ak_h: ak_h {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x7000b >;
+			phandle = < 0x1b >;
+			akt_ah {
+				trigger-keys = < 0x70004 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x70018 >;
+			};
+			akt_eh {
+				trigger-keys = < 0x70008 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x70012 >;
+			};
+			akt_oh {
+				trigger-keys = < 0x70012 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x70018 >;
+			};
+			akt_uh {
+				trigger-keys = < 0x70018 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x70004 >;
+			};
+			akt_ih {
+				trigger-keys = < 0x7000c >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x70011 &kp 0x7000a >;
+			};
+		};
+		hmr_ak_h: hmr_ak_h {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &ak_h >;
+			hold-trigger-key-positions = < 0x0 0x1 0x2 0x3 0x4 0x5 0xc 0xd 0xe 0xf 0x10 0x11 0x18 0x19 0x1a 0x1b 0x1c 0x1d 0x24 0x25 0x26 0x27 0x28 0x29 0x2a 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+		};
+		lts_ak_h: lts_ak_h {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &mo >, < &ak_h >;
+			hold-trigger-on-release;
+		};
+		nav_cw: nav_cw {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			bindings = < &mo >, < &caps_word >;
+		};
+		ak_s: ak_s {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70016 >;
+			phandle = < 0x20 >;
+			akt_comma_s {
+				trigger-keys = < 0x70036 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x70034 &kp 0x70016 >;
+			};
+		};
+		ak_r: ak_r {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70015 >;
+			phandle = < 0x1d >;
+			akt_comma_r {
+				trigger-keys = < 0x70036 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x70034 &kp 0x70015 >;
+			};
+		};
+		ak_t: ak_t {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70017 >;
+			phandle = < 0x1e >;
+			akt_comma_t {
+				trigger-keys = < 0x70036 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x70034 &kp 0x70017 >;
+			};
+		};
+		lts_ak_r: lts_ak_r {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &mo >, < &ak_r >;
+			hold-trigger-on-release;
+		};
+		hml_ak_t: hml_ak_t {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &ak_t >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+		};
+		hml_ak_n: hml_ak_n {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &ak_n >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x4c >;
+		};
+		hml_ak_s: hml_ak_s {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &ak_s >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x4b >;
+		};
+		ak_n: ak_n {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70011 >;
+			phandle = < 0x1f >;
+			akt_cn {
+				trigger-keys = < 0x70006 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7000e >;
+			};
+			akt_tn {
+				trigger-keys = < 0x70017 >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7000c &kp 0x70012 &kp 0x70011 >;
+			};
+		};
+		hml_g_ak_n: hml_g_ak_n {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x15e >;
+			bindings = < &kp >, < &ak_n >;
+			hold-trigger-key-positions = < 0x6 0x7 0x8 0x9 0xa 0xb 0x12 0x13 0x14 0x15 0x16 0x17 0x1e 0x1f 0x20 0x21 0x22 0x23 0x2b 0x2c 0x2d 0x2e 0x2f 0x30 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+		};
+		swap_app: swap_app {
+			compatible = "zmk,behavior-tri-state";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x700e3 >, < &kp 0x7002b >, < &kp 0x700e3 >;
+			ignored-layers = < 0x2 0x7 >;
+			phandle = < 0x59 >;
+		};
+		swap_win: swap_win {
+			compatible = "zmk,behavior-tri-state";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x700e3 >, < &kp 0x70035 >, < &kp 0x700e3 >;
+			ignored-layers = < 0x2 0x7 >;
+			phandle = < 0x58 >;
+		};
+		hmr_comma: home_row_mod_comma {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &td_comma_cw >;
+			hold-trigger-key-positions = < 0x0 0x1 0x2 0x3 0x4 0x5 0xc 0xd 0xe 0xf 0x10 0x11 0x18 0x19 0x1a 0x1b 0x1c 0x1d 0x24 0x25 0x26 0x27 0x28 0x29 0x2a 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x4f >;
+		};
+		hmr_i: home_row_mod_i {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = < 0x2 >;
+			flavor = "balanced";
+			tapping-term-ms = < 0x118 >;
+			quick-tap-ms = < 0xaf >;
+			require-prior-idle-ms = < 0x96 >;
+			bindings = < &kp >, < &ak_i_cap >;
+			hold-trigger-key-positions = < 0x0 0x1 0x2 0x3 0x4 0x5 0xc 0xd 0xe 0xf 0x10 0x11 0x18 0x19 0x1a 0x1b 0x1c 0x1d 0x24 0x25 0x26 0x27 0x28 0x29 0x2a 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x3a 0x3b >;
+			hold-trigger-on-release;
+			phandle = < 0x51 >;
+		};
+		td_enc_l: tap_dance_enc_left {
+			compatible = "zmk,behavior-tap-dance";
+			#binding-cells = < 0x0 >;
+			tapping-term-ms = < 0xc8 >;
+			bindings = < &none >, < &hyper_f >;
+		};
+		td_enc_r: tap_dance_enc_right {
+			compatible = "zmk,behavior-tap-dance";
+			#binding-cells = < 0x0 >;
+			tapping-term-ms = < 0xc8 >;
+			bindings = < &none >, < &meh_f >;
+		};
+		ak_i_cap: ak_i_cap {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x7000c >;
+			phandle = < 0x22 >;
+			akt_sp_i {
+				trigger-keys = < 0x7002c >;
+				max-prior-idle-ms = < 0x190 >;
+				bindings = < &macro_cap_i >;
+			};
+		};
+		ak_ing: ak_ing {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x7000b >;
+			akt_ih {
+				trigger-keys = < 0x7000c >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x70011 &kp 0x7000a >;
+			};
+		};
+		ak_have: ak_have {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70019 >;
+			akt_hv {
+				trigger-keys = < 0x7000b >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x70004 &kp 0x70019 &kp 0x70008 >;
+			};
+		};
+		ak_with: ak_with {
+			compatible = "zmk,behavior-adaptive-key";
+			#binding-cells = < 0x0 >;
+			bindings = < &kp 0x70038 >;
+			akt_wslash {
+				trigger-keys = < 0x7001a >;
+				max-prior-idle-ms = < 0x12c >;
+				bindings = < &kp 0x7002a &kp 0x7000c &kp 0x70017 &kp 0x7000b >;
+			};
+		};
+		td_comma_cw: tap_dance_comma_caps {
+			compatible = "zmk,behavior-tap-dance";
+			#binding-cells = < 0x0 >;
+			tapping-term-ms = < 0xc8 >;
+			bindings = < &kp 0x70036 >, < &caps_word >;
+			phandle = < 0x21 >;
+		};
+		leader_roll: leader_roll {
+			compatible = "zmk,behavior-leader-key";
+			#binding-cells = < 0x0 >;
+			phandle = < 0x55 >;
+			seq_should {
+				sequence = < 0x70016 0x7000f 0x70007 >;
+				bindings = < &word_should >;
+			};
+			seq_could {
+				sequence = < 0x70006 0x7000f 0x70007 >;
+				bindings = < &word_could >;
+			};
+			seq_ing {
+				sequence = < 0x7000c 0x7000b >;
+				bindings = < &word_ing >;
+			};
+			seq_with {
+				sequence = < 0x7001a 0x70038 >;
+				bindings = < &word_with >;
+			};
+		};
+	};
+	mkp_input_listener: mkp_input_listener {
+		compatible = "zmk,input-listener";
+		device = < &mkp >;
+	};
+	mmv_input_listener: mmv_input_listener {
+		compatible = "zmk,input-listener";
+		device = < &mmv >;
+	};
+	msc_input_listener: msc_input_listener {
+		compatible = "zmk,input-listener";
+		device = < &msc >;
+	};
+	conditional_layers {
+		compatible = "zmk,conditional-layers";
+		adjust_layer {
+			if-layers = < 0x2 0x4 >;
+			then-layer = < 0x8 >;
+		};
+	};
+	combos {
+		compatible = "zmk,combos";
+		studio_unlock_combo {
+			bindings = < &studio_unlock >;
+			key-positions = < 0x0 0xb >;
+		};
+		win_sc_combo_r {
+			bindings = < &mo 0x7 >;
+			key-positions = < 0x22 0x23 >;
+			timeout-ms = < 0x32 >;
+			slow-release;
+		};
+		win_sc_combo_l {
+			bindings = < &mo 0x7 >;
+			key-positions = < 0x18 0x19 >;
+			timeout-ms = < 0x32 >;
+			slow-release;
+		};
+		esc {
+			bindings = < &kp 0x70029 >;
+			key-positions = < 0x19 0x29 >;
+		};
+		esc2 {
+			bindings = < &kp 0x70029 >;
+			key-positions = < 0x0 0xc >;
+		};
+		esc3 {
+			bindings = < &kp 0x70029 >;
+			key-positions = < 0x0 0x1 >;
+		};
+		thumb_fatfinger {
+			bindings = < &kp 0x70028 >;
+			key-positions = < 0x36 0x37 >;
+		};
+		thumb_fatfinger_left {
+			bindings = < &kp 0x7002c >;
+			key-positions = < 0x34 0x35 >;
+		};
+		thumb_fatfinger_right {
+			bindings = < &kp 0x7002c >;
+			key-positions = < 0x38 0x39 >;
+		};
+		numbers_toggle {
+			bindings = < &tog 0x4 >;
+			key-positions = < 0x1d 0x1e >;
+		};
+		fatfinger_del_som {
+			bindings = < &kp 0x7000d >;
+			key-positions = < 0x29 0x2a >;
+			layers = < 0x0 >;
+		};
+		fatfinger_bksp_som {
+			bindings = < &kp 0x7002d >;
+			key-positions = < 0x2c 0x2b >;
+			layers = < 0x0 >;
+		};
+		som_toggle_qwerty {
+			bindings = < &toggle_qwerty >;
+			key-positions = < 0x2d 0x2e 0x2f 0x30 >;
+			layers = < 0x0 >;
+		};
+		qw_toggle_som {
+			bindings = < &toggle_somethium >;
+			key-positions = < 0xe 0x1e 0x2d 0x30 >;
+			layers = < 0x1 >;
+		};
+		som_esc {
+			bindings = < &kp 0x70029 >;
+			key-positions = < 0xc 0xd >;
+			layers = < 0x0 >;
+		};
+		qw_esc {
+			bindings = < &kp 0x70029 >;
+			key-positions = < 0xc 0xd >;
+			layers = < 0x1 >;
+		};
+		som_tab {
+			bindings = < &kp 0x7002b >;
+			key-positions = < 0x18 0x19 >;
+			layers = < 0x0 >;
+		};
+		som_nt {
+			bindings = < &th_lower >;
+			key-positions = < 0x1a 0x1b >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_nd {
+			bindings = < &nt_contraction >;
+			key-positions = < 0x1a 0x27 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_st {
+			bindings = < &ts_contraction >;
+			key-positions = < 0x19 0x1b >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_sm {
+			bindings = < &word_some >;
+			key-positions = < 0x19 0xe >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_wt {
+			bindings = < &word_what >;
+			key-positions = < 0xd 0x1b >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_wm {
+			bindings = < &wh_lower >;
+			key-positions = < 0xd 0xe >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_mg {
+			bindings = < &gh_lower >;
+			key-positions = < 0xe 0xf >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_ps {
+			bindings = < &ph_lower >;
+			key-positions = < 0x24 0x19 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_pc {
+			bindings = < &ph_lower >;
+			key-positions = < 0x24 0x25 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_pcld_win {
+			bindings = < &mo 0x7 >;
+			key-positions = < 0x24 0x25 0x26 0x27 >;
+			layers = < 0x0 >;
+			slow-release;
+		};
+		som_cl {
+			bindings = < &ch_lower >;
+			key-positions = < 0x25 0x26 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_what {
+			bindings = < &word_what >;
+			key-positions = < 0xd 0x1f 0x28 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_when {
+			bindings = < &word_when >;
+			key-positions = < 0xd 0x20 0x28 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_where {
+			bindings = < &word_where >;
+			key-positions = < 0xd 0x2f 0x28 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_enter {
+			bindings = < &mo 0x5 >;
+			key-positions = < 0x2f 0x30 >;
+			layers = < 0x0 >;
+		};
+		som_sn {
+			bindings = < &sh_lower >;
+			key-positions = < 0x19 0x1a >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_arrow {
+			bindings = < &word_arrow >;
+			key-positions = < 0x2e 0x2c >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_grave {
+			bindings = < &kp 0x70035 >;
+			key-positions = < 0x1f 0x1e >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_ck {
+			bindings = < &ch_lower >;
+			key-positions = < 0x25 0x27 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_aeix_ent {
+			bindings = < &kp 0x70028 >;
+			key-positions = < 0x1f 0x20 0x21 0x22 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_eix_ent {
+			bindings = < &kp 0x700e1 &kp 0x70028 >;
+			key-positions = < 0x20 0x21 0x22 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_ship {
+			bindings = < &word_ship >;
+			key-positions = < 0x19 0x1a 0x22 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_q {
+			bindings = < &kp 0x70014 >;
+			key-positions = < 0xd 0x19 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_qu {
+			bindings = < &qu_lower >;
+			key-positions = < 0x27 0x28 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_z {
+			bindings = < &kp 0x7001d >;
+			key-positions = < 0x1b 0x28 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_secret {
+			bindings = < &macro_secret >;
+			key-positions = < 0xc 0xd 0xe 0xf >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x50 >;
+		};
+		som_thy {
+			bindings = < &word_they >;
+			key-positions = < 0x1a 0x1b 0x2f >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_fkeys {
+			bindings = < &mo 0x5 >;
+			key-positions = < 0x15 0x16 >;
+			layers = < 0x0 >;
+		};
+		som_equal {
+			bindings = < &kp 0x7002e >;
+			key-positions = < 0x2c 0x2d >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_ie {
+			bindings = < &word_ing >;
+			key-positions = < 0x21 0x20 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_ld {
+			bindings = < &kp 0x7000f &kp 0x70007 >;
+			key-positions = < 0x26 0x27 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_lk {
+			bindings = < &word_like >;
+			key-positions = < 0x26 0x1c >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_uo {
+			bindings = < &kp 0x70012 &kp 0x70018 >;
+			key-positions = < 0x2d 0x2e >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_cn {
+			bindings = < &word_can >;
+			key-positions = < 0x25 0x1a >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_caps_word {
+			bindings = < &caps_word >;
+			key-positions = < 0x24 0x32 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x32 >;
+		};
+		som_sent_toggle {
+			bindings = < &tog 0x9 >;
+			key-positions = < 0x24 0x33 >;
+			layers = < 0x0 >;
+		};
+		qw_bspc {
+			bindings = < &kp 0x7002a >;
+			key-positions = < 0x16 0x15 >;
+			layers = < 0x1 >;
+		};
+		sent_cap_dot_space {
+			bindings = < &sk 0x700e1 >;
+			key-positions = < 0x13 0x37 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x50 >;
+		};
+		sent_cap_excl_space {
+			bindings = < &sk 0x700e1 >;
+			key-positions = < 0xb 0x37 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x50 >;
+		};
+		sent_cap_quest_space {
+			bindings = < &sk 0x700e1 >;
+			key-positions = < 0x31 0x37 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x50 >;
+		};
+		cap_i_space {
+			bindings = < &macro_cap_i >;
+			key-positions = < 0x37 0x21 >;
+			layers = < 0x0 >;
+			timeout-ms = < 0x64 >;
+		};
+	};
+	macros {
+		macro_cap_i: macro_cap_i {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x7000c >, < &macro_release &kp 0x700e1 >;
+			phandle = < 0x26 >;
+		};
+		macro_secret: macro_secret {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x70008 &kp 0x70006 &kp 0x70015 &kp 0x70008 &kp 0x70017 >;
+			phandle = < 0x3f >;
+		};
+		word_what: word_what {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001a &kp 0x7000b &kp 0x70004 &kp 0x70017 >;
+			phandle = < 0x35 >;
+		};
+		word_when: word_when {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001a &kp 0x7000b &kp 0x70008 &kp 0x70011 >;
+			phandle = < 0x39 >;
+		};
+		word_where: word_where {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001a &kp 0x7000b &kp 0x70008 &kp 0x70015 &kp 0x70008 >;
+			phandle = < 0x3a >;
+		};
+		word_they: word_they {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b &kp 0x70008 &kp 0x7001c >;
+			phandle = < 0x40 >;
+		};
+		word_ship: word_ship {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x7000b &kp 0x7000c &kp 0x70013 >;
+			phandle = < 0x3d >;
+		};
+		word_ing: word_ing {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000c &kp 0x70011 &kp 0x7000a >;
+			phandle = < 0x29 >;
+		};
+		word_like: word_like {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000f &kp 0x7000c &kp 0x7000e &kp 0x70008 >;
+			phandle = < 0x41 >;
+		};
+		word_some: word_some {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x70012 &kp 0x70010 &kp 0x70008 >;
+			phandle = < 0x34 >;
+		};
+		word_can: word_can {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70006 &kp 0x70004 &kp 0x70011 >;
+			phandle = < 0x42 >;
+		};
+		word_arrow: word_arrow {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7002d &kp 0x7004f >;
+			phandle = < 0x3c >;
+		};
+		toggle_qwerty: toggle_qwerty {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &tog 0x1 >;
+			phandle = < 0x30 >;
+		};
+		toggle_somethium: toggle_somethium {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &tog 0x0 >;
+			phandle = < 0x31 >;
+		};
+		word_should: word_should {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x7000b &kp 0x70012 &kp 0x70018 &kp 0x7000f &kp 0x70007 >;
+			phandle = < 0x27 >;
+		};
+		word_could: word_could {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70006 &kp 0x70012 &kp 0x70018 &kp 0x7000f &kp 0x70007 >;
+			phandle = < 0x28 >;
+		};
+		hyper: hyper {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >, < &macro_pause_for_release >, < &macro_release &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >;
+			phandle = < 0x52 >;
+		};
+		hyper_space: hyper_space {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >, < &macro_tap &kp 0x7002c >, < &macro_release &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >;
+		};
+		hyper_f: hyper_f {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >, < &macro_tap &kp 0x70009 >, < &macro_release &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 >;
+			phandle = < 0x24 >;
+		};
+		meh_f: meh_f {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e5 &kp 0x700e4 &kp 0x700e6 >, < &macro_tap &kp 0x70009 >, < &macro_release &kp 0x700e5 &kp 0x700e4 &kp 0x700e6 >;
+			phandle = < 0x25 >;
+		};
+		meh: meh {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 >, < &macro_pause_for_release >, < &macro_release &kp 0x700e1 &kp 0x700e0 &kp 0x700e2 >;
+			phandle = < 0x53 >;
+		};
+		macro_undo: macro_undo {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x807001d >;
+			phandle = < 0x5a >;
+		};
+		macro_undo_win: macro_undo_win {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x107001d >;
+			phandle = < 0x5c >;
+		};
+		nt_contraction: nt_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70011 &kp 0x70034 &kp 0x70017 >;
+			phandle = < 0x32 >;
+		};
+		qu_lower: qu_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70014 &kp 0x70018 >;
+			phandle = < 0x3e >;
+		};
+		qu_title: qu_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x70014 >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x70018 >;
+		};
+		re_contraction: re_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x70015 &kp 0x70008 >;
+		};
+		ts_contraction: ts_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x70034 &kp 0x70016 >;
+			phandle = < 0x33 >;
+		};
+		sc_lower: sc_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x70006 >;
+		};
+		kh_lower: kh_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000e &kp 0x7000b >;
+		};
+		ck_linger: ck_linger {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70006 &kp 0x7000e >;
+			phandle = < 0x17 >;
+		};
+		fr_linger: fr_linger {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70009 &kp 0x70015 >;
+			phandle = < 0x18 >;
+		};
+		th_lower: th_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b >;
+			phandle = < 0x1a >;
+		};
+		sh_lower: sh_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70016 &kp 0x7000b >;
+			phandle = < 0x3b >;
+		};
+		ch_lower: ch_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70006 &kp 0x7000b >;
+			phandle = < 0x38 >;
+		};
+		gh_lower: gh_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000a &kp 0x7000b >;
+			phandle = < 0x36 >;
+		};
+		ph_lower: ph_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70013 &kp 0x7000b >;
+			phandle = < 0x37 >;
+		};
+		wh_lower: wh_lower {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001a &kp 0x7000b >;
+			phandle = < 0x19 >;
+		};
+		th_title: th_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x70017 >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		sh_title: sh_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x70016 >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		ch_title: ch_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x70006 >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		gh_title: gh_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x7000a >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		ph_title: ph_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x70013 >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		wh_title: wh_title {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &macro_press &kp 0x700e1 >, < &macro_tap &kp 0x7001a >, < &macro_release &kp 0x700e1 >, < &macro_tap &kp 0x7000b >;
+		};
+		word_with: word_with {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001a &kp 0x7000c &kp 0x70017 &kp 0x7000b >;
+			phandle = < 0x2a >;
+		};
+		word_those: word_those {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b &kp 0x70012 &kp 0x70016 &kp 0x70008 >;
+		};
+		word_this: word_this {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b &kp 0x7000c &kp 0x70016 >;
+		};
+		word_that: word_that {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b &kp 0x70004 &kp 0x70017 >;
+		};
+		word_the: word_the {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x7000b &kp 0x70008 >;
+		};
+		word_and: word_and {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70004 &kp 0x70011 &kp 0x70007 >;
+		};
+		word_of: word_of {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70012 &kp 0x70009 >;
+		};
+		word_to: word_to {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70017 &kp 0x70012 >;
+		};
+		word_in: word_in {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000c &kp 0x70011 >;
+		};
+		word_is: word_is {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7000c &kp 0x70016 >;
+		};
+		word_for: word_for {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70009 &kp 0x70012 &kp 0x70015 >;
+		};
+		word_you: word_you {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x7001c &kp 0x70012 &kp 0x70018 >;
+		};
+		ll_contraction: ll_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x7000f &kp 0x7000f >;
+		};
+		ve_contraction: ve_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x70019 &kp 0x70008 >;
+		};
+		d_contraction: d_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x70007 >;
+		};
+		m_contraction: m_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x70010 >;
+		};
+		s_contraction: s_contraction {
+			compatible = "zmk,behavior-macro";
+			#binding-cells = < 0x0 >;
+			wait-ms = < 0x0 >;
+			tap-ms = < 0x0 >;
+			bindings = < &kp 0x70034 &kp 0x70016 >;
+		};
+	};
+	keymap {
+		compatible = "zmk,keymap";
+		somethium_layer {
+			display-name = "Somethium";
+			bindings = < &lts 0x4 0x70029 &kp 0x7001e &kp 0x7001f &kp 0x70020 &kp 0x70021 &kp 0x70022 &kp 0x70023 &kp 0x70024 &kp 0x70025 &kp 0x70026 &kp 0x70027 &kp 0x7002a &kp 0x7002b &lts 0x4 0x70019 &kp 0x7001a &kp 0x70010 &kp 0x7000a &htk 0x70005 0x7002f &htk 0x70033 0x2070030 &htk 0x70037 0x207001e &kp 0x70034 &htk 0x70038 0x70031 &lts 0x4 0x7002a &trans &trans &lts 0x2 0x70009 &hml_ak_s 0x700e0 0x0 &hml_ak_n 0x700e2 0x0 &hml_g 0x700e3 0x70017 &hmr 0x700e1 0x7000e &hmr_comma 0x700e5 0x0 &hmr_g 0x700e7 0x70004 &hmr 0x700e6 0x70008 &hmr_i 0x700e4 0x0 &lts 0x2 0x7001b &trans &hmr 0x700e1 0x70013 &kp 0x70006 &kp 0x7000f &kp 0x70007 &htk 0x7000b 0x207002f &none &hyper &meh &htk 0x7002d 0x2070030 &kp 0x70018 &kp 0x70012 &kp 0x7001c &none &mt 0x700e5 0x7000d &kp 0x700e1 &kp 0x700e3 &mo 0x3 &lts 0x6 0x70015 &lts 0x2 0x7002c &lts 0x4 0x7001d &leader_roll &none &kp 0x700e5 >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		qwerty_layer {
+			display-name = "QWERTY";
+			bindings = < &trans &kp 0x7001e &kp 0x7001f &kp 0x70020 &kp 0x70021 &kp 0x70022 &kp 0x70023 &kp 0x70024 &kp 0x70025 &kp 0x70026 &kp 0x70027 &kp 0x7002a &kp 0x7002b &kp 0x70014 &kp 0x7001a &kp 0x70008 &kp 0x70015 &kp 0x70017 &kp 0x7001c &kp 0x70018 &kp 0x7000c &kp 0x70012 &kp 0x70013 &kp 0x7002d &mo 0x2 &hml 0x700e0 0x70004 &hml 0x700e2 0x70016 &hml_g 0x700e3 0x70007 &hml 0x700e1 0x70009 &kp 0x7000a &kp 0x7000b &hmr 0x700e5 0x7000d &hmr_g 0x700e7 0x7000e &hmr 0x700e6 0x7000f &hmr 0x700e4 0x70033 &mo 0x5 &kp 0x700e1 &kp 0x7001d &kp 0x7001b &kp 0x70006 &kp 0x70019 &kp 0x70005 &trans &trans &kp 0x70011 &kp 0x70010 &kp 0x70036 &kp 0x70037 &kp 0x70038 &kp 0x700e5 &trans &trans &trans &kp 0x70029 &kp 0x7002c &kp 0x70028 &trans &none &trans >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		nav_layer {
+			display-name = "nav";
+			bindings = < &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp 0x7004c &swap_win &trans &trans &trans &trans &trans &kp 0x7004b &kp 0x70052 &kp 0x7004e &kp 0x807002f &kp 0x8070030 &swap_app &kp 0x700e0 &kp 0x700e2 &kp 0x700e3 &trans &trans &kp 0x7004a &kp 0x70050 &kp 0x70051 &kp 0x7004f &kp 0xc00ea &mt 0x700e1 &macro_undo &kp 0x807001b &kp 0x8070006 &kp 0x8070019 &kp 0x8070004 &trans &trans &trans &kp 0x7004d &msc 0x19 &trans &msc 0xffe7 &kp 0xc00e9 &trans &trans &trans &kp 0x70028 &kp 0x70028 &mkp 0x1 &mkp 0x4 &mkp 0x2 >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		sym_layer {
+			display-name = "sym";
+			bindings = < &trans &kp 0x70035 &kp 0x2070035 &kp 0x207001f &kp 0x2070020 &kp 0x2070021 &kp 0x2070022 &kp 0x2070023 &kp 0x2070024 &kp 0x2070025 &kp 0x70031 &trans &trans &kp 0x207002d &kp 0x7002d &kp 0x207002e &kp 0x7002e &kp 0x2070031 &kp 0x2070026 &kp 0x2070027 &kp 0x7002f &kp 0x70030 &kp 0x70033 &trans &trans &kp 0x2070036 &kp 0x2070037 &kp 0x2070033 &kp 0x2070034 &kp 0x70034 &kp 0x207002f &kp 0x2070030 &kp 0x70038 &kp 0x2070038 &kp 0x207001e &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		num_layer {
+			display-name = "num";
+			bindings = < &trans &kp 0x207001e &kp 0x207001f &kp 0x2070020 &kp 0x2070021 &kp 0x2070022 &trans &trans &trans &trans &trans &trans &trans &kp 0x7001e &kp 0x7001f &kp 0x70020 &kp 0x70021 &kp 0x70022 &kp 0x2070025 &kp 0x70024 &kp 0x70025 &kp 0x70026 &trans &trans &trans &kp 0x70023 &kp 0x70024 &kp 0x70025 &kp 0x70026 &kp 0x70027 &kp 0x7002d &kp 0x70021 &kp 0x70022 &kp 0x70023 &trans &trans &trans &kp 0x2070023 &kp 0x2070024 &kp 0x2070025 &kp 0x2070026 &kp 0x2070027 &trans &trans &kp 0x207002e &kp 0x7001e &kp 0x7001f &kp 0x70020 &trans &trans &trans &trans &trans &trans &trans &kp 0x70028 &kp 0x7002c &kp 0x70027 &kp 0x70037 &kp 0x70028 >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		fkeys_layer {
+			display-name = "fkeys";
+			bindings = < &trans &kp 0x7003a &kp 0x7003b &kp 0x7003c &kp 0x7003d &kp 0x7003e &trans &trans &trans &trans &trans &trans &trans &kp 0x7003f &kp 0x70040 &kp 0x70041 &kp 0x70042 &kp 0x70043 &trans &trans &trans &trans &trans &kp 0xc00e2 &trans &kp 0x8070004 &trans &trans &kp 0x70044 &kp 0x70045 &trans &trans &trans &trans &trans &kp 0xc00e9 &trans &kp 0x807001d &kp 0x807001b &kp 0x8070006 &kp 0x8070019 &trans &trans &trans &trans &trans &trans &trans &trans &kp 0xc00ea &bt 0x3 0x0 &bt 0x3 0x1 &bt 0x3 0x2 &bt 0x3 0x3 &bt 0x3 0x4 &trans &trans &trans &trans >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		mouse_layer {
+			display-name = "mouse";
+			bindings = < &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &msc 0x19 &mmv 0xfb6e &msc 0xffe7 &none &none &none &kp 0x700e0 &kp 0x700e2 &kp 0x700e1 &kp 0x700e3 &none &none &mmv 0xfb6e0000 &mmv 0x492 &mmv 0x4920000 &none &none &none &none &none &none &none &none &tog 0x6 &tog 0x6 &none &none &none &none &none &none &none &none &none &none &kp 0x70028 &kp 0x70028 &mkp 0x1 &mkp 0x2 &mkp 0x4 &none >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		win_layer {
+			display-name = "win";
+			bindings = < &trans &trans &trans &trans &kp 0x3070016 &trans &trans &trans &trans &trans &trans &trans &trans &trans &kp 0x107001a &kp 0x1070008 &kp 0x1070015 &kp 0x107002b &trans &trans &kp 0x1070052 &trans &kp 0x1070037 &trans &trans &kp 0x1070004 &kp 0x1070016 &kp 0x1070007 &kp 0x3070016 &trans &trans &kp 0x1070050 &kp 0x1070051 &kp 0x107004f &kp 0x107000f &kp 0x1070019 &trans &macro_undo_win &kp 0x107001b &kp 0x1070006 &kp 0x1070019 &kp 0x1070004 &trans &trans &kp 0x3070029 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		sm_off_layer {
+			display-name = "sm-off";
+			bindings = < &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+		adjust_layer {
+			display-name = "adjust";
+			bindings = < &bt 0x4 0x0 &bt 0x3 0x0 &bt 0x3 0x1 &bt 0x3 0x2 &bt 0x3 0x3 &bt 0x3 0x4 &bt 0x0 0x0 &none &none &none &none &none &ext_power 0x2 &none &none &none &none &studio_unlock &none &none &none &none &none &none &none &none &none &none &none &tog 0x1 &tog 0x6 &tog 0x9 &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none &none >;
+			sensor-bindings = < &inc_dec_kp 0xc00e9 0xc00ea &inc_dec_kp 0x7004b 0x7004e >;
+		};
+	};
+};

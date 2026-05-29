@@ -11,9 +11,6 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 #include <dt-bindings/zmk/pointing.h>
 
-#include "somethium-sm.dtsi"
-#include "somethium-combos.dtsi"
-
 #define SOMETHIUM 0
 #define QWERTY    1
 #define NAV       2
@@ -23,6 +20,7 @@
 #define MOUSE     6
 #define WIN       7
 #define ADJUST    8
+#define SM_OFF    9
 
 // Mouse movement (195% of ZMK default 600 = 1170)
 #ifndef KEYMAP_DRAWER
@@ -120,7 +118,14 @@
             layers = <0>;
         };
 
+#include "somethium-combos.dtsi"
+#include "somethium-assist-combos.dtsi"
+
+    };
+
     macros {
+
+#include "somethium-sm-macros.dtsi"
         hyper: hyper {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -850,6 +855,8 @@
             bindings = <&none>, <&meh_f>;
         };
 
+#include "somethium-sm-behaviors.dtsi"
+
     };
 
     keymap {
@@ -860,9 +867,9 @@
 
             bindings = <
 &lts NUM ESC    &kp N1          &kp N2          &kp N3          &kp N4          &kp N5                                          &kp N6              &kp N7          &kp N8          &kp N9          &kp N0              &kp BSPC
-&kp TAB         &lts NUM V      &kp W           &kp M           &kp G           &htk B LBKT                                     &htk SCLN RBRC    &htk DOT EXLM   &kp SQT         &htk SLSH BSLH  &lts NUM BSPC
-&lts NAV F      &hml_ak_s LCTRL 0 &hml_ak_n LALT 0 &hml_g LGUI T 0 &hmr LSHFT K 0                                  &hmr_comma RSFT 0 &hmr_g RGUI A 0 &hmr RALT E 0  &hmr_i RCTRL 0 &lts NAV X
-&hmr LSHFT P    &kp C           &kp L           &kp D           &htk H LCBR     &none               &hyper              &meh                &htk MINUS RCBR   &kp U           &kp O           &kp Y           &none               &mt RSFT J
+&kp TAB         &lts NUM V      &kp W           &kp M           &kp G           &htk B LBKT                                     &htk SCLN RBRC    &htk DOT EXCL   &kp SQT         &htk FSLH BSLH  &lts NUM BSPC   &trans
+&trans          &lts NAV F      &hml_ak_s LCTRL 0 &hml_ak_n LALT 0 &hml_g LGUI T    &hmr LSHFT K                                &hmr_comma RSFT 0 &hmr_g RGUI A    &hmr RALT E      &hmr_i RCTRL 0 &lts NAV X       &trans
+&hmr LSHFT P    &kp C           &kp L           &kp D           &htk H LBRC     &none               &hyper              &meh                &htk MINUS RBRC   &kp U           &kp O           &kp Y           &none               &mt RIGHT_SHIFT J
                 &kp LSHFT       &kp LGUI        &mo SYM         &lts MOUSE R    &lts NAV SPACE                                  &lts NUM Z      &leader_roll    &none           &kp RSHFT
             >;
 
@@ -890,7 +897,7 @@
 &trans          &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans          &trans          &trans              &kp DELETE
 &swap_win       &trans          &trans          &trans          &trans          &trans                                          &kp PG_UP           &kp UP          &kp PGDN        &kp LG(LBKT)    &kp LG(RBKT)
 &swap_app       &kp LCTRL       &kp LALT        &kp LGUI        &trans          &trans                                          &kp HOME            &kp LEFT        &kp DOWN        &kp RIGHT       &kp C_VOL_DN
-&mt LSHFT macro_undo &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(A) &trans          &trans              &trans      &kp END             &msc SCRL_UP    &trans          &msc SCRL_DOWN  &kp C_VOL_UP
+&mt LSHFT &macro_undo &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(A) &trans          &trans              &trans      &kp END             &msc SCRL_UP    &trans          &msc SCRL_DOWN  &kp C_VOL_UP
                 &trans          &trans          &trans          &kp ENTER       &kp ENTER                                       &mkp LCLK           &mkp MCLK       &mkp RCLK
             >;
 
@@ -901,9 +908,9 @@
             display-name = "sym";
 
             bindings = <
-&trans          &kp GRAVE       &kp TILDE       &kp AT          &kp HASH        &kp DLLR                                        &kp PRCNT           &kp CARET       &kp AMPS        &kp ASTRK       &kp BSLS            &trans
+&trans          &kp GRAVE       &kp TILDE       &kp AT          &kp HASH        &kp DLLR                                        &kp PRCNT           &kp CARET       &kp AMPS        &kp ASTRK       &kp BSLH            &trans
 &trans          &kp UNDERSCORE  &kp MINUS       &kp PLUS        &kp EQUAL       &kp PIPE                                        &kp LPAR            &kp RPAR        &kp LBKT        &kp RBKT        &kp SEMI            &trans
-&trans          &kp LABK        &kp RABK        &kp COLON       &kp DQT         &kp SQT                                         &kp LCBR            &kp RCBR        &kp FSLH        &kp QUES        &kp EXLM            &trans
+&trans          &kp LT          &kp GT          &kp COLON       &kp DQT         &kp SQT                                         &kp LBRC            &kp RBRC        &kp FSLH        &kp QUESTION    &kp EXCL            &trans
 &trans          &trans          &trans          &trans          &trans          &trans          &trans              &trans      &trans              &trans          &trans          &trans          &trans              &trans
                 &trans          &trans          &trans          &trans          &trans                                          &trans              &trans          &trans
             >;
